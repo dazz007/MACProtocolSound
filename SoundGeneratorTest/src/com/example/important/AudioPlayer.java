@@ -18,7 +18,6 @@ public class AudioPlayer {
 	private int state;
 	List<Integer> indexesOfSigns;
 	private ArrayList<Buffer> queueWithDataAL;
-	// private BlockingQueue<Buffer> queueWithData;
 	MyObserver observer;
 	byte[] audioData;
 
@@ -48,11 +47,6 @@ public class AudioPlayer {
 		audiotrack.write(audioData, 0, sizeOfBuffer);
 	}
 
-	public void setIndexesOfSigns(List<Integer> inofsign) {
-		MessagesLog.d(TAG, "No kurwa");
-		indexesOfSigns = inofsign;
-		encodesDataToBuffers(indexesOfSigns);
-	}
 
 	public void start() {
 		MessagesLog.d(TAG, "Weszlo w start");
@@ -96,96 +90,17 @@ public class AudioPlayer {
 
 		}
 	}
-
-	public void encodesDataToBuffers(List<Integer> inofsign) {
-
-		for (int index : inofsign) {
-			int n = Constants.BITS_16 / 2;
-//			int totalCount = (Constants.DEFAULT_GEN_DURATION * Constants.SAMPLING) / 1000;
-			int numSamples = Constants.DEFAULT_NUM_SAMPLES;
-			double per = (Constants.FREQUENCIES[index] / (double) Constants.SAMPLING)
-					* 2 * Math.PI;
-			double d = 0;
-			Buffer buffer = new Buffer();
-			byte[] bufferData = new byte[Constants.DEFAULT_BUFFER_SIZE];
-			int[] bufferValues = new int[Constants.SAMPLING]; 
-			int indexInBuffer = 0;
-			int ramp = numSamples / 20;
-			for (int i = 0; i < numSamples; ++i) {
-//				int out = (int) (Math.sin(d) * n) + 128;
-				
-				
-				double out = (double) (Math.sin(Constants.FREQUENCIES[index] * 2 * Math.PI  * i / Constants.SAMPLING) );
-				if (indexInBuffer >= Constants.DEFAULT_BUFFER_SIZE - 1) {
-					buffer.setBuffer(bufferData);
-					buffer.setBufferSize(indexInBuffer);
-					buffer.setBufferValues(bufferValues);
-					buffer.setBufferValuesSize(i);
-					setBufferToQueueAL(buffer);
-					bufferData = new byte[Constants.DEFAULT_BUFFER_SIZE];
-					indexInBuffer = 0;
-				}
-				
-				
-				final short val;
-				if(i < ramp){
-					val = (short) ((out * n * i / ramp));					
-				}else if(i < numSamples - ramp){
-					val = (short) ((out * n));
-				}else{
-					val = (short) ((out * n * (numSamples-i)/ramp));
-				}
-				bufferValues[i] = val;
-				bufferData[indexInBuffer++] = (byte) (val & 0x00ff);
-				bufferData[indexInBuffer++] = (byte) ((val & 0xff00) >>> 8);
-
-				d += per;
-
-			}
-
-			buffer.setBuffer(bufferData);
-			buffer.setBufferSize(indexInBuffer);
-			buffer.setBufferValues(bufferValues);
-			buffer.setBufferValuesSize(indexInBuffer/2);
-			setBufferToQueueAL(buffer);
-
-			indexInBuffer = 0;
-		}
-
+	
+	public void setBufferToPlay(ArrayList<Buffer> queueBuffer){
+		queueWithDataAL = queueBuffer;
 	}
-
-//	private void setBufferToQueue(Buffer buffer) {
-//		try {
-//			queueWithData.put(buffer);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-
-	private void setBufferToQueueAL(Buffer buffer) {
-		queueWithDataAL.add(buffer);
-	}
-
-//	private Buffer getBufferFromQueue() {
-//		if (queueWithData != null) {
-//			try {
-//				return queueWithData.take();
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-//		return null;
-//	}
-
+	
 	private Buffer getBufferFromQueueAL() {
 
 		if (queueWithDataAL.size() > 0) {
 			Buffer buffer = queueWithDataAL.get(0);
 			queueWithDataAL.remove(0);
 			return buffer;
-
 		}
 		return null;
 

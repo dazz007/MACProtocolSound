@@ -1,5 +1,8 @@
 package com.example.soundgeneratortest;
 
+import org.achartengine.GraphicalView;
+
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.graphic.LineGraph;
 import com.example.important.Constants;
 import com.example.important.MessagesLog;
 import com.example.important.SoundGenerator;
@@ -20,7 +24,10 @@ public class MainActivity extends Activity {
 //    private final static String CODEBOOK = "123456789ABCDEF";
     private final static String CODEBOOK = "12345";
     private Handler mHanlder;
-
+    
+    private static GraphicalView graphView;
+	private LineGraph line = new LineGraph();
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

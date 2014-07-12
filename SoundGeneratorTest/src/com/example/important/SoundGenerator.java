@@ -52,12 +52,74 @@ public class SoundGenerator implements MyObserver {
 
 		return indexesOfSigns;
 	}
+	
+	public ArrayList<Buffer> encodesDataToBuffers(List<Integer> inofsign) {
+		
+		ArrayList<Buffer> queueWithDataAL = new ArrayList<Buffer>();
+		
+		for (int index : inofsign) {
+			int n = Constants.BITS_16 / 2;
+//			int totalCount = (Constants.DEFAULT_GEN_DURATION * Constants.SAMPLING) / 1000;
+			int numSamples = Constants.DEFAULT_NUM_SAMPLES;
+			double per = (Constants.FREQUENCIES[index] / (double) Constants.SAMPLING)
+					* 2 * Math.PI;
+			double d = 0;
+			Buffer buffer = new Buffer();
+			byte[] bufferData = new byte[Constants.DEFAULT_BUFFER_SIZE];
+			int[] bufferValues = new int[Constants.SAMPLING]; 
+			int indexInBuffer = 0;
+			int ramp = numSamples / 20;
+			for (int i = 0; i < numSamples; ++i) {
+//				int out = (int) (Math.sin(d) * n) + 128;
+				
+				
+				double out = (double) (Math.sin(Constants.FREQUENCIES[index] * 2 * Math.PI  * i / Constants.SAMPLING) );
+				if (indexInBuffer >= Constants.DEFAULT_BUFFER_SIZE - 1) {
+					buffer.setBuffer(bufferData);
+					buffer.setBufferSize(indexInBuffer);
+					buffer.setBufferValues(bufferValues);
+					buffer.setBufferValuesSize(i);
+					queueWithDataAL.add(buffer);
+					bufferData = new byte[Constants.DEFAULT_BUFFER_SIZE];
+					indexInBuffer = 0;
+				}
+				
+				
+				final short val;
+				if(i < ramp){
+					val = (short) ((out * n * i / ramp));					
+				}else if(i < numSamples - ramp){
+					val = (short) ((out * n));
+				}else{
+					val = (short) ((out * n * (numSamples-i)/ramp));
+				}
+				bufferValues[i] = val;
+				bufferData[indexInBuffer++] = (byte) (val & 0x00ff);
+				bufferData[indexInBuffer++] = (byte) ((val & 0xff00) >>> 8);
 
+				d += per;
+
+			}
+
+			buffer.setBuffer(bufferData);
+			buffer.setBufferSize(indexInBuffer);
+			buffer.setBufferValues(bufferValues);
+			buffer.setBufferValuesSize(indexInBuffer/2);
+			queueWithDataAL.add(buffer);
+
+			indexInBuffer = 0;
+		}
+		return queueWithDataAL;
+
+	}
+	
+
+	
 	public void start() {
 		if (state == Constants.STOP_STATE) {
 			state = Constants.START_STATE;
 			List<Integer> indexesOfSigns = encodeText();
-			player.setIndexesOfSigns(indexesOfSigns);
+			player.setBufferToPlay(encodesDataToBuffers(indexesOfSigns));
 			MessagesLog.d(TAG, "Weszlo w start");
 			threadPlayer = new Thread() {
 				@Override
