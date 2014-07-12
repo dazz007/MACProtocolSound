@@ -1,0 +1,57 @@
+﻿Build started 2014-07-12 14:06:50.
+     1>Project "c:\Users\Pawel\documents\visual studio 2010\Projects\MACProtocolCore\MACProtocolCore\MACProtocolCore.vcxproj" on node 2 (build target(s)).
+     1>PrepareForBuild:
+         Creating directory "c:\users\pawel\documents\visual studio 2010\Projects\MACProtocolCore\Release\".
+       InitializeBuildStatus:
+         Creating "Release\MACProtocolCore.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         E:\Programy\Visual Studio 2010\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MTd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt AKETest.cpp Converter.cpp EncDecClass.cpp HashClass.cpp KeyGenerator.cpp Main.cpp MutualAuthenticationChip.cpp MyDebugger.cpp
+         AKETest.cpp
+         You may be using a weak algorithm that has been retained for backwards compatibility. Please '#define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1' before including this .h file and prepend the class name with 'Weak::' to remove this warning.
+         Converter.cpp
+         EncDecClass.cpp
+     1>EncDecClass.cpp(45): warning C4244: 'argument' : conversion from 'CryptoPP::lword' to 'unsigned int', possible loss of data
+     1>EncDecClass.cpp(106): warning C4244: 'initializing' : conversion from 'CryptoPP::lword' to 'int', possible loss of data
+     1>EncDecClass.cpp(154): warning C4244: 'initializing' : conversion from 'CryptoPP::lword' to 'int', possible loss of data
+     1>EncDecClass.cpp(211): warning C4018: '<' : signed/unsigned mismatch
+     1>EncDecClass.cpp(235): warning C4018: '<' : signed/unsigned mismatch
+         HashClass.cpp
+         You may be using a weak algorithm that has been retained for backwards compatibility. Please '#define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1' before including this .h file and prepend the class name with 'Weak::' to remove this warning.
+     1>E:\Programy\Visual Studio 2010\VC\include\xutility(2227): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 E:\Programy\Visual Studio 2010\VC\include\xutility(2212) : see declaration of 'std::_Copy_impl'
+                 HashClass.cpp(31) : see reference to function template instantiation '_OutIt std::copy<byte*,byte*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=byte *,
+                     _InIt=byte *
+                 ]
+         KeyGenerator.cpp
+         You may be using a weak algorithm that has been retained for backwards compatibility. Please '#define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1' before including this .h file and prepend the class name with 'Weak::' to remove this warning.
+         Main.cpp
+         You may be using a weak algorithm that has been retained for backwards compatibility. Please '#define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1' before including this .h file and prepend the class name with 'Weak::' to remove this warning.
+         MutualAuthenticationChip.cpp
+         You may be using a weak algorithm that has been retained for backwards compatibility. Please '#define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1' before including this .h file and prepend the class name with 'Weak::' to remove this warning.
+         MyDebugger.cpp
+       Link:
+         E:\Programy\Visual Studio 2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"c:\users\pawel\documents\visual studio 2010\Projects\MACProtocolCore\Release\MACProtocolCore.exe" /INCREMENTAL:NO /NOLOGO cryptlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\MACProtocolCore.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"c:\users\pawel\documents\visual studio 2010\Projects\MACProtocolCore\Release\MACProtocolCore.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"c:\users\pawel\documents\visual studio 2010\Projects\MACProtocolCore\Release\MACProtocolCore.lib" /MACHINE:X86 Release\AKETest.obj
+         Release\Converter.obj
+         Release\EncDecClass.obj
+         Release\HashClass.obj
+         Release\KeyGenerator.obj
+         Release\Main.obj
+         Release\MutualAuthenticationChip.obj
+         Release\MyDebugger.obj
+     1>cryptlib.lib(cryptlib.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
+         Generating code
+         Finished generating code
+         MACProtocolCore.vcxproj -> c:\users\pawel\documents\visual studio 2010\Projects\MACProtocolCore\Release\MACProtocolCore.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"c:\users\pawel\documents\visual studio 2010\Projects\MACProtocolCore\Release\MACProtocolCore.exe;#1" /manifest Release\MACProtocolCore.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Release\MACProtocolCore.unsuccessfulbuild".
+         Touching "Release\MACProtocolCore.lastbuildstate".
+     1>Done Building Project "c:\Users\Pawel\documents\visual studio 2010\Projects\MACProtocolCore\MACProtocolCore\MACProtocolCore.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:10.90
