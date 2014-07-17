@@ -3,22 +3,26 @@ package com.example.important;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.graphic.SoundGenObserver;
+
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
 
-public class SoundGenerator implements MyObserver {
+public class SoundGenerator implements MyObserver, SoundGenSubject, AudioPlayerObserver{
 	private final static String TAG = "SoundGenerator";
 	private int state;
 	private String textToPlay;
 	private AudioPlayer player;
 	private Thread threadPlayer;
 	private Thread threadEncoding;
-
+	private SoundGenObserver sgo;
+	
+	
 	public SoundGenerator(int sampleRate) {
 
 		player = new AudioPlayer(sampleRate);
-		player.setObserver(this);
+		player.register(this);
 		state = Constants.STOP_STATE;
 	}
 
@@ -150,6 +154,30 @@ public class SoundGenerator implements MyObserver {
 				}
 			}
 		}
+	}
+
+	@Override
+	public void register(SoundGenObserver sgo) {
+		this.sgo = sgo;
+		
+	}
+
+	@Override
+	public void notifyObserver(int [] data) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sendDataToGraph(int[] data) {
+		this.sgo.updateLineGraph(data);
+		MessagesLog.d(TAG, "Wesz³o w send DataToGraph");
+	}
+
+	@Override
+	public void setSubject(AudioPlayer sub) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

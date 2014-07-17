@@ -2,6 +2,9 @@ package com.example.soundgeneratortest;
 
 import org.achartengine.GraphicalView;
 
+import com.example.graphic.MockData;
+import com.example.graphic.Point;
+
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,6 +13,7 @@ import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.graphic.LineGraph;
@@ -24,22 +28,47 @@ public class MainActivity extends Activity {
 //    private final static String CODEBOOK = "123456789ABCDEF";
     private final static String CODEBOOK = "12345";
     private Handler mHanlder;
-    
+    private LinearLayout chart_container;
     private static GraphicalView graphView;
 	private LineGraph line = new LineGraph();
-    
+	private static Thread graphThread;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        chart_container = (LinearLayout)findViewById(R.id.Chart_layout);
+        graphView = line.getView(getBaseContext());
+        
+        chart_container.addView(graphView);
 
         final TextView playTextView = (TextView) findViewById(R.id.playtext);
         TextView recognisedTextView = (TextView) findViewById(R.id.regtext);
         
         soundgen = new SoundGenerator(Constants.SAMPLING);
 //        mHanlder = new RegHandler(recognisedTextView);
-
+        line.setSubject(soundgen);
+        soundgen.register(line);
+//        graphThread = new Thread() {
+//			public void run()
+//			{
+////				for (int i = 0; i < 15; i++) 
+////				{
+////					try {
+////						Thread.sleep(2000);
+////					} catch (InterruptedException e) {
+////						// TODO Auto-generated catch block
+////						e.printStackTrace();
+////					}
+////					Point p = MockData.getDataFromReceiver(i); // We got new data!
+////					line.addNewPoints(p); // Add it to our graph
+////					graphView.repaint();
+////				}
+//			}
+//		};
+//		
+//		graphThread.start();
+		
         Button playStart = (Button) this.findViewById(R.id.start_play);
         playStart.setOnClickListener(new OnClickListener() {
             @Override
@@ -52,6 +81,14 @@ public class MainActivity extends Activity {
                 soundgen.start();
             }
         });
+        
+        
+    }
+//	protected void onStart() {
+////		super.onStart();
+////		graphView = line.getView(this);
+////		setContentView(graphView);
+//	}
 
 //        Button playStop = (Button) this.findViewById(R.id.stop_play);
 //        playStop.setOnClickListener(new OnClickListener() {
@@ -149,5 +186,5 @@ public class MainActivity extends Activity {
 //        LogHelper.d(TAG, "stop play");
 //    }
 
-}
+
 }

@@ -5,29 +5,22 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import com.example.graphic.SoundGenObserver;
 import com.example.important.SoundGenerator.Observer;
 
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
 
-public class AudioPlayer {
+public class AudioPlayer implements AudioPlayerSubject{
 	private final static String TAG = "AudioPlayer";
-	private Panel panel;
 	private AudioTrack audiotrack;
 	private int state;
 	List<Integer> indexesOfSigns;
 	private ArrayList<Buffer> queueWithDataAL;
-	MyObserver observer;
+	AudioPlayerObserver observer;
 	byte[] audioData;
 
-	public static interface Observed {
-		void setObserver(Observer o);
-
-		void stopStatus();
-	}
-
-	
 	
 	public AudioPlayer(int sampleRate) {
 
@@ -59,11 +52,14 @@ public class AudioPlayer {
 				MessagesLog.d(TAG, "Pobiera");
 				if (buffer != null) {
 					byte[] data = buffer.getBuffer();
+					
 					int sizeOfData = buffer.getBufferSize();
 					int[] dataValues = buffer.getBufferValues();
+					notifyObserver(dataValues);
 					if (data != null) {
 						int len = audiotrack.write(data, 0, sizeOfData);
 						if (startLength == 0) {
+							
 							audiotrack.play();
 //							state = Constants.STOP_STATE;
 						}
@@ -106,10 +102,6 @@ public class AudioPlayer {
 
 	}
 
-	public void setObserver(MyObserver o) {
-		observer = o;
-
-	}
 
 	public void stop() {
 		if (state == Constants.START_STATE) {
@@ -117,5 +109,16 @@ public class AudioPlayer {
 			queueWithDataAL.clear();
 //			queueWithData.clear();
 		}
+	}
+
+	@Override
+	public void notifyObserver(int[] data) {
+		observer.sendDataToGraph(data);
+	}
+
+	@Override
+	public void register(AudioPlayerObserver apo) {
+		this.observer = apo;
+		
 	}
 }
