@@ -1,64 +1,76 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" 
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
     <LinearLayout
+        android:id="@+id/Chart_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal" 
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content">
-	    <Button
-	        android:id="@+id/start_reg"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="start reg" />
-	
-	    <Button
-	        android:id="@+id/stop_reg"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="stop reg" />
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
         <TextView
             android:id="@+id/regtext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="recognised text" />
-	    </LinearLayout>
+    </LinearLayout>
 
-    <LinearLayout 
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
-        android:orientation="horizontal" 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-	    <Button
-	        android:id="@+id/start_play"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="start play" />
-	
-	    <Button
-	        android:id="@+id/stop_play"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="stop play" />
-	    <TextView
-	        android:id="@+id/playtext"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="play text" />
-
-	    </LinearLayout>
-	    
-    <LinearLayout 
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Chart_layout"
-        android:orientation="vertical">
-       
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="2"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/start_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start play"
+            android:width="285dp" />
     </LinearLayout>
-    
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="2"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/stop_recording"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stop recording"
+            android:width="285dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/playtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="play text" />
+    </LinearLayout>
+
 </LinearLayout>

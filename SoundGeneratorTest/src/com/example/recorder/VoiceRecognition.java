@@ -1,0 +1,93 @@
+package com.example.recorder;
+
+import com.example.graphic.VoiceRecObserver;
+import com.example.important.Constants;
+import com.example.important.MessagesLog;
+
+import android.media.AudioFormat;
+import android.media.AudioRecord;
+import android.media.MediaRecorder;
+
+public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
+	
+	public RecorderAudio record_audio;
+	private int state;
+	private Thread thread_recorder;
+	private VoiceRecObserver voice_rec_observer;
+	private final static String TAG = "VoiceRecognition";
+	public VoiceRecognition(){
+		record_audio = new RecorderAudio(MediaRecorder.AudioSource.MIC,
+										 Constants.SAMPLING,
+										 AudioFormat.CHANNEL_IN_MONO,
+										 AudioFormat.ENCODING_PCM_16BIT, 
+										 2*Constants.DEFAULT_BUFFER_SIZE);
+		record_audio.register(this);
+		state = Constants.STOP_STATE;
+	}
+	
+	public void start(){
+		if(state == Constants.STOP_STATE){
+			state = Constants.START_STATE;
+			thread_recorder = new Thread() {
+				public void run(){
+					record_audio.start();
+				}
+			};
+			if(thread_recorder != null){
+				thread_recorder.start();
+			}
+		}
+	}
+
+	@Override
+	public void sendDataToGraph(int[] data) {
+		voice_rec_observer.updateLineGraph(data);
+		MessagesLog.d(TAG, "Wesz³o w send DataToGraph");
+		
+	}
+
+	@Override
+	public void setStopStatus() {
+		if (state == Constants.START_STATE) {
+			state = Constants.STOP_STATE;
+			MessagesLog.d(TAG, "sending data is over");
+			record_audio.stop();
+			if (thread_recorder != null) {
+				try {
+					thread_recorder.join();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				} finally {
+					thread_recorder = null;
+				}
+			}
+		}
+		
+	}
+
+	@Override
+	public void setSubject(RecorderAudio sub) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void register(VoiceRecObserver vro) {
+		voice_rec_observer = vro;
+		
+	}
+
+	@Override
+	public void notifyObserver(int[] data) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sendDataToGraphByte(byte[] data) {
+		voice_rec_observer.updateLineGraphByte(data);
+		
+		MessagesLog.d(TAG, "Wesz³o w send DataToGraph");
+		
+	}
+}

@@ -9,14 +9,14 @@ import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 
 import com.example.important.MessagesLog;
-import com.example.important.MyObserver;
 import com.example.important.SoundGenSubject;
 import com.example.important.SoundGenerator;
+import com.example.recorder.VoiceRecSubject;
 
 import android.content.Context;
 import android.graphics.Color;
 
-public class LineGraph implements SoundGenObserver{
+public class LineGraph implements VoiceRecObserver{
 
 	private GraphicalView view;
 	private final static String TAG = "SoundGenerator";
@@ -26,8 +26,8 @@ public class LineGraph implements SoundGenObserver{
 	private XYSeriesRenderer renderer = new XYSeriesRenderer(); // This will be used to customize line 1
 	private XYMultipleSeriesRenderer mRenderer = new XYMultipleSeriesRenderer(); // Holds a collection of XYSeriesRenderer and customizes the graph
 	
-	private SoundGenSubject sgs;
-	
+	//private SoundGenSubject sgs;
+	private VoiceRecSubject voice_recognition_subject;
 	public LineGraph()
 	{
 		// Add single dataset to multiple dataset
@@ -39,9 +39,13 @@ public class LineGraph implements SoundGenObserver{
 //		renderer.setFillPoints(true);
 		
 		// Enable Zoom
-		mRenderer.setZoomButtonsVisible(true);
+		mRenderer.setZoomButtonsVisible(false);
 		mRenderer.setXTitle("Frequency");
+		mRenderer.setXLabels(0);
+		mRenderer.setYLabels(0);
 		mRenderer.setYTitle("Amplitude");
+		mRenderer.setShowAxes(false);
+		
 		mRenderer.setApplyBackgroundColor(true);
 		mRenderer.setBackgroundColor(Color.BLACK);
 		// Add single renderer to multiple renderer
@@ -73,8 +77,27 @@ public class LineGraph implements SoundGenObserver{
 	}
 
 	@Override
-	public void setSubject(SoundGenSubject sub) {
-		sgs = sub;
+	public void setSubject(VoiceRecSubject vrs) {
+		voice_recognition_subject = vrs;
+		
+	}
+
+	@Override
+	public void updateLineGraphByte(byte[] data) {
+		MessagesLog.d(TAG, "Wesz³o w update LineGraph");
+		int index = 0;
+		dataset.clear();
+		int start_point = 200;
+		
+//		for(int i = start_point; i < start_point+150; i++){
+//			int b_to_int = data[i];
+//			dataset.add(index++, b_to_int/1000);
+//		}
+		for(int i = 200; i < 500; i++){
+			int b_to_int = data[i];
+			dataset.add(index++, b_to_int);
+		}
+		view.repaint();
 		
 	}
 	

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -20,11 +21,13 @@ import com.example.graphic.LineGraph;
 import com.example.important.Constants;
 import com.example.important.MessagesLog;
 import com.example.important.SoundGenerator;
+import com.example.recorder.VoiceRecognition;
 import com.example.sinvoicedemo.R;
 
 public class MainActivity extends Activity {
     private final static String TAG = "MainActivity";
     private SoundGenerator soundgen;
+    private VoiceRecognition voicerec;
 //    private final static String CODEBOOK = "123456789ABCDEF";
     private final static String CODEBOOK = "12345";
     private Handler mHanlder;
@@ -39,36 +42,17 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         chart_container = (LinearLayout)findViewById(R.id.Chart_layout);
         graphView = line.getView(getBaseContext());
-        
         chart_container.addView(graphView);
 
         final TextView playTextView = (TextView) findViewById(R.id.playtext);
         TextView recognisedTextView = (TextView) findViewById(R.id.regtext);
         
         soundgen = new SoundGenerator(Constants.SAMPLING);
+        voicerec = new VoiceRecognition();
 //        mHanlder = new RegHandler(recognisedTextView);
-        line.setSubject(soundgen);
-        soundgen.register(line);
-//        graphThread = new Thread() {
-//			public void run()
-//			{
-////				for (int i = 0; i < 15; i++) 
-////				{
-////					try {
-////						Thread.sleep(2000);
-////					} catch (InterruptedException e) {
-////						// TODO Auto-generated catch block
-////						e.printStackTrace();
-////					}
-////					Point p = MockData.getDataFromReceiver(i); // We got new data!
-////					line.addNewPoints(p); // Add it to our graph
-////					graphView.repaint();
-////				}
-//			}
-//		};
-//		
-//		graphThread.start();
-		
+        line.setSubject(voicerec);
+        voicerec.register(line);
+//        soundgen.register(line);
         Button playStart = (Button) this.findViewById(R.id.start_play);
         playStart.setOnClickListener(new OnClickListener() {
             @Override
@@ -81,6 +65,17 @@ public class MainActivity extends Activity {
                 soundgen.start();
             }
         });
+        
+//        Button recognitionStop = (Button) this.findViewById(R.id.stop_recording);
+//      recognitionStop.setOnClickListener(new OnClickListener() {
+//          @Override
+//          public void onClick(View arg0) {
+//        	  voicerec.stop();
+//          }
+//      });
+        
+        voicerec.start();
+        
         
         
     }

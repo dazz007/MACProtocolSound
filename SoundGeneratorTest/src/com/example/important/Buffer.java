@@ -1,12 +1,12 @@
 package com.example.important;
 
 public class Buffer {
-	private byte[] buffer;
+	public byte[] buffer;
 	private int bufferSize;
-	private int [] bufferValues;
+	public int [] bufferValues;
 	private int bufferValuesSize;
-	public Buffer() {
-
+	public Buffer(int maxSize) {
+		buffer = new byte[maxSize];
 	}
 
 	public Buffer(byte[] buf, int bufSize, int[] buffValues, int buffValuesSize) {

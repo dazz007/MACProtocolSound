@@ -9,7 +9,7 @@ import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
 
-public class SoundGenerator implements MyObserver, SoundGenSubject, AudioPlayerObserver{
+public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 	private final static String TAG = "SoundGenerator";
 	private int state;
 	private String textToPlay;
@@ -68,7 +68,7 @@ public class SoundGenerator implements MyObserver, SoundGenSubject, AudioPlayerO
 			double per = (Constants.FREQUENCIES[index] / (double) Constants.SAMPLING)
 					* 2 * Math.PI;
 			double d = 0;
-			Buffer buffer = new Buffer();
+			Buffer buffer = new Buffer(Constants.DEFAULT_BUFFER_SIZE);
 			byte[] bufferData = new byte[Constants.DEFAULT_BUFFER_SIZE];
 			int[] bufferValues = new int[Constants.SAMPLING]; 
 			int indexInBuffer = 0;
