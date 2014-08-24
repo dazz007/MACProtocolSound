@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
 //        	  voicerec.stop();
 //          }
 //      });
-        
+        line.start();
         voicerec.start();
         
         

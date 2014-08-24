@@ -45,7 +45,8 @@ public class RecorderAudio implements RecorderAudioSubject{
 					int size = recorder.read(data.buffer,0,buffer_size);
 					data.setBufferSize(size);
 					
-					notifyObserverByte(data.buffer);
+					notifyObserverBuffer(data);
+//					notifyObserverByte(data.buffer);
 				}
 				recorder.stop();
                 recorder.release();
@@ -67,15 +68,21 @@ public class RecorderAudio implements RecorderAudioSubject{
 		
 	}
 
-	@Override
-	public void notifyObserver(int[] data) {
-		this.recorder_audio_observer.sendDataToGraph(data);
-		
-	}
+//	@Override
+//	public void notifyObserver(int[] data) {
+//		this.recorder_audio_observer.sendDataToGraph(data);
+//		
+//	}
+//
+//	@Override
+//	public void notifyObserverByte(byte[] data) {
+//		this.recorder_audio_observer.sendDataToGraphByte(data);
+//		
+//	}
 
 	@Override
-	public void notifyObserverByte(byte[] data) {
-		this.recorder_audio_observer.sendDataToGraphByte(data);
+	public void notifyObserverBuffer(Buffer buffer) {
+		this.recorder_audio_observer.putBufferToQueue(buffer);
 		
 	}
 	

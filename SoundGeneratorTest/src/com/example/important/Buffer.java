@@ -5,6 +5,8 @@ public class Buffer {
 	private int bufferSize;
 	public int [] bufferValues;
 	private int bufferValuesSize;
+
+	
 	public Buffer(int maxSize) {
 		buffer = new byte[maxSize];
 	}

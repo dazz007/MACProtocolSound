@@ -1,8 +1,10 @@
 package com.example.recorder;
 
 import com.example.graphic.VoiceRecObserver;
+import com.example.important.Buffer;
 import com.example.important.Constants;
 import com.example.important.MessagesLog;
+import com.example.important.Queue;
 
 import android.media.AudioFormat;
 import android.media.AudioRecord;
@@ -13,7 +15,12 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 	public RecorderAudio record_audio;
 	private int state;
 	private Thread thread_recorder;
+	private Queue queue_for_analyzer;
+	private Queue queue_for_graph;
 	private VoiceRecObserver voice_rec_observer;
+	private Decoder decoder;
+	private Thread thread_decoder;
+	
 	private final static String TAG = "VoiceRecognition";
 	public VoiceRecognition(){
 		record_audio = new RecorderAudio(MediaRecorder.AudioSource.MIC,
@@ -21,7 +28,10 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 										 AudioFormat.CHANNEL_IN_MONO,
 										 AudioFormat.ENCODING_PCM_16BIT, 
 										 2*Constants.DEFAULT_BUFFER_SIZE);
+		queue_for_analyzer = new Queue();
+		queue_for_graph = new Queue();
 		record_audio.register(this);
+		decoder = new Decoder();
 		state = Constants.STOP_STATE;
 	}
 	
@@ -39,12 +49,12 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 		}
 	}
 
-	@Override
-	public void sendDataToGraph(int[] data) {
-		voice_rec_observer.updateLineGraph(data);
-		MessagesLog.d(TAG, "Wesz這 w send DataToGraph");
-		
-	}
+//	@Override
+//	public void sendDataToGraph(int[] data) {
+//		voice_rec_observer.updateLineGraph(data);
+//		MessagesLog.d(TAG, "Wesz這 w send DataToGraph");
+//		
+//	}
 
 	@Override
 	public void setStopStatus() {
@@ -82,12 +92,29 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 		// TODO Auto-generated method stub
 		
 	}
+//
+//	@Override
+//	public void sendDataToGraphByte(byte[] data) {
+//		
+//		voice_rec_observer.updateLineGraphByte(data);
+//		
+//		MessagesLog.d(TAG, "Wesz這 w send DataToGraph");
+//		
+//	}
 
 	@Override
-	public void sendDataToGraphByte(byte[] data) {
-		voice_rec_observer.updateLineGraphByte(data);
+	public void putBufferToQueue(Buffer buffer) {
+		queue_for_analyzer.addToConsumer(buffer);
+		queue_for_graph.addToConsumer(buffer);
 		
-		MessagesLog.d(TAG, "Wesz這 w send DataToGraph");
-		
+	}
+
+	@Override
+	public Buffer getBufferForGraphQueue() {
+		return queue_for_graph.getFromConsumer();
+	}
+	
+	public Buffer getBufferForDecoderQueue(){
+		return queue_for_analyzer.getFromConsumer();
 	}
 }

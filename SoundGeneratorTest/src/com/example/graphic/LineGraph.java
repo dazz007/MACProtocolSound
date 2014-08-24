@@ -1,5 +1,8 @@
 package com.example.graphic;
 
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
 import org.achartengine.chart.PointStyle;
@@ -8,6 +11,8 @@ import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 
+import com.example.important.Buffer;
+import com.example.important.Constants;
 import com.example.important.MessagesLog;
 import com.example.important.SoundGenSubject;
 import com.example.important.SoundGenerator;
@@ -22,7 +27,8 @@ public class LineGraph implements VoiceRecObserver{
 	private final static String TAG = "SoundGenerator";
 	private TimeSeries dataset = new TimeSeries("Sound wave"); 
 	private XYMultipleSeriesDataset mDataset = new XYMultipleSeriesDataset();
-	
+	private int state;
+	private Thread thread_draw;
 	private XYSeriesRenderer renderer = new XYSeriesRenderer(); // This will be used to customize line 1
 	private XYMultipleSeriesRenderer mRenderer = new XYMultipleSeriesRenderer(); // Holds a collection of XYSeriesRenderer and customizes the graph
 	
@@ -50,6 +56,8 @@ public class LineGraph implements VoiceRecObserver{
 		mRenderer.setBackgroundColor(Color.BLACK);
 		// Add single renderer to multiple renderer
 		mRenderer.addSeriesRenderer(renderer);
+		
+		state = Constants.STOP_STATE;
 	}
 	
 	public GraphicalView getView(Context context) 
@@ -64,11 +72,10 @@ public class LineGraph implements VoiceRecObserver{
 	}
 
 
-	@Override
-	public void updateLineGraph(int[] data) {
+	private void updateLineGraph(int[] data) {
 		MessagesLog.d(TAG, "Wesz³o w update LineGraph");
 		int index = 0;
-		dataset.clear();
+//		dataset.clear();
 		int start_point = 200;
 		for(int i = start_point; i < start_point+150; i++){
 			dataset.add(index++, data[i]/1000);
@@ -82,9 +89,8 @@ public class LineGraph implements VoiceRecObserver{
 		
 	}
 
-	@Override
-	public void updateLineGraphByte(byte[] data) {
-		MessagesLog.d(TAG, "Wesz³o w update LineGraph");
+	private void updateLineGraphByte(byte[] data) {
+//		MessagesLog.d(TAG, "Wesz³o w update LineGraph");
 		int index = 0;
 		dataset.clear();
 		int start_point = 200;
@@ -99,6 +105,29 @@ public class LineGraph implements VoiceRecObserver{
 		}
 		view.repaint();
 		
+	}
+
+	
+	public void start(){
+		if(state == Constants.STOP_STATE){
+			state = Constants.START_STATE;
+			thread_draw = new Thread() {
+				@Override
+				public void run() {
+					while(state == Constants.START_STATE){
+						Buffer buffer = voice_recognition_subject.getBufferForGraphQueue();
+						if(buffer != null){
+							updateLineGraphByte(buffer.getBuffer());
+						}
+					}
+				}
+			};
+			if (thread_draw != null) {
+				thread_draw.start();
+			}
+			
+			
+		}
 	}
 	
 }
