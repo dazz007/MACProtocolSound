@@ -1,5 +1,6 @@
 package com.example.recorder;
 
+import org.jtransforms.fft.DoubleFFT_1D;
 import com.example.graphic.VoiceRecObserver;
 import com.example.important.Buffer;
 import com.example.important.Constants;
@@ -11,7 +12,7 @@ public class Decoder implements VoiceRecObserver{
 	@Override
 	public void setSubject(VoiceRecSubject sub) {
 		vrs = sub;
-		
+		DoubleFFT_1D fft = new DoubleFFT_1D(Constants.DEFAULT_BUFFER_SIZE*2);
 	}
 	
 	public void start(){
@@ -28,6 +29,8 @@ public class Decoder implements VoiceRecObserver{
 	
 	
 	private void analyse(Buffer buffer){
-		
+		byte[] data = buffer.getBuffer();
+//		int[] data;
+//		fft
 	}
 }

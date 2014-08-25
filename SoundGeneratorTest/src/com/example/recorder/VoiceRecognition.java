@@ -32,6 +32,7 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 		queue_for_graph = new Queue();
 		record_audio.register(this);
 		decoder = new Decoder();
+		decoder.setSubject(this);
 		state = Constants.STOP_STATE;
 	}
 	
@@ -45,6 +46,15 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 			};
 			if(thread_recorder != null){
 				thread_recorder.start();
+			}
+			
+			thread_decoder = new Thread(){
+				public void run(){
+					decoder.start();
+				}
+			};
+			if(thread_decoder != null){
+				thread_decoder.start();
 			}
 		}
 	}
