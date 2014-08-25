@@ -2,11 +2,11 @@ package com.example.important;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-
-import com.example.graphic.SoundGenObserver;
-import com.example.important.SoundGenerator.Observer;
+//import java.util.concurrent.BlockingQueue;
+//import java.util.concurrent.LinkedBlockingQueue;
+//
+//import com.example.graphic.SoundGenObserver;
+//import com.example.important.SoundGenerator.Observer;
 
 import android.media.AudioFormat;
 import android.media.AudioManager;
@@ -54,7 +54,7 @@ public class AudioPlayer implements AudioPlayerSubject{
 					byte[] data = buffer.getBuffer();
 					
 					int sizeOfData = buffer.getBufferSize();
-					int[] dataValues = buffer.getBufferValues();
+					//int[] dataValues = buffer.getBufferValues();
 					//notifyObserver(dataValues);
 					if (data != null) {
 						int len = audiotrack.write(data, 0, sizeOfData);
@@ -107,7 +107,6 @@ public class AudioPlayer implements AudioPlayerSubject{
 		if (state == Constants.START_STATE) {
 			state = Constants.STOP_STATE;
 			queueWithDataAL.clear();
-//			queueWithData.clear();
 		}
 	}
 

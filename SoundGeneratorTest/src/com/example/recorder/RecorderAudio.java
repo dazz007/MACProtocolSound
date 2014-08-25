@@ -19,11 +19,6 @@ public class RecorderAudio implements RecorderAudioSubject{
 	private ArrayList<Buffer> queueWithBufferToPrintAL;
 	public RecorderAudio(int source, int sample_rate, int channel_config, int audio_format, int buffer_size_in_bytes){
 		int minBufferSize = AudioRecord.getMinBufferSize(sample_rate, channel_config, audio_format);
-//		recorder = new AudioRecord(MediaRecorder.AudioSource.MIC,
-//								 Constants.SAMPLING,
-//								 AudioFormat.CHANNEL_IN_STEREO,
-//								 AudioFormat.ENCODING_PCM_16BIT, 
-//								 buffer_size);
 		recorder = new AudioRecord(source,
 								   sample_rate,
 								   channel_config,
@@ -39,13 +34,15 @@ public class RecorderAudio implements RecorderAudioSubject{
 				state = Constants.START_STATE;
 				recorder.startRecording();
 				MessagesLog.d(TAG, "Rozpoczêcie nagrywania");
-				Buffer data = new Buffer(buffer_size);
-				
 				while(state == Constants.START_STATE){
-					int size = recorder.read(data.buffer,0,buffer_size);
-					data.setBufferSize(size);
-					
-					notifyObserverBuffer(data);
+					Buffer data = new Buffer();
+					data.initializeBufferShort(buffer_size);
+					data.setBufferSizeShort(buffer_size);
+					int size = recorder.read(data.buffer_short,0,buffer_size);
+					if(data.buffer_short != null){
+						data.setBufferSize(size);
+						notifyObserverBuffer(data);
+					}
 //					notifyObserverByte(data.buffer);
 				}
 				recorder.stop();

@@ -86,7 +86,7 @@ public class LineGraph implements VoiceRecObserver{
 		
 	}
 
-	private void updateLineGraphByte(byte[] data) {
+	private void updateLineGraphByte(short[] data) {
 //		MessagesLog.d(TAG, "Wesz³o w update LineGraph");
 		int index = 0;
 		dataset.clear();
@@ -97,8 +97,8 @@ public class LineGraph implements VoiceRecObserver{
 //			dataset.add(index++, b_to_int/1000);
 //		}
 		for(int i = 200; i < 500; i++){
-			int b_to_int = data[i];
-			dataset.add(index++, b_to_int);
+//			int b_to_int = data[i];
+			dataset.add(index++, data[i]);
 		}
 		view.repaint();
 		
@@ -114,7 +114,7 @@ public class LineGraph implements VoiceRecObserver{
 					while(state == Constants.START_STATE){
 						Buffer buffer = voice_recognition_subject.getBufferForGraphQueue();
 						if(buffer != null){
-							updateLineGraphByte(buffer.getBuffer());
+							updateLineGraphByte(buffer.getBufferShort());
 						}
 					}
 				}

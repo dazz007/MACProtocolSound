@@ -2,6 +2,7 @@ package com.example.important;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import com.example.graphic.SoundGenObserver;
 
@@ -15,20 +16,19 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 	private String textToPlay;
 	private AudioPlayer player;
 	private Thread threadPlayer;
-	private Thread threadEncoding;
 	private SoundGenObserver sgo;
 	
 	
 	public SoundGenerator(int sampleRate) {
-
+		
 		player = new AudioPlayer(sampleRate);
 		player.register(this);
 		state = Constants.STOP_STATE;
 	}
 
-	public static interface Observer {
-		public void update();
-	}
+//	public static interface Observer {
+//		public void update();
+//	}
 
 	public void setTextToEncode(String text) {
 		textToPlay = text;
@@ -65,10 +65,11 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 			int n = Constants.BITS_16 / 2;
 //			int totalCount = (Constants.DEFAULT_GEN_DURATION * Constants.SAMPLING) / 1000;
 			int numSamples = Constants.DEFAULT_NUM_SAMPLES;
-			double per = (Constants.FREQUENCIES[index] / (double) Constants.SAMPLING)
-					* 2 * Math.PI;
-			double d = 0;
-			Buffer buffer = new Buffer(Constants.DEFAULT_BUFFER_SIZE);
+//			double per = (Constants.FREQUENCIES[index] / (double) Constants.SAMPLING)
+//					* 2 * Math.PI;
+			//double d = 0;
+			Buffer buffer = new Buffer();
+			buffer.initializeBufferByte(Constants.DEFAULT_BUFFER_SIZE);
 			byte[] bufferData = new byte[Constants.DEFAULT_BUFFER_SIZE];
 			int[] bufferValues = new int[Constants.SAMPLING]; 
 			int indexInBuffer = 0;
@@ -81,8 +82,8 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 				if (indexInBuffer >= Constants.DEFAULT_BUFFER_SIZE - 1) {
 					buffer.setBuffer(bufferData);
 					buffer.setBufferSize(indexInBuffer);
-					buffer.setBufferValues(bufferValues);
 					buffer.setBufferValuesSize(i);
+					buffer.setBufferValues(bufferValues);
 					queueWithDataAL.add(buffer);
 					bufferData = new byte[Constants.DEFAULT_BUFFER_SIZE];
 					indexInBuffer = 0;
@@ -101,7 +102,7 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 				bufferData[indexInBuffer++] = (byte) (val & 0x00ff);
 				bufferData[indexInBuffer++] = (byte) ((val & 0xff00) >>> 8);
 
-				d += per;
+				//d += per;
 
 			}
 
@@ -110,8 +111,9 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 			buffer.setBufferValues(bufferValues);
 			buffer.setBufferValuesSize(indexInBuffer/2);
 			queueWithDataAL.add(buffer);
-
+			
 			indexInBuffer = 0;
+			
 		}
 		return queueWithDataAL;
 
@@ -119,15 +121,34 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 	
 
 	
+//	public void start() {
+//		if (state == Constants.STOP_STATE) {
+//			state = Constants.START_STATE;
+//			List<Integer> indexesOfSigns = encodeText();
+//			player.setBufferToPlay(encodesDataToBuffers(indexesOfSigns));
+//			MessagesLog.d(TAG, "Weszlo w start");
+//			threadPlayer = new Thread() {
+//				@Override
+//				public void run() {
+//					player.start();
+//				}
+//			};
+//			if (threadPlayer != null) {
+//				threadPlayer.start();
+//			}
+//		}
+//	}
+	
 	public void start() {
 		if (state == Constants.STOP_STATE) {
 			state = Constants.START_STATE;
-			List<Integer> indexesOfSigns = encodeText();
-			player.setBufferToPlay(encodesDataToBuffers(indexesOfSigns));
+			
 			MessagesLog.d(TAG, "Weszlo w start");
 			threadPlayer = new Thread() {
 				@Override
 				public void run() {
+					List<Integer> indexesOfSigns = encodeText();
+					player.setBufferToPlay(encodesDataToBuffers(indexesOfSigns));
 					player.start();
 				}
 			};
@@ -136,6 +157,7 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 			}
 		}
 	}
+	
 
 	@Override
 	public void setStopStatus() {

@@ -7,7 +7,6 @@ import com.example.important.MessagesLog;
 import com.example.important.Queue;
 
 import android.media.AudioFormat;
-import android.media.AudioRecord;
 import android.media.MediaRecorder;
 
 public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
@@ -116,7 +115,6 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 	public void putBufferToQueue(Buffer buffer) {
 		queue_for_analyzer.addToConsumer(buffer);
 		queue_for_graph.addToConsumer(buffer);
-		
 	}
 
 	@Override
@@ -124,6 +122,7 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 		return queue_for_graph.getFromConsumer();
 	}
 	
+	@Override
 	public Buffer getBufferForDecoderQueue(){
 		return queue_for_analyzer.getFromConsumer();
 	}
