@@ -30,10 +30,12 @@ public class MainActivity extends Activity {
     private VoiceRecognition voicerec;
 //    private final static String CODEBOOK = "123456789ABCDEF";
     private final static String CODEBOOK = "12345";
-    private Handler mHanlder;
     private LinearLayout chart_container;
-    private static GraphicalView graphView;
+    private LinearLayout chart_container_fft;
+    private static GraphicalView graph_view;
+    private static GraphicalView graph_view_fft;
 	private LineGraph line = new LineGraph();
+	private LineGraph line_fft = new LineGraph();
 	private static Thread graphThread;
 	
     @Override
@@ -41,9 +43,13 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         chart_container = (LinearLayout)findViewById(R.id.Chart_layout);
-        graphView = line.getView(getBaseContext());
-        chart_container.addView(graphView);
-
+        graph_view = line.getView(getBaseContext());
+        chart_container.addView(graph_view);
+        
+        chart_container_fft = (LinearLayout)findViewById(R.id.Chart_layout2);
+        graph_view_fft = line_fft.getView(getBaseContext());
+        chart_container_fft.addView(graph_view_fft);
+        
         final TextView playTextView = (TextView) findViewById(R.id.playtext);
         TextView recognisedTextView = (TextView) findViewById(R.id.regtext);
         
@@ -52,13 +58,14 @@ public class MainActivity extends Activity {
 //        mHanlder = new RegHandler(recognisedTextView);
         line.setSubject(voicerec);
         voicerec.register(line);
+        line_fft.setDecSubject(voicerec.getDecoder());
 //        soundgen.register(line);
         Button playStart = (Button) this.findViewById(R.id.start_play);
         playStart.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
 //            	 String text = genText(7);
-                String text = "123456789234021389638726387623875645463548356845436576546537654836946493864";
+                String text = "22222222222222222222222222222222222222222222222222222222222222222222222222222222222222";
                 MessagesLog.d(TAG, "Kliknalem");
                 playTextView.setText(text);
                 soundgen.setTextToEncode(text);
@@ -73,7 +80,8 @@ public class MainActivity extends Activity {
 //        	  voicerec.stop();
 //          }
 //      });
-        line.start();
+        line.start(true);
+        line_fft.start(false);
         voicerec.start();
         
         

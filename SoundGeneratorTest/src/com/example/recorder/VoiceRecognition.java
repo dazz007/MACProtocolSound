@@ -18,6 +18,8 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 	private Queue queue_for_graph;
 	private VoiceRecObserver voice_rec_observer;
 	private Decoder decoder;
+	
+
 	private Thread thread_decoder;
 	
 	private final static String TAG = "VoiceRecognition";
@@ -125,5 +127,13 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 	@Override
 	public Buffer getBufferForDecoderQueue(){
 		return queue_for_analyzer.getFromConsumer();
+	}
+	
+	public Decoder getDecoder() {
+		return decoder;
+	}
+
+	public void setDecoder(Decoder decoder) {
+		this.decoder = decoder;
 	}
 }

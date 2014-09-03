@@ -7,6 +7,9 @@ public class Buffer {
 	private int buffer_values_size;
 	public short[] buffer_short;
 	private int buffer_size_short;
+	public double[] buffer_fft;
+	
+	
 
 	public Buffer(){
 		
@@ -86,4 +89,11 @@ public class Buffer {
 		this.buffer_values = new int[buffer_size];
 	}
 	
+	public double[] getBufferFFT() {
+		return buffer_fft;
+	}
+
+	public void setBufferFFT(double[] buffer_fft) {
+		this.buffer_fft = buffer_fft;
+	}
 }
