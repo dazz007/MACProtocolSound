@@ -1,6 +1,5 @@
-package com.example.important;
+package com.example.interfaces;
 
-import com.example.graphic.SoundGenObserver;
 
 public interface AudioPlayerSubject {
 	public void register(AudioPlayerObserver sgo);

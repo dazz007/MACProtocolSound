@@ -1,4 +1,6 @@
-package com.example.important;
+package com.example.interfaces;
+
+import com.example.important.AudioPlayer;
 
 public interface AudioPlayerObserver {
 	public void sendDataToGraph(int[] data);

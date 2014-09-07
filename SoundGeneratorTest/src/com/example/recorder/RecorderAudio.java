@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.example.important.Buffer;
 import com.example.important.Constants;
 import com.example.important.MessagesLog;
+import com.example.interfaces.RecorderAudioObserver;
+import com.example.interfaces.RecorderAudioSubject;
 
 import android.media.AudioFormat;
 import android.media.AudioRecord;
@@ -40,7 +42,7 @@ public class RecorderAudio implements RecorderAudioSubject{
 					data.setBufferSizeShort(buffer_size);
 					int size = recorder.read(data.buffer_short,0,buffer_size);
 					if(data.buffer_short != null){
-						data.setBufferSize(size);
+						data.setBufferSizeShort(size);
 						notifyObserverBuffer(data);
 					}
 //					notifyObserverByte(data.buffer);

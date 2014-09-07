@@ -9,11 +9,10 @@ import org.achartengine.renderer.XYSeriesRenderer;
 
 import com.example.important.Buffer;
 import com.example.important.Constants;
-import com.example.important.MessagesLog;
-import com.example.important.SoundGenSubject;
-import com.example.important.SoundGenerator;
-import com.example.recorder.DecoderSubject;
-import com.example.recorder.VoiceRecSubject;
+import com.example.interfaces.DecoderSubject;
+import com.example.interfaces.VoiceRecObserver;
+import com.example.interfaces.VoiceRecSubject;
+import com.example.minim.FFT;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -21,7 +20,7 @@ import android.graphics.Color;
 public class LineGraph implements VoiceRecObserver {
 
 	private GraphicalView view;
-	private final static String TAG = "SoundGenerator";
+	private final static String TAG = "LineGraph";
 	private TimeSeries dataset = new TimeSeries("Sound wave");
 	private XYMultipleSeriesDataset mDataset = new XYMultipleSeriesDataset();
 	private int state;
@@ -43,7 +42,10 @@ public class LineGraph implements VoiceRecObserver {
 	// private SoundGenSubject sgs;
 	private VoiceRecSubject voice_recognition_subject;
 	private DecoderSubject decoder_subject;
-
+	
+	
+	
+	
 	public LineGraph() {
 		// Add single dataset to multiple dataset
 		mDataset.addSeries(dataset);
@@ -78,68 +80,49 @@ public class LineGraph implements VoiceRecObserver {
 		dataset.add(p.getX(), p.getY());
 	}
 
-	private void updateLineGraph(int[] data) {
-		MessagesLog.d(TAG, "Wesz³o w update LineGraph");
-		int index = 0;
-		// dataset.clear();
-		int start_point = 200;
-		for (int i = start_point; i < start_point + 150; i++) {
-			dataset.add(index++, data[i] / 1000);
-		}
-		// view.repaint();
-	}
 
 	@Override
 	public void setSubject(VoiceRecSubject vrs) {
 		voice_recognition_subject = vrs;
-
 	}
 
 	private void updateLineGraphByte(short[] data) {
 		// MessagesLog.d(TAG, "Wesz³o w update LineGraph");
 		int index = 0;
 		dataset.clear();
-		int start_point = 200;
 
-		// for(int i = start_point; i < start_point+150; i++){
-		// int b_to_int = data[i];
-		// dataset.add(index++, b_to_int/1000);
-		// }
-		for (int i = 200; i < 1200; i++) {
-			// int b_to_int = data[i];
+		for (int i = 200; i < 700; i++) {
 			dataset.add(index++, data[i]);
 		}
-		// for(int i = 0; i < data.length; i++){
-		// // int b_to_int = data[i];
-		// dataset.add(i, data[i]);
-		// }
+//
 		view.repaint();
 
 	}
 	
 	
-	private void updateLineGraphFFT(double[] data) {
+	private void updateLineGraphFFT(float[] data) {
 		// MessagesLog.d(TAG, "Wesz³o w update LineGraph");
 		int index = 0;
 		dataset.clear();
-		int start_point = 200;
 
-		// for(int i = start_point; i < start_point+150; i++){
-		// int b_to_int = data[i];
-		// dataset.add(index++, b_to_int/1000);
-		// }
-		for (int i = 0; i < 500; i++) {
-			// int b_to_int = data[i];
-			dataset.add(index++, data[i]);
-		}
-		// for(int i = 0; i < data.length; i++){
-		// // int b_to_int = data[i];
-		// dataset.add(i, data[i]);
-		// }
-		view.repaint();
+//		for (int i = 0; i < 2000; i++) {
+//			// int b_to_int = data[i];
+//			dataset.add(index++, data[i]);
+//		}
+
+		//view.repaint();
 
 	}
-
+	
+	private void updateLineGraphFFT2(FFT fft){
+		dataset.clear();
+		for(int i = 0; i < fft.specSize(); i++){
+			dataset.add(i,fft.getBand(i));
+		}
+		view.repaint();
+	}
+	
+	
 	public void start(boolean fft) {
 		if (state == Constants.STOP_STATE) {
 			state = Constants.START_STATE;
@@ -157,17 +140,24 @@ public class LineGraph implements VoiceRecObserver {
 						}
 					}
 				};
-			} else {
+			} 
+			else {
 				thread_draw = new Thread() {
 					@Override
 					public void run() {
 
 						while (state == Constants.START_STATE) {
-							Buffer buffer = decoder_subject
-									.getBufferFFTForGraphQueue();
-							if (buffer != null) {
-								updateLineGraphFFT(buffer.getBufferFFT());
+							FFT fft = decoder_subject.getBufferFFTForGraphQueueFFT();
+							
+							if ( fft != null ){
+								updateLineGraphFFT2(fft);
 							}
+							
+//							Buffer buffer = decoder_subject
+//									.getBufferFFTForGraphQueue();
+//							if (buffer != null) {
+//								updateLineGraphFFT(buffer.getBufferFFT());
+//							}
 						}
 					}
 				};
@@ -182,4 +172,5 @@ public class LineGraph implements VoiceRecObserver {
 	public void setDecSubject(DecoderSubject decoder){
 		this.decoder_subject = decoder;
 	}
+
 }

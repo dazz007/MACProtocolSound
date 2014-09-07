@@ -8,9 +8,9 @@ public class Constants {
 	public final static String AVAILABLE_SIGNS = "0123456789ABCDEFHG";
 //	public final static int DEFAULT_BUFFER_SIZE = 2*8192;
 	public final static int DEFAULT_BUFFER_COUNT = 3;
-	public final static int DEFAULT_GEN_DURATION = 1;
-	public final static int DEFAULT_NUM_SAMPLES = DEFAULT_GEN_DURATION * SAMPLING / 20;
-	public final static int DEFAULT_BUFFER_SIZE = 2*DEFAULT_NUM_SAMPLES;
+	public final static int DEFAULT_GEN_DURATION = 1000;
+	public final static int DEFAULT_NUM_SAMPLES = DEFAULT_GEN_DURATION * SAMPLING / 1000;
+	public final static int DEFAULT_BUFFER_SIZE = 8192;
 	public final static String START_OF_DATA = "GH";
 	public final static String END_OF_DATA = "HG";
 	// 0123456789ABCDEFGH = 15 signs

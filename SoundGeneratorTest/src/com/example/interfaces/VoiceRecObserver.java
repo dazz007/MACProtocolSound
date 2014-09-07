@@ -1,7 +1,6 @@
-package com.example.graphic;
+package com.example.interfaces;
 
-import com.example.recorder.VoiceRecSubject;
-
+import com.example.interfaces.VoiceRecSubject;
 
 public interface VoiceRecObserver {
 //	public void updateLineGraph(int[] data);

@@ -1,6 +1,5 @@
-package com.example.recorder;
+package com.example.interfaces;
 
-import com.example.graphic.VoiceRecObserver;
 import com.example.important.Buffer;
 
 public interface VoiceRecSubject {

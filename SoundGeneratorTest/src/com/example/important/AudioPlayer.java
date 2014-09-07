@@ -2,6 +2,9 @@ package com.example.important;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.interfaces.AudioPlayerObserver;
+import com.example.interfaces.AudioPlayerSubject;
 //import java.util.concurrent.BlockingQueue;
 //import java.util.concurrent.LinkedBlockingQueue;
 //
@@ -29,9 +32,8 @@ public class AudioPlayer implements AudioPlayerSubject{
 
 		audiotrack = new AudioTrack(AudioManager.STREAM_MUSIC, sampleRate,
 				AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT,
-				minSize, AudioTrack.MODE_STREAM);
+				Constants.DEFAULT_BUFFER_SIZE, AudioTrack.MODE_STREAM);
 		queueWithDataAL = new ArrayList<Buffer>();
-		// queueWithData = new LinkedBlockingQueue<Buffer>(4);
 		indexesOfSigns = new ArrayList<Integer>();
 		state = Constants.STOP_STATE;
 	}
@@ -42,27 +44,31 @@ public class AudioPlayer implements AudioPlayerSubject{
 
 
 	public void start() {
-		MessagesLog.d(TAG, "Weszlo w start");
 		if (state == Constants.STOP_STATE) {
-			MessagesLog.d(TAG, "Weszlo w ifa");
 			state = Constants.START_STATE;
 			int startLength = 0;
 			while (state == Constants.START_STATE) {
 				Buffer buffer = getBufferFromQueueAL();
 				MessagesLog.d(TAG, "Pobiera");
 				if (buffer != null) {
-					byte[] data = buffer.getBuffer();
-					
-					int sizeOfData = buffer.getBufferSize();
-					//int[] dataValues = buffer.getBufferValues();
-					//notifyObserver(dataValues);
+					//byte[] data = buffer.getBuffer();
+					short[] data = buffer.getBufferShort();
+					//int size_of_data = buffer.getBufferSize();
+					int size_of_data = buffer.getBufferSizeShort();
 					if (data != null) {
-						int len = audiotrack.write(data, 0, sizeOfData);
+//						try {
+//							Thread.sleep(1100);
+//						} catch (InterruptedException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}
+						
+						int len = audiotrack.write(data, 0, size_of_data);
+						//int len = 10;
 						if (startLength == 0) {
-							
 							audiotrack.play();
-//							state = Constants.STOP_STATE;
 						}
+						
 						startLength += len;
 					} else {
 						MessagesLog.d(TAG, "End of data. Stop transmission");
@@ -107,6 +113,11 @@ public class AudioPlayer implements AudioPlayerSubject{
 		if (state == Constants.START_STATE) {
 			state = Constants.STOP_STATE;
 			queueWithDataAL.clear();
+			if (audiotrack != null) {
+				audiotrack.pause();
+				audiotrack.flush();
+				audiotrack.stop();
+			}
 		}
 	}
 

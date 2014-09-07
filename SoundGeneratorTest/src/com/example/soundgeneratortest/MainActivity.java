@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View arg0) {
 //            	 String text = genText(7);
-                String text = "22222222222222222222222222222222222222222222222222222222222222222222222222222222222222";
+                String text = "888888888888888";
                 MessagesLog.d(TAG, "Kliknalem");
                 playTextView.setText(text);
                 soundgen.setTextToEncode(text);
@@ -73,121 +73,14 @@ public class MainActivity extends Activity {
             }
         });
         
-//        Button recognitionStop = (Button) this.findViewById(R.id.stop_recording);
-//      recognitionStop.setOnClickListener(new OnClickListener() {
-//          @Override
-//          public void onClick(View arg0) {
-//        	  voicerec.stop();
-//          }
-//      });
-        line.start(true);
-        line_fft.start(false);
+        line.start(false);
+        line_fft.start(true);
         voicerec.start();
         
         
         
     }
-//	protected void onStart() {
-////		super.onStart();
-////		graphView = line.getView(this);
-////		setContentView(graphView);
-//	}
 
-//        Button playStop = (Button) this.findViewById(R.id.stop_play);
-//        playStop.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View arg0) {
-//                mSinVoicePlayer.stop();
-//            }
-//        });
-
-//        Button recognitionStart = (Button) this.findViewById(R.id.start_reg);
-//        recognitionStart.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View arg0) {
-//                mRecognition.start();
-//            }
-//        });
-//
-//        Button recognitionStop = (Button) this.findViewById(R.id.stop_reg);
-//        recognitionStop.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View arg0) {
-//                mRecognition.stop();
-//            }
-//        });
-//    }
-//
-//    private String genText(int count) {
-//        StringBuilder sb = new StringBuilder();
-//        int pre = 0;
-//        while (count > 0) {
-//            int x = (int) (Math.random() * MAX_NUMBER + 1);
-//            if (Math.abs(x - pre) > 0) {
-//                sb.append(x);
-//                --count;
-//                pre = x;
-//            }
-//        }
-//
-//        return sb.toString();
-//    }
-//
-//    private static class RegHandler extends Handler {
-//        private StringBuilder mTextBuilder = new StringBuilder();
-//        private TextView mRecognisedTextView;
-//
-//        public RegHandler(TextView textView) {
-//            mRecognisedTextView = textView;
-//        }
-//
-//        @Override
-//        public void handleMessage(Message msg) {
-//            switch (msg.what) {
-//            case MSG_SET_RECG_TEXT:
-//                char ch = (char) msg.arg1;
-//                mTextBuilder.append(ch);
-//                if (null != mRecognisedTextView) {
-//                    mRecognisedTextView.setText(mTextBuilder.toString());
-//                }
-//                break;
-//
-//            case MSG_RECG_START:
-//                mTextBuilder.delete(0, mTextBuilder.length());
-//                break;
-//
-//            case MSG_RECG_END:
-//                LogHelper.d(TAG, "recognition end");
-//                break;
-//            }
-//            super.handleMessage(msg);
-//        }
-//    }
-//
-//    @Override
-//    public void onRecognitionStart() {
-//        mHanlder.sendEmptyMessage(MSG_RECG_START);
-//    }
-//
-//    @Override
-//    public void onRecognition(char ch) {
-//        mHanlder.sendMessage(mHanlder.obtainMessage(MSG_SET_RECG_TEXT, ch, 0));
-//    }
-//
-//    @Override
-//    public void onRecognitionEnd() {
-//        mHanlder.sendEmptyMessage(MSG_RECG_END);
-//    }
-//
-//    @Override
-//    public void onPlayStart() {
-//        LogHelper.d(TAG, "start play");
-//    }
-//
-//    @Override
-//    public void onPlayEnd() {
-//        LogHelper.d(TAG, "stop play");
-//    }
 
 
 }

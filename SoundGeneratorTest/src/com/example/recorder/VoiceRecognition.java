@@ -1,10 +1,12 @@
 package com.example.recorder;
 
-import com.example.graphic.VoiceRecObserver;
 import com.example.important.Buffer;
 import com.example.important.Constants;
 import com.example.important.MessagesLog;
 import com.example.important.Queue;
+import com.example.interfaces.RecorderAudioObserver;
+import com.example.interfaces.VoiceRecObserver;
+import com.example.interfaces.VoiceRecSubject;
 
 import android.media.AudioFormat;
 import android.media.MediaRecorder;
@@ -24,11 +26,11 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 	
 	private final static String TAG = "VoiceRecognition";
 	public VoiceRecognition(){
-		record_audio = new RecorderAudio(MediaRecorder.AudioSource.MIC,
+		record_audio = new RecorderAudio(MediaRecorder.AudioSource.VOICE_RECOGNITION,
 										 Constants.SAMPLING,
 										 AudioFormat.CHANNEL_IN_MONO,
 										 AudioFormat.ENCODING_PCM_16BIT, 
-										 2*Constants.DEFAULT_BUFFER_SIZE);
+										 Constants.DEFAULT_BUFFER_SIZE);
 		queue_for_analyzer = new Queue();
 		queue_for_graph = new Queue();
 		record_audio.register(this);

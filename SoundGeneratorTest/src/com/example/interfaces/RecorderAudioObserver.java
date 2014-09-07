@@ -1,6 +1,7 @@
-package com.example.recorder;
+package com.example.interfaces;
 
 import com.example.important.Buffer;
+import com.example.recorder.RecorderAudio;
 
 
 public interface RecorderAudioObserver {
