@@ -4,7 +4,6 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import com.example.minim.FFT;
-import com.example.minim.FourierTransform;
 
 public class Queue {
 	

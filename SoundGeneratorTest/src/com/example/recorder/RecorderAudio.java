@@ -8,9 +8,7 @@ import com.example.important.MessagesLog;
 import com.example.interfaces.RecorderAudioObserver;
 import com.example.interfaces.RecorderAudioSubject;
 
-import android.media.AudioFormat;
 import android.media.AudioRecord;
-import android.media.MediaRecorder;
 
 public class RecorderAudio implements RecorderAudioSubject{
 	private final static String TAG = "RecorderAudio";

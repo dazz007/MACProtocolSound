@@ -2,16 +2,11 @@ package com.example.soundgeneratortest;
 
 import org.achartengine.GraphicalView;
 
-import com.example.graphic.MockData;
-import com.example.graphic.Point;
-
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -34,8 +29,8 @@ public class MainActivity extends Activity {
     private LinearLayout chart_container_fft;
     private static GraphicalView graph_view;
     private static GraphicalView graph_view_fft;
-	private LineGraph line = new LineGraph();
-	private LineGraph line_fft = new LineGraph();
+	private LineGraph line = new LineGraph(false);
+	private LineGraph line_fft = new LineGraph(true);
 	private static Thread graphThread;
 	
     @Override
@@ -65,7 +60,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View arg0) {
 //            	 String text = genText(7);
-                String text = "888888888888888";
+                String text = "00112233445588DDHHGG";
                 MessagesLog.d(TAG, "Kliknalem");
                 playTextView.setText(text);
                 soundgen.setTextToEncode(text);

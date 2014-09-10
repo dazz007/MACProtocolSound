@@ -46,7 +46,7 @@ public class LineGraph implements VoiceRecObserver {
 	
 	
 	
-	public LineGraph() {
+	public LineGraph(boolean freq) {
 		// Add single dataset to multiple dataset
 		mDataset.addSeries(dataset);
 
@@ -58,16 +58,19 @@ public class LineGraph implements VoiceRecObserver {
 		// Enable Zoom
 		mRenderer.setZoomButtonsVisible(false);
 		mRenderer.setXTitle("Frequency");
-		mRenderer.setXLabels(0);
-		mRenderer.setYLabels(0);
+		mRenderer.setXLabels(10);
+		mRenderer.setYLabels(10);
+		mRenderer.setPanEnabled(false, false);
 		mRenderer.setYTitle("Amplitude");
-		mRenderer.setShowAxes(false);
-
+		mRenderer.setShowAxes(true);
 		mRenderer.setApplyBackgroundColor(true);
 		mRenderer.setBackgroundColor(Color.BLACK);
 		// Add single renderer to multiple renderer
+		
 		mRenderer.addSeriesRenderer(renderer);
-
+		if(freq)
+			mRenderer.setRange(new double[] { 0, 22050, 20, 200 });
+		
 		state = Constants.STOP_STATE;
 	}
 
@@ -91,7 +94,7 @@ public class LineGraph implements VoiceRecObserver {
 		int index = 0;
 		dataset.clear();
 
-		for (int i = 200; i < 700; i++) {
+		for (int i = 200; i < 400; i++) {
 			dataset.add(index++, data[i]);
 		}
 //
@@ -116,8 +119,17 @@ public class LineGraph implements VoiceRecObserver {
 	
 	private void updateLineGraphFFT2(FFT fft){
 		dataset.clear();
-		for(int i = 0; i < fft.specSize(); i++){
-			dataset.add(i,fft.getBand(i));
+		int index = 0;
+		for(int i = fft.specSize()/2; i < fft.specSize(); i++){
+//			if(i >= fft.specSize()){
+//				dataset.add(i, 0.0);
+//			}else{
+			
+			
+				dataset.add(index,fft.getBand(i));
+//			}
+				//index = index + 3;
+			index = i*(Constants.SAMPLING/2) / fft.specSize();
 		}
 		view.repaint();
 	}

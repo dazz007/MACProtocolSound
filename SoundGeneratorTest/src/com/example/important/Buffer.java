@@ -96,4 +96,12 @@ public class Buffer {
 	public void setBufferFFT(float[] buffer_fft) {
 		this.buffer_fft = buffer_fft;
 	}
+
+	public int getBuffer_size_fft() {
+		return buffer_size_fft;
+	}
+
+	public void setBuffer_size_fft(int buffer_size_fft) {
+		this.buffer_size_fft = buffer_size_fft;
+	}
 }

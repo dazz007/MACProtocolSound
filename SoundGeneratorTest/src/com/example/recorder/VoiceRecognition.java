@@ -26,7 +26,7 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 	
 	private final static String TAG = "VoiceRecognition";
 	public VoiceRecognition(){
-		record_audio = new RecorderAudio(MediaRecorder.AudioSource.VOICE_RECOGNITION,
+		record_audio = new RecorderAudio(MediaRecorder.AudioSource.MIC,
 										 Constants.SAMPLING,
 										 AudioFormat.CHANNEL_IN_MONO,
 										 AudioFormat.ENCODING_PCM_16BIT, 

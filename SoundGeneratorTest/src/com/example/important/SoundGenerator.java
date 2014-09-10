@@ -2,15 +2,11 @@ package com.example.important;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.LinkedBlockingQueue;
 
 import com.example.interfaces.AudioPlayerObserver;
 import com.example.interfaces.SoundGenObserver;
 import com.example.interfaces.SoundGenSubject;
 
-import android.media.AudioFormat;
-import android.media.AudioManager;
-import android.media.AudioTrack;
 
 public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 	private final static String TAG = "SoundGenerator";
