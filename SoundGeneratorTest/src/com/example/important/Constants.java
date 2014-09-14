@@ -8,11 +8,13 @@ public class Constants {
 	public final static String AVAILABLE_SIGNS = "0123456789ABCDEFHG";
 //	public final static int DEFAULT_BUFFER_SIZE = 2*8192;
 	public final static int DEFAULT_BUFFER_COUNT = 3;
-	public final static int DEFAULT_GEN_DURATION = 1000;
+	public final static int DEFAULT_GEN_DURATION = 100;
 	public final static int DEFAULT_NUM_SAMPLES = DEFAULT_GEN_DURATION * SAMPLING / 1000;
 	public final static int DEFAULT_BUFFER_SIZE = 8192;
 	public final static String START_OF_DATA = "GH";
 	public final static String END_OF_DATA = "HG";
+	public final static char NOEND = '-';
+	public final static String NOEND_STR = "-";
 	// 0123456789ABCDEFGH = 15 signs
 //	public final static int[] FREQUENCIES = { 1422, 1575, 1679, 1803, 2321,
 //			2670, 2974, 3103, 3400, 3609, 3845, 4410, 4700, 4923, 5200, 6400, 7310, 8210 };
