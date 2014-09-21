@@ -9,7 +9,7 @@ public class Buffer {
 	private int buffer_size_short;
 	public float[] buffer_fft;
 	private int buffer_size_fft;
-	
+	private long time;
 
 	public Buffer(){
 		
@@ -103,5 +103,13 @@ public class Buffer {
 
 	public void setBuffer_size_fft(int buffer_size_fft) {
 		this.buffer_size_fft = buffer_size_fft;
+	}
+
+	public long getTime() {
+		return time;
+	}
+
+	public void setTime(long time) {
+		this.time = time;
 	}
 }

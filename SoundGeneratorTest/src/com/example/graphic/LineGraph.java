@@ -42,10 +42,7 @@ public class LineGraph implements VoiceRecObserver {
 	// private SoundGenSubject sgs;
 	private VoiceRecSubject voice_recognition_subject;
 	private DecoderSubject decoder_subject;
-	
-	
-	
-	
+
 	public LineGraph(boolean freq) {
 		// Add single dataset to multiple dataset
 		mDataset.addSeries(dataset);
@@ -66,11 +63,11 @@ public class LineGraph implements VoiceRecObserver {
 		mRenderer.setApplyBackgroundColor(true);
 		mRenderer.setBackgroundColor(Color.BLACK);
 		// Add single renderer to multiple renderer
-		
+
 		mRenderer.addSeriesRenderer(renderer);
-		if(freq)
+		if (freq)
 			mRenderer.setRange(new double[] { 0, 22050, 20, 200 });
-		
+
 		state = Constants.STOP_STATE;
 	}
 
@@ -82,7 +79,6 @@ public class LineGraph implements VoiceRecObserver {
 	public void addNewPoints(Point p) {
 		dataset.add(p.getX(), p.getY());
 	}
-
 
 	@Override
 	public void setSubject(VoiceRecSubject vrs) {
@@ -97,82 +93,86 @@ public class LineGraph implements VoiceRecObserver {
 		for (int i = 200; i < 400; i++) {
 			dataset.add(index++, data[i]);
 		}
-//
 		view.repaint();
 
 	}
-	
-	
+
 	private void updateLineGraphFFT(float[] data) {
 		// MessagesLog.d(TAG, "Wesz³o w update LineGraph");
 		int index = 0;
 		dataset.clear();
 
-//		for (int i = 0; i < 2000; i++) {
-//			// int b_to_int = data[i];
-//			dataset.add(index++, data[i]);
-//		}
+		// for (int i = 0; i < 2000; i++) {
+		// // int b_to_int = data[i];
+		// dataset.add(index++, data[i]);
+		// }
 
-		//view.repaint();
+		// view.repaint();
 
 	}
-	
-	private void updateLineGraphFFT2(FFT fft){
+
+	private void updateLineGraphFFT2(FFT fft) {
 		dataset.clear();
 		int index = 0;
-		for(int i = fft.specSize()/2; i < fft.specSize(); i++){
-//			if(i >= fft.specSize()){
-//				dataset.add(i, 0.0);
-//			}else{
-			
-			
-				dataset.add(index,fft.getBand(i));
-//			}
-				//index = index + 3;
-			index = i*(Constants.SAMPLING/2) / fft.specSize();
+		if (Constants.ULTRASOUND == 1) {
+			for (int i = fft.specSize() / 2; i < fft.specSize(); i++) {
+				dataset.add(index, fft.getBand(i));
+
+				index = i * (Constants.SAMPLING / 2) / fft.specSize();
+			}
+		} else {
+			for (int i = 0; i < fft.specSize() / 2; i++) {
+
+				dataset.add(index, fft.getBand(i));
+
+				index = i * (Constants.SAMPLING / 2) / fft.specSize();
+			}
 		}
 		view.repaint();
 	}
-	
-	
+
 	public void start(boolean fft) {
 		if (state == Constants.STOP_STATE) {
 			state = Constants.START_STATE;
 			if (!fft) {
-				thread_draw = new Thread() {
-					@Override
-					public void run() {
+				if (Constants.DRAW_IN_TIME == true) {
+					thread_draw = new Thread() {
+						@Override
+						public void run() {
 
-						while (state == Constants.START_STATE) {
-							Buffer buffer = voice_recognition_subject
-									.getBufferForGraphQueue();
-							if (buffer != null) {
-								updateLineGraphByte(buffer.getBufferShort());
+							while (state == Constants.START_STATE) {
+								Buffer buffer = voice_recognition_subject
+										.getBufferForGraphQueue();
+								if (buffer != null) {
+									updateLineGraphByte(buffer.getBufferShort());
+								}
 							}
 						}
-					}
-				};
-			} 
-			else {
-				thread_draw = new Thread() {
-					@Override
-					public void run() {
+					};
+				}
+			} else {
+				if (Constants.DRAW_FFT) {
+					thread_draw = new Thread() {
+						@Override
+						public void run() {
 
-						while (state == Constants.START_STATE) {
-							FFT fft = decoder_subject.getBufferFFTForGraphQueueFFT();
-							
-							if ( fft != null ){
-								updateLineGraphFFT2(fft);
+							while (state == Constants.START_STATE) {
+								FFT fft = decoder_subject
+										.getBufferFFTForGraphQueueFFT();
+
+								if (fft != null) {
+									updateLineGraphFFT2(fft);
+								}
+
+								// Buffer buffer = decoder_subject
+								// .getBufferFFTForGraphQueue();
+								// if (buffer != null) {
+								// updateLineGraphFFT(buffer.getBufferFFT());
+								// }
 							}
-							
-//							Buffer buffer = decoder_subject
-//									.getBufferFFTForGraphQueue();
-//							if (buffer != null) {
-//								updateLineGraphFFT(buffer.getBufferFFT());
-//							}
 						}
-					}
-				};
+					};
+				}
 			}
 			if (thread_draw != null) {
 				thread_draw.start();
@@ -180,8 +180,8 @@ public class LineGraph implements VoiceRecObserver {
 
 		}
 	}
-	
-	public void setDecSubject(DecoderSubject decoder){
+
+	public void setDecSubject(DecoderSubject decoder) {
 		this.decoder_subject = decoder;
 	}
 

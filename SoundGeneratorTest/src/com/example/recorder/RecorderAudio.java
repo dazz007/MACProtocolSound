@@ -23,8 +23,8 @@ public class RecorderAudio implements RecorderAudioSubject{
 								   sample_rate,
 								   channel_config,
 								   audio_format, 
-								   buffer_size_in_bytes);
-		buffer_size = buffer_size_in_bytes;
+								   minBufferSize);
+		buffer_size = Constants.DEFAULT_BUFFER_SIZE_REC;
 		queueWithBufferToPrintAL = new ArrayList<Buffer>();
 	}
 	
@@ -40,6 +40,7 @@ public class RecorderAudio implements RecorderAudioSubject{
 					data.setBufferSizeShort(buffer_size);
 					int size = recorder.read(data.buffer_short,0,buffer_size);
 					if(data.buffer_short != null){
+						data.setTime(System.currentTimeMillis());
 						data.setBufferSizeShort(size);
 						notifyObserverBuffer(data);
 					}
@@ -62,7 +63,6 @@ public class RecorderAudio implements RecorderAudioSubject{
 	@Override
 	public void register(RecorderAudioObserver rao) {
 		this.recorder_audio_observer = rao;
-		
 	}
 
 //	@Override

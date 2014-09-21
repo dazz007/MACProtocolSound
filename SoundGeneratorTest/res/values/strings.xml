@@ -4,5 +4,7 @@
     <string name="app_name">SinVoiceDemo</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="string_values">Wpisz tutaj</string>
+    <string name="launch">Jedz</string>
 
 </resources>

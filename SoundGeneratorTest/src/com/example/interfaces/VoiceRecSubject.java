@@ -10,4 +10,10 @@ public interface VoiceRecSubject {
 	public Buffer getBufferForGraphQueue();
 	
 	public Buffer getBufferForDecoderQueue();
+	
+	public void onStartRecognition();
+	
+	public void onRecognition(String str);
+	
+	public void onEndRecogntion();
 }

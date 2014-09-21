@@ -42,8 +42,8 @@ public class FrequencyTime {
 			if (diff < Constants.DEFAULT_GEN_DURATION + ten_percent
 					&& diff > Constants.DEFAULT_GEN_DURATION + ten_percent) {
 				for (int i = 0; i < Constants.FREQUENCIES.length; i++) {
-					if (Constants.FREQUENCIES[i] + 20 > frequency
-							&& Constants.FREQUENCIES[i] - 35 < frequency) {
+					if (Constants.FREQUENCIES[i] + 40 > frequency
+							&& Constants.FREQUENCIES[i] - 50 < frequency) {
 						return Constants.AVAILABLE_SIGNS.charAt(i);
 					}
 				}
@@ -64,7 +64,7 @@ public class FrequencyTime {
 			number_of_sign = (float) diff / Constants.DEFAULT_GEN_DURATION;
 			//number_of_sign = diff / Constants.DEFAULT_GEN_DURATION;
 			number_of_sign_rounded = Math.round(number_of_sign);
-			MessagesLog.d(TAG, "diff " + Integer.toString((int)diff));
+			MessagesLog.d(TAG, "diff " + Integer.toString((int)diff) + "for Frequency: " + this.frequency);
 			MessagesLog.d(TAG, "number_of_sign " + Float.toString(number_of_sign));
 			MessagesLog.d(TAG, "number_of_sign_rounded " + Integer.toString(number_of_sign_rounded));
 			if (number_of_sign_rounded > 0) {

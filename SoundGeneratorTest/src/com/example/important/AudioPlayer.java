@@ -23,7 +23,6 @@ public class AudioPlayer implements AudioPlayerSubject{
 	private ArrayList<Buffer> queueWithDataAL;
 	AudioPlayerObserver observer;
 	byte[] audioData;
-
 	
 	public AudioPlayer(int sampleRate) {
 
@@ -33,11 +32,13 @@ public class AudioPlayer implements AudioPlayerSubject{
 		audiotrack = new AudioTrack(AudioManager.STREAM_MUSIC, sampleRate,
 				AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT,
 				Constants.DEFAULT_BUFFER_SIZE, AudioTrack.MODE_STREAM);
+		audiotrack.setStereoVolume(AudioTrack.getMaxVolume(), AudioTrack.getMaxVolume());
 		queueWithDataAL = new ArrayList<Buffer>();
 		indexesOfSigns = new ArrayList<Integer>();
 		state = Constants.STOP_STATE;
 	}
-
+	
+	
 	public void play(byte[] audioData, int sizeOfBuffer) {
 		audiotrack.write(audioData, 0, sizeOfBuffer);
 	}
@@ -52,16 +53,11 @@ public class AudioPlayer implements AudioPlayerSubject{
 				MessagesLog.d(TAG, "Pobiera");
 				if (buffer != null) {
 					//byte[] data = buffer.getBuffer();
-					short[] data = buffer.getBufferShort();
 					//int size_of_data = buffer.getBufferSize();
+					
+					short[] data = buffer.getBufferShort();
 					int size_of_data = buffer.getBufferSizeShort();
 					if (data != null) {
-//						try {
-//							Thread.sleep(1100);
-//						} catch (InterruptedException e) {
-//							// TODO Auto-generated catch block
-//							e.printStackTrace();
-//						}
 						
 						int len = audiotrack.write(data, 0, size_of_data);
 						//int len = 10;
@@ -76,7 +72,7 @@ public class AudioPlayer implements AudioPlayerSubject{
 					}
 
 				} else {
-					MessagesLog.e(TAG, "get null data");
+					MessagesLog.e(TAG, "Get null data");
 					break;
 				}
 			}

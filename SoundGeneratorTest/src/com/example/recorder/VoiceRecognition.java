@@ -20,17 +20,22 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 	private Queue queue_for_graph;
 	private VoiceRecObserver voice_rec_observer;
 	private Decoder decoder;
+	private Listener mListener;
 	
 
 	private Thread thread_decoder;
 	
 	private final static String TAG = "VoiceRecognition";
+
+	
 	public VoiceRecognition(){
 		record_audio = new RecorderAudio(MediaRecorder.AudioSource.MIC,
 										 Constants.SAMPLING,
 										 AudioFormat.CHANNEL_IN_MONO,
 										 AudioFormat.ENCODING_PCM_16BIT, 
-										 Constants.DEFAULT_BUFFER_SIZE);
+										 //Constants.DEFAULT_BUFFER_SIZE
+										 Constants.DEFAULT_BUFFER_SIZE_REC
+										 );
 		queue_for_analyzer = new Queue();
 		queue_for_graph = new Queue();
 		record_audio.register(this);
@@ -38,6 +43,17 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 		decoder.setSubject(this);
 		state = Constants.STOP_STATE;
 	}
+	
+	public static interface Listener{
+		public void onStartRecogntion();
+		public void onRecognition(String str);
+		public void onEndRecogntion();
+	}
+	
+	public void setListener(Listener listener){
+		mListener = listener;
+	}
+	
 	
 	public void start(){
 		if(state == Constants.STOP_STATE){
@@ -118,7 +134,8 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 	@Override
 	public void putBufferToQueue(Buffer buffer) {
 		queue_for_analyzer.addToConsumer(buffer);
-		queue_for_graph.addToConsumer(buffer);
+		if(Constants.DRAW_IN_TIME)
+			queue_for_graph.addToConsumer(buffer);
 	}
 
 	@Override
@@ -137,5 +154,24 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 
 	public void setDecoder(Decoder decoder) {
 		this.decoder = decoder;
+	}
+
+
+	@Override
+	public void onEndRecogntion() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStartRecognition() {
+		mListener.onStartRecogntion();
+		
+	}
+
+	@Override
+	public void onRecognition(String str) {
+		mListener.onRecognition(str);
+		
 	}
 }
