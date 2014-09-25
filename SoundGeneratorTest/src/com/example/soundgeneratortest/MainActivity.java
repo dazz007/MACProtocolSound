@@ -69,7 +69,7 @@ public class MainActivity extends Activity implements VoiceRecognition.Listener{
         line.setSubject(voicerec);
         voicerec.register(line);
         line_fft.setDecSubject(voicerec.getDecoder());
-        edit_text.setText("112234325678ABCDDEF22333456");
+        edit_text.setText("1234567777");
         Button playStart = (Button) this.findViewById(R.id.start_play);
         playStart.setOnClickListener(new OnClickListener() {
             @Override
@@ -142,6 +142,7 @@ public class MainActivity extends Activity implements VoiceRecognition.Listener{
 		for(int i = 0 ; i < str.length(); i++){
 			handler.sendMessage(handler.obtainMessage(MSG_SET_RECG_TEXT, str.charAt(i), 0));
 		}
+		checkPattern();
 	}
 
 
@@ -151,6 +152,12 @@ public class MainActivity extends Activity implements VoiceRecognition.Listener{
 		
 	}
 
-
+	
+	public void checkPattern(){
+//		if(RegHandler.mTextBuilder.toString().equals(edit_text.getText().toString())){
+//			String str = edit_text.getText().toString();
+//			edit_text.setText(str+"    Hurrra!!!!!!!!");
+//		}
+	}
 
 }

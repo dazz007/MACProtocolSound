@@ -11,19 +11,22 @@ import com.example.interfaces.VoiceRecSubject;
 import android.media.AudioFormat;
 import android.media.MediaRecorder;
 
-public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
+public class VoiceRecognition implements VoiceRecSubject, VoiceGetter.Callback{
 	
 	public RecorderAudio record_audio;
 	private int state;
 	private Thread thread_recorder;
+	private Thread thread_decoder;
+	private Thread thread_voice_getter;
 	private Queue queue_for_analyzer;
 	private Queue queue_for_graph;
 	private VoiceRecObserver voice_rec_observer;
 	private Decoder decoder;
+	private VoiceGetter voice_getter;
 	private Listener mListener;
 	
 
-	private Thread thread_decoder;
+	
 	
 	private final static String TAG = "VoiceRecognition";
 
@@ -38,9 +41,11 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 										 );
 		queue_for_analyzer = new Queue();
 		queue_for_graph = new Queue();
-		record_audio.register(this);
+		//record_audio.register(this);
 		decoder = new Decoder();
 		decoder.setSubject(this);
+		voice_getter = new VoiceGetter(record_audio, this);
+		
 		state = Constants.STOP_STATE;
 	}
 	
@@ -67,6 +72,16 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 				thread_recorder.start();
 			}
 			
+			thread_voice_getter = new Thread() {
+				public void run(){
+					voice_getter.start();
+				}
+			};
+			if(thread_voice_getter != null){
+				thread_voice_getter.start();
+			}
+			
+			//decoder.setRecorderAudio(record_audio);
 			thread_decoder = new Thread(){
 				public void run(){
 					decoder.start();
@@ -85,30 +100,25 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 //		
 //	}
 
-	@Override
-	public void setStopStatus() {
-		if (state == Constants.START_STATE) {
-			state = Constants.STOP_STATE;
-			MessagesLog.d(TAG, "sending data is over");
-			record_audio.stop();
-			if (thread_recorder != null) {
-				try {
-					thread_recorder.join();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				} finally {
-					thread_recorder = null;
-				}
-			}
-		}
-		
-	}
+//	@Override
+//	public void setStopStatus() {
+//		if (state == Constants.START_STATE) {
+//			state = Constants.STOP_STATE;
+//			MessagesLog.d(TAG, "sending data is over");
+//			record_audio.stop();
+//			if (thread_recorder != null) {
+//				try {
+//					thread_recorder.join();
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				} finally {
+//					thread_recorder = null;
+//				}
+//			}
+//		}
+//		
+//	}
 
-	@Override
-	public void setSubject(RecorderAudio sub) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void register(VoiceRecObserver vro) {
@@ -121,15 +131,6 @@ public class VoiceRecognition implements VoiceRecSubject, RecorderAudioObserver{
 		// TODO Auto-generated method stub
 		
 	}
-//
-//	@Override
-//	public void sendDataToGraphByte(byte[] data) {
-//		
-//		voice_rec_observer.updateLineGraphByte(data);
-//		
-//		MessagesLog.d(TAG, "Wesz³o w send DataToGraph");
-//		
-//	}
 
 	@Override
 	public void putBufferToQueue(Buffer buffer) {

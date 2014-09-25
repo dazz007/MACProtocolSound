@@ -31,22 +31,22 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 	public List<Integer> encodeText() {
 		List<Integer> indexesOfSigns = new ArrayList<Integer>();
 		// add start of data
-		for (int i = 0; i < Constants.START_OF_DATA.length(); i++) {
-			int index = Constants.AVAILABLE_SIGNS
-					.indexOf(Constants.START_OF_DATA.charAt(i));
-			indexesOfSigns.add(index);
-		}
+//		for (int i = 0; i < Constants.START_OF_DATA.length(); i++) {
+//			int index = Constants.AVAILABLE_SIGNS
+//					.indexOf(Constants.START_OF_DATA.charAt(i));
+//			indexesOfSigns.add(index);
+//		}
 
 		for (int i = 0; i < textToPlay.length(); i++) {
 			int index = Constants.AVAILABLE_SIGNS.indexOf(textToPlay.charAt(i));
 			indexesOfSigns.add(index);
 		}
 
-		for (int i = 0; i < Constants.END_OF_DATA.length(); i++) {
-			int index = Constants.AVAILABLE_SIGNS.indexOf(Constants.END_OF_DATA
-					.charAt(i));
-			indexesOfSigns.add(index);
-		}
+//		for (int i = 0; i < Constants.END_OF_DATA.length(); i++) {
+//			int index = Constants.AVAILABLE_SIGNS.indexOf(Constants.END_OF_DATA
+//					.charAt(i));
+//			indexesOfSigns.add(index);
+//		}
 
 		return indexesOfSigns;
 	}
@@ -107,6 +107,7 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 			int n = Constants.BITS_16/2;
 			
 			int totalCount = Constants.DEFAULT_NUM_SAMPLES;
+			int pause = 10;
 			double per = (double) (( Constants.FREQUENCIES[index] * 2 * Math.PI )  / Constants.SAMPLING);
 			double d = 0;
 			
@@ -119,7 +120,7 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 				
 				if(mFilledSize >= Constants.DEFAULT_BUFFER_SIZE - 1){
 					buffer.setBufferShort(buffer_data);
-					buffer.setBufferSizeShort(mFilledSize);
+					buffer.setSize(mFilledSize);
 					mFilledSize = 0;
 					queue_with_data_AL.add(buffer);
 					buffer = new Buffer();
@@ -134,7 +135,7 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 			
 			
 			buffer.setBufferShort(buffer_data);
-			buffer.setBufferSizeShort(mFilledSize);
+			buffer.setSize(mFilledSize);
 			queue_with_data_AL.add(buffer);
 			
 			mFilledSize = 0;

@@ -10,21 +10,24 @@ import com.example.interfaces.RecorderAudioSubject;
 
 import android.media.AudioRecord;
 
-public class RecorderAudio implements RecorderAudioSubject{
+public class RecorderAudio{
 	private final static String TAG = "RecorderAudio";
 	private AudioRecord recorder;
 	private int state;
 	private int buffer_size = Constants.DEFAULT_BUFFER_SIZE;
-	private RecorderAudioObserver recorder_audio_observer;
+	//private RecorderAudioObserver recorder_audio_observer;
 	private ArrayList<Buffer> queueWithBufferToPrintAL;
+	
 	public RecorderAudio(int source, int sample_rate, int channel_config, int audio_format, int buffer_size_in_bytes){
 		int minBufferSize = AudioRecord.getMinBufferSize(sample_rate, channel_config, audio_format);
 		recorder = new AudioRecord(source,
 								   sample_rate,
 								   channel_config,
 								   audio_format, 
-								   minBufferSize);
-		buffer_size = Constants.DEFAULT_BUFFER_SIZE_REC;
+								   Constants.DEFAULT_NUM_SAMPLES);
+		//buffer_size = Constants.DEFAULT_BUFFER_SIZE_REC;
+		buffer_size = Constants.DEFAULT_NUM_SAMPLES;
+		//recorder.setPositionNotificationPeriod(buffer_size);
 		queueWithBufferToPrintAL = new ArrayList<Buffer>();
 	}
 	
@@ -34,36 +37,58 @@ public class RecorderAudio implements RecorderAudioSubject{
 				state = Constants.START_STATE;
 				recorder.startRecording();
 				MessagesLog.d(TAG, "Rozpoczêcie nagrywania");
-				while(state == Constants.START_STATE){
-					Buffer data = new Buffer();
-					data.initializeBufferShort(buffer_size);
-					data.setBufferSizeShort(buffer_size);
-					int size = recorder.read(data.buffer_short,0,buffer_size);
-					if(data.buffer_short != null){
-						data.setTime(System.currentTimeMillis());
-						data.setBufferSizeShort(size);
-						notifyObserverBuffer(data);
-					}
-//					notifyObserverByte(data.buffer);
-				}
-				recorder.stop();
-                recorder.release();
 			}
 			
 			
 		}
 	}
 	
-	public void stop() {
-        if (state == Constants.START_STATE) {
-        	state = Constants.STOP_STATE;
-        }
-    }
-
-	@Override
-	public void register(RecorderAudioObserver rao) {
-		this.recorder_audio_observer = rao;
+	public void stop(){
+		if(state == Constants.START_STATE){
+			if(recorder != null){
+				recorder.stop();
+				recorder.release();
+			}
+			state = Constants.STOP_STATE;
+		}
 	}
+	
+//	public void setNotificationPeriod(int period){
+//		
+//		
+//		
+//	}
+	
+	
+	public Buffer getFrameData(int period){
+		Buffer data = new Buffer(period);
+		data.initializeBufferShort(period);
+		data.setSize(period);
+		long time = System.currentTimeMillis();
+		int size = recorder.read(data.buffer_short,0,period);
+		
+		if(data.buffer_short != null){
+			data.setTime(time);
+			data.setSize(size);
+			return data;
+		}
+		return null;
+	}
+	
+//	public Buffer getFrameData(){
+//		Buffer data = new Buffer(buffer_size);
+//		data.initializeBufferShort(buffer_size);
+//		data.setSize(buffer_size);
+//		long time = System.currentTimeMillis();
+//		int size = recorder.read(data.buffer_short,0,buffer_size);
+//		
+//		if(data.buffer_short != null){
+//			data.setTime(time);
+//			data.setSize(size);
+//			return data;
+//		}
+//		return null;
+//	}
 
 //	@Override
 //	public void notifyObserver(int[] data) {
@@ -77,10 +102,10 @@ public class RecorderAudio implements RecorderAudioSubject{
 //		
 //	}
 
-	@Override
-	public void notifyObserverBuffer(Buffer buffer) {
-		this.recorder_audio_observer.putBufferToQueue(buffer);
-		
-	}
+//	@Override
+//	public void notifyObserverBuffer(Buffer buffer) {
+//		this.recorder_audio_observer.putBufferToQueue(buffer);
+//		
+//	}
 	
 }

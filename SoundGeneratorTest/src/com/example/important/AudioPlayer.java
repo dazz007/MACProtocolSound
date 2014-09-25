@@ -56,7 +56,7 @@ public class AudioPlayer implements AudioPlayerSubject{
 					//int size_of_data = buffer.getBufferSize();
 					
 					short[] data = buffer.getBufferShort();
-					int size_of_data = buffer.getBufferSizeShort();
+					int size_of_data = buffer.getSize();
 					if (data != null) {
 						
 						int len = audiotrack.write(data, 0, size_of_data);

@@ -9,9 +9,9 @@ public interface RecorderAudioObserver {
 //	
 //	public void sendDataToGraphByte(byte [] data);
 	
-	public void putBufferToQueue(Buffer buffer);
+	//public void putBufferToQueue(Buffer buffer);
 	
 	public void setStopStatus();
 	
-	public void setSubject(RecorderAudio sub);
+	//public void setSubject(RecorderAudio sub);
 }
