@@ -15,10 +15,12 @@ public:
 	static std::string SecByteBlockToString(SecByteBlock data);
 	static std::string ByteToString(byte * data, int length);
 	static void FromStringToSecByteblock(std::string data, SecByteBlock* sbb_data, int size);
-	static void TestIntegerAndSecByteBlock(Integer, SecByteBlock *);
+	//static void TestIntegerAndSecByteBlock(Integer, SecByteBlock *);
 	static Integer decodeSecByteBlock(SecByteBlock key);
+
+	static SecByteBlock * createSecByteBlock(Integer key);
 	static SecByteBlock encodeSecByteBlock(Integer key);
-	static SecByteBlock encodeSecByteBlockWithLength(Integer key, int length);
 	static std::string IntegerToString(Integer a);
+	static void test();
 };
 

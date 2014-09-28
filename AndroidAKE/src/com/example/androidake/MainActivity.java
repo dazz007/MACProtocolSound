@@ -2,50 +2,56 @@ package com.example.androidake;
 
 import java.io.UnsupportedEncodingException;
 
+import org.achartengine.GraphicalView;
+
 import com.example.androidake.InitActivity;
+import com.example.graphic.LineGraph;
+import com.example.important.Constants;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity{
 	public MutualAuthenticateChip mac;
+    
 //	private TextView textView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		
+		Button but_init = (Button) findViewById(R.id.button1);
+		but_init.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+            	beInitializator(arg0, false);
+            }
+        });
+
+		Button but_receiv = (Button) findViewById(R.id.button2);
+		but_receiv.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+            	beInitializator(arg0, true);
+            }
+        });
 	}
 	
 	/** Called when the user clicks the Send button */
-	public void beInitializator(View view) {
+	public void beInitializator(View view, boolean is_initializator) {
 		Intent intent = new Intent(this, InitActivity.class);
+		intent.putExtra(Constants.bundle_init_id, is_initializator);
 	    startActivity(intent);
 	}
-	
-//	@Override
-//	protected void onCreate(Bundle savedInstanceState) {
-//		super.onCreate(savedInstanceState);
-//		setContentView(R.layout.activity_main);
-//		textView = new TextView(this);
-//		mac = new MutualAuthenticateChip();
-//		mac.prepareMACCPP();
-//		byte[] result = mac.show_key_pair();
-////		byte[] result = mac.getEphemeralKeyCPP();
-//		// String result_str = result.toString();
-//		String str = "";
-//
-//		byte[] ephemr = mac.getEphemeralKeyCPP();
-//		str = ConverterJava.ByteToString(ephemr);
-//		
-//		textView.setText(str);
-//		setContentView(textView);
-////		setContentView(R.layout.activity_main);
-//	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -53,5 +59,6 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+
 
 }

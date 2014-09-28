@@ -15,5 +15,6 @@
 	<string name="eph_key_generation">Generation Ephemeral Keys: </string>
 	<string name="send_eph_key">Send Ephemeral Public Key</string>
 	<string name="in_process">In process &#8230;</string>
-	<string name="info_text">Listening for epehemral key</string>
+	<string name="info_text">Processes</string>
+	<string name="processes"> </string>
 </resources>

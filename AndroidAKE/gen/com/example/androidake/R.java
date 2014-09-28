@@ -24,14 +24,13 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080007;
-        public static final int button1=0x7f080005;
-        public static final int button2=0x7f080006;
-        public static final int ekey_gen_res=0x7f080002;
-        public static final int info_layout=0x7f080000;
-        public static final int info_text=0x7f080003;
-        public static final int key_gen_res=0x7f080001;
-        public static final int send_eph_key=0x7f080004;
+        public static final int Chart_layout2=0x7f080000;
+        public static final int action_settings=0x7f080006;
+        public static final int button1=0x7f080004;
+        public static final int button2=0x7f080005;
+        public static final int info_text=0x7f080001;
+        public static final int processes=0x7f080002;
+        public static final int send_eph_key=0x7f080003;
     }
     public static final class layout {
         public static final int activity_init=0x7f030000;
@@ -52,6 +51,7 @@ public final class R {
         public static final int info_text=0x7f05000e;
         public static final int initializator=0x7f050005;
         public static final int key_generation=0x7f05000a;
+        public static final int processes=0x7f05000f;
         public static final int receiver=0x7f050006;
         public static final int send_eph_key=0x7f05000c;
         public static final int title_activity_init=0x7f050008;

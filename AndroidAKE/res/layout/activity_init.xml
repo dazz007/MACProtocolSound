@@ -1,72 +1,42 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".InitActivity" >
-
+    android:weightSum="11" >
+	
     <LinearLayout
-        android:id="@+id/info_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/key_generation" />
-
-            <TextView
-                android:id="@+id/key_gen_res"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/in_process" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/eph_key_generation" />
-
-            <TextView
-                android:id="@+id/ekey_gen_res"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/in_process" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/info_text"
+        android:id="@+id/Chart_layout2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/info_text" />
+        android:layout_height="0dip"
+        android:layout_weight="2"
+        android:orientation="vertical" >
+    </LinearLayout>
+    
+    <TextView
+		        android:id="@+id/info_text"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:text="@string/info_text" />
+    
+    <TextView
+		        android:id="@+id/processes"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="5"
+		        android:text="@string/processes" />
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="3"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/send_eph_key"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="106dp"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_weight="0.68"
             android:onClick="sendEphemeralKey"
             android:text="@string/send_eph_key" />
     </LinearLayout>

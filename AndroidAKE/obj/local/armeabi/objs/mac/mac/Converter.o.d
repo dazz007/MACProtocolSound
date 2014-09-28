@@ -1,5 +1,6 @@
-obj/local/armeabi/objs/mac/mac/Converter.o: jni/mac/Converter.cpp \
- jni/mac/Converter.h \
+E:/GitHubFinal/MACProtocolSound/AndroidAKE//obj/local/armeabi/objs/mac/mac/Converter.o: \
+ E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/mac/Converter.cpp \
+ E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/mac/Converter.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/string \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_prolog.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_cprolog.h \
@@ -10,9 +11,9 @@ obj/local/armeabi/objs/mac/mac/Converter.o: jni/mac/Converter.cpp \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/config/host.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/config/_system.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/config/_android.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/cdefs.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/cdefs_elf.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/android/api-level.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/cdefs.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/cdefs_elf.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/android/api-level.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/config/_gcc.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/config/stl_confix.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/config/_native_headers.h \
@@ -23,36 +24,36 @@ obj/local/armeabi/objs/mac/mac/Converter.o: jni/mac/Converter.cpp \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stddef.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_cstdlib.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stdlib.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/stdlib.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/stdlib.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/string.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/string.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/malloc.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/alloca.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/strings.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/types.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/stdint.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/_types.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/machine/_types.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/linux/posix_types.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/linux/stddef.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/linux/compiler.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/asm/posix_types.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/asm/types.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/linux/types.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/machine/kernel.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/sysmacros.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/memory.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/string.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/malloc.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/alloca.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/strings.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/types.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/stdint.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/_types.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/machine/_types.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/posix_types.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/stddef.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/compiler.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm/posix_types.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm/types.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/types.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/machine/kernel.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/sysmacros.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/memory.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_cmath.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/math.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/math.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/math.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/limits.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/limits.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/limits.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/linux/limits.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/machine/internal_types.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/machine/limits.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/syslimits.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/asm/page.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/limits.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/limits.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/limits.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/machine/internal_types.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/machine/limits.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/syslimits.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm/page.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_cstring.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/using/cstring \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_algobase.h \
@@ -79,17 +80,17 @@ obj/local/armeabi/objs/mac/mac/Converter.o: jni/mac/Converter.cpp \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_iosfwd.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/char_traits.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_cwchar.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/wchar.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/wchar.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stdio.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/stdio.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/stdio.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stdarg.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/time.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/time.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/time.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/linux/time.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/asm/siginfo.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/asm-generic/siginfo.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/_wchar_limits.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/time.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/time.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/time.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm/siginfo.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm-generic/siginfo.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/_wchar_limits.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_mbstate_t.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_uninitialized.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_string_base.h \
@@ -111,13 +112,12 @@ obj/local/armeabi/objs/mac/mac/Converter.o: jni/mac/Converter.cpp \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_locale.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_threads.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/pthread.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/pthread.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/pthread.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/signal.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/signal.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/asm/signal.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/asm-generic/signal.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/asm/sigcontext.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sched.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/signal.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm/signal.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm-generic/signal.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sched.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_threads.c \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_ctime.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_facets_fwd.h \
@@ -151,10 +151,13 @@ obj/local/armeabi/objs/mac/mac/Converter.o: jni/mac/Converter.cpp \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/sstream \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_sstream.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_sstream.c \
- jni/cryptopp/secblock.h jni/cryptopp/config.h jni/cryptopp/misc.h \
- jni/cryptopp/cryptlib.h jni/cryptopp/stdcpp.h \
+ E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/cryptopp/secblock.h \
+ E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/cryptopp/config.h \
+ E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/cryptopp/misc.h \
+ E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/cryptopp/cryptlib.h \
+ E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/cryptopp/stdcpp.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/assert.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/assert.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/assert.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/memory \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_tempbuf.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_tempbuf.c \
@@ -178,15 +181,16 @@ obj/local/armeabi/objs/mac/mac/Converter.o: jni/mac/Converter.cpp \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_vector.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_vector.c \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_bvector.h \
- jni/cryptopp/smartptr.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/byteswap.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/endian.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/endian.h \
- C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/machine/endian.h \
- jni/cryptopp/integer.h jni/cryptopp/secblock.h \
+ E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/cryptopp/smartptr.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/byteswap.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/endian.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/endian.h \
+ C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/machine/endian.h \
+ E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/cryptopp/integer.h \
+ E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/cryptopp/secblock.h \
  C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/iosfwd
 
-jni/mac/Converter.h:
+E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/mac/Converter.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/string:
 
@@ -208,11 +212,11 @@ C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/config/_system.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/config/_android.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/cdefs.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/cdefs.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/cdefs_elf.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/cdefs_elf.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/android/api-level.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/android/api-level.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/config/_gcc.h:
 
@@ -234,65 +238,65 @@ C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_cstdlib.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stdlib.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/stdlib.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/stdlib.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/string.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/string.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/string.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/malloc.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/malloc.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/alloca.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/alloca.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/strings.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/strings.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/types.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/types.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/stdint.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/stdint.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/_types.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/_types.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/machine/_types.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/machine/_types.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/linux/posix_types.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/posix_types.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/linux/stddef.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/stddef.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/linux/compiler.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/compiler.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/asm/posix_types.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm/posix_types.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/asm/types.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm/types.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/linux/types.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/types.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/machine/kernel.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/machine/kernel.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/sysmacros.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/sysmacros.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/memory.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/memory.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_cmath.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/math.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/math.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/math.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/limits.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/limits.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/limits.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/limits.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/limits.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/linux/limits.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/limits.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/machine/internal_types.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/machine/internal_types.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/machine/limits.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/machine/limits.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/syslimits.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/syslimits.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/asm/page.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm/page.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_cstring.h:
 
@@ -346,27 +350,27 @@ C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/char_traits.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_cwchar.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/wchar.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/wchar.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stdio.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/stdio.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/stdio.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stdarg.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/time.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/time.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/time.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/time.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/time.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/linux/time.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/time.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/asm/siginfo.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm/siginfo.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/asm-generic/siginfo.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm-generic/siginfo.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/_wchar_limits.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/_wchar_limits.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_mbstate_t.h:
 
@@ -410,19 +414,17 @@ C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_threads.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/pthread.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/pthread.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/pthread.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/signal.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/signal.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/signal.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/asm/signal.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm/signal.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/asm-generic/signal.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm-generic/signal.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/asm/sigcontext.h:
-
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sched.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sched.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_threads.c:
 
@@ -490,19 +492,19 @@ C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_sstream.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_sstream.c:
 
-jni/cryptopp/secblock.h:
+E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/cryptopp/secblock.h:
 
-jni/cryptopp/config.h:
+E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/cryptopp/config.h:
 
-jni/cryptopp/misc.h:
+E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/cryptopp/misc.h:
 
-jni/cryptopp/cryptlib.h:
+E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/cryptopp/cryptlib.h:
 
-jni/cryptopp/stdcpp.h:
+E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/cryptopp/stdcpp.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/assert.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/../include/assert.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/assert.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/memory:
 
@@ -550,18 +552,18 @@ C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_vector.c:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_bvector.h:
 
-jni/cryptopp/smartptr.h:
+E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/cryptopp/smartptr.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/byteswap.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/byteswap.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/endian.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/endian.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/sys/endian.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/endian.h:
 
-C:/android-ndk-r9d/platforms/android-18/arch-arm/usr/include/machine/endian.h:
+C:/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/machine/endian.h:
 
-jni/cryptopp/integer.h:
+E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/cryptopp/integer.h:
 
-jni/cryptopp/secblock.h:
+E:/GitHubFinal/MACProtocolSound/AndroidAKE//jni/cryptopp/secblock.h:
 
 C:/android-ndk-r9d/sources/cxx-stl/stlport/stlport/iosfwd:

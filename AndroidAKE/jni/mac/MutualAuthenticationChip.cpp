@@ -1,14 +1,14 @@
 #include "MutualAuthenticationChip.h"
 
 
-void MutualAuthenticationChip::GenerateKeyPairs(){
+void MutualAuthenticationChip::GenerateKeyPairs(AutoSeededRandomPool &rnd){
 	privateKey = new SecByteBlock(dh.PrivateKeyLength()); //xA - private key
 	publicKey = new SecByteBlock(dh.PublicKeyLength());   //yA = g^xA - public key
 	kg->GenerateStaticKeyPair(rnd, *privateKey, *publicKey);
 	cout<<"Part: "<<part<<" Zostaly wygenerowane klucze"<<endl;
 }
 
-void MutualAuthenticationChip::GenerateEphemeralKeys(){
+void MutualAuthenticationChip::GenerateEphemeralKeys(AutoSeededRandomPool &rnd){
 	ephemeralPublicKey = new SecByteBlock(dh2->EphemeralPublicKeyLength()); //hA = H(a)
 	ephemeralPrivateKey = new SecByteBlock(dh2->EphemeralPrivateKeyLength()); //cA = g^hA
 
@@ -81,6 +81,8 @@ void MutualAuthenticationChip::SetEphemeralPublicKeyAnotherParty(std::string str
 
 	rA = kg->GenerateKeyFromHashedKey(cb_to_xa, int_Kx_prim, AES::DEFAULT_KEYLENGTH ); //rA = H(cB^xA, KA_prim)
 
+	//EncryptCertKey();
+
 	//cout<<"Part: "<<part<<" wygenerowal rA"<<endl;
 	//Integer test_ra(rA, HashClass::size);
 	//cout<<"Wygenerowane rA: "<<test_ra<<endl;
@@ -108,6 +110,15 @@ void MutualAuthenticationChip::EncryptCertKey(){
 											Kx, AES::DEFAULT_KEYLENGTH);
 
 	cout<<"Part: "<<part<<" zaszyfrowal certyfikat i rA"<<endl;
+}
+
+string MutualAuthenticationChip::GetCipher(){
+	if(cipher.compare("")!=0){
+		return cipher;
+	}else{
+		string s("japierdole");
+		return s;
+	}
 }
 
 bool MutualAuthenticationChip::DecryptCertKey(string cipher){
@@ -238,13 +249,17 @@ void MutualAuthenticationChip::ComputeSessionKey(){
 	cout<<SK<<endl;
 }
 
-void MutualAuthenticationChip::SetInitializator(bool init){
-	is_initializator = init;
-	if(is_initializator){
-				part = "A";
-				rnd.Reseed(false);
-			}else{
-				part = "B";
-				rnd.Reseed(false);
-			}
+
+std::string MutualAuthenticationChip::ShowOtherPartyPublicKey()
+{
+    Integer pubKey;
+    if (!is_initializator)
+    {
+         pubKey = CryptoPP::Integer("30222313103416484737728074612425214126734791862902310075404137175196490255087357276634530623209055864437547252587560242012951252123883845471428300996630382283841646354968561208085927173525510706082475459851860792820176457822967649557768154303922217472248717392402506600192733705517151755320886806822808293568");
+    }
+    else
+    {
+        pubKey = CryptoPP::Integer("14937252435456816444315144988606834394405620177779470871314613282765209100656000546289874717514307843372460147271927179132591019166403117763752044377923030284277665081681429636803343669361207907144378001193776859330592525966966787427742150822910770827385205862373202130377453205416037048248518669196478538474");
+    }
+    return Converter::SecByteBlockToString(Converter::encodeSecByteBlock(pubKey));
 }
