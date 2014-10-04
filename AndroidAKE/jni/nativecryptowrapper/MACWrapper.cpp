@@ -13,8 +13,6 @@ JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_prepar
 	} else {
 		mac_B = new MutualAuthenticationChip(init);
 	}
-//	mac->GenerateKeyPairs();
-//	mac->GenerateEphemeralKeys();
 };
 
 JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_getEphemeralKeyCPP(
@@ -28,10 +26,6 @@ JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_get
 	}
 	return env->NewStringUTF(ephemKey.c_str());
 
-//	jbyteArray returns = env->NewByteArray(ephemKey.length());
-//			env->SetByteArrayRegion(returns, 0, ephemKey.length(),
-//					(jbyte*) ephemKey.c_str());
-//	return returns;
 };
 
 JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_showKeyPair(
@@ -40,15 +34,9 @@ JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_sho
 	string publicKey;
 	if (init) {
 		 publicKey = mac->ShowPublicKey();
-
-
 	} else {
 		 publicKey = mac_B->ShowPublicKey();
 	}
-
-//	jbyteArray returns = env->NewByteArray(publicKey.length());
-//			env->SetByteArrayRegion(returns, 0, publicKey.length(),
-//					(jbyte*) publicKey.c_str());
 	return env->NewStringUTF(publicKey.c_str());
 }
 ;
@@ -67,21 +55,22 @@ JNIEXPORT jbyteArray JNICALL Java_com_example_androidake_MutualAuthenticateChip_
 JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_setEphemeralAndPublicKeyFromPartyCPP
 (JNIEnv *env, jobject thisObj, jboolean jinit, jstring ephemeralkey_byte, jstring publickey_byte) {
 	bool init = jinit;
-	jsize length_ek = env->GetStringLength(ephemeralkey_byte);
-			const char *inCStr_ek = env->GetStringUTFChars(ephemeralkey_byte, NULL);
-			string s_ek(inCStr_ek, length_ek);
-			env->ReleaseStringUTFChars(ephemeralkey_byte, inCStr_ek);  // release resources
-			jsize length_pk = env->GetStringLength(publickey_byte);
-			const char *inCStr_pk = env->GetStringUTFChars(publickey_byte, NULL);
-			string s_pk(inCStr_pk, length_pk);
-			env->ReleaseStringUTFChars(publickey_byte, inCStr_pk);  // release resources
-	if(init == true) {
+	jsize length_ek = env->GetStringUTFLength(ephemeralkey_byte);
+	const char *inCStr_ek = env->GetStringUTFChars(ephemeralkey_byte, 0);
+	string s_ek(inCStr_ek, length_ek);
+	env->ReleaseStringUTFChars(ephemeralkey_byte, inCStr_ek);  // release resources
+	jsize length_pk = env->GetStringUTFLength(publickey_byte);
+	const char *inCStr_pk = env->GetStringUTFChars(publickey_byte, 0);
+	string s_pk(inCStr_pk, length_pk);
+	env->ReleaseStringUTFChars(publickey_byte, inCStr_pk);  // release resources
 
+	if(init == true) {
 		mac->SetEphemeralPublicKeyAnotherParty(s_ek,s_pk);
 	} else {
-
 		mac_B->SetEphemeralPublicKeyAnotherParty(s_ek,s_pk);
 	}
+
+
 }
 
 JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_setEphemeralKeyFromPartyCPP
@@ -95,33 +84,58 @@ JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_setIni
 	//mac.SetInitializator(init);
 };
 
-JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_prepareEncryptionCPP
+JNIEXPORT jbyteArray JNICALL Java_com_example_androidake_MutualAuthenticateChip_prepareEncryptionCPP
 (JNIEnv *env, jobject thisObj, jboolean hmm, jboolean jinit) {
-	bool init = jinit;
-	if(init == true){
-		mac->EncryptCertKey();
-	}else{
-		mac_B->EncryptCertKey();
-	}
-};
-
-JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_getEncryptCertAndRCPP(
-		JNIEnv *env, jobject thisObj, jboolean jinit) {
 	bool init = jinit;
 	string encryption;
 	if(init == true){
-		encryption = mac->GetCipher();
+		encryption = mac->EncryptCertKey();
 	}else{
-		encryption = mac_B->GetCipher();
+		encryption = mac_B->EncryptCertKey();
 	}
-//	jbyteArray returns = env->NewByteArray(encryption.length());
-//	env->SetByteArrayRegion(returns, 0, encryption.length(),
-//				(jbyte*) encryption.c_str());
+	jbyteArray returns = env->NewByteArray(encryption.size());
+	env->SetByteArrayRegion(returns, 0, encryption.length(), (jbyte*) encryption.c_str());
 
-	return env->NewStringUTF(encryption.c_str());
+	return returns;
+};
 
-}
-;
+//JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_getEncryptCertAndRCPP(
+//		JNIEnv *env, jobject thisObj, jboolean jinit) {
+//	bool init = jinit;
+//	string encryption;
+//	if(init == true){
+//		encryption = mac->GetCipher2();
+//	}else{
+//		encryption = mac_B->GetCipher2();
+//	}
+//
+//	return env->NewStringUTF(encryption.c_str());
+//
+//};
+
+JNIEXPORT jbyteArray JNICALL Java_com_example_androidake_MutualAuthenticateChip_getEncryptCertAndRCPP(
+		JNIEnv *env, jobject thisObj, jboolean jinit) {
+//	bool init = jinit;
+//	string encryption;
+//	if(init == true){
+//		encryption = mac->GetCipher2();
+//	}else{
+//		encryption = mac_B->GetCipher2();
+//	}
+//
+//	return env->NewStringUTF(encryption.c_str());
+	bool init = jinit;
+		string encryption;
+		if(init == true){
+			encryption = mac->GetCipher2();
+		}else{
+			encryption = mac_B->GetCipher2();
+		}
+	jbyteArray returns = env->NewByteArray(encryption.length());
+	env->SetByteArrayRegion(returns, 0, encryption.length(), (jbyte*) encryption.c_str());
+
+	return returns;
+};
 
 JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_setEncryptionFromPartyCPP
 (JNIEnv *env, jobject thisObj, jboolean jinit, jbyteArray encryption_byte) {
@@ -156,30 +170,38 @@ JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_get
 		 pubKey = mac->ShowOtherPartyPublicKey();
 	} else {
 		 pubKey = mac_B->ShowOtherPartyPublicKey();
-
 	}
-
-//	jbyteArray returns = env->NewByteArray(pubKey.length());
-//			env->SetByteArrayRegion(returns, 0, pubKey.length(),
-//					(jbyte*) pubKey.c_str());
 	return env->NewStringUTF(pubKey.c_str());
 }
 ;
 
 
 JNIEXPORT jboolean JNICALL Java_com_example_androidake_MutualAuthenticateChip_decodeEncryption
-  (JNIEnv * env, jobject thisObj, jboolean jinit, jstring cipher){
+  (JNIEnv * env, jobject thisObj, jboolean jinit, jbyteArray cipher){
 	bool init = jinit;
 	bool result;
 
-	jsize length = env->GetStringLength(cipher);
-				const char *inCStr_ek = env->GetStringUTFChars(cipher, NULL);
-				string s(inCStr_ek, length);
+	jbyte* data = env->GetByteArrayElements(cipher, 0);
+	jsize length = env->GetArrayLength(cipher);
+//	jsize length = env->GetStringUTFLength(cipher);
+//	const char *inCStr_ek = env->GetStringUTFChars(cipher, 0);
+//	string s(inCStr_ek, length);
+//	if(init == true){
+//		result = mac->DecryptCertKey(s);
+//	}else{
+//		result = mac_B->DecryptCertKey(s);
+//	}
+	byte * data_cipher = (byte *) data;
+
+	int size = length;
 	if(init == true){
-		result = mac->DecryptCertKey(s);
-	}else{
-		result = mac_B->DecryptCertKey(s);
-	}
+			//result = mac->CompareCipherUTF8(data_cipher, size);
+		result = mac->DecryptCertKeyByte(data_cipher, size);
+		}else{
+			result = mac_B->DecryptCertKeyByte(data_cipher, size);
+		}
+
+	env->ReleaseByteArrayElements(cipher, data, JNI_ABORT);
 	return result;
 };
 
@@ -205,4 +227,56 @@ JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_get
 	string dupa = "dupapapappa";
 	return env->NewStringUTF(dupa.c_str());
 };
+
+
+JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_getPublicAnotherParty22CPP
+  (JNIEnv * env, jobject thisObj, jboolean jinit){
+	bool init = jinit;
+
+	string publicKey;
+		if (init) {
+			 publicKey = mac->ShowPublicKeyAnotherParty2();
+		} else {
+			 publicKey = mac_B->ShowPublicKeyAnotherParty2();
+		}
+		return env->NewStringUTF(publicKey.c_str());
+};
+
+
+JNIEXPORT jbyteArray JNICALL Java_com_example_androidake_MutualAuthenticateChip_convertStringToByteArray(JNIEnv* env, jobject clazz, jstring str)
+{
+	const char* nativeString = env->GetStringUTFChars(str, 0);
+	size_t length = strlen(nativeString);
+
+	jbyteArray array = env->NewByteArray(length);
+	env->SetByteArrayRegion(array, 0, length, (const jbyte*)nativeString);
+
+	env->ReleaseStringUTFChars(str, nativeString);
+
+	return array;
+}
+
+
+/*
+ * Class:     com_example_androidake_MutualAuthenticateChip
+ * Method:    convertByteArrayToString
+ * Signature: ([B)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_convertByteArrayToString(JNIEnv* env, jobject clazz, jbyteArray text_byte)
+{
+	jsize length = env->GetArrayLength(text_byte);
+	jbyte* buffer = new jbyte[length+1];
+
+	env->GetByteArrayRegion(text_byte, 0, length, buffer);
+	buffer[length] = '\0';
+
+	jstring result = env->NewStringUTF((const char*)buffer);
+	delete[] buffer;
+
+	return result;
+}
+
+
+
+
 

@@ -44,7 +44,7 @@ public class FrequencyTime {
 		for (int i = 0; i < Constants.FREQUENCIES.length; i++) {
 			if (Constants.FREQUENCIES[i] + 40 > frequency
 					&& Constants.FREQUENCIES[i] - 50 < frequency) {
-				sign = String.valueOf(Constants.AVAILABLE_SIGNS.charAt(i));
+				sign = String.valueOf(Constants.STANDARD_ALPHABET[i]);
 				break;
 			}
 			
@@ -84,7 +84,7 @@ public class FrequencyTime {
 				for (int i = 0; i < Constants.FREQUENCIES.length; i++) {
 					if (Constants.FREQUENCIES[i] + 40 > frequency
 							&& Constants.FREQUENCIES[i] - 50 < frequency) {
-						return Constants.AVAILABLE_SIGNS.charAt(i);
+						return Constants.STANDARD_ALPHABET[i];
 					}
 				}
 			}
@@ -104,11 +104,11 @@ public class FrequencyTime {
 					number_of_sign = (float) diff / Constants.DEFAULT_GEN_DURATION;
 					number_of_sign_rounded = Math.round(number_of_sign);
 					for (int j = 0; j < number_of_sign_rounded; j++) {
-						sb.append(Constants.AVAILABLE_SIGNS.charAt(i));
+						sb.append(Constants.STANDARD_ALPHABET[i]);
 					}
 				}else{
 				
-					sb.append(Constants.AVAILABLE_SIGNS.charAt(i));
+					sb.append(Constants.STANDARD_ALPHABET[i]);
 				}
 				return sb.toString();
 			}

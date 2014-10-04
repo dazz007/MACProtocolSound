@@ -48,7 +48,8 @@ private:
 	void TestOfPower();
 	void ComputeSessionKey();
 public:
-	string cipher;
+	std::string cipher;
+	std::string cipher_two;
 	MutualAuthenticationChip(bool h) :
 			is_initializator(h) {
 		Integer p("0xB10B8F96A080E01DDE92DE5EAE5D54EC52C99FBCFB06A3C6"
@@ -75,7 +76,7 @@ public:
 		rnd.Reseed(false);
 		dh.AccessGroupParameters().Initialize(this->p, this->q, this->g);
 		kg = new KeyGenerator(dh);
-
+		cipher = "co jest kurwa maccccc";
 		dh2 = new DH2(dh);
 		keySize = HashClass::size;
 		if (is_initializator) {
@@ -127,7 +128,7 @@ public:
 	MutualAuthenticationChip(Integer p, Integer q, Integer g) :
 			p(p), q(q), g(g) {
 	}
-
+	string ShowPublicKeyAnotherParty2();
 	void GenerateKeyPairs(AutoSeededRandomPool &rnd);
 	void GenerateEphemeralKeys(AutoSeededRandomPool &rnd);
 	void dupa();
@@ -138,13 +139,17 @@ public:
 	std::string ShowPrivateKey();
     std::string ShowOtherPartyPublicKey();
     std::string GetCipher();
+    std::string GetCipher2();
+    bool CompareCipherUTF8(byte * data, int length);
 	void SetEphemeralPublicKeyAnotherParty(
 			std::string str_ephemeralPublicKeyAnotherParty,
 			std::string str_publickKeyAnotherParty);
 	int GetKeySize();
-	void EncryptCertKey();
+	std::string EncryptCertKey();
 	void Generate2(SecByteBlock * publicB, SecByteBlock * privateB);
-	bool DecryptCertKey(string cipher);
+	bool DecryptCertKey(std::string cipher);
+	bool DecryptCertKeyByte(byte * data, int length);
+	bool CompareCipher(std::string cipher);
 	SecByteBlock GetEphemeralPublicKey2();
 	SecByteBlock GetPublicKey();
 	void GenerateSessionKey();

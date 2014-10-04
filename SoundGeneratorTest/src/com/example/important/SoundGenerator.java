@@ -38,10 +38,13 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 //		}
 
 		for (int i = 0; i < textToPlay.length(); i++) {
-			int index = Constants.AVAILABLE_SIGNS.indexOf(textToPlay.charAt(i));
-			indexesOfSigns.add(index);
+			for(int j = 0; j < Constants.STANDARD_ALPHABET.length; j++){
+				if(textToPlay.charAt(i) == Constants.STANDARD_ALPHABET[j] ){
+					indexesOfSigns.add(j);
+					break;
+				}
+			}
 		}
-
 //		for (int i = 0; i < Constants.END_OF_DATA.length(); i++) {
 //			int index = Constants.AVAILABLE_SIGNS.indexOf(Constants.END_OF_DATA
 //					.charAt(i));

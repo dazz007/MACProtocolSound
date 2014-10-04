@@ -69,7 +69,7 @@ public class MainActivity extends Activity implements VoiceRecognition.Listener{
         line.setSubject(voicerec);
         voicerec.register(line);
         line_fft.setDecSubject(voicerec.getDecoder());
-        edit_text.setText("1234567777");
+        edit_text.setText("SWRlYWx5IHNhIGphayBnd2lhemR5IC0gbmllIG1vem5hIGljaCBvc2lhZ25hYywgYWxlIG1vem5hIHNpZSBuaW1pIGtpZXJvd2FjLg0K");
         Button playStart = (Button) this.findViewById(R.id.start_play);
         playStart.setOnClickListener(new OnClickListener() {
             @Override

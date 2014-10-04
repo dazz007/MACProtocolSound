@@ -64,11 +64,11 @@ public class RecorderAudio{
 		Buffer data = new Buffer(period);
 		data.initializeBufferShort(period);
 		data.setSize(period);
-		long time = System.currentTimeMillis();
+		//long time = System.currentTimeMillis();
 		int size = recorder.read(data.buffer_short,0,period);
 		
 		if(data.buffer_short != null){
-			data.setTime(time);
+			//data.setTime(time);
 			data.setSize(size);
 			return data;
 		}

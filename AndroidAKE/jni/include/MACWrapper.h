@@ -66,17 +66,17 @@ JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_setEph
 /*
  * Class:     com_example_androidake_MutualAuthenticateChip
  * Method:    prepareEncryptionCPP
- * Signature: (ZZ)V
+ * Signature: (ZZ)[B
  */
-JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_prepareEncryptionCPP
+JNIEXPORT jbyteArray JNICALL Java_com_example_androidake_MutualAuthenticateChip_prepareEncryptionCPP
   (JNIEnv *, jobject, jboolean, jboolean);
 
 /*
  * Class:     com_example_androidake_MutualAuthenticateChip
  * Method:    getEncryptCertAndRCPP
- * Signature: (Z)Ljava/lang/String;
+ * Signature: (Z)[B
  */
-JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_getEncryptCertAndRCPP
+JNIEXPORT jbyteArray JNICALL Java_com_example_androidake_MutualAuthenticateChip_getEncryptCertAndRCPP
   (JNIEnv *, jobject, jboolean);
 
 /*
@@ -98,10 +98,26 @@ JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_get
 /*
  * Class:     com_example_androidake_MutualAuthenticateChip
  * Method:    decodeEncryption
- * Signature: (ZLjava/lang/String;)Z
+ * Signature: (Z[B)Z
  */
 JNIEXPORT jboolean JNICALL Java_com_example_androidake_MutualAuthenticateChip_decodeEncryption
-  (JNIEnv *, jobject, jboolean, jstring);
+  (JNIEnv *, jobject, jboolean, jbyteArray);
+
+/*
+ * Class:     com_example_androidake_MutualAuthenticateChip
+ * Method:    convertStringToByteArray
+ * Signature: (Ljava/lang/String;)[B
+ */
+JNIEXPORT jbyteArray JNICALL Java_com_example_androidake_MutualAuthenticateChip_convertStringToByteArray
+  (JNIEnv *, jobject, jstring);
+
+/*
+ * Class:     com_example_androidake_MutualAuthenticateChip
+ * Method:    convertByteArrayToString
+ * Signature: ([B)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_convertByteArrayToString
+  (JNIEnv *, jobject, jbyteArray);
 
 /*
  * Class:     com_example_androidake_MutualAuthenticateChip
@@ -133,6 +149,14 @@ JNIEXPORT jbyteArray JNICALL Java_com_example_androidake_MutualAuthenticateChip_
  * Signature: (Z)V
  */
 JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_setInitializatorCPP
+  (JNIEnv *, jobject, jboolean);
+
+/*
+ * Class:     com_example_androidake_MutualAuthenticateChip
+ * Method:    getPublicAnotherParty22CPP
+ * Signature: (Z)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_getPublicAnotherParty22CPP
   (JNIEnv *, jobject, jboolean);
 
 #ifdef __cplusplus

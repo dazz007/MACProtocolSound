@@ -15,9 +15,15 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 	private AudioPlayer player;
 	private Thread threadPlayer;
 	private SoundGenObserver sgo;
+	private Listener listener;
 	
 	
-	public SoundGenerator(int sampleRate) {
+	public static interface Listener {
+		public void EndOfSending();
+	}
+	
+	public SoundGenerator(int sampleRate, Listener lstnr) {
+		listener = lstnr;
 		player = new AudioPlayer(sampleRate);
 		player.register(this);
 		state = Constants.STOP_STATE;
@@ -36,12 +42,30 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 //					.indexOf(Constants.START_OF_DATA.charAt(i));
 //			indexesOfSigns.add(index);
 //		}
-
-		for (int i = 0; i < textToPlay.length(); i++) {
-			int index = Constants.AVAILABLE_SIGNS.indexOf(textToPlay.charAt(i));
-			indexesOfSigns.add(index);
+		for (int i = 0; i < Constants.START_OF_DATA.length(); i++) {
+			for(int j = 0; j < Constants.STANDARD_ALPHABET.length; j++){
+				if(Constants.START_OF_DATA.charAt(i) == Constants.STANDARD_ALPHABET[j] ){
+					indexesOfSigns.add(j);
+					break;
+				}
+			}
 		}
-
+		for (int i = 0; i < textToPlay.length(); i++) {
+			for(int j = 0; j < Constants.STANDARD_ALPHABET.length; j++){
+				if(textToPlay.charAt(i) == Constants.STANDARD_ALPHABET[j] ){
+					indexesOfSigns.add(j);
+					break;
+				}
+			}
+		}
+		for (int i = 0; i < Constants.END_OF_DATA.length(); i++) {
+			for(int j = 0; j < Constants.STANDARD_ALPHABET.length; j++){
+				if(Constants.END_OF_DATA.charAt(i) == Constants.STANDARD_ALPHABET[j] ){
+					indexesOfSigns.add(j);
+					break;
+				}
+			}
+		}
 //		for (int i = 0; i < Constants.END_OF_DATA.length(); i++) {
 //			int index = Constants.AVAILABLE_SIGNS.indexOf(Constants.END_OF_DATA
 //					.charAt(i));
@@ -237,6 +261,8 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 				}
 			}
 		}
+		
+		listener.EndOfSending();
 	}
 
 	@Override

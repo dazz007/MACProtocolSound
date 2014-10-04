@@ -34,12 +34,17 @@ int MutualAuthenticationChip::GetKeySize(){
 }
 
 std::string MutualAuthenticationChip::ShowPublicKey(){
-	string s = Converter::SecByteBlockToString(*publicKey);
+	std::string s = Converter::SecByteBlockToString(*publicKey);
+	return s;
+}
+
+std::string MutualAuthenticationChip::ShowPublicKeyAnotherParty2(){
+	std::string s = Converter::SecByteBlockToString(*publicKeyAnotherParty);
 	return s;
 }
 
 std::string MutualAuthenticationChip::ShowPrivateKey(){
-	string s = Converter::SecByteBlockToString(*privateKey);
+	std::string s = Converter::SecByteBlockToString(*privateKey);
 	return s;
 }
 
@@ -81,49 +86,104 @@ void MutualAuthenticationChip::SetEphemeralPublicKeyAnotherParty(std::string str
 
 	rA = kg->GenerateKeyFromHashedKey(cb_to_xa, int_Kx_prim, AES::DEFAULT_KEYLENGTH ); //rA = H(cB^xA, KA_prim)
 
-	//EncryptCertKey();
-
-	//cout<<"Part: "<<part<<" wygenerowal rA"<<endl;
-	//Integer test_ra(rA, HashClass::size);
-	//cout<<"Wygenerowane rA: "<<test_ra<<endl;
 }
 
 
 
-void MutualAuthenticationChip::EncryptCertKey(){
+std::string MutualAuthenticationChip::EncryptCertKey(){
 	CryptoPP::Integer K = ComputeK();
-	string test = "testowowowona pewnoe jkhsdajgdjhgjbcmxzgigsajdghsma bjjdgsagdj";
-	const char* test_c = test.c_str();
-	test.size();
-	byte * test_b = (byte*)test_c;
-	byte * Kx = new byte[AES::DEFAULT_KEYLENGTH];
-	//cout<<"PArt: "<<part<<" K przed szyfracj¹: "<<K<<endl;
-	if(is_initializator){
-		Kx = kg->GenerateKeyFromHashedKey(K, 1, AES::DEFAULT_KEYLENGTH); //Ka = H(K,1)
-	}else{
-		Kx = kg->GenerateKeyFromHashedKey(K, 2, AES::DEFAULT_KEYLENGTH); //Kb = H(K,2)
-	}
-	Integer Kx_test(Kx, AES::DEFAULT_KEYLENGTH);
-	//cout<<"PArt: "<<part<<" Klucz do szyfracji :"<<Kx_test<<endl;
-	this->cipher = edc.EncryptCertAndRa(test_b, test.size(),
-											rA, HashClass::size,
-											Kx, AES::DEFAULT_KEYLENGTH);
+		std::string cert = "testowowowona pewnoe jkhsdajgdjhgjbcmxzgigsajdghsma bjjdgsagdj";
+		const char* cert_c = cert.c_str();
+		cert.size();
+		byte * cert_b = (byte*)cert_c;
+		byte * Kx = new byte[AES::DEFAULT_KEYLENGTH];
+		//cout<<"PArt: "<<part<<" K przed szyfracja: "<<K<<endl;
+	  	if(is_initializator){
+			Kx = kg->GenerateKeyFromHashedKey(K, 1, AES::DEFAULT_KEYLENGTH); //Ka = H(K,1)
+		}else{
+			Kx = kg->GenerateKeyFromHashedKey(K, 2, AES::DEFAULT_KEYLENGTH); //Kb = H(K,2)
+		}
+		Integer Kx_test(Kx, AES::DEFAULT_KEYLENGTH);
+		//cout<<"PArt: "<<part<<" Klucz do szyfracji :"<<Kx_test<<endl;
+		this->cipher = edc.EncryptCertAndRa(cert_b, (int)cert.size(),
+	                                        rA, HashClass::size,
+	                                        Kx, AES::DEFAULT_KEYLENGTH);
 
-	cout<<"Part: "<<part<<" zaszyfrowal certyfikat i rA"<<endl;
+		cout<<"Part: "<<part<<" zaszyfrowal certyfikat i rA "<< cipher << endl;
+	    return cipher;
 }
 
-string MutualAuthenticationChip::GetCipher(){
+
+bool MutualAuthenticationChip::CompareCipher(std::string cipher_2){
+	cipher_two = cipher_2;
+	if(cipher == cipher_2){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+bool MutualAuthenticationChip::CompareCipherUTF8(byte * data, int length){
+	std::string cipher_2( reinterpret_cast<char const*>(data), length);
+	if(cipher == cipher_2){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+
+std::string MutualAuthenticationChip::GetCipher(){
 	if(cipher.compare("")!=0){
+//		string s("dziwne rzeczy");
 		return cipher;
 	}else{
-		string s("japierdole");
+		std::string s("japierdole");
 		return s;
 	}
 }
 
-bool MutualAuthenticationChip::DecryptCertKey(string cipher){
+std::string MutualAuthenticationChip::GetCipher2(){
+	return cipher_two;
+}
+
+bool MutualAuthenticationChip::DecryptCertKeyByte(byte * data, int length){
+	std::string cipher_2( reinterpret_cast<char const*>(data), length);
 	CryptoPP::Integer K = ComputeK();
-	string decrypted_cert;
+		std::string decrypted_cert;
+		byte * decrypted_ra = new byte[HashClass::size];
+		byte * rA_prim = new byte[HashClass::size];
+		byte * Kx = new byte[AES::DEFAULT_KEYLENGTH];
+		int decrypted_ra_size;
+
+		//cout<<"PArt: "<<part<<" K do deszyfracj: "<<K<<endl;
+
+		if(is_initializator){
+			Kx = kg->GenerateKeyFromHashedKey(K, 2, AES::DEFAULT_KEYLENGTH); //Kb = H(K,2)
+
+		}else{
+			Kx = kg->GenerateKeyFromHashedKey(K, 1, AES::DEFAULT_KEYLENGTH); //Ka = H(K,1)
+		}
+
+		Integer Kx_test(Kx, AES::DEFAULT_KEYLENGTH);
+		cout<<"PArt: "<<part<<"Klucz do deszyfracji :"<<Kx_test<<endl;
+		edc.DecryptCertAndRa(cipher_2, Kx, AES::DEFAULT_KEYLENGTH,
+								&decrypted_cert, decrypted_ra, &decrypted_ra_size);
+
+		int n = CompareRa(decrypted_ra);
+		if(n == 0){
+			cout<<"Po stronie: "<<part<<" Ra takie samo po deszyfracji jak dla strony przeciwnej"<<endl;
+			ComputeSessionKey();
+			return true;
+		}else{
+			cout<<"Weryfikacja nie powiodla sie. Protocol failure."<<endl;
+			return false;
+		}
+}
+
+bool MutualAuthenticationChip::DecryptCertKey(std::string cipher){
+	CryptoPP::Integer K = ComputeK();
+	std::string decrypted_cert;
 	byte * decrypted_ra = new byte[HashClass::size];
 	byte * rA_prim = new byte[HashClass::size];
 	byte * Kx = new byte[AES::DEFAULT_KEYLENGTH];
@@ -213,6 +273,8 @@ Integer MutualAuthenticationChip::ComputePublicKeyAnotherPartyToEphemeralKey(){
 
 }
 
+
+
 void MutualAuthenticationChip::SetKeysAnotherParty(std::string str_ephemeralPublicKeyAnotherParty,
 						 std::string str_publicKeyAnotherParty){
 	publicKeyAnotherParty = new SecByteBlock(dh.PublicKeyLength());
@@ -250,10 +312,12 @@ void MutualAuthenticationChip::ComputeSessionKey(){
 }
 
 
+
+
 std::string MutualAuthenticationChip::ShowOtherPartyPublicKey()
 {
     Integer pubKey;
-    if (!is_initializator)
+    if (is_initializator == false)
     {
          pubKey = CryptoPP::Integer("30222313103416484737728074612425214126734791862902310075404137175196490255087357276634530623209055864437547252587560242012951252123883845471428300996630382283841646354968561208085927173525510706082475459851860792820176457822967649557768154303922217472248717392402506600192733705517151755320886806822808293568");
     }

@@ -36,52 +36,29 @@
             android:text="Start play"
             android:width="285dp" />
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="258dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_weight="1"
-        android:orientation="horizontal" >
-
-        <TextView
+	
+    <TextView
             android:id="@+id/regtext"
-            android:layout_width="132dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Recog. txt" />
-        
-        
-    </LinearLayout>
     
-    <LinearLayout
-        android:layout_width="284dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_weight="0.90"
-        android:orientation="horizontal" >
-
-        <TextView
+    <TextView
             android:id="@+id/regtext2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
             android:text="" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="277dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_weight="1"
-        android:orientation="horizontal" >
-
-        <TextView
+    
+	
+    <TextView
             android:id="@+id/playtext"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="play text" />
-        
-
-    </LinearLayout>
+    
     
     <LinearLayout
         android:layout_width="277dp"

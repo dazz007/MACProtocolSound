@@ -1,20 +1,32 @@
 package com.example.androidake;
 
+import java.io.DataInput;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 import org.achartengine.GraphicalView;
 import org.apache.commons.codec.DecoderException;
 
 import org.apache.commons.codec.binary.Hex;
 
-import org.apache.commons.codec.binary.Base64;
-
+//import org.apache.commons.codec.binary.Base64;
+import base64.Base64;
 import com.example.graphic.LineGraph;
 import com.example.important.Constants;
+import com.example.important.MessagesLog;
+import com.example.important.SoundGenerator;
 import com.example.important.Constants.STATUS;
+import com.example.recorder.VoiceRecognition;
 
 import Decoder.BASE64Decoder;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,20 +38,24 @@ import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.os.Build;
 
-public class InitActivity extends Activity {
+
+public class InitActivity extends Activity implements VoiceRecognition.Listener, SoundGenerator.Listener {
+	private final static String TAG = "InitActivity";
 	public MutualAuthenticateChip mac_A;
 	public MutualAuthenticateChip mac_B;
 	private STATUS status;
 	private boolean initializator;
-	private TextView tv_key_gen_res;
-	private TextView tv_ekey_gen_res;
+	private SoundGenerator soundgen;
+	private VoiceRecognition voicerec;
 	private TextView processes;
-	private Button but_send_ephemeral_key;
 	private LinearLayout chart_container_fft;
 	private static GraphicalView graph_view_fft;
 	private LineGraph line_fft = new LineGraph(true);
 	private StringBuilder sb;
-
+    private final static int MSG_SET_RECG_TEXT = 1;
+    private final static int MSG_RECG_START = 2;
+    private final static int MSG_RECG_END = 3;
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,15 +66,14 @@ public class InitActivity extends Activity {
 				Constants.bundle_init_id);
 		initializator = is_init;
 		setFirstStatus(is_init);
-
-		// tv_key_gen_res = (TextView) findViewById(R.id.key_gen_res);
-		// tv_ekey_gen_res = (TextView) findViewById(R.id.ekey_gen_res);
-		// tv_key_gen_res.setText("Done");
-		// tv_ekey_gen_res.setText("Done");
-		// View b = findViewById(R.id.info_text);
-		// b.setVisibility(View.GONE);
-		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		soundgen = new SoundGenerator(Constants.SAMPLING, this);
+		voicerec = new VoiceRecognition();
+		voicerec.setListener(this);
+		line_fft.setDecSubject(voicerec.getDecoder());
+		
+		
 		sb = new StringBuilder();
 		mac_A = new MutualAuthenticateChip();
 		// mac.set_initializator(true);
@@ -67,7 +82,6 @@ public class InitActivity extends Activity {
 		mac_B.prepareMACCPP(false);
 		processes = (TextView) findViewById(R.id.processes);
 		addMessageOnView("Zaraz sie zacznie magia");
-		processes.setText("test test test");
 	}
 
 	/**
@@ -112,108 +126,87 @@ public class InitActivity extends Activity {
 		}
 	}
 
-	public void sendEphemeralKey(View view) {
-		String ephemeralKey_A = mac_A.getEphemeralKeyCPP(true);
-		String ephemeralKey_B = mac_B.getEphemeralKeyCPP(false);
-
-		String publicKey_B = mac_A.getPublicKeyAnotherPartyCPP(true);
-		String publicKey_A = mac_B.getPublicKeyAnotherPartyCPP(false);
-		//
-		addMessageOnView(ephemeralKey_A);
-		addMessageOnView(ephemeralKey_B);
-		addMessageOnView(publicKey_B);
-		addMessageOnView(publicKey_A);
-		// addMessageOnView(ephemeralKey_A);
-		// String dupa = mac_A.getSomeString(true);
-		// addMessageOnView("dupa "+dupa);
-		// String ephemeralKey_A_str =
-		// ConverterJava.ByteToString(ephemeralKey_A);
-		// addMessageOnView(ephemeralKey_A_str);
-		// String ephemeralKey_B_str =
-		// ConverterJava.ByteToString(ephemeralKey_B);
-		// addMessageOnView(ephemeralKey_B_str);
-		// //
-		// String publicKey_B_str = ConverterJava.ByteToString(publicKey_B);
-		// addMessageOnView(publicKey_B_str);
-		// String publicKey_A_str = ConverterJava.ByteToString(publicKey_A);
-		// addMessageOnView(publicKey_A_str);
-		// //
-		mac_A.setEphemeralAndPublicKeyFromPartyCPP(true, ephemeralKey_B.substring(0, ephemeralKey_B.length()-1),
-				publicKey_B.substring(0, publicKey_B.length()-1));
-		mac_B.setEphemeralAndPublicKeyFromPartyCPP(false, ephemeralKey_A.substring(0, ephemeralKey_A.length()-1),
-				publicKey_A.substring(0, publicKey_A.length()-1));
-		//
-		mac_A.prepareEncryptionCPP(true, true);
-		String cipher_byte_a = mac_A.getEncryptCertAndRCPP(true);
-		addMessageOnView(cipher_byte_a);
-//		boolean result = mac_B.decodeEncryption(false, cipher_byte_a);
-//		if (result == true) {
-//			addMessageOnView("Wow, jaja, dzia³a, nie wierze");
-//		} else {
-//			addMessageOnView("Nie jestem zdziwiony");
-//		}
-		// //byte [] cipher_byte_b = mac_B.getEncryptCertAndRCPP(false);
-		//
-		// String cipher_byte_str_a = ConverterJava.ByteToString(cipher_byte_a);
-		// addMessageOnView("Szyfr przed zamiana: "+cipher_byte_str_a);
-		//
-		// byte[] result = mac_B.decodeEncryption(false, cipher_byte_str_a);
-		// String result_str = ConverterJava.ByteToString(result);
-		// addMessageOnView("Szyfr po zamianie: "+result_str);
-
-		// String cipher_byte_str_b = ConverterJava.ByteToString(cipher_byte_b);
-
-		// mac_A
-
-		// String str = "";
-		//
-		// addMessageOnView("dlugosc efemerycznego: "+ephemeralKey.length);
-		// str = ConverterJava.ByteToString(ephemeralKey);
-		// addMessageOnView("efemeryczy normlany: ");
-		// addMessageOnView(str);
-		//
-		// byte [] base64 = fromHexToBase64(ephemeralKey);
-		// str = ConverterJava.ByteToString(base64);
-		// addMessageOnView(str);
-		// BASE64Decoder decoder = new BASE64Decoder();
-		// byte[] imageByte = null;
-		// try {
-		// imageByte = decoder.decodeBuffer(str);
-		// } catch (IOException e) {
-		// // TODO Auto-generated catch block
-		// addMessageOnView("dupa blada kurwa2");
-		// e.printStackTrace();
-		// }
-		// addMessageOnView("rozmiar kurwy" + imageByte.length);
-		// String kurwa = ConverterJava.ByteToString(imageByte);
-		// addMessageOnView(kurwa);
-		// byte[] encodedHexB64 = Base64.encodeBase64(imageByte);
-		//
-		// addMessageOnView("serio? "+ConverterJava.ByteToString(encodedHexB64));
-		processes.setText(sb.toString());
+	public void click(View view) throws UnsupportedEncodingException {
+		switch (status) {
+			case INIT: 
+				String ephemeral_key_A = mac_A.getEphemeralKeyCPP(true);
+				String ephemKey_base64 = ConverterJava.fromHexStringToBase64(ephemeral_key_A);
+				soundgen.setTextToEncode(ephemKey_base64);
+	        	soundgen.start();
+		}
+		
+		
+		
 
 	}
+	
 
-	private byte[] fromHexToBase64(byte[] hex_byte) {
-		String hex_str = ConverterJava.ByteToString(hex_byte);
-		byte[] decodedHex = null;
+	
+	public void test(View view) throws UnsupportedEncodingException {
+		String ephemeralKey_A = mac_A.getEphemeralKeyCPP(true);
+//		byte [] ephemeralKey_byte = ConverterJava.hexStringToByteArray(ephemeralKey_A.substring(0, ephemeralKey_A.length() - 1));
+//		
+//		addMessageOnView(new String(ephemeralKey_byte));
+		
+		String ephemKey_base64 = ConverterJava.fromHexStringToBase64(ephemeralKey_A);
+		addMessageOnView(ephemeralKey_A);
+		addMessageOnView(ephemKey_base64);
+		ephemeralKey_A = ConverterJava.fromBase64StringToHex(ephemKey_base64);
+		addMessageOnView(ephemeralKey_A);
+		String ephemeralKey_B = mac_B.getEphemeralKeyCPP(false);
+		ephemeralKey_A = ephemeralKey_A + "H";
+		String publicKey_B = mac_A.getPublicKeyAnotherPartyCPP(true);
+		String publicKey_A = mac_B.getPublicKeyAnotherPartyCPP(false);
+
+		mac_A.setEphemeralAndPublicKeyFromPartyCPP(true, ephemeralKey_B, publicKey_B);
+		mac_B.setEphemeralAndPublicKeyFromPartyCPP(false, ephemeralKey_A, publicKey_A);
+		//
+		byte[] cert_A = mac_A.prepareEncryptionCPP(true, true);
+
+		String cipher_64 = Base64.encodeBytes(cert_A);
+		addMessageOnView(cipher_64);
+		byte[] chwila_prawdy = null;
 		try {
-			decodedHex = Hex.decodeHex(hex_str.substring(0,
-					hex_str.length() - 1).toCharArray());
-		} catch (DecoderException e) {
+			chwila_prawdy = Base64.decode(cipher_64);
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		boolean result = mac_B.decodeEncryption(false, chwila_prawdy);
+		if (result == true) {
+			addMessageOnView("Wow, jaja, dzia³a, nie wierze");
+		} else {
+			addMessageOnView("Nie jestem zdziwiony");
+		}
+		
+		byte[] cert_B = mac_B.prepareEncryptionCPP(false, false);
+		String cipher_64_B = Base64.encodeBytes(cert_B);
+		addMessageOnView(cipher_64_B);
+		byte[] chwila_prawdy_B = null;
+		try {
+			chwila_prawdy_B = Base64.decode(cipher_64_B);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		boolean result_A = mac_A.decodeEncryption(true, chwila_prawdy_B);
+		if (result_A == true) {
+			addMessageOnView("Wow, jaja, dzia³a dla A, nie wierze");
+		} else {
+			addMessageOnView("Nie jestem zdziwiony");
+		}
+		
+		processes.setText(sb.toString());
 
-		byte[] encodedHexB64 = Base64.encodeBase64(decodedHex);
-
-		return encodedHexB64;
 	}
+	
+	
+	
 
-	private String fromBase64ToHex(byte[] base64_byte) {
-		byte[] decodedB64Hex = Base64.decodeBase64(base64_byte);
-		return ConverterJava.bytesToHex(decodedB64Hex);
-	}
+//
+
 
 	private void HideLayout(int iid) {
 		LinearLayout myLayout = (LinearLayout) findViewById(iid);
@@ -273,6 +266,66 @@ public class InitActivity extends Activity {
 		sb.append(txt);
 		sb.append("\n");
 		processes.setText(sb.toString());
+	}
+	
+	private static class RegHandler extends Handler {
+        public static StringBuilder mTextBuilder; // = new StringBuilder();
+        private TextView mRecognisedTextView;
+
+        public RegHandler(TextView textView, StringBuilder txtBuilder) {
+            mRecognisedTextView = textView;
+            mTextBuilder = txtBuilder;
+        }
+        
+        public void setTxt(StringBuilder txt){
+        	mTextBuilder = txt;
+        }
+        
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+            case MSG_SET_RECG_TEXT:
+                char ch = (char) msg.arg1;
+                mTextBuilder.append(ch);
+                if (null != mRecognisedTextView) {
+                    mRecognisedTextView.setText(mTextBuilder.toString());
+                }
+                break;
+
+            case MSG_RECG_START:
+                mTextBuilder.delete(0, mTextBuilder.length());
+                break;
+
+            case MSG_RECG_END:
+                MessagesLog.d(TAG, "recognition end");
+                break;
+            }
+            super.handleMessage(msg);
+        }
+    }
+	
+	@Override
+	public void onStartRecogntion() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onRecognition(String str) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onEndRecogntion() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void EndOfSending() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
