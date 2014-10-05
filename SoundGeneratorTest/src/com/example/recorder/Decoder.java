@@ -54,7 +54,10 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 			while (state == Constants.START_STATE) {
 				buf_from_queue = this.vrs.getBufferForDecoderQueue();
 				if (buf_from_queue != null) {
+					MessagesLog.d(TAG, "Wzielo super1111" );
 					analyse(buf_from_queue);
+				}else{
+					 MessagesLog.e(TAG, "Wzielo puste" );
 				}
 			}
 		}
@@ -111,16 +114,16 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 	}
 
 	private void analyse(Buffer buffer) {
-		MessagesLog.d(TAG, ""+ buffer.getSize());
+//		MessagesLog.d(TAG, ""+ buffer.getSize());
 		int buffer_size = buffer.getSize();
-		int buffer_size_fft = buffer_size;
+//		int buffer_size_fft = buffer_size;
 		short[] buffer_short = buffer.getBufferShort();
-		long time = buffer.getTime();
-		counter++;
+//		long time = buffer.getTime();
+		
 		// verify that is power of two
-		if ((buffer_size_fft & (buffer_size_fft - 1)) != 0)
-			buffer_size_fft = 2 << (int) (Math.log(buffer_size_fft) / Math
-					.log(2));
+//		if ((buffer_size_fft & (buffer_size_fft - 1)) != 0)
+//			buffer_size_fft = 2 << (int) (Math.log(buffer_size_fft) / Math
+//					.log(2));
 
 		fftRealArray = new float[Constants.DEFAULT_BUFFER_SIZE];
 		fft = new FFT(Constants.DEFAULT_BUFFER_SIZE, Constants.SAMPLING);
@@ -145,18 +148,9 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 
 		int caught_freq = findPitch(fft);
 		checkPitch(caught_freq);
-		// ArrayList<Integer> caught_frequency = findFrequencies(fft);
-		// checkFrequenciesTwo(caught_frequency, time);
 
-		// ArrayList<Integer> caught_frequency = findFrequencies(fft);
-
-		// checkFrequencies(caught_frequency, time);
-
-		// ArrayList<Integer> caught_frequency = findFrequenciesAgain(fft);
-		// if(caught_frequency.size() > 0){
-		// checkFreqAgain(caught_frequency);
-		// }
 		if (Constants.DRAW_FFT) {
+			counter++;
 			if (counter % 2 == 0) {
 				if (counter == 1000) {
 					counter = 0;
@@ -167,14 +161,14 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 	}
 
 	private int findPitch(FFT fft) {
+//		MessagesLog.d(TAG, "fft.specsize() "+ fft.specSize());
 		float max_band = 0;
 		int max_peak = 0;
-		for (int i = 0; i < fft.specSize(); i++) {
-			if (fft.getBand(i) > 100) {
-				if (fft.getBand(i) > max_band) {
+		//int start = 40*fft.specSize() / 100;
+		for (int i = 1800; i < fft.specSize(); i++) {
+			if (fft.getBand(i) > 25 && fft.getBand(i) > max_band) {
 					max_peak = i;
 					max_band = fft.getBand(i);
-				}
 			}
 		}
 
@@ -212,7 +206,7 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 			if (current_freq != null) {
 				sign = current_freq.returnChar();
 				if (!sign.equals(Constants.NOEND_STR)) {
-					MessagesLog.d(TAG, "Znalazlo znak 2: " + sign);
+					//MessagesLog.d(TAG, "Znalazlo znak 2: " + sign);
 					vrs.onRecognition(String.valueOf(sign));
 				}
 				current_freq = null;
@@ -469,7 +463,7 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 //			} else {
 //				if (!found1 && !found2) {
 //					// it cannot happen!
-//					MessagesLog.d(TAG, "Nie znalaz³ dwóch.");
+//					gesLog.d(TAG, "Nie znalaz³ dwóch.");
 //					setNewFreqAndCheck(caught_frequency.get(0), time);
 //					setNewFreqAndCheck(caught_frequency.get(1), time);
 //

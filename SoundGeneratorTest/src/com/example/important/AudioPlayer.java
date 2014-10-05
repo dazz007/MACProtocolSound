@@ -50,7 +50,7 @@ public class AudioPlayer implements AudioPlayerSubject{
 			int startLength = 0;
 			while (state == Constants.START_STATE) {
 				Buffer buffer = getBufferFromQueueAL();
-				MessagesLog.d(TAG, "Pobiera");
+				//MessagesLog.d(TAG, "Pobiera");
 				if (buffer != null) {
 					//byte[] data = buffer.getBuffer();
 					//int size_of_data = buffer.getBufferSize();

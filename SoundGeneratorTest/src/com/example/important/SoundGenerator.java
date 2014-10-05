@@ -116,7 +116,7 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 			
 			int mFilledSize = 0;
 			Buffer buffer = new Buffer();
-			
+			int ramp = totalCount / 20;
 			short[] buffer_data = new short[Constants.DEFAULT_BUFFER_SIZE];
 			
 			for(int i = 0; i < totalCount ; ++i){
@@ -130,8 +130,18 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 					buffer_data = new short[Constants.DEFAULT_BUFFER_SIZE];
 				}
 				double out = (double) Math.sin(d);
-				buffer_data[mFilledSize++] = (short) ( out * Short.MAX_VALUE );
 				
+				final short val;
+				if(i < ramp){
+					val = (short) ((out * Short.MAX_VALUE * i / ramp));
+				}else if(i < totalCount - ramp){
+					val = (short) ((out * Short.MAX_VALUE));
+				}else{
+					val = (short) ((out * Short.MAX_VALUE * (totalCount-i)/ramp));
+				}
+				
+//				buffer_data[mFilledSize++] = (short) ( out * Short.MAX_VALUE );
+				buffer_data[mFilledSize++] = (short) ( val );
 				
 				d+=per;
 			}
@@ -257,7 +267,7 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 	@Override
 	public void sendDataToGraph(int[] data) {
 		this.sgo.updateLineGraph(data);
-		MessagesLog.d(TAG, "Wesz³o w send DataToGraph");
+		//MessagesLog.d(TAG, "Wesz³o w send DataToGraph");
 	}
 
 	@Override

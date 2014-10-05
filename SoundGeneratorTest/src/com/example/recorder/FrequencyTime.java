@@ -47,8 +47,10 @@ public class FrequencyTime {
 				sign = String.valueOf(Constants.STANDARD_ALPHABET[i]);
 				break;
 			}
-			
 		}
+		
+		//MessagesLog.d(TAG, "Znalaz³o czestotliwosc: "+frequency+" Wybrano literkê: "+sign);
+		
 	}
 	
 	public void increaseCount(){
@@ -59,7 +61,7 @@ public class FrequencyTime {
 	
 	public String foundAndReturnChar(){
 		if(counter == 3){
-			counter = 1;
+			counter = 0;
 			return sign;
 		}
 		return Constants.NOEND_STR;
@@ -82,7 +84,7 @@ public class FrequencyTime {
 			if (diff < Constants.DEFAULT_GEN_DURATION + ten_percent
 					&& diff > Constants.DEFAULT_GEN_DURATION + ten_percent) {
 				for (int i = 0; i < Constants.FREQUENCIES.length; i++) {
-					if (Constants.FREQUENCIES[i] + 40 > frequency
+					if (Constants.FREQUENCIES[i] + 50 > frequency
 							&& Constants.FREQUENCIES[i] - 50 < frequency) {
 						return Constants.STANDARD_ALPHABET[i];
 					}

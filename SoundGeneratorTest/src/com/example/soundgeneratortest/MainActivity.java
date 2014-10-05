@@ -130,7 +130,7 @@ public class MainActivity extends Activity implements VoiceRecognition.Listener{
 
 	@Override
 	public void onStartRecogntion() {
-		handler.sendEmptyMessage(MSG_RECG_START);
+		
 		
 	}
 
