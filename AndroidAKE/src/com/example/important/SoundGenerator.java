@@ -128,16 +128,14 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 		
 		ArrayList<Buffer> queue_with_data_AL = new ArrayList<Buffer>();
 		for (int index : inofsign) {
-			int n = Constants.BITS_16/2;
 			
 			int totalCount = Constants.DEFAULT_NUM_SAMPLES;
-			int pause = 10;
 			double per = (double) (( Constants.FREQUENCIES[index] * 2 * Math.PI )  / Constants.SAMPLING);
 			double d = 0;
 			
 			int mFilledSize = 0;
 			Buffer buffer = new Buffer();
-			
+			int ramp = totalCount / 40;
 			short[] buffer_data = new short[Constants.DEFAULT_BUFFER_SIZE];
 			
 			for(int i = 0; i < totalCount ; ++i){
@@ -151,8 +149,17 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 					buffer_data = new short[Constants.DEFAULT_BUFFER_SIZE];
 				}
 				double out = (double) Math.sin(d);
-				buffer_data[mFilledSize++] = (short) ( out * Short.MAX_VALUE );
+				final short val;
+				if(i < ramp){
+					val = (short) ((out * Short.MAX_VALUE * i / ramp));
+				}else if(i < totalCount - ramp){
+					val = (short) ((out * Short.MAX_VALUE));
+				}else{
+					val = (short) ((out * Short.MAX_VALUE * (totalCount-i)/ramp));
+				}
 				
+//				buffer_data[mFilledSize++] = (short) ( out * Short.MAX_VALUE );
+				buffer_data[mFilledSize++] = (short) ( val );
 				
 				d+=per;
 			}
@@ -169,61 +176,7 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 		return queue_with_data_AL;
 
 	}
-	
-//public ArrayList<Buffer> encodesDataToBuffers(List<Integer> inofsign) {
-//		
-//		ArrayList<Buffer> queue_with_data_AL = new ArrayList<Buffer>();
-//		int numSamples = Constants.DEFAULT_NUM_SAMPLES;     //44100
-//		float x = 0;
-//		
-//		
-//		for (int index : inofsign) {
-//			int n = Constants.BITS_16/2;
-//			int index_in_buffer = 0;
-//			
-//			int totalCount = Constants.DEFAULT_NUM_SAMPLES;
-//			double per = (Constants.FREQUENCIES[index] / (double) Constants.SAMPLING) * 2 * Math.PI;
-//			double d = 0;
-//			
-//			int mFilledSize = 0;
-//			Buffer buffer = new Buffer();
-//			
-//			byte[] buffer_data = new byte[Constants.DEFAULT_BUFFER_SIZE];
-//			
-//			for(int i = 0; i < totalCount ; ++i){
-//				int out = (int) (Math.sin(d) * n) + 128;
-//				
-//				if(mFilledSize >= Constants.DEFAULT_BUFFER_SIZE - 1){
-//					buffer.setBuffer(buffer_data);
-//					buffer.setBufferSize(mFilledSize);
-//					mFilledSize = 0;
-//					queue_with_data_AL.add(buffer);
-//					buffer = new Buffer();
-//					buffer_data = new byte[Constants.DEFAULT_BUFFER_SIZE];
-//				}
-//				
-//				buffer_data[mFilledSize++] = (byte) (out & 0xff);
-//				buffer_data[mFilledSize++] = (byte) ((out >> 8) & 0xff);
-//				
-//				d+=per;
-//			}
-//			
-//			
-//			buffer.setBuffer(buffer_data);
-//			buffer.setBufferSize(mFilledSize);
-//			
-//			
-//			mFilledSize = 0;
-//			
-//			queue_with_data_AL.add(buffer);
-//		}
-//		return queue_with_data_AL;
-//
-//	}
-	
 
-	
-	
 	public void start() {
 		if (state == Constants.STOP_STATE) {
 			state = Constants.START_STATE;

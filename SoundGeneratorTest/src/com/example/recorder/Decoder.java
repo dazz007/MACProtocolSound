@@ -41,7 +41,6 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 		counter = 0;
 
 		queue_for_graph = new Queue();
-		freq_time = new ArrayList<FrequencyTime>();
 	}
 
 	public void start() {
@@ -54,15 +53,21 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 			while (state == Constants.START_STATE) {
 				buf_from_queue = this.vrs.getBufferForDecoderQueue();
 				if (buf_from_queue != null) {
-					MessagesLog.d(TAG, "Wzielo super1111" );
+					//MessagesLog.d(TAG, "Wzielo super1111" );
 					analyse(buf_from_queue);
 				}else{
-					 MessagesLog.e(TAG, "Wzielo puste" );
+					// MessagesLog.e(TAG, "Wzielo puste" );
 				}
 			}
 		}
 	}
-
+	
+	public void stop(){
+		if(state == Constants.START_STATE){
+			state = Constants.STOP_STATE;
+		}
+	}
+	
 	public void start2() {
 		int needed_size = 0;
 		int MAX_SIZE = Constants.DEFAULT_NUM_SAMPLES / 2;
@@ -166,7 +171,8 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 		int max_peak = 0;
 		//int start = 40*fft.specSize() / 100;
 		for (int i = 1800; i < fft.specSize(); i++) {
-			if (fft.getBand(i) > 25 && fft.getBand(i) > max_band) {
+			if (fft.getBand(i) > 7)
+					if(fft.getBand(i) > max_band) {
 					max_peak = i;
 					max_band = fft.getBand(i);
 			}

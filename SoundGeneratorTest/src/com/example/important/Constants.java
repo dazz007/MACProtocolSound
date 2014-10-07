@@ -10,12 +10,12 @@ public class Constants {
 //	public final static String AVAILABLE_SIGNS = "0123456789ABCDEFHG";
 //	public final static int DEFAULT_BUFFER_SIZE = 2*8192;
 	public final static int DEFAULT_BUFFER_COUNT = 3;
-	public final static int DEFAULT_GEN_DURATION = 50;
+	public final static int DEFAULT_GEN_DURATION = 30;
 	public final static int DEFAULT_NUM_SAMPLES = DEFAULT_GEN_DURATION * SAMPLING / 1000;
 	public final static int DEFAULT_BUFFER_SIZE = 8192;
 	public final static int DEFAULT_BUFFER_SIZE_REC = 2048;
-	public final static String START_OF_DATA = "GH";
-	public final static String END_OF_DATA = "HG";
+	public final static String START_OF_DATA = ",";
+	public final static String END_OF_DATA = ",";
 	public final static char NOEND = '-';
 	public final static String NOEND_STR = "-";
 	// 0123456789ABCDEFGH = 15 signs

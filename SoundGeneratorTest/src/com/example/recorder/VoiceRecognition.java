@@ -175,4 +175,45 @@ public class VoiceRecognition implements VoiceRecSubject, VoiceGetter.Callback{
 		mListener.onRecognition(str);
 		
 	}
+	
+	public void stop(){
+		if (state == Constants.START_STATE) {
+			state = Constants.STOP_STATE;
+			MessagesLog.d(TAG, "sending data is over");
+			record_audio.stop();
+			if (thread_recorder != null) {
+				try {
+					thread_recorder.join();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				} finally {
+					thread_recorder = null;
+				}
+			}
+			voice_getter.stop();
+			if (thread_recorder != null) {
+				try {
+					thread_voice_getter.join();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				} finally {
+					thread_voice_getter = null;
+				}
+			}
+			decoder.stop();
+			if (thread_decoder != null) {
+				try {
+					thread_decoder.join();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				} finally {
+					thread_decoder = null;
+				}
+			}
+		}
+		
+		queue_for_graph.clearBuffers();
+		queue_for_analyzer.clearBuffers();
+		
+	}
 }

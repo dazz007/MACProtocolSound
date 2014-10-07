@@ -4,7 +4,6 @@ import com.example.important.Buffer;
 import com.example.important.Constants;
 import com.example.important.MessagesLog;
 import com.example.important.Queue;
-import com.example.interfaces.RecorderAudioObserver;
 import com.example.interfaces.VoiceRecObserver;
 import com.example.interfaces.VoiceRecSubject;
 
@@ -20,7 +19,6 @@ public class VoiceRecognition implements VoiceRecSubject, VoiceGetter.Callback{
 	private Thread thread_voice_getter;
 	private Queue queue_for_analyzer;
 	private Queue queue_for_graph;
-	private VoiceRecObserver voice_rec_observer;
 	private Decoder decoder;
 	private VoiceGetter voice_getter;
 	private Listener mListener;
@@ -52,7 +50,7 @@ public class VoiceRecognition implements VoiceRecSubject, VoiceGetter.Callback{
 	public static interface Listener{
 		public void onStartRecogntion();
 		public void onRecognition(String str);
-		public void onEndRecogntion();
+		public void onEndRecognition();
 	}
 	
 	public void setListener(Listener listener){
@@ -92,7 +90,48 @@ public class VoiceRecognition implements VoiceRecSubject, VoiceGetter.Callback{
 			}
 		}
 	}
-
+	
+	
+	public void stop(){
+		if (state == Constants.START_STATE) {
+			state = Constants.STOP_STATE;
+			MessagesLog.d(TAG, "sending data is over");
+			record_audio.stop();
+			if (thread_recorder != null) {
+				try {
+					thread_recorder.join();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				} finally {
+					thread_recorder = null;
+				}
+			}
+			voice_getter.stop();
+			if (thread_recorder != null) {
+				try {
+					thread_voice_getter.join();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				} finally {
+					thread_voice_getter = null;
+				}
+			}
+			decoder.stop();
+			if (thread_decoder != null) {
+				try {
+					thread_decoder.join();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				} finally {
+					thread_decoder = null;
+				}
+			}
+		}
+		
+		queue_for_graph.clearBuffers();
+		queue_for_analyzer.clearBuffers();
+		
+	}
 //	@Override
 //	public void sendDataToGraph(int[] data) {
 //		voice_rec_observer.updateLineGraph(data);
@@ -122,7 +161,7 @@ public class VoiceRecognition implements VoiceRecSubject, VoiceGetter.Callback{
 
 	@Override
 	public void register(VoiceRecObserver vro) {
-		voice_rec_observer = vro;
+//		voice_rec_observer = vro;
 		
 	}
 

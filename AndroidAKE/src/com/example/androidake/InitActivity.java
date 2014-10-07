@@ -52,10 +52,12 @@ public class InitActivity extends Activity implements VoiceRecognition.Listener,
 	private static GraphicalView graph_view_fft;
 	private LineGraph line_fft = new LineGraph(true);
 	private StringBuilder sb;
+	private StringBuilder ephemeralKey;
     private final static int MSG_SET_RECG_TEXT = 1;
     private final static int MSG_RECG_START = 2;
     private final static int MSG_RECG_END = 3;
-    
+    private boolean start_of_message = false;
+    private Handler handler;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,7 +67,6 @@ public class InitActivity extends Activity implements VoiceRecognition.Listener,
 		boolean is_init = getIntent().getExtras().getBoolean(
 				Constants.bundle_init_id);
 		initializator = is_init;
-		setFirstStatus(is_init);
 		setupActionBar();
 		
 		soundgen = new SoundGenerator(Constants.SAMPLING, this);
@@ -75,12 +76,16 @@ public class InitActivity extends Activity implements VoiceRecognition.Listener,
 		
 		
 		sb = new StringBuilder();
+		
+		ephemeralKey = new StringBuilder();
 		mac_A = new MutualAuthenticateChip();
 		// mac.set_initializator(true);
 		mac_A.prepareMACCPP(is_init);
 		mac_B = new MutualAuthenticateChip();
 		mac_B.prepareMACCPP(false);
 		processes = (TextView) findViewById(R.id.processes);
+		handler = new RegHandler(processes, sb);
+		setFirstStatus(is_init);
 		addMessageOnView("Zaraz sie zacznie magia");
 	}
 
@@ -123,23 +128,34 @@ public class InitActivity extends Activity implements VoiceRecognition.Listener,
 			status = STATUS.INIT;
 		} else {
 			status = STATUS.RECEIV_EPH;
+			process();
 		}
 	}
 
 	public void click(View view) throws UnsupportedEncodingException {
+		process();
+
+	}
+	
+	private void process(){
+		Button button = (Button) findViewById(R.id.send_eph_key);
 		switch (status) {
 			case INIT: 
 				String ephemeral_key_A = mac_A.getEphemeralKeyCPP(true);
 				String ephemKey_base64 = ConverterJava.fromHexStringToBase64(ephemeral_key_A);
 				soundgen.setTextToEncode(ephemKey_base64);
+				button.setText("Ephemeral Key is sending... Please wait");
+				button.setEnabled(false);
 	        	soundgen.start();
+	        	break;
+			case RECEIV_EPH:
+				button.setText("Receiving ephemeral key...");
+				button.setEnabled(false);
+				voicerec.start();
+				break;
+			default: break;
 		}
-		
-		
-		
-
 	}
-	
 
 	
 	public void test(View view) throws UnsupportedEncodingException {
@@ -306,26 +322,47 @@ public class InitActivity extends Activity implements VoiceRecognition.Listener,
 	
 	@Override
 	public void onStartRecogntion() {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onRecognition(String str) {
-		// TODO Auto-generated method stub
-		
+		if(start_of_message == false){
+			
+			if(str.length() > 0){
+				if(str.charAt(0) == Constants.STANDARD_ALPHABET[65]){
+					start_of_message = true;
+				}
+			}
+		}else{
+			if(str.length() > 0){
+				if(str.charAt(0) == Constants.STANDARD_ALPHABET[65]){
+					
+				}else if(str.charAt(0) == Constants.STANDARD_ALPHABET[66]){
+					
+				}else{
+					ephemeralKey.append(str.charAt(0));
+					Message msg = new Message();
+					msg.obj = str;
+					for(int i = 0 ; i < str.length(); i++){
+						handler.sendMessage(handler.obtainMessage(MSG_SET_RECG_TEXT, str.charAt(i), 0));
+					}
+				}
+				
+			}
+		}
 	}
 
 	@Override
-	public void onEndRecogntion() {
+	public void onEndRecognition() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void EndOfSending() {
-		// TODO Auto-generated method stub
-		
+		changeStatus();
+		process();
 	}
 
 }

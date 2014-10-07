@@ -52,4 +52,10 @@ public class VoiceGetter {
 		}
 	}
 	
+	public void stop(){
+		if(state == Constants.START_STATE){
+			state = Constants.STOP_STATE;
+		}
+	}
+	
 }

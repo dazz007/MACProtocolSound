@@ -1,12 +1,9 @@
 package com.example.recorder;
 
-import java.util.ArrayList;
 
 import com.example.important.Buffer;
 import com.example.important.Constants;
 import com.example.important.MessagesLog;
-import com.example.interfaces.RecorderAudioObserver;
-import com.example.interfaces.RecorderAudioSubject;
 
 import android.media.AudioRecord;
 
@@ -14,21 +11,19 @@ public class RecorderAudio{
 	private final static String TAG = "RecorderAudio";
 	private AudioRecord recorder;
 	private int state;
-	private int buffer_size = Constants.DEFAULT_BUFFER_SIZE;
-	//private RecorderAudioObserver recorder_audio_observer;
-	private ArrayList<Buffer> queueWithBufferToPrintAL;
 	
 	public RecorderAudio(int source, int sample_rate, int channel_config, int audio_format, int buffer_size_in_bytes){
 		int minBufferSize = AudioRecord.getMinBufferSize(sample_rate, channel_config, audio_format);
+		if(minBufferSize < Constants.DEFAULT_NUM_SAMPLES){
+			minBufferSize = Constants.DEFAULT_NUM_SAMPLES;
+		}
 		recorder = new AudioRecord(source,
 								   sample_rate,
 								   channel_config,
 								   audio_format, 
-								   Constants.DEFAULT_NUM_SAMPLES);
+								   minBufferSize);
 		//buffer_size = Constants.DEFAULT_BUFFER_SIZE_REC;
-		buffer_size = Constants.DEFAULT_NUM_SAMPLES;
-		//recorder.setPositionNotificationPeriod(buffer_size);
-		queueWithBufferToPrintAL = new ArrayList<Buffer>();
+//		buffer_size = Constants.DEFAULT_NUM_SAMPLES;
 	}
 	
 	public void start(){
@@ -52,13 +47,6 @@ public class RecorderAudio{
 			state = Constants.STOP_STATE;
 		}
 	}
-	
-//	public void setNotificationPeriod(int period){
-//		
-//		
-//		
-//	}
-	
 	
 	public Buffer getFrameData(int period){
 		Buffer data = new Buffer(period);

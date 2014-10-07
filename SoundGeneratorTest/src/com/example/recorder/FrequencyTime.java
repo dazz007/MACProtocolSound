@@ -9,6 +9,7 @@ public class FrequencyTime {
 	private long end = 0;
 	private int frequency;
 	private int counter;
+	private int nr_sign = 0;
 	private String sign;
 	private StringBuilder sb;
 	
@@ -41,8 +42,9 @@ public class FrequencyTime {
 	public void setFrequency(int frequency) {
 		this.frequency = frequency;
 		counter++;
+		nr_sign++;
 		for (int i = 0; i < Constants.FREQUENCIES.length; i++) {
-			if (Constants.FREQUENCIES[i] + 40 > frequency
+			if (Constants.FREQUENCIES[i] + 50 > frequency
 					&& Constants.FREQUENCIES[i] - 50 < frequency) {
 				sign = String.valueOf(Constants.STANDARD_ALPHABET[i]);
 				break;
@@ -61,14 +63,17 @@ public class FrequencyTime {
 	
 	public String foundAndReturnChar(){
 		if(counter == 3){
-			counter = 0;
+			counter = 1;
+			nr_sign++;
 			return sign;
 		}
 		return Constants.NOEND_STR;
 	}
 	
 	public String returnChar(){
-		if(counter >= 1 && counter <= 3){
+		if(counter == 1 && nr_sign > 1){
+			return Constants.NOEND_STR;
+		}else if(counter >= 1 && counter <= 3){
 			return sign;
 		}
 		return Constants.NOEND_STR;

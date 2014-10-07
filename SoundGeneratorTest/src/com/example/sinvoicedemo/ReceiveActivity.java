@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +48,7 @@ public class ReceiveActivity extends Activity implements VoiceRecognition.Listen
 	private static class RegHandler extends Handler {
         public static StringBuilder mTextBuilder; // = new StringBuilder();
         private TextView mRecognisedTextView;
+        private boolean recognized = false;
         private String string_to_compare = "SWRlYWx5IHNhIGphayBnd2lhemR5IC0gbmllIG1vem5hIGljaCBvc2lhZ25hYywgYWxlIG1vem5hIHNpZSBuaW1pIGtpZXJvd2FjLg0K";
         public RegHandler(TextView textView, StringBuilder txtBuilder) {
             mRecognisedTextView = textView;
@@ -62,11 +64,20 @@ public class ReceiveActivity extends Activity implements VoiceRecognition.Listen
             switch (msg.what) {
             case MSG_SET_RECG_TEXT:
                 char ch = (char) msg.arg1;
+//                if(mTextBuilder.toString().charAt(mTextBuilder.toString().length()) == ','){
+//                	mTextBuilder.delete(0, mTextBuilder.length());
+//                }
                 mTextBuilder.append(ch);
+                if(recognized){
+                	mTextBuilder.delete(0, mTextBuilder.length());
+                	recognized = false;
+                }
                 if(string_to_compare.equals(mTextBuilder.toString())){
                 	mTextBuilder.append(" --- no i piêknie");
-                	
+                	recognized = true;
+//                	mTextBuilder.delete(0, mTextBuilder.length());
                 }
+                
                 if (null != mRecognisedTextView) {
                     mRecognisedTextView.setText(mTextBuilder.toString());
                 }
@@ -99,7 +110,13 @@ public class ReceiveActivity extends Activity implements VoiceRecognition.Listen
 		}
 		
 	}
-
+	
+	public void onBackPressed() {
+		voicerec.stop();
+		this.finish();
+	    //moveTaskToBack(true);
+	}
+	
 	@Override
 	public void onEndRecogntion() {
 		// TODO Auto-generated method stub

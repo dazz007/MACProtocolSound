@@ -82,4 +82,11 @@ public class Queue {
 		return null;
 	}
 	
+	
+	public void clearBuffers(){
+		producer.clear();
+		consumer.clear();
+		fft.clear();
+	}
+	
 }

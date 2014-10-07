@@ -46,9 +46,12 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 			}
 		}
 //		for (int i = 0; i < Constants.END_OF_DATA.length(); i++) {
-//			int index = Constants.AVAILABLE_SIGNS.indexOf(Constants.END_OF_DATA
-//					.charAt(i));
-//			indexesOfSigns.add(index);
+//			for(int j = 0; j < Constants.STANDARD_ALPHABET.length; j++){
+//				if(Constants.END_OF_DATA.charAt(i) == Constants.STANDARD_ALPHABET[j] ){
+//					indexesOfSigns.add(j);
+//					break;
+//				}
+//			}
 //		}
 
 		return indexesOfSigns;
@@ -107,16 +110,14 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 		
 		ArrayList<Buffer> queue_with_data_AL = new ArrayList<Buffer>();
 		for (int index : inofsign) {
-			int n = Constants.BITS_16/2;
 			
 			int totalCount = Constants.DEFAULT_NUM_SAMPLES;
-			int pause = 10;
 			double per = (double) (( Constants.FREQUENCIES[index] * 2 * Math.PI )  / Constants.SAMPLING);
 			double d = 0;
 			
 			int mFilledSize = 0;
 			Buffer buffer = new Buffer();
-			int ramp = totalCount / 20;
+			int ramp = totalCount / 40;
 			short[] buffer_data = new short[Constants.DEFAULT_BUFFER_SIZE];
 			
 			for(int i = 0; i < totalCount ; ++i){

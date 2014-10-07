@@ -27,15 +27,33 @@ public class VoiceGetter {
 	}
 	
 	public void start() {
+		int temp_count = 0;
+		int period = Constants.DEFAULT_NUM_SAMPLES /2;
 		if (state == Constants.STOP_STATE) {
 			state = Constants.START_STATE;
 			//this.recorder_audio.setNotificationPeriod(Constants.DEFAULT_NUM_SAMPLES);
 			while (state == Constants.START_STATE) {
-				Buffer buffer = this.recorder_audio.getFrameData(Constants.DEFAULT_NUM_SAMPLES);
+				Buffer buffer = null;
+				if(temp_count % 2 == 0){
+					buffer = this.recorder_audio.getFrameData(period);
+				}else{
+					buffer = this.recorder_audio.getFrameData(period+1);
+				}
+//				Buffer buffer = this.recorder_audio.getFrameData(Constants.DEFAULT_NUM_SAMPLES/2);
+				temp_count++;
+				if(temp_count == 1000){
+					temp_count = 0;
+				}
 				if (buffer != null) {
 					callback.putBufferToQueue(buffer);
 				}
 			}
+		}
+	}
+	
+	public void stop(){
+		if(state == Constants.START_STATE){
+			state = Constants.STOP_STATE;
 		}
 	}
 	
