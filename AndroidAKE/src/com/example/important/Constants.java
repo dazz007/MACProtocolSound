@@ -157,6 +157,6 @@ public class Constants {
 //	 Other thing
 	public final static String bundle_init_id = "is_initializator";
 	
-	public static enum STATUS { INIT, RECEIV_EPH, SEND_EPHEM, SEND_ENC, RECEIV_ENC, GEN_SESSION_KEY };
+	public static enum STATUS { NEUTRAL, INIT, RECEIV_EPH, SEND_EPHEM, SEND_ENC, RECEIV_ENC, GEN_SESSION_KEY };
 	
 }

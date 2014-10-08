@@ -43,6 +43,8 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 	public void start() {
 		Buffer buf_from_queue;
 		current_freq = null;
+
+		fft = new FFT(Constants.DEFAULT_BUFFER_SIZE, Constants.SAMPLING);
 		if (state == Constants.STOP_STATE) {
 			state = Constants.START_STATE;
 			prepared_buffers = new ArrayList<Buffer>();
@@ -62,58 +64,58 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 		}
 	}
 	
-	public void start2() {
-		int needed_size = 0;
-		int MAX_SIZE = Constants.DEFAULT_NUM_SAMPLES / 2;
-		Buffer buf_from_queue;
-		Buffer prep_buf;
-		if (state == Constants.STOP_STATE) {
-			state = Constants.START_STATE;
-			prepared_buffers = new ArrayList<Buffer>();
-			this.vrs.onStartRecognition();
-			while (state == Constants.START_STATE) {
-				buf_from_queue = this.vrs.getBufferForDecoderQueue();
-				if (buf_from_queue != null) {
-
-					if (prepared_buffers.size() == 0) {
-						prep_buf = new Buffer(MAX_SIZE);
-						System.arraycopy(buf_from_queue.buffer_short, 0, prep_buf.buffer_short, 0, buf_from_queue.getSize());
-						prep_buf.setSize(buf_from_queue.getSize());
-						prepared_buffers.add(prep_buf);
-					} else if (prepared_buffers.size() == 1) {
-						prep_buf = prepared_buffers.get(0);
-						needed_size = MAX_SIZE - prep_buf.getSize();
-						if (needed_size == 0) {
-							analyse(prep_buf);
-							prep_buf = new Buffer(MAX_SIZE);
-							prep_buf.setSize(buf_from_queue.getSize());
-							System.arraycopy(buf_from_queue.buffer_short, 0, prep_buf.buffer_short, 0, buf_from_queue.getSize());
-							prepared_buffers.set(0, prep_buf);
-							// prepared_buffers.remove(0);
-						} else if (buf_from_queue.getSize() > needed_size) {
-							System.arraycopy(buf_from_queue.buffer_short, 0, prep_buf.buffer_short, prep_buf.getSize(), needed_size);
-							prep_buf.setSize(prep_buf.getSize() + needed_size);
-							analyse(prep_buf);
-							prep_buf = new Buffer(MAX_SIZE);
-							System.arraycopy(buf_from_queue.buffer_short, needed_size, prep_buf.buffer_short, 0, buf_from_queue.getSize() - needed_size);
-							prep_buf.setSize(buf_from_queue.getSize() - needed_size);
-							prepared_buffers.set(0, prep_buf);
-							// prepared_buffers.add(prep_buf_next);
-
-							// prepared_buffers.remove(0);
-						} else if (buf_from_queue.getSize() < needed_size) {
-							System.arraycopy(buf_from_queue.buffer_short, 0, prep_buf.buffer_short, prep_buf.getSize(), buf_from_queue.getSize());
-							prep_buf.setSize(prep_buf.getSize() + buf_from_queue.getSize());
-							prepared_buffers.set(0, prep_buf);
-						}
-					}
-				}
-			}
-		}
-	}
+//	public void start2() {
+//		int needed_size = 0;
+//		int MAX_SIZE = Constants.DEFAULT_NUM_SAMPLES / 2;
+//		Buffer buf_from_queue;
+//		Buffer prep_buf;
+//		if (state == Constants.STOP_STATE) {
+//			state = Constants.START_STATE;
+//			prepared_buffers = new ArrayList<Buffer>();
+//			this.vrs.onStartRecognition();
+//			while (state == Constants.START_STATE) {
+//				buf_from_queue = this.vrs.getBufferForDecoderQueue();
+//				if (buf_from_queue != null) {
+//
+//					if (prepared_buffers.size() == 0) {
+//						prep_buf = new Buffer(MAX_SIZE);
+//						System.arraycopy(buf_from_queue.buffer_short, 0, prep_buf.buffer_short, 0, buf_from_queue.getSize());
+//						prep_buf.setSize(buf_from_queue.getSize());
+//						prepared_buffers.add(prep_buf);
+//					} else if (prepared_buffers.size() == 1) {
+//						prep_buf = prepared_buffers.get(0);
+//						needed_size = MAX_SIZE - prep_buf.getSize();
+//						if (needed_size == 0) {
+//							analyse(prep_buf);
+//							prep_buf = new Buffer(MAX_SIZE);
+//							prep_buf.setSize(buf_from_queue.getSize());
+//							System.arraycopy(buf_from_queue.buffer_short, 0, prep_buf.buffer_short, 0, buf_from_queue.getSize());
+//							prepared_buffers.set(0, prep_buf);
+//							// prepared_buffers.remove(0);
+//						} else if (buf_from_queue.getSize() > needed_size) {
+//							System.arraycopy(buf_from_queue.buffer_short, 0, prep_buf.buffer_short, prep_buf.getSize(), needed_size);
+//							prep_buf.setSize(prep_buf.getSize() + needed_size);
+//							analyse(prep_buf);
+//							prep_buf = new Buffer(MAX_SIZE);
+//							System.arraycopy(buf_from_queue.buffer_short, needed_size, prep_buf.buffer_short, 0, buf_from_queue.getSize() - needed_size);
+//							prep_buf.setSize(buf_from_queue.getSize() - needed_size);
+//							prepared_buffers.set(0, prep_buf);
+//							// prepared_buffers.add(prep_buf_next);
+//
+//							// prepared_buffers.remove(0);
+//						} else if (buf_from_queue.getSize() < needed_size) {
+//							System.arraycopy(buf_from_queue.buffer_short, 0, prep_buf.buffer_short, prep_buf.getSize(), buf_from_queue.getSize());
+//							prep_buf.setSize(prep_buf.getSize() + buf_from_queue.getSize());
+//							prepared_buffers.set(0, prep_buf);
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}
 
 	private void analyse(Buffer buffer) {
-		MessagesLog.d(TAG, ""+ buffer.getSize());
+//		MessagesLog.d(TAG, ""+ buffer.getSize());
 		int buffer_size = buffer.getSize();
 //		int buffer_size_fft = buffer_size;
 		short[] buffer_short = buffer.getBufferShort();
@@ -123,7 +125,6 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 //					.log(2));
 
 		fftRealArray = new float[Constants.DEFAULT_BUFFER_SIZE];
-		fft = new FFT(Constants.DEFAULT_BUFFER_SIZE, Constants.SAMPLING);
 		for (int i = 0; i < buffer_size; i++) {
 			fftRealArray[i] = (float) buffer_short[i] / Short.MAX_VALUE;
 		}

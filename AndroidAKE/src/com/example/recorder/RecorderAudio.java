@@ -22,6 +22,7 @@ public class RecorderAudio{
 								   channel_config,
 								   audio_format, 
 								   minBufferSize);
+		state = Constants.STOP_STATE;
 		//buffer_size = Constants.DEFAULT_BUFFER_SIZE_REC;
 //		buffer_size = Constants.DEFAULT_NUM_SAMPLES;
 	}
@@ -33,8 +34,6 @@ public class RecorderAudio{
 				recorder.startRecording();
 				MessagesLog.d(TAG, "Rozpoczêcie nagrywania");
 			}
-			
-			
 		}
 	}
 	

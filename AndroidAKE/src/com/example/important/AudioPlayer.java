@@ -84,6 +84,7 @@ public class AudioPlayer implements AudioPlayerSubject{
 			}
 			state = Constants.STOP_STATE;
 			MessagesLog.d(TAG, "end of transferring data");
+			MessagesLog.d(TAG, "Weszlo sobie tutaj po zakonczeniu?5643653");
 			observer.setStopStatus();
 
 		}

@@ -22,13 +22,17 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 		public void EndOfSending();
 	}
 	
-	public SoundGenerator(int sampleRate, Listener lstnr) {
-		listener = lstnr;
+	public SoundGenerator(int sampleRate) {
+		
 		player = new AudioPlayer(sampleRate);
 		player.register(this);
 		state = Constants.STOP_STATE;
 	}
-
+	
+	public void setListener(Listener lstnr){
+		listener = lstnr;
+	}
+	
 
 	public void setTextToEncode(String text) {
 		textToPlay = text;
@@ -199,11 +203,15 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 
 	@Override
 	public void setStopStatus() {
+		MessagesLog.d(TAG, "Weszlo sobie tutaj po zakonczeniu? 22222");
+		MessagesLog.d(TAG, "Weszlo sobie tutaj po zakonczeniu? 323232323235454");
+		
 		// TODO Auto-generated method stub
 		if (state == Constants.START_STATE) {
 			state = Constants.STOP_STATE;
 			MessagesLog.d(TAG, "sending data is over");
 			player.stop();
+			listener.EndOfSending();
 			if (threadPlayer != null) {
 				try {
 					threadPlayer.join();
@@ -215,7 +223,6 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 			}
 		}
 		
-		listener.EndOfSending();
 	}
 
 	@Override

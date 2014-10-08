@@ -50,6 +50,8 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 			state = Constants.START_STATE;
 			prepared_buffers = new ArrayList<Buffer>();
 			this.vrs.onStartRecognition();
+
+			fft = new FFT(Constants.DEFAULT_BUFFER_SIZE, Constants.SAMPLING);
 			while (state == Constants.START_STATE) {
 				buf_from_queue = this.vrs.getBufferForDecoderQueue();
 				if (buf_from_queue != null) {
@@ -131,7 +133,6 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 //					.log(2));
 
 		fftRealArray = new float[Constants.DEFAULT_BUFFER_SIZE];
-		fft = new FFT(Constants.DEFAULT_BUFFER_SIZE, Constants.SAMPLING);
 		for (int i = 0; i < buffer_size; i++) {
 			fftRealArray[i] = (float) buffer_short[i] / Short.MAX_VALUE;
 		}

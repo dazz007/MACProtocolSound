@@ -52,41 +52,41 @@ public class InitActivity extends Activity implements VoiceRecognition.Listener,
 	private static GraphicalView graph_view_fft;
 	private LineGraph line_fft = new LineGraph(true);
 	private StringBuilder sb;
-	private StringBuilder ephemeralKey;
+	private StringBuilder ephemeral_key_B;
     private final static int MSG_SET_RECG_TEXT = 1;
     private final static int MSG_RECG_START = 2;
     private final static int MSG_RECG_END = 3;
     private boolean start_of_message = false;
     private Handler handler;
+    private Button button2;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_init);
 		prepareContainer();
-
+		
+		status = STATUS.NEUTRAL;
+		
 		boolean is_init = getIntent().getExtras().getBoolean(
 				Constants.bundle_init_id);
-		initializator = is_init;
+		//initializator = is_init;
 		setupActionBar();
 		
-		soundgen = new SoundGenerator(Constants.SAMPLING, this);
+		soundgen = new SoundGenerator(Constants.SAMPLING);
+		soundgen.setListener(this);
 		voicerec = new VoiceRecognition();
 		voicerec.setListener(this);
 		line_fft.setDecSubject(voicerec.getDecoder());
-		
+		button2 = (Button) findViewById(R.id.send_eph_key);
 		
 		sb = new StringBuilder();
 		
-		ephemeralKey = new StringBuilder();
-		mac_A = new MutualAuthenticateChip();
-		// mac.set_initializator(true);
-		mac_A.prepareMACCPP(is_init);
-		mac_B = new MutualAuthenticateChip();
-		mac_B.prepareMACCPP(false);
+		ephemeral_key_B = new StringBuilder();
 		processes = (TextView) findViewById(R.id.processes);
 		handler = new RegHandler(processes, sb);
-		setFirstStatus(is_init);
-		addMessageOnView("Zaraz sie zacznie magia");
+		addMessageOnView("Nas³uchiwanie....");
+		
+		voicerec.start();
 	}
 
 	/**
@@ -123,35 +123,53 @@ public class InitActivity extends Activity implements VoiceRecognition.Listener,
 		return super.onOptionsItemSelected(item);
 	}
 
-	public void setFirstStatus(boolean init) {
-		if (init) {
-			status = STATUS.INIT;
-		} else {
-			status = STATUS.RECEIV_EPH;
-			process();
-		}
-	}
 
 	public void click(View view) throws UnsupportedEncodingException {
+		voicerec.stop();
+		initParty(true);
 		process();
-
 	}
 	
-	private void process(){
-		Button button = (Button) findViewById(R.id.send_eph_key);
+	private void initParty(boolean init){
+		initializator = init;
+		mac_A = new MutualAuthenticateChip();
+		mac_A.prepareMACCPP(init);
+		changeStatus();
+	}
+	
+	
+	private void process() {
+		
+		String ephemeral_key_A;
+		String ephemKey_base64;
 		switch (status) {
 			case INIT: 
-				String ephemeral_key_A = mac_A.getEphemeralKeyCPP(true);
-				String ephemKey_base64 = ConverterJava.fromHexStringToBase64(ephemeral_key_A);
+				ephemeral_key_A = mac_A.getEphemeralKeyCPP(initializator);
+				ephemKey_base64 = ConverterJava.fromHexStringToBase64(ephemeral_key_A);
 				soundgen.setTextToEncode(ephemKey_base64);
-				button.setText("Ephemeral Key is sending... Please wait");
-				button.setEnabled(false);
+				button2.setText("Ephemeral Key is sending... Please wait");
+				button2.setEnabled(false);
 	        	soundgen.start();
 	        	break;
 			case RECEIV_EPH:
-				button.setText("Receiving ephemeral key...");
-				button.setEnabled(false);
-				voicerec.start();
+				button2.setText("Receiving ephemeral key...");
+				button2.setEnabled(false);
+				if(initializator)
+					voicerec.start();
+				
+				break;
+			case SEND_EPHEM:
+				voicerec.stop();
+				button2.setText("Ephemeral Key is sending... Please wait");
+				button2.setEnabled(false);
+				String public_key_B = mac_A.getPublicKeyAnotherPartyCPP(initializator);
+				String temp_ephemeral_key_B = ConverterJava.fromBase64StringToHex(ephemeral_key_B.toString());
+				temp_ephemeral_key_B = temp_ephemeral_key_B + "H";
+				mac_A.setEphemeralAndPublicKeyFromPartyCPP(initializator, temp_ephemeral_key_B, public_key_B);
+				ephemeral_key_A = mac_A.getEphemeralKeyCPP(initializator);
+				ephemKey_base64 = ConverterJava.fromHexStringToBase64(ephemeral_key_A);
+				soundgen.setTextToEncode(ephemKey_base64);
+				soundgen.start();
 				break;
 			default: break;
 		}
@@ -236,6 +254,9 @@ public class InitActivity extends Activity implements VoiceRecognition.Listener,
 	private void changeStatus() {
 		if (initializator) {
 			switch (status) {
+			case NEUTRAL:
+				status = STATUS.INIT;
+				break;
 			case INIT:
 				status = STATUS.RECEIV_EPH;
 				break;
@@ -253,6 +274,9 @@ public class InitActivity extends Activity implements VoiceRecognition.Listener,
 			}
 		} else {
 			switch (status) {
+			case NEUTRAL:
+				status = STATUS.RECEIV_EPH;;
+				break;
 			case RECEIV_EPH:
 				status = STATUS.SEND_EPHEM;
 				break;
@@ -327,29 +351,31 @@ public class InitActivity extends Activity implements VoiceRecognition.Listener,
 
 	@Override
 	public void onRecognition(String str) {
+		MessagesLog.d(TAG, "Weszlo sobie do recognititon");
+		if(str.length() > 0)
 		if(start_of_message == false){
-			
-			if(str.length() > 0){
-				if(str.charAt(0) == Constants.STANDARD_ALPHABET[65]){
+				if(str.charAt(0) == Constants.STANDARD_ALPHABET[64]){ //start
 					start_of_message = true;
+					if(status == STATUS.NEUTRAL){
+						initParty(false);
+						process();
+					}
 				}
-			}
 		}else{
-			if(str.length() > 0){
-				if(str.charAt(0) == Constants.STANDARD_ALPHABET[65]){
+				if(str.charAt(0) == Constants.STANDARD_ALPHABET[64]){ //start
 					
-				}else if(str.charAt(0) == Constants.STANDARD_ALPHABET[66]){
+				}else if(str.charAt(0) == Constants.STANDARD_ALPHABET[65]){ //end data
 					
+					changeStatus();
+					process();
 				}else{
-					ephemeralKey.append(str.charAt(0));
+					ephemeral_key_B.append(str.charAt(0));
 					Message msg = new Message();
 					msg.obj = str;
 					for(int i = 0 ; i < str.length(); i++){
 						handler.sendMessage(handler.obtainMessage(MSG_SET_RECG_TEXT, str.charAt(i), 0));
 					}
 				}
-				
-			}
 		}
 	}
 
@@ -361,6 +387,7 @@ public class InitActivity extends Activity implements VoiceRecognition.Listener,
 
 	@Override
 	public void EndOfSending() {
+		MessagesLog.d(TAG, "Weszlo sobie tutaj po zakonczeniu?");
 		changeStatus();
 		process();
 	}
