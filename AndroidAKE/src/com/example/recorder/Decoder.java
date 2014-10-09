@@ -59,8 +59,10 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 	}
 
 	public void stop(){
+		MessagesLog.d(TAG, "No bez dsaddwd");
 		if(state == Constants.START_STATE){
 			state = Constants.STOP_STATE;
+			MessagesLog.d(TAG, "No bez przesadyzmu");
 		}
 	}
 	

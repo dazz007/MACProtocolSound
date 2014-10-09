@@ -41,7 +41,7 @@ public class RecorderAudio{
 		if(state == Constants.START_STATE){
 			if(recorder != null){
 				recorder.stop();
-				recorder.release();
+//				recorder.release();
 			}
 			state = Constants.STOP_STATE;
 		}

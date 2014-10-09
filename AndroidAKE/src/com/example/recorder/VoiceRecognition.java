@@ -92,42 +92,54 @@ public class VoiceRecognition implements VoiceRecSubject, VoiceGetter.Callback{
 	}
 	
 	
-	public void stop(){
+	public void stop() throws InterruptedException{
 		if (state == Constants.START_STATE) {
 			state = Constants.STOP_STATE;
 			MessagesLog.d(TAG, "sending data is over");
-			record_audio.stop();
-			if (thread_recorder != null) {
-				try {
-					thread_recorder.join();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				} finally {
-					thread_recorder = null;
-				}
+			
+			MessagesLog.d(TAG, "No bez przesady23232zmu");
+			if (thread_decoder != null) {
+//				try {
+					decoder.stop();
+					//thread_decoder.join();
+					MessagesLog.d(TAG, "Thread dobrze sie przerwa³");
+//				} catch (InterruptedException e) {
+//					MessagesLog.d(TAG, "Zesra³o siê");
+//					e.printStackTrace();
+//					
+//				} finally {
+//					MessagesLog.d(TAG, "hmmm");
+//					thread_decoder = null;
+//				}
 			}
+			MessagesLog.d(TAG, "sending data is over 222");
+			
 			voice_getter.stop();
 			if (thread_recorder != null) {
-				try {
-					thread_voice_getter.join();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				} finally {
-					thread_voice_getter = null;
-				}
+//				try {
+//					thread_voice_getter.join();
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				} finally {
+//					thread_voice_getter = null;
+//				}
 			}
-			decoder.stop();
-			if (thread_decoder != null) {
-				try {
-					thread_decoder.join();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				} finally {
-					thread_decoder = null;
-				}
+			MessagesLog.d(TAG, "sending data is over 333");
+			
+			record_audio.stop();
+			if (thread_recorder != null) {
+//				try {
+//					thread_recorder.join();
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				} finally {
+//					thread_recorder = null;
+//				}
 			}
+			
+			MessagesLog.d(TAG, "sending data is over 444");
 		}
-		
+		MessagesLog.d(TAG, "sending data is over 2222");
 		queue_for_graph.clearBuffers();
 		queue_for_analyzer.clearBuffers();
 		
