@@ -164,8 +164,8 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 		float max_band = 0;
 		int max_peak = 0;
 		//int start = 40*fft.specSize() / 100;
-		for (int i = 1800; i < fft.specSize(); i++) {
-			if (fft.getBand(i) > 7)
+		for (int i = fft.specSize()/2; i < fft.specSize(); i++) {
+			if (fft.getBand(i) > Constants.AMPLITUDE)
 					if(fft.getBand(i) > max_band) {
 					max_peak = i;
 					max_band = fft.getBand(i);
@@ -183,8 +183,8 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 		String sign = "";
 		if (freq != 0) {
 			if (current_freq != null) {
-				if (current_freq.getFrequency() - 50 < freq
-						&& current_freq.getFrequency() + 50 > freq) {
+				if (current_freq.getFrequency() - Constants.BORDER < freq
+						&& current_freq.getFrequency() + Constants.BORDER > freq) {
 					current_freq.increaseCount();
 					sign = current_freq.foundAndReturnChar();
 					if (!sign.equals(Constants.NOEND_STR)) {

@@ -36,6 +36,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
+import android.graphics.LightingColorFilter;
 import android.os.Build;
 
 public class InitActivity extends Activity implements
@@ -50,7 +51,7 @@ public class InitActivity extends Activity implements
 	private TextView processes;
 	private LinearLayout chart_container_fft;
 	private static GraphicalView graph_view_fft;
-	private LineGraph line_fft = new LineGraph(true);
+	private LineGraph line_fft = new LineGraph(false);
 	private StringBuilder sb;
 	private StringBuilder epehemral_key_or_encryption;
 	private final static int MSG_SET_RECG_TEXT = 1;
@@ -59,6 +60,8 @@ public class InitActivity extends Activity implements
 	private final static int MSG_RECG_CORRECT = 4;
 	private final static int MSG_RECG_WRONG = 5;
 	private final static int SHOW_IT = 6;
+	private final static int MSG_SEND_EPH = 7;
+	private final static int MSG_SEND_ENC = 8;
 	private boolean start_of_message = false;
 	private Handler handler;
 	private Button button2;
@@ -81,16 +84,17 @@ public class InitActivity extends Activity implements
 		soundgen.setListener(this);
 		voicerec = new VoiceRecognition();
 		voicerec.setListener(this);
-		line_fft.setDecSubject(voicerec.getDecoder());
-		button2 = (Button) findViewById(R.id.send_eph_key);
-
+		line_fft.setSubject(voicerec);
+	    voicerec.register(line_fft);
+		line_fft.start(false);
+		
 		sb = new StringBuilder();
 
 		epehemral_key_or_encryption = new StringBuilder();
 		processes = (TextView) findViewById(R.id.processes);
 		handler = new RegHandler(processes, sb, button2);
-		addMessageOnView("Nas³uchiwanie....");
-
+		addMessageOnView("Waiting for initializator...\n");
+		
 		voicerec.start();
 	}
 
@@ -148,6 +152,7 @@ public class InitActivity extends Activity implements
 		case INIT:
 			ephemKey_base64 = getEphemeralKey();
 			addToHandler(ephemKey_base64);
+			handler.sendEmptyMessage(MSG_SEND_EPH);
 			soundgen.setTextToEncode(ephemKey_base64);
 			soundgen.start();
 			break;
@@ -160,6 +165,7 @@ public class InitActivity extends Activity implements
 			setEphemeralKeyAnotheParty(epehemral_key_or_encryption.toString());
 			ephemKey_base64 = getEphemeralKey();
 			addToHandler(ephemKey_base64);
+			handler.sendEmptyMessage(MSG_SEND_EPH);
 			soundgen.setTextToEncode(ephemKey_base64);
 			soundgen.start();
 			break;
@@ -173,6 +179,7 @@ public class InitActivity extends Activity implements
 			
 			String cipher_64 = getEncryption();
 			addToHandler(cipher_64);
+			handler.sendEmptyMessage(MSG_SEND_ENC);
 			soundgen.setTextToEncode(cipher_64);
 			soundgen.start();
 			break;
@@ -292,9 +299,11 @@ public class InitActivity extends Activity implements
 	}
 
 	private void prepareContainer() {
+		button2 = (Button) findViewById(R.id.send_eph_key);
 		chart_container_fft = (LinearLayout) findViewById(R.id.Chart_layout2);
 		graph_view_fft = line_fft.getView(getBaseContext());
 		chart_container_fft.addView(graph_view_fft);
+		
 	}
 
 	private void addMessageOnView(String txt) {
@@ -320,25 +329,31 @@ public class InitActivity extends Activity implements
 		}
 
 		public void setButton(Button button) {
+			//button.setText("Protocol is in process...");
 			switch (status) {
 			case INIT:
-				button.setText("Ephemeral Key is sending... Please wait");
+				button.setText("Protocol is in process...");
+				//button.setText("Ephemeral Key is sending... Please wait");
 				button.setEnabled(false);
 				break;
 			case RECEIV_EPH:
-				button.setText("Receiving ephemeral key...");
+				button.setText("Protocol is in process...");
+				//button.setText("Receiving ephemeral key...");
 				button.setEnabled(false);
 				break;
 			case SEND_EPHEM:
-				button.setText("Ephemeral Key is sending... Please wait");
+				button.setText("Protocol is in process...");
+				//button.setText("Ephemeral Key is sending... Please wait");
 				button.setEnabled(false);
 				break;
 			case SEND_ENC:
-				button.setText("Encryption is sending... Please wait");
+				button.setText("Protocol is in process...");
+				//button.setText("Encryption is sending... Please wait");
 				button.setEnabled(false);
 				break;
 			case RECEIV_ENC:
-				button.setText("Receiving encryption...");
+				button.setText("Protocol is in process...");
+				//button.setText("Receiving encryption...");
 				button.setEnabled(false);
 				break;
 			default:
@@ -353,32 +368,49 @@ public class InitActivity extends Activity implements
 				char ch = (char) msg.arg1;
 				m_text_builder.append(ch);
 				if (null != m_recognised_text_view) {
-					m_recognised_text_view.setText(m_recognised_text_view.getText() + Character.toString(ch));
+					//m_recognised_text_view.setText(m_recognised_text_view.getText() + Character.toString(ch));
 				}
 				break;
 
 			case MSG_RECG_START:
 				setButton(m_button);
 				m_text_builder.delete(0, m_text_builder.length());
+				if(status == Constants.STATUS.RECEIV_EPH)
+					m_recognised_text_view.setText(m_recognised_text_view.getText() + "Receiving ephemeral key...\n");
+				else if(status == Constants.STATUS.RECEIV_ENC)
+					m_recognised_text_view.setText(m_recognised_text_view.getText() + "Receiving encryption...\n");
 				//m_recognised_text_view.setText("");
 				break;
 
 			case MSG_RECG_END:
 				//m_text_builder.append(" Rozmiar: "+m_text_builder.toString().length());
-				m_recognised_text_view.setText(m_recognised_text_view.getText() + " Rozmiar 2: "+ m_text_builder.toString().length()+"\n" + "=================\n");
-				setButton(m_button);
+//				if(status == Constants.STATUS.INIT || status == Constants.STATUS.NEUTRAL){
+//					m_recognised_text_view.setText(m_recognised_text_view.getText() + "Ephemeral key is received. Size of ephemeral key: "+m_text_builder.toString().length()+"\n");
+//				}else if(status == Constants.STATUS.RECEIV_EPH || status == Constants.STATUS.RECEIV_ENC){
+					m_recognised_text_view.setText(m_recognised_text_view.getText() + "Size of message: "+m_text_builder.toString().length()+"\n");
+
+				//setButton(m_button);
 				MessagesLog.d(TAG, "recognition end");
 				break;
 			case MSG_RECG_CORRECT:
-				m_button.setText("Dziala kurde");
+				m_button.getBackground().setColorFilter(new LightingColorFilter(0xFF00FF00, 0xFFAA0000));
+				m_button.setText("Session key is established!");
 				break;
 			case MSG_RECG_WRONG:
-				m_button.setText("Jeszcze nie teraz");
+				m_button.getBackground().setColorFilter(new LightingColorFilter(0xFFFF0000, 0xFFAA0000));
+				m_button.setText("Something goes wrong!");
+				break;
+			case MSG_SEND_EPH:
+				m_recognised_text_view.setText(m_recognised_text_view.getText() + "Ephemeral key is sending.\n");
+				break;
+			case MSG_SEND_ENC:
+				m_recognised_text_view.setText(m_recognised_text_view.getText() + "Encryption is sending.\n");
 				break;
 			default:
-				String message = msg.getData().getString(null);
-				m_recognised_text_view.setText(m_recognised_text_view.getText() + "\n----------------------:\n");
-				m_recognised_text_view.setText(m_recognised_text_view.getText() + message + " \nRozmiar: "+message.length() +"\n");
+//				String message = msg.getData().getString(null);
+//				m_recognised_text_view.setText(m_recognised_text_view.getText() + "\n----------------------:\n");
+//				m_recognised_text_view.setText(m_recognised_text_view.getText() + message + " \nRozmiar: "+message.length() +"\n");
+				break;
 			}
 			super.handleMessage(msg);
 		}

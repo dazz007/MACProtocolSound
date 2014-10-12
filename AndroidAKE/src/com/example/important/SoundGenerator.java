@@ -139,7 +139,7 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 			
 			int mFilledSize = 0;
 			Buffer buffer = new Buffer();
-			int ramp = totalCount / 40;
+			int ramp = totalCount / 60;
 			short[] buffer_data = new short[Constants.DEFAULT_BUFFER_SIZE];
 			
 			for(int i = 0; i < totalCount ; ++i){

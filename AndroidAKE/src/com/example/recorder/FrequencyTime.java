@@ -44,8 +44,8 @@ public class FrequencyTime {
 		counter++;
 		nr_sign++;
 		for (int i = 0; i < Constants.FREQUENCIES.length; i++) {
-			if (Constants.FREQUENCIES[i] + 50 > frequency
-					&& Constants.FREQUENCIES[i] - 50 < frequency) {
+			if (Constants.FREQUENCIES[i] + Constants.BORDER > frequency
+					&& Constants.FREQUENCIES[i] - Constants.BORDER < frequency) {
 				sign = String.valueOf(Constants.STANDARD_ALPHABET[i]);
 				break;
 			}

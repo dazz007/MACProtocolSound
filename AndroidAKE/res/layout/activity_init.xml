@@ -8,7 +8,7 @@
         android:id="@+id/Chart_layout2"
         android:layout_width="wrap_content"
         android:layout_height="0dip"
-        android:layout_weight="1"
+        android:layout_weight="3"
         android:orientation="vertical" >
     </LinearLayout>
     
@@ -17,23 +17,29 @@
 		        android:id="@+id/processes"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:layout_weight="8"
+		        android:layout_weight="6"
 		        android:text="@string/processes" />
+	
+    <RelativeLayout android:id="@+id/RelativeLayout01" 
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:layout_weight="2">
+	
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:orientation="horizontal" >
-
-        <Button
+        
+    <Button
             android:id="@+id/send_eph_key"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:layout_weight="0.68"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:layout_centerInParent="true"
             android:onClick="click"
-            android:text="@string/send_eph_key" />
+            android:padding="10dp"
+            android:text="@string/send_eph_key"
+            android:textColor="#ffffff" />
 
-    </LinearLayout>
+</RelativeLayout>
+    
+
 
 </LinearLayout>

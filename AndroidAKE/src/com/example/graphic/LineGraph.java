@@ -65,8 +65,8 @@ public class LineGraph implements VoiceRecObserver {
 		// Add single renderer to multiple renderer
 
 		mRenderer.addSeriesRenderer(renderer);
-		if (freq)
-			mRenderer.setRange(new double[] { 0, 22050, 20, 200 });
+//		if (freq)
+			mRenderer.setRange(new double[] { 0, 200, -6000, 6000 });
 
 		state = Constants.STOP_STATE;
 	}

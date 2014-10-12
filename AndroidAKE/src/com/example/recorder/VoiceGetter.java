@@ -34,10 +34,14 @@ public class VoiceGetter {
 			//this.recorder_audio.setNotificationPeriod(Constants.DEFAULT_NUM_SAMPLES);
 			while (state == Constants.START_STATE) {
 				Buffer buffer = null;
+				if(period % 2 != 0){
 				if(temp_count % 2 == 0){
 					buffer = this.recorder_audio.getFrameData(period);
 				}else{
 					buffer = this.recorder_audio.getFrameData(period+1);
+				}
+				}else{
+					buffer = this.recorder_audio.getFrameData(period);
 				}
 //				Buffer buffer = this.recorder_audio.getFrameData(Constants.DEFAULT_NUM_SAMPLES/2);
 				temp_count++;
