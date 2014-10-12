@@ -78,47 +78,47 @@ public class FrequencyTime {
 	}
 	
 	
-	public char computeAndReturnChar() {
-		long diff = end - start;
-		long ten_percent = Constants.DEFAULT_GEN_DURATION / 10;
-		if (end == 0) {
-			return Constants.NOEND;
-		} else {
-			if (diff < Constants.DEFAULT_GEN_DURATION + ten_percent
-					&& diff > Constants.DEFAULT_GEN_DURATION + ten_percent) {
-				for (int i = 0; i < Constants.FREQUENCIES.length; i++) {
-					if (Constants.FREQUENCIES[i] + 50 > frequency
-							&& Constants.FREQUENCIES[i] - 50 < frequency) {
-						return Constants.STANDARD_ALPHABET[i];
-					}
-				}
-			}
-		}
-		return Constants.NOEND;
-	}
-	
-	public String computeAndReturnString(){
-		StringBuilder sb = new StringBuilder();
-		long diff = end - start;
-		float number_of_sign = 0;
-		int number_of_sign_rounded = 0;
-		for (int i = 0; i < Constants.FREQUENCIES.length; i++) {
-			if (Constants.FREQUENCIES[i] + 20 > frequency
-					&& Constants.FREQUENCIES[i] - 35 < frequency) {
-				if(diff > Constants.DEFAULT_GEN_DURATION){
-					number_of_sign = (float) diff / Constants.DEFAULT_GEN_DURATION;
-					number_of_sign_rounded = Math.round(number_of_sign);
-					for (int j = 0; j < number_of_sign_rounded; j++) {
-						sb.append(Constants.STANDARD_ALPHABET[i]);
-					}
-				}else{
-				
-					sb.append(Constants.STANDARD_ALPHABET[i]);
-				}
-				return sb.toString();
-			}
-		}
-		return Constants.NOEND_STR;
-	}
+//	public char computeAndReturnChar() {
+//		long diff = end - start;
+//		long ten_percent = Constants.DEFAULT_GEN_DURATION / 10;
+//		if (end == 0) {
+//			return Constants.NOEND;
+//		} else {
+//			if (diff < Constants.DEFAULT_GEN_DURATION + ten_percent
+//					&& diff > Constants.DEFAULT_GEN_DURATION + ten_percent) {
+//				for (int i = 0; i < Constants.FREQUENCIES.length; i++) {
+//					if (Constants.FREQUENCIES[i] + 50 > frequency
+//							&& Constants.FREQUENCIES[i] - 50 < frequency) {
+//						return Constants.STANDARD_ALPHABET[i];
+//					}
+//				}
+//			}
+//		}
+//		return Constants.NOEND;
+//	}
+//	
+//	public String computeAndReturnString(){
+//		StringBuilder sb = new StringBuilder();
+//		long diff = end - start;
+//		float number_of_sign = 0;
+//		int number_of_sign_rounded = 0;
+//		for (int i = 0; i < Constants.FREQUENCIES.length; i++) {
+//			if (Constants.FREQUENCIES[i] + 20 > frequency
+//					&& Constants.FREQUENCIES[i] - 35 < frequency) {
+//				if(diff > Constants.DEFAULT_GEN_DURATION){
+//					number_of_sign = (float) diff / Constants.DEFAULT_GEN_DURATION;
+//					number_of_sign_rounded = Math.round(number_of_sign);
+//					for (int j = 0; j < number_of_sign_rounded; j++) {
+//						sb.append(Constants.STANDARD_ALPHABET[i]);
+//					}
+//				}else{
+//				
+//					sb.append(Constants.STANDARD_ALPHABET[i]);
+//				}
+//				return sb.toString();
+//			}
+//		}
+//		return Constants.NOEND_STR;
+//	}
 
 }

@@ -52,14 +52,18 @@ public class InitActivity extends Activity implements
 	private static GraphicalView graph_view_fft;
 	private LineGraph line_fft = new LineGraph(true);
 	private StringBuilder sb;
-	private StringBuilder ephemeral_key_B;
+	private StringBuilder epehemral_key_or_encryption;
 	private final static int MSG_SET_RECG_TEXT = 1;
 	private final static int MSG_RECG_START = 2;
 	private final static int MSG_RECG_END = 3;
+	private final static int MSG_RECG_CORRECT = 4;
+	private final static int MSG_RECG_WRONG = 5;
+	private final static int SHOW_IT = 6;
 	private boolean start_of_message = false;
 	private Handler handler;
 	private Button button2;
-
+	private boolean works;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -72,7 +76,7 @@ public class InitActivity extends Activity implements
 				Constants.bundle_init_id);
 		// initializator = is_init;
 		setupActionBar();
-
+		works = false;
 		soundgen = new SoundGenerator(Constants.SAMPLING);
 		soundgen.setListener(this);
 		voicerec = new VoiceRecognition();
@@ -82,7 +86,7 @@ public class InitActivity extends Activity implements
 
 		sb = new StringBuilder();
 
-		ephemeral_key_B = new StringBuilder();
+		epehemral_key_or_encryption = new StringBuilder();
 		processes = (TextView) findViewById(R.id.processes);
 		handler = new RegHandler(processes, sb, button2);
 		addMessageOnView("Nas³uchiwanie....");
@@ -138,77 +142,121 @@ public class InitActivity extends Activity implements
 	}
 
 	private void process() throws InterruptedException {
-
-		String ephemeral_key_A;
 		String ephemKey_base64;
+		
 		switch (status) {
 		case INIT:
-			ephemeral_key_A = mac_A.getEphemeralKeyCPP(initializator);
-			ephemKey_base64 = ConverterJava
-					.fromHexStringToBase64(ephemeral_key_A);
+			ephemKey_base64 = getEphemeralKey();
+			addToHandler(ephemKey_base64);
 			soundgen.setTextToEncode(ephemKey_base64);
 			soundgen.start();
 			break;
 		case RECEIV_EPH:
 			if (initializator)
 				voicerec.start();
-
 			break;
 		case SEND_EPHEM:
-			MessagesLog.d(TAG, "A czy tutaj jest? 1");
 			voicerec.stop();
-			MessagesLog.d(TAG, "A czy tutaj jest2 43838476?");
-			String public_key_B = mac_A
-					.getPublicKeyAnotherPartyCPP(initializator);
-			MessagesLog.d(TAG, "A czy tutaj jest2 2?");
-			String temp_ephemeral_key_B = ConverterJava
-					.fromBase64StringToHex(ephemeral_key_B.toString());
-			MessagesLog.d(TAG, "A czy tutaj jest2 3?");
-			temp_ephemeral_key_B = temp_ephemeral_key_B + "H";
-			MessagesLog.d(TAG, "A czy tutaj jest2 4?");
-			mac_A.setEphemeralAndPublicKeyFromPartyCPP(initializator,
-					temp_ephemeral_key_B, public_key_B);
-			MessagesLog.d(TAG, "A czy tutaj jest2 5?");
-			ephemeral_key_A = mac_A.getEphemeralKeyCPP(initializator);
-			MessagesLog.d(TAG, "A czy tutaj jest2 6?");
-			ephemKey_base64 = ConverterJava
-					.fromHexStringToBase64(ephemeral_key_A);
-			MessagesLog.d(TAG, "A czy tutaj jest2 7?");
+			setEphemeralKeyAnotheParty(epehemral_key_or_encryption.toString());
+			ephemKey_base64 = getEphemeralKey();
+			addToHandler(ephemKey_base64);
 			soundgen.setTextToEncode(ephemKey_base64);
 			soundgen.start();
+			break;
+		case SEND_ENC:
+			voicerec.stop();
+			if(initializator){
+				setEphemeralKeyAnotheParty(epehemral_key_or_encryption.toString());
+			}else{
+				works = decryptEncryption(epehemral_key_or_encryption.toString());
+			}
+			
+			String cipher_64 = getEncryption();
+			addToHandler(cipher_64);
+			soundgen.setTextToEncode(cipher_64);
+			soundgen.start();
+			break;
+		case RECEIV_ENC:
+			voicerec.start();
+			break;
+		case GEN_SESSION_KEY:
+			if(initializator){
+				works = decryptEncryption(epehemral_key_or_encryption.toString());
+			}
+			if(works == true){
+				handler.sendEmptyMessage(MSG_RECG_CORRECT);
+			}else{
+				handler.sendEmptyMessage(MSG_RECG_WRONG);
+			}
 			break;
 		default:
 			break;
 		}
 	}
-
-	//
-
-	private void HideLayout(int iid) {
-		LinearLayout myLayout = (LinearLayout) findViewById(iid);
-		for (int i = 0; i < myLayout.getChildCount(); i++) {
-			View view = myLayout.getChildAt(i);
-			view.setVisibility(View.GONE); // Or whatever you want to do with
-											// the view.
-		}
+	
+	private String getEncryption(){
+		byte[] cert_A = mac_A.prepareEncryptionCPP(initializator, initializator);
+		return Base64.encodeBytes(cert_A);
 	}
+	private boolean decryptEncryption(String encryption){
+		String enc = encryption + "==";
+		byte[] chwila_prawdy = null;
+		try {
+			chwila_prawdy = Base64.decode(enc);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+		return mac_A.decodeEncryption(initializator, chwila_prawdy);
+	}
+	
+	//
+	private void setEphemeralKeyAnotheParty(String ephemer2){
+		String eph = ephemer2 + "=";
+		String public_key_B = mac_A
+				.getPublicKeyAnotherPartyCPP(initializator);
+		String temp_ephemeral_key_B = ConverterJava
+				.fromBase64StringToHex(eph);
+		temp_ephemeral_key_B = temp_ephemeral_key_B + "H";
+		mac_A.setEphemeralAndPublicKeyFromPartyCPP(initializator, temp_ephemeral_key_B, public_key_B);
+	}
+	
+	private void addToHandler(String str){
+		Bundle bundle = new Bundle();
+		bundle.putString(null, str);
+		Message msg = new Message();
+		msg.setData(bundle);
+		handler.sendMessage(msg);
+	}
+	
+	
+	private String getEphemeralKey(){
+		String ephemeral_key_A = mac_A.getEphemeralKeyCPP(initializator);
+		return ConverterJava
+				.fromHexStringToBase64(ephemeral_key_A);
+	}
 	private void changeStatus() {
 		if (initializator) {
 			switch (status) {
 			case NEUTRAL:
+				MessagesLog.d(TAG, "INIT");
 				status = STATUS.INIT;
 				break;
 			case INIT:
+				MessagesLog.d(TAG, "RECEIV_EPH");
 				status = STATUS.RECEIV_EPH;
 				break;
 			case RECEIV_EPH:
+				MessagesLog.d(TAG, "SEND_ENC");
 				status = STATUS.SEND_ENC;
 				break;
 			case SEND_ENC:
+				MessagesLog.d(TAG, "RECEIV_ENC");
 				status = STATUS.RECEIV_ENC;
 				break;
 			case RECEIV_ENC:
+				MessagesLog.d(TAG, "GEN_SESSION_KEY");
 				status = STATUS.GEN_SESSION_KEY;
 				break;
 			default:
@@ -217,19 +265,23 @@ public class InitActivity extends Activity implements
 		} else {
 			switch (status) {
 			case NEUTRAL:
+				MessagesLog.d(TAG, "RECEIV_EPH");
 				status = STATUS.RECEIV_EPH;
-				;
 				break;
 			case RECEIV_EPH:
+				MessagesLog.d(TAG, "SEND_EPHEM");
 				status = STATUS.SEND_EPHEM;
 				break;
 			case SEND_EPHEM:
+				MessagesLog.d(TAG, "RECEIV_ENC");
 				status = STATUS.RECEIV_ENC;
 				break;
 			case RECEIV_ENC:
+				MessagesLog.d(TAG, "SEND_ENC");
 				status = STATUS.SEND_ENC;
 				break;
 			case SEND_ENC:
+				MessagesLog.d(TAG, "GEN_SESSION_KEY");
 				status = STATUS.GEN_SESSION_KEY;
 				break;
 			default:
@@ -247,7 +299,7 @@ public class InitActivity extends Activity implements
 
 	private void addMessageOnView(String txt) {
 		sb.append(txt);
-		sb.append("\n");
+		//sb.append("\n");
 		processes.setText(sb.toString());
 	}
 
@@ -267,7 +319,7 @@ public class InitActivity extends Activity implements
 			m_text_builder = txt;
 		}
 
-		private void setButton(Button button) {
+		public void setButton(Button button) {
 			switch (status) {
 			case INIT:
 				button.setText("Ephemeral Key is sending... Please wait");
@@ -279,6 +331,14 @@ public class InitActivity extends Activity implements
 				break;
 			case SEND_EPHEM:
 				button.setText("Ephemeral Key is sending... Please wait");
+				button.setEnabled(false);
+				break;
+			case SEND_ENC:
+				button.setText("Encryption is sending... Please wait");
+				button.setEnabled(false);
+				break;
+			case RECEIV_ENC:
+				button.setText("Receiving encryption...");
 				button.setEnabled(false);
 				break;
 			default:
@@ -293,19 +353,32 @@ public class InitActivity extends Activity implements
 				char ch = (char) msg.arg1;
 				m_text_builder.append(ch);
 				if (null != m_recognised_text_view) {
-					m_recognised_text_view.setText(m_text_builder.toString());
+					m_recognised_text_view.setText(m_recognised_text_view.getText() + Character.toString(ch));
 				}
 				break;
 
 			case MSG_RECG_START:
 				setButton(m_button);
 				m_text_builder.delete(0, m_text_builder.length());
+				//m_recognised_text_view.setText("");
 				break;
 
 			case MSG_RECG_END:
+				//m_text_builder.append(" Rozmiar: "+m_text_builder.toString().length());
+				m_recognised_text_view.setText(m_recognised_text_view.getText() + " Rozmiar 2: "+ m_text_builder.toString().length()+"\n" + "=================\n");
 				setButton(m_button);
 				MessagesLog.d(TAG, "recognition end");
 				break;
+			case MSG_RECG_CORRECT:
+				m_button.setText("Dziala kurde");
+				break;
+			case MSG_RECG_WRONG:
+				m_button.setText("Jeszcze nie teraz");
+				break;
+			default:
+				String message = msg.getData().getString(null);
+				m_recognised_text_view.setText(m_recognised_text_view.getText() + "\n----------------------:\n");
+				m_recognised_text_view.setText(m_recognised_text_view.getText() + message + " \nRozmiar: "+message.length() +"\n");
 			}
 			super.handleMessage(msg);
 		}
@@ -318,28 +391,22 @@ public class InitActivity extends Activity implements
 
 	@Override
 	public void onRecognition(String str) {
-		MessagesLog.d(TAG, "Weszlo sobie do recognititon");
 		if (str.length() > 0)
 			if (start_of_message == false) {
 				if (str.charAt(0) == Constants.STANDARD_ALPHABET[Constants.STANDARD_ALPHABET.length - 2]) { // start
 					start_of_message = true;
+					epehemral_key_or_encryption.delete(0, epehemral_key_or_encryption.length());
 					if (status == STATUS.NEUTRAL) {
 						initParty(false);
-						try {
-							process();
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
 						onStartRecogntion();
 					}
 				}
 			} else {
 				if (str.charAt(0) == Constants.STANDARD_ALPHABET[Constants.STANDARD_ALPHABET.length - 2]) { // start
 
-				} else if (str.charAt(0) == Constants.STANDARD_ALPHABET[Constants.STANDARD_ALPHABET.length - 1]) { // end data
-					MessagesLog.d(TAG, "No i jest koniec");																					
+				} else if (str.charAt(0) == Constants.STANDARD_ALPHABET[Constants.STANDARD_ALPHABET.length - 1]) { // end data																				
 					start_of_message = false;
+					onEndRecognition();
 					changeStatus();
 					try {
 						process();
@@ -347,15 +414,13 @@ public class InitActivity extends Activity implements
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					onEndRecognition();
+					
 				} else {
-					ephemeral_key_B.append(str.charAt(0));
+					epehemral_key_or_encryption.append(str.charAt(0));
 					Message msg = new Message();
 					msg.obj = str;
-					for (int i = 0; i < str.length(); i++) {
 						handler.sendMessage(handler.obtainMessage(
-								MSG_SET_RECG_TEXT, str.charAt(i), 0));
-					}
+								MSG_SET_RECG_TEXT, str.charAt(0), 0));
 				}
 			}
 	}
@@ -378,22 +443,29 @@ public class InitActivity extends Activity implements
 		}
 	}
 
-	public void test(View view) throws UnsupportedEncodingException {
+	public void click2(View view) throws UnsupportedEncodingException {
+		mac_A = new MutualAuthenticateChip();
+		mac_B = new MutualAuthenticateChip();
+		
+		mac_A.prepareMACCPP(true);
+		mac_B.prepareMACCPP(false);
 		String ephemeralKey_A = mac_A.getEphemeralKeyCPP(true);
-		// byte [] ephemeralKey_byte =
-		// ConverterJava.hexStringToByteArray(ephemeralKey_A.substring(0,
-		// ephemeralKey_A.length() - 1));
-		//
-		// addMessageOnView(new String(ephemeralKey_byte));
 
 		String ephemKey_base64 = ConverterJava
 				.fromHexStringToBase64(ephemeralKey_A);
-		addMessageOnView(ephemeralKey_A);
-		addMessageOnView(ephemKey_base64);
+		addMessageOnView(ephemKey_base64 + "\n"+"-------------------\n"+" Rozmiar: "+ephemKey_base64.length()+"\n");
 		ephemeralKey_A = ConverterJava.fromBase64StringToHex(ephemKey_base64);
-		addMessageOnView(ephemeralKey_A);
-		String ephemeralKey_B = mac_B.getEphemeralKeyCPP(false);
 		ephemeralKey_A = ephemeralKey_A + "H";
+		addMessageOnView(ephemeralKey_A + "\n"+"======================\n");
+		
+		String ephemeralKey_B = mac_B.getEphemeralKeyCPP(false);
+		ephemKey_base64 = ConverterJava
+				.fromHexStringToBase64(ephemeralKey_B);
+		addMessageOnView(ephemKey_base64 + "\n"+"-------------------\n"+" Rozmiar: "+ephemKey_base64.length()+"\n");
+		ephemeralKey_B = ConverterJava.fromBase64StringToHex(ephemKey_base64);
+		ephemeralKey_B = ephemeralKey_B + "H";
+		addMessageOnView(ephemeralKey_B + "\n"+"======================\n");
+		
 		String publicKey_B = mac_A.getPublicKeyAnotherPartyCPP(true);
 		String publicKey_A = mac_B.getPublicKeyAnotherPartyCPP(false);
 
@@ -405,7 +477,7 @@ public class InitActivity extends Activity implements
 		byte[] cert_A = mac_A.prepareEncryptionCPP(true, true);
 
 		String cipher_64 = Base64.encodeBytes(cert_A);
-		addMessageOnView(cipher_64);
+		addMessageOnView(cipher_64+ "\n"+"-------------------\n"+" Rozmiar: "+cipher_64.length()+"\n");
 		byte[] chwila_prawdy = null;
 		try {
 			chwila_prawdy = Base64.decode(cipher_64);
@@ -423,7 +495,7 @@ public class InitActivity extends Activity implements
 
 		byte[] cert_B = mac_B.prepareEncryptionCPP(false, false);
 		String cipher_64_B = Base64.encodeBytes(cert_B);
-		addMessageOnView(cipher_64_B);
+		addMessageOnView(cipher_64_B+ "\n"+"-------------------\n"+" Rozmiar: "+cipher_64_B.length()+"\n");
 		byte[] chwila_prawdy_B = null;
 		try {
 			chwila_prawdy_B = Base64.decode(cipher_64_B);

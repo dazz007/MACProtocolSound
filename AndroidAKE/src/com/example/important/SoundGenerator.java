@@ -240,7 +240,7 @@ public class SoundGenerator implements SoundGenSubject, AudioPlayerObserver{
 	@Override
 	public void sendDataToGraph(int[] data) {
 		this.sgo.updateLineGraph(data);
-		MessagesLog.d(TAG, "Wesz³o w send DataToGraph");
+		//MessagesLog.d(TAG, "Wesz³o w send DataToGraph");
 	}
 
 	@Override
