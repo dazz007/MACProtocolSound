@@ -176,8 +176,13 @@ public class InitActivity extends Activity implements
 			}else{
 				works = decryptEncryption(epehemral_key_or_encryption.toString());
 			}
+			String cipher_64 = "";
 			
-			String cipher_64 = getEncryption();
+			if(initializator == false && works == false){
+				cipher_64 = "ABCDEFGHIJK";
+			}else{
+				cipher_64 = getEncryption();
+			}
 			addToHandler(cipher_64);
 			handler.sendEmptyMessage(MSG_SEND_ENC);
 			soundgen.setTextToEncode(cipher_64);

@@ -129,16 +129,18 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 			}
 		}
 
-		// if(max_peak != 0)
-		// MessagesLog.d(TAG, "Znalaz³o czestotliwosc: "+max_peak *
-		// (Constants.SAMPLING / 2) / fft.specSize());
-		return max_peak * (Constants.SAMPLING / 2) / fft.specSize();
+		int frequency = max_peak * (Constants.SAMPLING / 2) / fft.specSize();
+		if(max_peak > 1800){
+		MessagesLog.d(TAG, "Czêstotliwosc: "+frequency);
+		MessagesLog.d(TAG, "Amplituda czêstotliwoœci: "+fft.getBand(max_peak));
+		}
+		return frequency;
 
 	}
 
 	private void checkPitch(int freq) {
 		String sign = "";
-		if (freq != 0) {
+		if (freq >9900) {
 			if (current_freq != null) {
 				if (current_freq.getFrequency() - 50 < freq
 						&& current_freq.getFrequency() + 50 > freq) {

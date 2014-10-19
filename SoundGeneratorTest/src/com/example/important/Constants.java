@@ -10,7 +10,7 @@ public class Constants {
 //	public final static String AVAILABLE_SIGNS = "0123456789ABCDEFHG";
 //	public final static int DEFAULT_BUFFER_SIZE = 2*8192;
 	public final static int DEFAULT_BUFFER_COUNT = 3;
-	public final static int DEFAULT_GEN_DURATION = 30;
+	public final static int DEFAULT_GEN_DURATION = 20;
 	public final static int DEFAULT_NUM_SAMPLES = DEFAULT_GEN_DURATION * SAMPLING / 1000;
 	public final static int DEFAULT_BUFFER_SIZE = 8192;
 	public final static int DEFAULT_BUFFER_SIZE_REC = 2048;

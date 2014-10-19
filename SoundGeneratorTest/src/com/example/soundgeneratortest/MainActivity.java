@@ -70,11 +70,25 @@ public class MainActivity extends Activity implements VoiceRecognition.Listener{
         voicerec.register(line);
         line_fft.setDecSubject(voicerec.getDecoder());
         
-        edit_text.setText("TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlz"+
-        "IHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2Yg"+
-        "dGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGlu"+
-        "dWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRo"+
-        "ZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4");
+//        'A', 'B', 'C', 'D', 'E', 'F', 'G',
+//        'H', 'I', 'J', 'K', 'L', 'M', 'N',
+//        'O', 'P', 'Q', 'R', 'S', 'T', 'U', 
+//        'V', 'W', 'X', 'Y', 'Z',
+//        'a', 'b', 'c', 'd', 'e', 'f', 'g',
+//        'h', 'i', 'j', 'k', 'l', 'm', 'n',
+//        'o', 'p', 'q', 'r', 's', 't', 'u', 
+//        'v', 'w', 'x', 'y', 'z',
+//        '0', '1', '2', '3', '4', '5', 
+//        '6', '7', '8', '9', '+', '/', ',', '.'
+        
+        
+        edit_text.setText("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/,.");
+        
+//        edit_text.setText("TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlz"+
+//        "IHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2Yg"+
+//        "dGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGlu"+
+//        "dWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRo"+
+//        "ZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4");
         Button playStart = (Button) this.findViewById(R.id.start_play);
         playStart.setOnClickListener(new OnClickListener() {
             @Override
