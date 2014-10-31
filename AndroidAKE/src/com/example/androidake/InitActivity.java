@@ -18,6 +18,7 @@ import org.apache.commons.codec.binary.Hex;
 import base64.Base64;
 import com.example.graphic.LineGraph;
 import com.example.important.Constants;
+import com.example.important.Constants.RANGE;
 import com.example.important.MessagesLog;
 import com.example.important.SoundGenerator;
 import com.example.important.Constants.STATUS;
@@ -75,8 +76,11 @@ public class InitActivity extends Activity implements
 
 		status = STATUS.NEUTRAL;
 
-		boolean is_init = getIntent().getExtras().getBoolean(
-				Constants.bundle_init_id);
+		RANGE range = (RANGE) getIntent().getSerializableExtra(Constants.bundle_init_id);
+		
+		setFrequencies(range);
+//		RANGE range = getIntent().getExtras().getBoolean(
+//				Constants.bundle_init_id);
 		// initializator = is_init;
 		setupActionBar();
 		works = false;
@@ -148,7 +152,17 @@ public class InitActivity extends Activity implements
 		}
 		
 	}
-
+	
+	
+	private void setFrequencies(RANGE range){
+		switch(range){
+			case RA_150: Constants.FREQUENCIES = Constants.FREQUENCIES_150; break;
+			case RA_130: Constants.FREQUENCIES = Constants.FREQUENCIES_SPACE_130; break;
+			case RA_100: Constants.FREQUENCIES = Constants.FREQUENCIES_SPACE_100; break;
+			default: Constants.FREQUENCIES = Constants.FREQUENCIES_150; break;
+		}
+	}
+	
 	private void initParty(boolean init) {
 		initializator = init;
 		mac_A = new MutualAuthenticateChip();

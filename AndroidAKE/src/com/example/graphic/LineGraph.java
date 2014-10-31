@@ -54,7 +54,7 @@ public class LineGraph implements VoiceRecObserver {
 
 		// Enable Zoom
 		mRenderer.setZoomButtonsVisible(false);
-		mRenderer.setXTitle("Frequency");
+		mRenderer.setXTitle("Time");
 		mRenderer.setXLabels(10);
 		mRenderer.setYLabels(10);
 		mRenderer.setPanEnabled(false, false);

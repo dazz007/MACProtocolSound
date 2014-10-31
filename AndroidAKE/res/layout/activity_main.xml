@@ -1,24 +1,57 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:weightSum="2" >
+    android:orientation="vertical"
+    android:weightSum="4" >
 	
-
-    <Button
-        android:id="@+id/button1"
+	<RelativeLayout android:id="@+id/RelativeLayout03" 
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1">
+	
+    <TextView
+        android:id="@+id/text_session_key"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:onClick="beReceiver"
-        android:text="@string/receiver" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:onClick="beInitializator"
-        android:text="@string/initializator" />
+        android:layout_centerInParent="true"
+        android:textColor="#eeb111"
+        android:text="@string/choose_setting"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+    </RelativeLayout>
     
+	
+	<RelativeLayout android:id="@+id/RelativeLayout04" 
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1">
+	
+	<Spinner
+	    android:id="@+id/frequencies_spinner"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content" />    
+	
+	
+    </RelativeLayout>
+    
+    <RelativeLayout android:id="@+id/RelativeLayout05" 
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:layout_weight="2">
+
+    <Button
+            android:id="@+id/confirm_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:layout_centerInParent="true"
+            android:onClick="click"
+            android:padding="10dp"
+            android:text="@string/confirm_setting"
+            android:textColor="#ffffff" />
+
+</RelativeLayout>
+    
+
+
 </LinearLayout>

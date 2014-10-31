@@ -17,4 +17,11 @@
 	<string name="in_process">In process &#8230;</string>
 	<string name="info_text">Processes</string>
 	<string name="processes"> </string>
+	<string name="confirm_setting">Confirm settings</string>
+	<string-array name="frequencies_spinner">
+        <item>10   kHz - 19,8  kHz. Space 150Hz</item>
+        <item>11,1 kHz - 19,55 kHz. Space 130Hz</item>
+        <item>13,8 kHz - 20,3  kHz. Space 100Hz</item>
+    </string-array>
+    <string name="choose_setting">Choose range of frequencies.</string>
 </resources>
