@@ -20,8 +20,6 @@ public class MutualAuthenticateChip {
 	
 	public native void setEphemeralAndPublicKeyFromPartyCPP(boolean init, String ephemeralKey, String publicKey);
 	
-	public native void setEphemeralKeyFromPartyCPP(boolean init, String ephemeralKey);
-	
 	public native byte[] prepareEncryptionCPP(boolean init, boolean initiated);
 	
 	public native byte[] getEncryptCertAndRCPP(boolean init);
@@ -37,15 +35,7 @@ public class MutualAuthenticateChip {
 	
 	public native String convertByteArrayToString(byte [] text_byte);
 	
-//	public native byte[] decodeEncryption(boolean init, String cipher);
-	
-	public native boolean verifCertificateCPP(boolean init);
-	
-	public native void computeSessionKeyCPP(boolean init);
-	
-	public native byte[] getSessionKeyCPP(boolean init);
-	
-	public native void setInitializatorCPP(boolean init);
+	public native String getSessionKeyCPP(boolean init);
 	
 	public native String getPublicAnotherParty22CPP(boolean init);
 	

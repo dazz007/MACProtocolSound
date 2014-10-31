@@ -307,11 +307,14 @@ void MutualAuthenticationChip::ComputeSessionKey(){
 	K_session_key = new SecByteBlock(HashClass::size);
 	K_session_key->Assign(session_key,HashClass::size);
 	Integer SK(*K_session_key,HashClass::size);
+	Session_Key_For_Test = SK;
 	cout<<"WYGENEROWANO KLUCZ SESYJNY DLA PARTU "<<part<<endl;
 	cout<<SK<<endl;
 }
 
-
+std::string MutualAuthenticationChip::ShowSessionKey(){
+	return Converter::SecByteBlockToString(Converter::encodeSecByteBlock(Session_Key_For_Test));
+}
 
 
 std::string MutualAuthenticationChip::ShowOtherPartyPublicKey()

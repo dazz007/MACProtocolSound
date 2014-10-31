@@ -92,7 +92,8 @@ public class InitActivity extends Activity implements
 
 		epehemral_key_or_encryption = new StringBuilder();
 		processes = (TextView) findViewById(R.id.processes);
-		handler = new RegHandler(processes, sb, button2);
+		TextView session_key_txt = (TextView) findViewById(R.id.text_session_key);
+		handler = new RegHandler(processes, sb, button2, session_key_txt);
 		addMessageOnView("Waiting for initializator...\n");
 		
 		voicerec.start();
@@ -133,9 +134,19 @@ public class InitActivity extends Activity implements
 	}
 
 	public void click(View view) throws UnsupportedEncodingException, InterruptedException {
-		voicerec.stop();
-		initParty(true);
-		process();
+		if(status == Constants.STATUS.GEN_SESSION_KEY){
+			start_of_message = false;
+			soundgen.setStopStatus();
+			voicerec.stop();
+			
+			finish();
+			startActivity(getIntent());
+		}else{
+			voicerec.stop();
+			initParty(true);
+			process();
+		}
+		
 	}
 
 	private void initParty(boolean init) {
@@ -151,7 +162,7 @@ public class InitActivity extends Activity implements
 		switch (status) {
 		case INIT:
 			ephemKey_base64 = getEphemeralKey();
-			addToHandler(ephemKey_base64);
+			//addToHandler(ephemKey_base64);
 			handler.sendEmptyMessage(MSG_SEND_EPH);
 			soundgen.setTextToEncode(ephemKey_base64);
 			soundgen.start();
@@ -164,7 +175,7 @@ public class InitActivity extends Activity implements
 			voicerec.stop();
 			setEphemeralKeyAnotheParty(epehemral_key_or_encryption.toString());
 			ephemKey_base64 = getEphemeralKey();
-			addToHandler(ephemKey_base64);
+			//addToHandler(ephemKey_base64);
 			handler.sendEmptyMessage(MSG_SEND_EPH);
 			soundgen.setTextToEncode(ephemKey_base64);
 			soundgen.start();
@@ -183,7 +194,7 @@ public class InitActivity extends Activity implements
 			}else{
 				cipher_64 = getEncryption();
 			}
-			addToHandler(cipher_64);
+			//addToHandler(cipher_64);
 			handler.sendEmptyMessage(MSG_SEND_ENC);
 			soundgen.setTextToEncode(cipher_64);
 			soundgen.start();
@@ -196,10 +207,13 @@ public class InitActivity extends Activity implements
 				works = decryptEncryption(epehemral_key_or_encryption.toString());
 			}
 			if(works == true){
+				
 				handler.sendEmptyMessage(MSG_RECG_CORRECT);
+				addToHandler(mac_A.getSessionKeyCPP(initializator));
 			}else{
 				handler.sendEmptyMessage(MSG_RECG_WRONG);
 			}
+			//changeStatus();
 			break;
 		default:
 			break;
@@ -271,6 +285,10 @@ public class InitActivity extends Activity implements
 				MessagesLog.d(TAG, "GEN_SESSION_KEY");
 				status = STATUS.GEN_SESSION_KEY;
 				break;
+			case GEN_SESSION_KEY:
+				MessagesLog.d(TAG, "NEUTRAL");
+				status = STATUS.NEUTRAL;
+				break;
 			default:
 				break;
 			}
@@ -296,13 +314,28 @@ public class InitActivity extends Activity implements
 				MessagesLog.d(TAG, "GEN_SESSION_KEY");
 				status = STATUS.GEN_SESSION_KEY;
 				break;
+			case GEN_SESSION_KEY:
+				MessagesLog.d(TAG, "NEUTRAL");
+				status = STATUS.NEUTRAL;
+				break;
 			default:
 				break;
 			}
 		}
 
 	}
-
+	
+	public void onBackPressed() {
+		soundgen.setStopStatus();
+		try {
+			voicerec.stop();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        this.finish();
+	}
+	
 	private void prepareContainer() {
 		button2 = (Button) findViewById(R.id.send_eph_key);
 		chart_container_fft = (LinearLayout) findViewById(R.id.Chart_layout2);
@@ -321,12 +354,13 @@ public class InitActivity extends Activity implements
 		public static StringBuilder m_text_builder; // = new StringBuilder();
 		private TextView m_recognised_text_view;
 		private Button m_button;
-
+		private TextView m_session_key_text;
 		public RegHandler(TextView textView, StringBuilder txtBuilder,
-				Button btn) {
+				Button btn, TextView session_Key_txt) {
 			m_recognised_text_view = textView;
 			m_text_builder = txtBuilder;
 			m_button = btn;
+			m_session_key_text = session_Key_txt;
 		}
 
 		public void setTxt(StringBuilder txt) {
@@ -399,11 +433,13 @@ public class InitActivity extends Activity implements
 				break;
 			case MSG_RECG_CORRECT:
 				m_button.getBackground().setColorFilter(new LightingColorFilter(0xFF00FF00, 0xFFAA0000));
-				m_button.setText("Session key is established!");
+				m_button.setText("Session key is established! Push button to try again.");
+				m_button.setEnabled(true);
 				break;
 			case MSG_RECG_WRONG:
 				m_button.getBackground().setColorFilter(new LightingColorFilter(0xFFFF0000, 0xFFAA0000));
-				m_button.setText("Something goes wrong!");
+				m_button.setText("Something has gone wrong! Push button to try again.");
+				m_button.setEnabled(true);
 				break;
 			case MSG_SEND_EPH:
 				m_recognised_text_view.setText(m_recognised_text_view.getText() + "Ephemeral key is sending.\n");
@@ -412,9 +448,10 @@ public class InitActivity extends Activity implements
 				m_recognised_text_view.setText(m_recognised_text_view.getText() + "Encryption is sending.\n");
 				break;
 			default:
-//				String message = msg.getData().getString(null);
-//				m_recognised_text_view.setText(m_recognised_text_view.getText() + "\n----------------------:\n");
-//				m_recognised_text_view.setText(m_recognised_text_view.getText() + message + " \nRozmiar: "+message.length() +"\n");
+
+				String message = msg.getData().getString(null);
+//				m_session_key_text.setText(m_recognised_text_view.getText() + "\n----------------------:\n");
+				m_session_key_text.setText( message );
 				break;
 			}
 			super.handleMessage(msg);

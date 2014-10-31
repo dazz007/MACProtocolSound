@@ -32,6 +32,7 @@ private:
 	SecByteBlock * publicKeyAnotherParty;
 	SecByteBlock * K_byte;
 	SecByteBlock * K_session_key;
+	Integer Session_Key_For_Test;
 	byte * rA;
 	byte * rB;
 	AutoSeededRandomPool rnd;
@@ -140,6 +141,7 @@ public:
     std::string ShowOtherPartyPublicKey();
     std::string GetCipher();
     std::string GetCipher2();
+    std::string ShowSessionKey();
     bool CompareCipherUTF8(byte * data, int length);
 	void SetEphemeralPublicKeyAnotherParty(
 			std::string str_ephemeralPublicKeyAnotherParty,

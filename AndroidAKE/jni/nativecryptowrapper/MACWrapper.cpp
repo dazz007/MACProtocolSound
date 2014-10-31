@@ -99,31 +99,9 @@ JNIEXPORT jbyteArray JNICALL Java_com_example_androidake_MutualAuthenticateChip_
 	return returns;
 };
 
-//JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_getEncryptCertAndRCPP(
-//		JNIEnv *env, jobject thisObj, jboolean jinit) {
-//	bool init = jinit;
-//	string encryption;
-//	if(init == true){
-//		encryption = mac->GetCipher2();
-//	}else{
-//		encryption = mac_B->GetCipher2();
-//	}
-//
-//	return env->NewStringUTF(encryption.c_str());
-//
-//};
 
 JNIEXPORT jbyteArray JNICALL Java_com_example_androidake_MutualAuthenticateChip_getEncryptCertAndRCPP(
 		JNIEnv *env, jobject thisObj, jboolean jinit) {
-//	bool init = jinit;
-//	string encryption;
-//	if(init == true){
-//		encryption = mac->GetCipher2();
-//	}else{
-//		encryption = mac_B->GetCipher2();
-//	}
-//
-//	return env->NewStringUTF(encryption.c_str());
 	bool init = jinit;
 		string encryption;
 		if(init == true){
@@ -137,28 +115,17 @@ JNIEXPORT jbyteArray JNICALL Java_com_example_androidake_MutualAuthenticateChip_
 	return returns;
 };
 
-JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_setEncryptionFromPartyCPP
-(JNIEnv *env, jobject thisObj, jboolean jinit, jbyteArray encryption_byte) {
 
-
-};
-
-JNIEXPORT jboolean JNICALL Java_com_example_androidake_MutualAuthenticateChip_verifCertificateCPP(
+JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_getSessionKeyCPP(
 		JNIEnv *env, jobject thisObj, jboolean jinit) {
-	jboolean verif = true;
-
-	return verif;
-}
-;
-
-JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_computeSessionKeyCPP
-(JNIEnv *env, jobject thisObj, jboolean jinit) {
-
-};
-
-JNIEXPORT jbyteArray JNICALL Java_com_example_androidake_MutualAuthenticateChip_getSessionKeyCPP(
-		JNIEnv *env, jobject thisObj, jboolean jinit) {
-
+	bool init = jinit;
+	string sessionKey;
+	if (init == true) {
+		sessionKey = mac->ShowSessionKey();
+	} else {
+			sessionKey = mac_B->ShowSessionKey();
+	}
+	return env->NewStringUTF(sessionKey.c_str());
 }
 ;
 
@@ -183,19 +150,11 @@ JNIEXPORT jboolean JNICALL Java_com_example_androidake_MutualAuthenticateChip_de
 
 	jbyte* data = env->GetByteArrayElements(cipher, 0);
 	jsize length = env->GetArrayLength(cipher);
-//	jsize length = env->GetStringUTFLength(cipher);
-//	const char *inCStr_ek = env->GetStringUTFChars(cipher, 0);
-//	string s(inCStr_ek, length);
-//	if(init == true){
-//		result = mac->DecryptCertKey(s);
-//	}else{
-//		result = mac_B->DecryptCertKey(s);
-//	}
+
 	byte * data_cipher = (byte *) data;
 
 	int size = length;
 	if(init == true){
-			//result = mac->CompareCipherUTF8(data_cipher, size);
 		result = mac->DecryptCertKeyByte(data_cipher, size);
 		}else{
 			result = mac_B->DecryptCertKeyByte(data_cipher, size);
@@ -206,21 +165,6 @@ JNIEXPORT jboolean JNICALL Java_com_example_androidake_MutualAuthenticateChip_de
 };
 
 
-//JNIEXPORT jbyteArray JNICALL Java_com_example_androidake_MutualAuthenticateChip_decodeEncryption
-//  (JNIEnv * env, jobject thisObj, jboolean jinit, jstring cipher){
-//	bool init = jinit;
-//	bool result;
-//
-//	jsize length = env->GetStringLength(cipher);
-//				const char *inCStr_ek = env->GetStringUTFChars(cipher, 0);
-//				string s(inCStr_ek, length);
-//				env->ReleaseStringUTFChars(cipher,inCStr_ek);
-//				jbyteArray returns = env->NewByteArray(s.length());
-//					env->SetByteArrayRegion(returns, 0, s.length(),
-//							(jbyte*) s.c_str());
-////					env->ReleaseByteArrayElements(result, returns, 0);
-//					return returns;
-//};
 
 JNIEXPORT jstring JNICALL Java_com_example_androidake_MutualAuthenticateChip_getSomeString
   (JNIEnv * env, jobject thisObj, jboolean jinit){

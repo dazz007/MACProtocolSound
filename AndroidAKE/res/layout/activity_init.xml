@@ -17,9 +17,23 @@
 		        android:id="@+id/processes"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:layout_weight="6"
+		        android:layout_weight="5"
 		        android:text="@string/processes" />
+	<RelativeLayout android:id="@+id/RelativeLayout02" 
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1">
+	    
+    <TextView
+        android:id="@+id/text_session_key"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="#eeb111"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 	
+    </RelativeLayout>
+    
     <RelativeLayout android:id="@+id/RelativeLayout01" 
 	    android:layout_width="fill_parent" 
 	    android:layout_height="wrap_content"
