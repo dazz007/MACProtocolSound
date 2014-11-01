@@ -1,0 +1,251 @@
+\documentclass[12pt,titlepage]{article}
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{amssymb}
+%\usepackage{algorithm}
+%\usepackage{algorithmic} 
+%
+%\usepackage{theorem}
+%\usepackage{graphicx}
+%
+%\usepackage[cp1250]{inputenc}
+%\usepackage[T1]{fontenc}
+%\usepackage[polish]{babel}
+%\usepackage[MeX]{polski}
+%
+%\usepackage{makeidx}
+%\usepackage{listings}
+%\usepackage{url}
+%\usepackage{Here}
+
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{stmaryrd}
+\usepackage{url}
+\usepackage{longtable}
+\usepackage[figuresright]{rotating}
+
+%\usepackage[MeX]{polski}
+\usepackage[cp1250]{inputenc}
+
+
+\usepackage[T1]{fontenc}
+%\usepackage[latin2]{inputenc}
+\usepackage[polish]{babel}
+
+\usepackage{geometry}
+\usepackage{pslatex}
+\usepackage{ulem}
+
+\usepackage{lipsum}
+
+\usepackage{listings}
+\usepackage{url}
+\usepackage{Here}
+
+\usepackage{color}
+\definecolor{szary}{gray}{0.6}% jasnoszary
+
+\setlength{\textwidth}{400pt}
+\lstset{numbers=left,
+			numberstyle=\tiny, 
+			basicstyle=\scriptsize\ttfamily, 
+			breaklines=true, 
+			captionpos=b, 
+			tabsize=2}
+
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+
+
+\selectlanguage{polish}
+
+%\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+%\hfuzz2pt % Don't report over-full h-boxes if over-edge is small
+
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\TAB}{\hspace{0.50cm}}
+\newcommand{\IFF}{\leftrightarrow}
+\newcommand{\IMP}{\rightarrow}
+
+\newtheorem{theorem}{Twierdzenie}[section]
+\newtheorem{lemma}{Lemat}[section]
+\newtheorem{example}{Przyk³ad}[section]
+\newtheorem{corollary}{Wniosek}[section]
+\newtheorem{definition}{Definicja}[section]
+
+%\newenvironment{proof}{\par\noindent {\bf Dowód.}}
+%{\begin{flushright} \vspace*{-6mm}\mbox{$\Box$} \end{flushright}}
+%
+%\newenvironment{remark}{\bigskip \par\noindent\begin{small}{\bf Uwaga.}}
+%                       {\vspace*{4mm}\end{small}}
+%
+%\newenvironment{prog}{\par\noindent \sf
+%\begin{tabbing}xx\= xx \= xx\= xx\= \kill}
+%{\end{tabbing} \rm}
+
+
+\hyphenation{wszy-stkich ko-lu-mnê ka¿-da od-leg-³oœæ
+   dzie-dzi-ny dzie-dzi-na rów-nych rów-ny
+   pole-ga zmie-nna pa-ra-met-rów wzo-rem po-cho-dzi
+   o-trzy-ma wte-dy wa-run-ko-wych lo-gicz-nie
+   skreœ-la-na skreœ-la-n¹ ca³-ko-wi-tych wzo-rów po-rz¹-dek po-rz¹d-kiem
+   przy-k³ad pod-zbio-rów po-miê-dzy re-pre-zen-to-wa-ne
+   rów-no-wa¿-ne bi-blio-te-kach wy-pro-wa-dza ma-te-ria-³ów
+   prze-ka-za-nym skoñ-czo-nym mo-¿esz na-tu-ral-na ci¹-gu tab-li-cy
+   prze-ka-za-nej}
+
+\makeindex
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{titlepage}
+\vspace*{\fill}
+\begin{center}
+\begin{picture}(300,510)
+  \put( 10,520){\makebox(0,0)[l]{\large \bf \textsc{Wydzia³ Podstawowych Problemów Techniki}}}
+  \put( 10,500){\makebox(0,0)[l]{\large \bf \textsc{Politechniki Wroc³awskiej}}}
+  \put( 10,280){\makebox(0,0)[l]{\Huge  \bf \textsc{
+  Channels alternative to WiFi in }}}
+  \put( 10,260){\makebox(0,0)[l]{\Huge \bf \textsc{
+  Authenticated Key Establishment }}}
+  \put( 10,240){\makebox(0,0)[l]{\Huge \bf \textsc{
+  protocols for mobile devices}}}
+  \put(100,200){\makebox(0,0)[l]{\large     \textsc{Pawe³ Kêdzia}}}
+
+  \put(170, 80){\makebox(0,0)[l]{\large  {In partial fulfillment of the requirements for the degree of Master of Engineering}}}
+  \put(170, 60){\makebox(0,0)[l]{\large  { }}}
+  \put(170, 40){\makebox(0,0)[l]{\large  {Thesis Supervisor}}}
+  \put(170, 20){\makebox(0,0)[l]{\large  {dr in¿. £ukasza Krzywieckiego}}}
+  \put(100,-80){\makebox(0,0)[bl]{\large \bf \textsc{Wroc³aw 2010}}}
+\end{picture}
+\end{center}
+\vspace*{\fill}
+\end{titlepage}
+
+\tableofcontents
+
+\newpage
+
+\pagestyle{headings}
+
+\section*{Introduction}
+
+The goal of the dissertation is to analyze the usability of channels alternative to WiFi in Authenticated Key Establishment (AKE) protocols for mobile devices.
+Authentication and communication protocol in audio channel for mobile devices.
+
+Mobile devices to transfer data mainly use Internet. Disadvantage of this method is that network not always is available. In that case one can still transmit data using some another embedded devices like IrDA, Bluetooth or NFC. Unfortunately not every device has these kind of accessories implemented. However, basis of handhelds is to have embedded speaker and microphone. That is why, in this dissertation, to communication between devices were chosen audio channel. Availability audio appliance and a lot of uses of this solution are main advantages. Moreover, the sound waves with appropriate, not to high sound intensity, does not penetrate through the walls. It causing that waves cannot be receive e.g. on the street when some protected data are sending in the house. Furthermore receiver as like sender do not need to known each other (unlike Bluetooth) before starting the communication. Sender just start to transmit data and receiver in the same time listening broadcast.
+
+To authentication and key agreement between mobile devices was choosen Anonymous Mutual Authentication (AMA) protocol, created by L. Hanzlik, K. Klucznik, £. Krzywiecki and M. Kuty³owski. AMA is simmetric, which means  participants execute the same code. One of the advantage is simple to implemented, even on the devices with low power computing. Every key and encryption are sending by audio channel.
+
+Application created on Android system will serve as proof of concept. Application is called AKEBySound. Managed to determine that exist this kind of applications but none of theme are use to authentication and key exchange protocol. To use this app is enough to have mobile phone/smartform with software Android ( version 4.1.2 or higher ) and working speaker and microphone, of course.
+
+Dissertation is divided on X parts. The first section focus on analysis of the problem. Explain principal issues used to create the application. Due to the fact protocol is executed by audio channel the first subsection is about sound.  The next one is one of the method to exchange keys on which AMA protocol base - Diffie-Hellman Key exchange.  Tutaj cos o bezpieczenstwie bedzie itp. Dowod poprawnosci protokolu i takie tam.
+
+Next chapter is about System design. In subsections are described assumptions of project and used cases. Then is shown diagram classes 
+
+
+
+\section{Analysis of the problem}
+\subsection{Sound}
+Sound is acoustic wave propagating in different substances such as water, air (so called vibrating wire). These waves are causing auditory sensation and these which in appropriate amplitude and frequency are not detected by human organ of hearing. Sound to spread has to have some medium, that is why not propagate in vacuum. Furthermore sound is longitudinal waves, which means that particles of the medium is in the same direction as the direction of travel of the wave.
+
+\begin{center}
+	\includegraphics{img/longitudinal_wave}
+\end{center}
+\subsubsection{Frequency}
+Audio frequency is measured in hertz (Hz), where 1 Hz means one cycle per second. Below figures show graphs of audio frequency 1 Hz and 5 Hz.
+
+\begin{center}
+	\includegraphics[width=0.45\textwidth]{img/frequency_1Hz}
+	\includegraphics[width=0.45\textwidth]{img/frequency_5Hz}
+\end{center}
+
+Exist three division of sound as to frequency:
+\begin{itemize}
+	\item Infrasound - frequency is lower than 16~Hz.
+	\item Hearable sound - frequency is greater than 16~Hz and lower than 20~kHz.
+	\item Ultrasound - frequency is greater than 20~kHz.
+	\item Hipersound - frequency is greater than 10~GHz.
+\end{itemize}
+
+Frequency specify also pitch of sound. A high frequency sound wave corresponds to a high pitch sound and low frequency sound wave corresponds to a low pitch sound.
+
+\subsubsection{Sound intensity}
+Loudness of the sound is dependent to his intensity. 
+
+\subsection{Diffie-Hellman Key exchange}
+\subsection{Random Oracle Model}
+
+\section{System design}
+\subsection{Assumptions}
+System should:
+\begin{itemize}
+	\item Works on every middle class mobile devices with system Android.
+	\item Generate keys and encryption during authorization process.
+	\item Use sound wave to sending encoded keys and encryptions to another party to establish authorization.
+	\item Receiving sound wave and decode received data to keys and encryption from another party to establish authorization.
+\end{itemize}
+\subsection{Activity diagram}
+\subsection{Anonymous Mutual Authentication protocol - Description}
+
+\begin{figure}[here]
+	\centering
+	\includegraphics[width=1.2\textwidth]{img/AMA_protocol}
+	\caption{Protocol description - Anonymous Mutual Authentication. Figure from source \cite{hammingwindow_img}.}
+	\label{fig:F8}
+\end{figure}
+
+Scheme of protocol is shown at the Fig. 1. In scheme are use the fallowing notation:
+\begin{itemize}
+\item \textit{Enc} is a symmetric encryption function. \textit{$Enc_K(M)$} means encryption of $M$ using key $K$. 
+\item \textit{H} is a cryptographic hash function. 
+\item For confirming public keys are using digital certificates and public key infrastructure (PKI).
+\end{itemize}
+
+Protocol is very simple to implement. In the first state, parties (Alice and Bob) generate their private key - $x_A$ (respectively, $x_B$) and public key $y_A = g^{x_A}$ (respectively, $y_A$). Then starts main procedure. Parties generate ephemeral keys. Private is $h_A := H(a)$ (where a is a random number) (respectively $h_B$, b) and public ephemeral key $c_A := g^{h_A}$ (respectively $c_B$). After this parties exchange between themselves public ephemeral key. This is standard Diffie-Hellman key agreement. 
+
+When parties obtain ephemeral public key of another party, start compute master key $K$. Four different one-time keys are establish by hashing $K$ and number parameter - different for each one-time key. 
+
+Authenticated party is raising ephemeral public key $c_B$ (respectively, $c_A$) to power of private key $x_B$ (respectively, $x_A$). On this base authentication. Verifier compute the same value without private key but with the discrete logarithm of $c_A$ (respectively, $c_B$) ($(y_A)^(h_B)$)
+
+\subsubsection{Security model assumption}
+
+\section{System implementation}
+\subsection{Description of technology}
+\subsubsection{Android/Java}
+\subsubsection{C++}
+\subsubsection{JNI}
+\subsubsection{Crypto++}
+
+\section{Tests}
+\section{Installing and implementation}
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BIBLIOGRAFIA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{plain}
+
+\bibliography{P2P}
+
+\end{document}
