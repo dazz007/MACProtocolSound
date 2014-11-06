@@ -1,9 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.12.2)  30 OCT 2014 19:39
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.12.2)  5 NOV 2014 21:17
 entering extended mode
 **AKESound.tex
-
-("C:\Users\Pawel\Desktop\Praca Magisterska KURDE!!!!\praca magisterska\praca ma
-gisterska\AKESound.tex"
+("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -424,9 +422,7 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \@indexfile=\write3
 
 Writing index file AKESound.idx
-
-("C:\Users\Pawel\Desktop\Praca Magisterska KURDE!!!!\praca magisterska\praca ma
-gisterska\AKESound.aux")
+("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
 LaTeX Font Info:    ... okay on input line 108.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 108.
@@ -507,10 +503,9 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/sc' in size <24.88> not available
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 136.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 137.
 
-("C:\Users\Pawel\Desktop\Praca Magisterska KURDE!!!!\praca magisterska\praca ma
-gisterska\AKESound.toc"
+("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.toc"
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 3.
 LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 4.
@@ -557,69 +552,64 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 File: img/longitudinal_wave.png Graphic file (type png)
 
 <use img/longitudinal_wave.png>
-Package pdftex.def Info: img/longitudinal_wave.png used on input line 164.
+Package pdftex.def Info: img/longitudinal_wave.png used on input line 165.
 (pdftex.def)             Requested size: 277.03432pt x 82.05635pt.
 
 <img/frequency_1Hz.png, id=15, 347.79938pt x 161.10187pt>
 File: img/frequency_1Hz.png Graphic file (type png)
 
 <use img/frequency_1Hz.png>
-Package pdftex.def Info: img/frequency_1Hz.png used on input line 170.
+Package pdftex.def Info: img/frequency_1Hz.png used on input line 171.
 (pdftex.def)             Requested size: 179.99878pt x 83.37521pt.
 
 <img/frequency_5Hz.png, id=16, 347.79938pt x 161.10187pt>
 File: img/frequency_5Hz.png Graphic file (type png)
 
 <use img/frequency_5Hz.png>
-Package pdftex.def Info: img/frequency_5Hz.png used on input line 171.
+Package pdftex.def Info: img/frequency_5Hz.png used on input line 172.
 (pdftex.def)             Requested size: 179.99878pt x 83.37521pt.
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 176.
+(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 177.
 
- [3 <C:/Users/Pawel/Desktop/Praca Magisterska KURDE!!!!/praca magisterska/praca
- magisterska/img/longitudinal_wave.png> <C:/Users/Pawel/Desktop/Praca Magisters
-ka KURDE!!!!/praca magisterska/praca magisterska/img/frequency_1Hz.png (PNG cop
-y)> <C:/Users/Pawel/Desktop/Praca Magisterska KURDE!!!!/praca magisterska/praca
- magisterska/img/frequency_5Hz.png (PNG copy)>]
+ [3 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/longitudinal_wave.pn
+g> <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/frequency_1Hz.png (PN
+G copy)> <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/frequency_5Hz.p
+ng (PNG copy)>]
 <img/AMA_protocol.png, id=23, 847.66687pt x 382.42876pt>
 File: img/AMA_protocol.png Graphic file (type png)
 
 <use img/AMA_protocol.png>
-Package pdftex.def Info: img/AMA_protocol.png used on input line 204.
+Package pdftex.def Info: img/AMA_protocol.png used on input line 205.
 (pdftex.def)             Requested size: 479.99878pt x 216.55115pt.
 
-Overfull \hbox (79.99878pt too wide) in paragraph at lines 204--205
+Overfull \hbox (79.99878pt too wide) in paragraph at lines 205--206
  [][] 
  []
 
 
 LaTeX Warning: Citation `hammingwindow_img' on page 4 undefined on input line 2
-05.
+06.
 
 
 LaTeX Warning: Citation `hammingwindow_img' on page 4 undefined on input line 2
-05.
+06.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4]
-("C:\Users\Pawel\Desktop\Praca Magisterska KURDE!!!!\praca magisterska\praca ma
-gisterska\AKESound.bbl"
+[4] [5 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/AMA_protocol.png>
+] ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.bbl"
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [5 <C:/Users/Pawel/Desktop/Praca Magisterska KURDE!!!!/praca magisterska/prac
-a magisterska/img/AMA_protocol.png>] [6]
-("C:\Users\Pawel\Desktop\Praca Magisterska KURDE!!!!\praca magisterska\praca ma
-gisterska\AKESound.aux")
+) [6] [7] ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.aux")
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
  6878 strings out of 494045
- 89384 string characters out of 3148387
+ 88977 string characters out of 3148387
  260679 words of memory out of 3000000
  9969 multiletter control sequences out of 15000+200000
  63178 words of font info for 81 fonts, out of 3000000 for 9000
@@ -631,9 +621,9 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Program Files/MiKTeX
 s/type1/urw/times/utmb8a.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/times
 /utmr8a.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><d:/P
 rogram Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on AKESound.pdf (7 pages, 149258 bytes).
+Output written on AKESound.pdf (8 pages, 151429 bytes).
 PDF statistics:
- 58 PDF objects out of 1000 (max. 8388607)
+ 61 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
