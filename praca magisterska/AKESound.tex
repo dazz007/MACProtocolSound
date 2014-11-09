@@ -149,7 +149,7 @@ Mobile devices to transfer data mainly use Internet. Disadvantage of this method
 
 To authentication and key agreement between mobile devices was choosen Anonymous Mutual Authentication (AMA) protocol, created by L. Hanzlik, K. Klucznik, £. Krzywiecki and M. Kuty³owski. AMA is simmetric, which means  participants execute the same code. One of the advantage is simple to implemented, even on the devices with low power computing. Every key and encryption are sending by audio channel.
 
-Application created on Android system will serve as proof of concept. Application is called AKEBySound. Managed to determine that exist this kind of applications but none of theme are use to authentication and key exchange protocol. To use this app is enough to have mobile phone/smartform with software Android ( version 4.1.2 or higher ) and working speaker and microphone, of course.
+Application created on Android system will serve as proof of concept. Application is called AKEBySound. Managed to determine that exist this kind of applications but none of theme are use to authentication and key exchange protocol. To use this app is enough to have mobile phone/smartform with software Android ( version 4.1.2 or higher ), working speaker and microphone, of course.
 
 Dissertation is divided on X parts. The first section focus on analysis of the problem. Explain principal issues used to create the application. Due to the fact protocol is executed by audio channel the first subsection is about sound.  The next one is one of the method to exchange keys on which AMA protocol base - Diffie-Hellman Key exchange.  Tutaj cos o bezpieczenstwie bedzie itp. Dowod poprawnosci protokolu i takie tam.
 
@@ -239,7 +239,7 @@ Furthermore, every application has to be signed by developer. Applications witho
 
 \subsection{Application architecture}
 
-Application consist of three parts: cryptographic module, sound channel module and graphic interface. Cryptographic module is written in C++ and to use it in Android, was needed to write a wrapper. NDK (Native Development Kit) is a toolset that allows to add native-code languages such as C and C++ to Android's app. User interface consists initial screen where user choose which frequencies have to be use during sending data. In next screen is dynamic graph with recording sound wave and button which start the protocol. To show sound as sinusoid wave we used external library AChartEngine, the rest of interface are created by standard Android's libraries.
+Application consist of three parts: cryptographic module, sound channel module and graphic interface. Cryptographic module is written in C++ and to use it in Android, was needed to write a wrapper using JNI (Java Native Interface). NDK (Native Development Kit) is a toolset that allows to add native-code languages such as C and C++ to Android's app. User interface consists initial screen where user choose which frequencies have to be use during sending data. In next screen is dynamic graph with recording sound wave and button which start the protocol. To show sound as sinusoid wave we used external library AChartEngine, the rest of interface are created by standard Android's libraries.
 
 
 Figure 3.
@@ -252,26 +252,88 @@ Exist few of cryptography libraries which are written in Java (e.g. javax.crypto
 
 \subsection{NIST recommendation for security parameters}
 
-NIST recommends using 3072 bit length keys to ensure low probability of calculating discrete logarithm. This length is set as default in CryptoPP, however in our prototype we are using 1024 bit. It is caused by duration of sending data by sound. Now, sending 1024 bit length keys take some time and for needs of presentation we decided to stay with this length.
+NIST recommends using 3072 bit length keys to ensure low probability of calculating discrete logarithm. This length is set as default in CryptoPP, however in our prototype we are using 1024 bit. It is caused by duration of sending data by sound. Now, sending 1024 bit length keys take some time and for needs of presentation we decided to stay with this length. For more information please check \cite{NIST}.
 
 \subsection{Shared application model}
 
-\subsection{Java Native Interface - C++ Wrappers}
+\subsection{Java Native Interface - C++ Wrapper}
 
-To be able to use cryptographic part written in C++ in Android, we had to create C++ wrappers using JNI (Java Native Interface). Main class which "communicate" with C++ code has native methods, for which, after appropriate compilation method, was created MACWrapper.h where definition of methods looks like in Figure 2.
+To be able to use cryptographic part written in C++ in Android, we had to create C++ wrappers using JNI (Java Native Interface) \cite{JNI}. Main class which communicate with C++ code has native methods, for which, after appropriate compilation method, was created MACWrapper.h where definition of methods looks like below.
+
+\begin{lstlisting}
+/*
+ * Class:     com_example_androidake_MutualAuthenticateChip
+ * Method:    prepareMACCPP
+ * Signature: (Z)V
+ */
+JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_prepareMACCPP
+  (JNIEnv *, jobject, jboolean);
+\end{lstlisting}
 
 Implementations of methods are in MACWrapper.cpp. There are made conversion from C++ data type to Java data type and vice versa.
-  
+
+\begin{lstlisting}
+JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_prepareMACCPP
+(JNIEnv *env, jobject thisObj, jboolean jinit) {
+	bool init = jinit;
+	if(init == true) {
+		mac = new MutualAuthenticationChip(init);
+	} else {
+		mac_B = new MutualAuthenticationChip(init);
+	}
+};
+\end{lstlisting}
+
+\subsection{Base64}
+
+One of the biggest problem was decided in what representation data should be sending. First choice was standard binary representation with 0 and 1. During creation of sound channel we have found that sending one ephemeral key, which has 1024 bits will take too long. So we decided to reduce sending data using Base64 conversion. Six bits are transform to one of the 64 defined signs. Hence, instead of sending 1024 sings we send just about 172. Data which come from cryptographic module are in Hexadecimal representation. To converse we have used library created by Robert Harder \cite{base_64}. 
+
+\begin{lstlisting}[caption={Example of code converting from Hex String to Base64 String}]
+public static String fromHexToBase64(byte[] hex_byte) {
+	String hex_str = ConverterJava.ByteToString(hex_byte);
+	byte[] decodedHex = null;
+	try {
+		decodedHex = Hex.decodeHex(hex_str.substring(0,
+				hex_str.length() - 1).toCharArray());
+	} catch (DecoderException e) {
+		e.printStackTrace();
+	}
+	String encodedHexB64 = Base64.encodeBytes(decodedHex);
+	return encodedHexB64;
+}
+\end{lstlisting}
+
 \subsection{Sound channel}
 
+Sound channel was one of the most difficult part during creation of application. One of the reason was inaccessibility of library whereby we could transform received sound data to cryptographic data. Whole process of analysis received data had to be created from beginning. At beginning we had doubt about sensitivity and precision of speaker and microphone in mobile devices. Especially when we wanted to use ultrasonic waves which could be hard to interpreter. Fortunately, doubts were dispelled after first testing of this channel. Results of working will be describe in Test section. Here we focus on principle of operation.
+
+\subsubsection{Generating sound wave}
+
+Class responsible for generating sound wave get data presented in Base64 (Check section with Base64). Every character A-Z, a-z, 0-9, + and / is mapped to one of the 64 frequencies.
+
+A = 10 kHz,
+
+B = 10,15 kHz,
+
+C = 10,3 kHz,
+
+...
+
+/ = 19,55 kHz
 
 
+Additional two characters \",\" and \".\" represent begin of data and end of data. Sample rate is 44,1 kHz. Every character is sending during 30 ms, which means that for each pitch is needed 1323 samples. To create sinus wave each sample for $ i \in (0,1322) $ is calculating by formula:
+\begin{center}
+$\sin($ $Frequency \ast PI \ast 2 \ast i  \over 44 100 $ $)$
+\end{center}
 
-\subsection{Description of technology}
-\subsubsection{Android/Java}
-\subsubsection{C++}
-\subsubsection{JNI}
-\subsubsection{Crypto++}
+These samples are processed by AudioTrack library to sound using PCM encoding. 
+
+
+\subsubsection{Receiving sound}
+
+Retrieving received data is more complicated. In separate process, using AudioRecord librarary, in every 15 second are retrieved data and inserted to array with data. Separate process 
+
 
 \section{Tests}
 \section{Installing and implementation}
@@ -289,8 +351,10 @@ Implementations of methods are in MACWrapper.cpp. There are made conversion from
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BIBLIOGRAFIA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \bibliographystyle{plain}
 
-\bibliography{P2P}
+\bibliography{AKESound}
+
 
 \end{document}

@@ -88,11 +88,9 @@ public class ConverterJava {
 		String hex_str = ConverterJava.ByteToString(hex_byte);
 		byte[] decodedHex = null;
 		try {
-//			decodedHex = Hex.decodeHex(hex_str.toCharArray());
 			decodedHex = Hex.decodeHex(hex_str.substring(0,
 					hex_str.length() - 1).toCharArray());
 		} catch (DecoderException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
