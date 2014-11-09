@@ -142,7 +142,7 @@
 
 \section*{Introduction}
 
-The goal of the dissertation is to analyze the usability of channels alternative to WiFi in Authenticated Key Establishment (AKE) protocols for mobile devices.
+The goal of the dissertation is to analyse the usability of channels alternative to WiFi in Authenticated Key Establishment (AKE) protocols for mobile devices.
 Authentication and communication protocol in audio channel for mobile devices.
 
 Mobile devices to transfer data mainly use Internet. Disadvantage of this method is that network not always is available. In that case one can still transmit data using some another embedded devices like IrDA, Bluetooth or NFC. Unfortunately not every device has these kind of accessories implemented. However, basis of handhelds is to have embedded speaker and microphone. That is why, in this dissertation, to communication between devices were chosen audio channel. Availability audio appliance and a lot of uses of this solution are main advantages. Moreover, the sound waves with appropriate, not to high sound intensity, does not penetrate through the walls. It causing that waves cannot be receive e.g. on the street when some protected data are sending in the house. Furthermore receiver as like sender do not need to known each other (unlike Bluetooth) before starting the communication. Sender just start to transmit data and receiver in the same time listening broadcast.
@@ -231,22 +231,39 @@ AMA attempts to be simple in implement and does not require high-power computing
 
 Operating system which was chosen is Android version 4.1.2 and higher. This is the newest version which was available for device which has been using in tests. Second device to tests has Android 4.2.2. This software has every required libraries whereby is possible to create sound channel between two devices (AudioTrack and AudioRecord). Additionally, Android allows the use of modules written in C++. 
 
-
 \subsection{Security of Android}
+
 The operating system should ensure that running application cannot interact with another. Each application is run in separate process having  own user ID. This sets up a kernel-level Application Sandbox, where by default application cannot interact with each other and has limited access to OS.
 
 Furthermore, every application has to be signed by developer. Applications without signature will rejected by Google Play or the package installer on Android device. Signed certificate is verified by Package Manager after installation of application.
 
 \subsection{Application architecture}
+
 Application consist of three parts: cryptographic module, sound channel module and graphic interface. Cryptographic module is written in C++ and to use it in Android, was needed to write a wrapper. NDK (Native Development Kit) is a toolset that allows to add native-code languages such as C and C++ to Android's app. User interface consists initial screen where user choose which frequencies have to be use during sending data. In next screen is dynamic graph with recording sound wave and button which start the protocol. To show sound as sinusoid wave we used external library AChartEngine, the rest of interface are created by standard Android's libraries.
 
 
 Figure 3.
 
 \subsection{Cryptography library}
+
 Exist few of cryptography libraries which are written in Java (e.g. javax.crypto, BouncyCastle), but we wanted to create cryptography module which is independent of the platform. The choice fell on CryptoPP. It is free, open source cryptography library written in C++. The library is objectives and very easy to use. Ensures symmetric and asymmetric cryptography along with signatures and secure hash function. Is used by such companies as Microsoft or Symantec.
 
 \subsection{Activity diagram}
+
+\subsection{NIST recommendation for security parameters}
+
+NIST recommends using 3072 bit length keys to ensure low probability of calculating discrete logarithm. This length is set as default in CryptoPP, however in our prototype we are using 1024 bit. It is caused by duration of sending data by sound. Now, sending 1024 bit length keys take some time and for needs of presentation we decided to stay with this length.
+
+\subsection{Shared application model}
+
+\subsection{Java Native Interface - C++ Wrappers}
+
+To be able to use cryptographic part written in C++ in Android, we had to create C++ wrappers using JNI (Java Native Interface). Main class which "communicate" with C++ code has native methods, for which, after appropriate compilation method, was created MACWrapper.h where definition of methods looks like in Figure 2.
+
+Implementations of methods are in MACWrapper.cpp. There are made conversion from C++ data type to Java data type and vice versa.
+  
+\subsection{Sound channel}
+
 
 
 

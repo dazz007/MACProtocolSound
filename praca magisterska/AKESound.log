@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.25)  9 NOV 2014 13:18
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.25)  9 NOV 2014 16:13
 entering extended mode
 **AKESound.tex
 ("C:\Users\pke\Documents\GitHub\MACProtocolSound\praca magisterska\AKESound.tex
@@ -600,7 +600,7 @@ A_protocol.png>] [6]
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [7]
+) [7] [8]
 ("C:\Users\pke\Documents\GitHub\MACProtocolSound\praca magisterska\AKESound.aux
 ")
 
@@ -608,10 +608,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 7075 strings out of 493921
- 93793 string characters out of 3144882
+ 7079 strings out of 493921
+ 93842 string characters out of 3144882
  267576 words of memory out of 3000000
- 10171 multiletter control sequences out of 15000+200000
+ 10175 multiletter control sequences out of 15000+200000
  63178 words of font info for 81 fonts, out of 3000000 for 9000
  879 hyphenation exceptions out of 8191
  27i,6n,32p,998b,254s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -622,9 +622,9 @@ es (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/Mi
 KTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
 nts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/u
 rw/times/utmri8a.pfb>
-Output written on AKESound.pdf (8 pages, 152472 bytes).
+Output written on AKESound.pdf (9 pages, 155252 bytes).
 PDF statistics:
- 61 PDF objects out of 1000 (max. 8388607)
+ 64 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
