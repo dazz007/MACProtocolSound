@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.12.2)  9 NOV 2014 23:18
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.12.2)  10 NOV 2014 21:35
 entering extended mode
 **AKESound.tex
 ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.tex"
@@ -604,17 +604,17 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 327.
 
-("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.bbl") [9]
+[9] ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.bbl") [10]
 ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.aux")
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 7153 strings out of 494045
- 91046 string characters out of 3148387
- 289691 words of memory out of 3000000
- 10238 multiletter control sequences out of 15000+200000
+ 7154 strings out of 494045
+ 91057 string characters out of 3148387
+ 289695 words of memory out of 3000000
+ 10239 multiletter control sequences out of 15000+200000
  69879 words of font info for 90 fonts, out of 3000000 for 9000
  753 hyphenation exceptions out of 8191
  27i,6n,32p,998b,1640s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -626,9 +626,9 @@ urw/courier/ucrr8a.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8
 a.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><d:/Program
  Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><d:/Program Files/MiKTeX 2.9
 /fonts/type1/urw/times/utmri8a.pfb>
-Output written on AKESound.pdf (10 pages, 186918 bytes).
+Output written on AKESound.pdf (11 pages, 189522 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
+ 78 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

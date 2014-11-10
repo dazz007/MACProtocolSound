@@ -5,6 +5,11 @@ Java programming tutorial - java native interface (jni).
 \newblock
   \url{https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html}.
 
+\bibitem{minim_dft}
+Minim fft class.
+\newblock
+  \url{http://code.compartmental.net/minim/javadoc/ddf/minim/analysis/FFT.html}.
+
 \bibitem{NIST}
 Nist sp 800-131 recommendation for key length.
 \newblock
