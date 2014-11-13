@@ -1,5 +1,5 @@
-\select@language {polish}
-\select@language {polish}
+\select@language {english}
+\select@language {english}
 \contentsline {section}{\numberline {1}Analysis of the problem}{3}
 \contentsline {subsection}{\numberline {1.1}Sound}{3}
 \contentsline {subsubsection}{\numberline {1.1.1}Frequency}{3}
@@ -25,5 +25,5 @@
 \contentsline {subsection}{\numberline {3.11}Sound channel}{8}
 \contentsline {subsubsection}{\numberline {3.11.1}Generating sound wave}{9}
 \contentsline {subsubsection}{\numberline {3.11.2}Receiving sound}{9}
-\contentsline {section}{\numberline {4}Tests}{10}
-\contentsline {section}{\numberline {5}Installing and implementation}{10}
+\contentsline {section}{\numberline {4}Tests}{11}
+\contentsline {section}{\numberline {5}Installing and implementation}{11}

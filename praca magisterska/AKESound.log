@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.12.2)  10 NOV 2014 21:35
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.12.2)  13 NOV 2014 22:02
 entering extended mode
 **AKESound.tex
 ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.tex"
@@ -231,19 +231,17 @@ Package: babel 2008/07/08 v3.8m The Babel package
 ("d:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
 File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
 )
-("d:\Program Files\MiKTeX 2.9\tex\generic\babel\polish.ldf"
-Language: polish 2005/03/31 v1.2l Polish support from the babel system
+("d:\Program Files\MiKTeX 2.9\tex\generic\babel\english.ldf"
+Language: english 2005/03/30 v3.3o English support from the babel system
 
 ("d:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
 File: babel.def 2008/07/08 v3.8m Babel common definitions
 \babel@savecnt=\count110
 \U@D=\dimen130
 )
-Package babel Info: Making " an active character on input line 83.
-\pl@left=\dimen131
-\pl@down=\dimen132
-\pl@right=\dimen133
-\pl@temp=\dimen134
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
 ))
 ("d:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
@@ -262,14 +260,14 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@cnth=\count111
 \Gm@cntv=\count112
 \c@Gm@tempcnt=\count113
-\Gm@bindingoffset=\dimen135
-\Gm@wd@mp=\dimen136
-\Gm@odd@mp=\dimen137
-\Gm@even@mp=\dimen138
-\Gm@layoutwidth=\dimen139
-\Gm@layoutheight=\dimen140
-\Gm@layouthoffset=\dimen141
-\Gm@layoutvoffset=\dimen142
+\Gm@bindingoffset=\dimen131
+\Gm@wd@mp=\dimen132
+\Gm@odd@mp=\dimen133
+\Gm@even@mp=\dimen134
+\Gm@layoutwidth=\dimen135
+\Gm@layoutheight=\dimen136
+\Gm@layouthoffset=\dimen137
+\Gm@layoutvoffset=\dimen138
 \Gm@dimlist=\toks30
 
 ("d:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
@@ -313,12 +311,12 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 \UL@hyphenbox=\box34
 \UL@skip=\skip55
 \UL@hook=\toks31
-\UL@height=\dimen143
+\UL@height=\dimen139
 \UL@pe=\count114
-\UL@pixel=\dimen144
+\UL@pixel=\dimen140
 \ULC@box=\box35
 Package: ulem 2011/03/18
-\ULdepth=\dimen145
+\ULdepth=\dimen141
 )
 ("d:\Program Files\MiKTeX 2.9\tex\latex\lipsum\lipsum.sty"
 Package: lipsum 2011/04/14 v1.2 150 paragraphs of Lorem Ipsum dummy text
@@ -329,14 +327,14 @@ Package: lipsum 2011/04/14 v1.2 150 paragraphs of Lorem Ipsum dummy text
 \lst@gtempboxa=\box36
 \lst@token=\toks32
 \lst@length=\count117
-\lst@currlwidth=\dimen146
+\lst@currlwidth=\dimen142
 \lst@column=\count118
 \lst@pos=\count119
-\lst@lostspace=\dimen147
-\lst@width=\dimen148
+\lst@lostspace=\dimen143
+\lst@width=\dimen144
 \lst@newlines=\count120
 \lst@lineno=\count121
-\lst@maxwidth=\dimen149
+\lst@maxwidth=\dimen145
 
 ("d:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
@@ -391,12 +389,12 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \skiplength=\skip61
 \algomargin=\skip62
 \skipalgocfslide=\skip63
-\algowidth=\dimen150
-\inoutsize=\dimen151
-\inoutline=\dimen152
-\interspacetitleruled=\dimen153
-\interspacealgoruled=\dimen154
-\interspacetitleboxruled=\dimen155
+\algowidth=\dimen146
+\inoutsize=\dimen147
+\inoutline=\dimen148
+\interspacetitleruled=\dimen149
+\interspacealgoruled=\dimen150
+\interspacetitleboxruled=\dimen151
 \algocf@inoutbox=\box40
 \algocf@inputbox=\box41
 \AlCapSkip=\skip64
@@ -445,13 +443,13 @@ LaTeX Font Info:    ... okay on input line 108.
 ("d:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count134
-\scratchdimen=\dimen156
+\scratchdimen=\dimen152
 \scratchbox=\box47
 \nofMPsegments=\count135
 \nofMParguments=\count136
 \everyMPshowfont=\toks35
 \MPscratchCnt=\count137
-\MPscratchDim=\dimen157
+\MPscratchDim=\dimen153
 \MPnumerator=\count138
 \makeMPintoPDFobject=\count139
 \everyMPtoPDFconversion=\toks36
@@ -547,8 +545,13 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
 )
 \tf@toc=\write4
- [1] [2]
-<img/longitudinal_wave.png, id=13, 277.035pt x 82.05656pt>
+ [1]
+Overfull \hbox (8.47389pt too wide) in paragraph at lines 150--151
+[]\T1/ptm/m/n/12 To au-then-ti-ca-tion and key agree-ment be-tween mo-bile de-v
+ices was choosen Anony-
+ []
+
+[2] <img/longitudinal_wave.png, id=13, 277.035pt x 82.05656pt>
 File: img/longitudinal_wave.png Graphic file (type png)
 
 <use img/longitudinal_wave.png>
@@ -604,20 +607,37 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 327.
 
-[9] ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.bbl") [10]
-("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.aux")
+<img/peaks_1.png, id=44, 291.33844pt x 231.11343pt>
+File: img/peaks_1.png Graphic file (type png)
+ <use img/peaks_1.png>
+Package pdftex.def Info: img/peaks_1.png used on input line 344.
+(pdftex.def)             Requested size: 179.99878pt x 142.79161pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9] <img/receiving.png, id=49, 534.49687pt x 453.19313pt>
+File: img/receiving.png Graphic file (type png)
+
+<use img/receiving.png>
+Package pdftex.def Info: img/receiving.png used on input line 354.
+(pdftex.def)             Requested size: 279.99878pt x 237.41823pt.
+ [10 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/peaks_1.png> <E:/Gi
+tHubFinal/MACProtocolSound/praca magisterska/img/receiving.png>] ("E:\GitHubFin
+al\MACProtocolSound\praca magisterska\AKESound.bbl")
+[11] ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.aux")
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 7154 strings out of 494045
- 91057 string characters out of 3148387
- 289695 words of memory out of 3000000
- 10239 multiletter control sequences out of 15000+200000
+ 7087 strings out of 494045
+ 90506 string characters out of 3148387
+ 287989 words of memory out of 3000000
+ 10170 multiletter control sequences out of 15000+200000
  69879 words of font info for 90 fonts, out of 3000000 for 9000
  753 hyphenation exceptions out of 8191
- 27i,6n,32p,998b,1640s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,6n,32p,998b,1615s stack positions out of 5000i,500n,10000p,200000b,50000s
 {d:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<d:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Program Files/MiKTeX 2.9/font
@@ -626,9 +646,9 @@ urw/courier/ucrr8a.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8
 a.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><d:/Program
  Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><d:/Program Files/MiKTeX 2.9
 /fonts/type1/urw/times/utmri8a.pfb>
-Output written on AKESound.pdf (11 pages, 189522 bytes).
+Output written on AKESound.pdf (12 pages, 242153 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
+ 85 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
