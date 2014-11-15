@@ -142,16 +142,25 @@
 
 \section*{Introduction}
 
-The goal of the dissertation is to analyse the usability of channels alternative to WiFi in Authenticated Key Establishment (AKE) protocols for mobile devices.
-Authentication and communication protocol in audio channel for mobile devices.
+The goal of the dissertation is to analyze the usability of channels alternative to WiFi in Authenticated Key Establishment (AKE) protocols for mobile devices. Nowadays, more often mobile phones are used to sending secret data. Every this kind of device has embedded speaker and microphone therefore we want to check whether is possible to establish session key just using sound.
 
-Mobile devices to transfer data mainly use Internet. Disadvantage of this method is that network not always is available. In that case one can still transmit data using some another embedded devices like IrDA, Bluetooth or NFC. Unfortunately not every device has these kind of accessories implemented. However, basis of handhelds is to have embedded speaker and microphone. That is why, in this dissertation, to communication between devices were chosen audio channel. Availability audio appliance and a lot of uses of this solution are main advantages. Moreover, the sound waves with appropriate, not to high sound intensity, does not penetrate through the walls. It causing that waves cannot be receive e.g. on the street when some protected data are sending in the house. Furthermore receiver as like sender do not need to known each other (unlike Bluetooth) before starting the communication. Sender just start to transmit data and receiver in the same time listening broadcast.
+\vspace{5mm}
 
-To authentication and key agreement between mobile devices was choosen Anonymous Mutual Authentication (AMA) protocol, created by L. Hanzlik, K. Klucznik, £. Krzywiecki and M. Kuty³owski. AMA is simmetric, which means  participants execute the same code. One of the advantage is simple to implemented, even on the devices with low power computing. Every key and encryption are sending by audio channel.
+Mobile devices to transfer data mainly use Internet. Disadvantage of this method is that network not always is available. In that case one can still transmit data using some another embedded components like IrDA, Bluetooth or NFC. Unfortunately not every device has these kind of accessories implemented. However, basis of handhelds is to have embedded speaker and microphone. That is why, in this dissertation, to communication between devices were chosen audio channel. Availability audio appliance and a lot of uses of this solution are main advantages. Moreover, the sound waves with appropriate, not to high sound intensity, does not penetrate through the walls. It causing that waves cannot be receive e.g. on the street when some protected data are sending in the house. Furthermore receiver as like sender do not need to known each other (unlike Bluetooth) before starting the communication. Sender just start to transmit data and receiver in the same time listen broadcast.
 
-Application created on Android system will serve as proof of concept. Application is called AKEBySound. Managed to determine that exist this kind of applications but none of theme are use to authentication and key exchange protocol. To use this app is enough to have mobile phone/smartform with software Android ( version 4.1.2 or higher ), working speaker and microphone, of course.
+\vspace{5mm}
+
+To authentication and key agreement between mobile devices was chosen Anonymous Mutual Authentication (AMA) protocol, created by L. Hanzlik, K. Klucznik, £. Krzywiecki and M. Kuty³owski. AMA is symmetric, which means  participants execute the same code. One of the advantage is simple to implemented, even on the devices with low power computing. It was originally designed for authenticating electronic documents, it proved to be portable  Every key and encryption are sending by audio channel.
+
+\vspace{5mm}
+
+Application created on Android system will serve as proof of concept. App is called AKEBySound. Managed to determine that exist this kind of applications but none of theme are use to establishing session keys and they are not open source. To use our app is enough to have mobile phone/smartphone with software Android ( version 4.1.2 or higher ), working speaker and microphone, of course.
+
+\vspace{5mm}
 
 Dissertation is divided on X parts. The first section focus on analysis of the problem. Explain principal issues used to create the application. Due to the fact protocol is executed by audio channel the first subsection is about sound.  The next one is one of the method to exchange keys on which AMA protocol base - Diffie-Hellman Key exchange.  Tutaj cos o bezpieczenstwie bedzie itp. Dowod poprawnosci protokolu i takie tam.
+
+\vspace{5mm}
 
 Next chapter is about System design. In subsections are described assumptions of project and used cases. Then is shown diagram classes 
 
@@ -183,8 +192,22 @@ Exist three division of sound as to frequency:
 Frequency specify also pitch of sound. A high frequency sound wave corresponds to a high pitch sound and low frequency sound wave corresponds to a low pitch sound.
 
 \subsubsection{Sound intensity}
-Loudness of the sound is dependent to his intensity. 
+Loudness of the sound is dependent to his intensity. It is expressed by $W/m^2$ unit. This is ratio the power of the acoustic wave to surface area to which wave energy falls perpendicular during 1 second \cite{sound_intensity}. Human's ear works in such way that doubling intensity of sound, don't cause that human hear it two times louder. Human hears its logarithmized value. Logarithmized measure of sound intensity is called sound intensity level. Is measured in decibels and is given by \cite{decibels}:
+\begin{equation}
+	L = 10\log_{10}(\frac{I}{I_o})  [dB],
+\end{equation}
+where:
+\begin{itemize}
+	\item $L$ - Sound intensity level.
+	\item $I$ - Sound intensity.
+	\item $I_o$ - Contractual value of the intensity which determines hearing range, which is $10^{-12}\frac{W}{m^2}.$
+\end{itemize}
+\subsubsection{Speed of sound}
+Speed of sound depends on center through which wave passes. Influence on speed has also temperature of the center. The slowest moves in the flue. In the air with $20^o$ temperature reach in  approximation 343 m/s (1230 km/h). In water with the same temperature speed is 1482 m/s (5335 km/h). The fastest sound spread in solid. For example in steel reach about 5960 m/s (21460 km/h) \cite{sound_speed}.
 
+\subsubsection{Ultrasound}
+The present app largely, to sending data, uses ultrasound. Ultrasound are sound waves, which are inaudible for human, on the grounds of their too high frequency. Have adopted that ultrasounds starts from 20 kHz, but really everything depends on how good hearing human has. Children hear the highest frequencies. Increasing age the upper limit of hearing descend \cite{limit_sound}. Ultrasounds end at frequencies 
+of several GHz, where hipersounds start. Contractual it is 10 GHz.  Ultrasounds have many applications. Using them one can detect objects and specify distance to them. Are used in medicine where whereby ultrasonography (USG) we can find not available for human eye diseases, watching e.g. internal organs. 
 \subsection{Diffie-Hellman Key exchange}
 \subsection{Random Oracle Model}
 

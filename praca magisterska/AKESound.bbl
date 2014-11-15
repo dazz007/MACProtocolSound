@@ -10,14 +10,32 @@ Minim fft class.
 \newblock
   \url{http://code.compartmental.net/minim/javadoc/ddf/minim/analysis/FFT.html}.
 
+\bibitem{sound_intensity}
+Natężenie fali dźwiękowej.
+\newblock \url{http://www.fizykon.org/akustyka/akustyka_natezenie_fali.htm}.
+
 \bibitem{NIST}
 Nist sp 800-131 recommendation for key length.
 \newblock
   \url{http://csrc.nist.gov/publications/nistpubs/800-131A/sp800-131A.pdf}.
 
+\bibitem{decibels}
+Poziom natężenia dźwięku.
+\newblock \url{http://www.fizykon.org/akustyka/akustyka_poziom_natezenia.htm}.
+
+\bibitem{sound_speed}
+The speed of sound.
+\newblock \url{http://www.sengpielaudio.com/calculator-speedsound.htm}.
+
 \bibitem{base_64}
 Robert Harder.
 \newblock Base64.
 \newblock \url{http://iharder.sourceforge.net/current/java/base64/}.
+
+\bibitem{limit_sound}
+Shintaro Takeda, Ikuharu Morioka, Kazuhisa Miyashita, Akeharu Okumura, Yoshiaki
+  Yoshida, and Kenji Matsumoto.
+\newblock Age variation in the upper limit of hearing.
+\newblock \url{http://link.springer.com/content/pdf/10.1007%2FBF00243505}.
 
 \end{thebibliography}

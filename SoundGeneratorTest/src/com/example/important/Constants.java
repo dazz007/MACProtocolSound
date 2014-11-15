@@ -10,7 +10,7 @@ public class Constants {
 //	public final static String AVAILABLE_SIGNS = "0123456789ABCDEFHG";
 //	public final static int DEFAULT_BUFFER_SIZE = 2*8192;
 	public final static int DEFAULT_BUFFER_COUNT = 3;
-	public final static int DEFAULT_GEN_DURATION = 20;
+	public final static int DEFAULT_GEN_DURATION = 30;
 	public final static int DEFAULT_NUM_SAMPLES = DEFAULT_GEN_DURATION * SAMPLING / 1000;
 	public final static int DEFAULT_BUFFER_SIZE = 8192;
 	public final static int DEFAULT_BUFFER_SIZE_REC = 2048;
@@ -31,8 +31,8 @@ public class Constants {
         '0', '1', '2', '3', '4', '5', 
         '6', '7', '8', '9', '+', '/', ',', '.'
     };
-	public static boolean DRAW_IN_TIME = false;
-	public static boolean DRAW_FFT = false;
+	public static boolean DRAW_IN_TIME = true;
+	public static boolean DRAW_FFT = true;
 	public static int ULTRASOUND = 1;
 	
 //	public final static int[] FREQUENCIES = { 

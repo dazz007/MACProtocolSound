@@ -1,0 +1,7 @@
+INDEX VERSION 1.126+E:\GitHubFinal\MACProtocolSound\AndroidAKE\.metadata\.plugins\org.eclipse.jdt.core
+855407025.index
+9265609.index
+3882082511.index
+2360273377.index
+1982185561.index
+1042727040.index
