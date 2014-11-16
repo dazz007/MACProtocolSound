@@ -205,9 +205,66 @@ where:
 \subsubsection{Speed of sound}
 Speed of sound depends on center through which wave passes. Influence on speed has also temperature of the center. The slowest moves in the flue. In the air with $20^o$ temperature reach in  approximation 343 m/s (1230 km/h). In water with the same temperature speed is 1482 m/s (5335 km/h). The fastest sound spread in solid. For example in steel reach about 5960 m/s (21460 km/h) \cite{sound_speed}.
 
-\subsubsection{Ultrasound}
+\subsubsection{Ultrasounds}
 The present app largely, to sending data, uses ultrasound. Ultrasound are sound waves, which are inaudible for human, on the grounds of their too high frequency. Have adopted that ultrasounds starts from 20 kHz, but really everything depends on how good hearing human has. Children hear the highest frequencies. Increasing age the upper limit of hearing descend \cite{limit_sound}. Ultrasounds end at frequencies 
 of several GHz, where hipersounds start. Contractual it is 10 GHz.  Ultrasounds have many applications. Using them one can detect objects and specify distance to them. Are used in medicine where whereby ultrasonography (USG) we can find not available for human eye diseases, watching e.g. internal organs. 
+
+\subsection{Fourier transform}
+By Fourier transform one can change function $f(x)$ in time domain to $F(s)$ in frequency domain. In other words, distribute the function $f(x)$ to series of periodic functions, in such way that show how frequencies consist of the function $f(x)$. The formula for the Fourier transform looks as fallows:
+
+\begin{equation}
+	F(s) = \int\limits^\infty_{-\infty} f(x) e^{-i2\pi xs} dx.
+\end{equation}
+
+Sum of three functions with frequencies 3m 7m and 11 Hz on a graph:
+\begin{figure}[here]
+	\centering
+	\includegraphics[width=0.5\textwidth]{img/sines}
+	\caption{$f(x) = \sin(2\pi \cdot 3t)+\sin(2 \pi \cdot 7 t)+\sin(2  \pi \cdot 11  t)$, where t is current time.}
+	\label{fig:F4}
+\end{figure}
+
+Passing function $f(x)$ from figure \ref{fig:F4} through Fourier transform we will get the following graphs:
+
+\begin{figure}[here]
+	\centering
+	\includegraphics[width=0.65\textwidth]{img/both_real_imag}
+	\caption{On the top real part results of Fourier transform, on the bottom imaginary part.}
+	\label{fig:F5}
+\end{figure}
+
+As you can see on above figure, time domain was changed on frequency domain. On graphs are bigger values for frequencies which had summed functions.
+
+\subsubsection{Discrete Fourier Transform}
+Application analyzes periodically finite number of samples of sound. To converse to frequency domain is used Discrete Fourier transform (DFT). Input samples are in the form of complex numbers, but in practice used only real numbers. Output samples are complex numbers. The following graphs show continuous signal and discretized signal \cite{fourier}:
+
+\begin{figure}[here]
+	\centering
+	\includegraphics[width=0.6\textwidth]{img/continues}
+	\caption{Continuous signal in duration 1 second.}
+	\label{fig:F6}
+\end{figure}
+
+\begin{figure}[here]
+	\centering
+	\includegraphics[width=0.6\textwidth]{img/descrete}
+	\caption{Discretized signal in constant time period. In this case in 1 second are 121 samples.}
+	\label{fig:F7}
+\end{figure}
+
+For $N$ signal samples $(x_0,x_1,x_2,...,x_{N-1})$, discrete Fourier transform gives series $X_k$ for $k = 0,1, 2, 3, ..., N-1$ using notation \cite{fourier}:
+\begin{equation}
+	X_k =  \sum\limits_{n=0}^{N-1} x_ne^{-i2\pi \frac{k}{N}n}.
+\end{equation}
+Computational complexity this notation is $O(N^2)$, because for $N$ elements $X_k$ series compute sum for $N$ samples \cite{fast_fourier}.
+
+\subsubsection{Fast Fourier Transform}
+Computational complexity of discrete Fourier transform is not enough to fast process more 
+data. Therefore developed a lot of algorithms, which improve its calculation. Exist algorithms, which do discrete Fourier transform having computational complexity $O(NlogN)$, where for large number of data is significant improvement. They use design paradigm divide and conquer. Precursors of these solutions are James William Cooley and John Tukey, who elaborated first faster algorithm to compute DFT, known as fast Fourier transform (FFT). It is worth mentioning that FFT is not approximate value of DFT. FFT returns the same values but do this much faster.
+
+\subsubsection{Hanning window}
+
+
 \subsection{Diffie-Hellman Key exchange}
 \subsection{Random Oracle Model}
 
@@ -226,11 +283,11 @@ System should:
 \begin{figure}[here]
 	\centering
 	\includegraphics[width=1.2\textwidth]{img/AMA_protocol}
-	\caption{Protocol description - Anonymous Mutual Authentication. Figure from source \cite{hammingwindow_img}.}
+	\caption{Protocol description - Anonymous Mutual Authentication. Figure from source \cite{AMA}.}
 	\label{fig:F8}
 \end{figure}
 
-Scheme of protocol is shown at the Fig. 1. In scheme are use the fallowing notation:
+Scheme of protocol is shown at the \ref{fig:F8}. In scheme are use the following notation:
 \begin{itemize}
 \item \textit{Enc} is a symmetric encryption function. \textit{$Enc_K(M)$} means encryption of $M$ using key $K$. 
 \item \textit{H} is a cryptographic hash function. 
@@ -385,6 +442,15 @@ Caught value is put to the memory and wait for the next result. If current frequ
 
 
 \section{Tests}
+To all tests was used two devices: LG Swift L9 with system Android 4.1.2 and tablet Samsung GALAXY Tab 2 with Android 4.2.2. 
+
+\subsection{Receiving data in sound channel}
+During tests we have focused on below factors:
+- Distance between devices.
+- Position of devices terms of placement of speaker and microphone.
+- Distance between chosen frequencies.
+- Working during sounds in the background.
+
 \section{Installing and implementation}
 
 

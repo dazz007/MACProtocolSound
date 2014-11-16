@@ -1,4 +1,9 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{fourier}
+The descrete transform fourier (dft): Definition and numerical examples.
+\newblock
+  \url{http://www.nbtwiki.net/doku.php?id=tutorial:the_discrete_fourier_transformation_dft#.UND9vuT6Jv8}.
 
 \bibitem{JNI}
 Java programming tutorial - java native interface (jni).
@@ -31,6 +36,11 @@ The speed of sound.
 Robert Harder.
 \newblock Base64.
 \newblock \url{http://iharder.sourceforge.net/current/java/base64/}.
+
+\bibitem{fast_fourier}
+Steve Haynal and Heidi Haynal.
+\newblock Generating and searching families of fft algorithms.
+\newblock \url{http://jsat.ewi.tudelft.nl/content/volume7/JSAT7_13_Haynal.pdf}.
 
 \bibitem{limit_sound}
 Shintaro Takeda, Ikuharu Morioka, Kazuhisa Miyashita, Akeharu Okumura, Yoshiaki
