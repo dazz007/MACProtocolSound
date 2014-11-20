@@ -168,7 +168,7 @@ Next chapter is about System design. In subsections are described assumptions of
 
 \section{Analysis of the problem}
 \subsection{Sound}
-Sound is acoustic wave propagating in different substances such as water, air (so called vibrating wire). These waves are causing auditory sensation and these which in appropriate amplitude and frequency are not detected by human organ of hearing. Sound to spread has to have some medium, that is why not propagate in vacuum. Furthermore sound is longitudinal waves, which means that particles of the medium is in the same direction as the direction of travel of the wave.
+Sound is acoustic wave propagating in different substances such as water, air (so called vibrating wire). These are waves which cause auditory sensation and at the same time in appropriate amplitude and frequency are not detected by human organ of hearing. Sound to spread need to has some medium, that is why not propagate in vacuum. Furthermore, sound is longitudinal waves, which means that particles of the medium is in the same direction as the direction of travel of the wave.
 
 \begin{center}
 	\includegraphics{img/longitudinal_wave}
@@ -309,7 +309,7 @@ AMA attempts to be simple in implement and does not require high-power computing
 
 \subsection{Operating System}
 
-Operating system which was chosen is Android version 4.1.2 and higher. This is the newest version which was available for device which has been using in tests. Second device to tests has Android 4.2.2. This software has every required libraries whereby is possible to create sound channel between two devices (AudioTrack and AudioRecord). Additionally, Android allows the use of modules written in C++. 
+Operating system which was chosen is Android version 4.1.2 and higher. This is the newest version which was available for device which has been using in tests. Second device to tests has Android 4.2.2. This software has every required libraries whereby is possible to create sound channel between two devices (AudioTrack and AudioRecord). Additionally, Android allows to use of modules written in C++. 
 
 \subsection{Security of Android}
 
@@ -413,8 +413,12 @@ These samples are processed by AudioTrack library to sound using PCM encoding.
 \subsubsection{Receiving sound}
 
 Retrieving sound is more complicated than sending. In separate process, using AudioRecord library, in every 15 milliseconds (if sending of one character takes 30 ms), are taken samples and then, as one buffer, are appended to array of buffers. Separate process, in the same time, takes first buffer from array and analyses it. 
- 
+
+\vspace{5mm}
+
 At this moment, the samples are as short integer values which represent sound in time domain (sinusoid). To check in which frequency was received sound is needed to convert the sampled function from time domain to the frequency domain. We used to this Discrete Transform Fourier. Library which we have chosen to run DFT is \cite{minim_dft}. 
+
+\vspace{5mm}
 
 Before change of domain, we need to window samples, using Hanning windowing. Thereby, chart in frequency domain is more readable and is easier to find the place with the highest pitch. Windowed samples are put into DFT method and on the output we have result in frequency domain. The effect on the graph looks like at \ref{fig:F2}.
 
@@ -446,11 +450,22 @@ To all tests was used two devices: LG Swift L9 with system Android 4.1.2 and tab
 
 \subsection{Receiving data in sound channel}
 During tests we have focused on below factors:
-- Distance between devices.
-- Position of devices terms of placement of speaker and microphone.
-- Distance between chosen frequencies.
-- Working during sounds in the background.
+\begin{itemize}
+\item Distance between devices.
+\item Position of devices terms of placement of speaker and microphone.
+\item Distance between chosen frequencies.
+\item Working during sounds in the background.
+\end{itemize}
 
+Firstly, we have tested distance between chosen frequencies. Every character from Base64 coding is mapped to appropriate frequency. The smaller distance then is possible to use higher frequencies. We have choose three spaces:
+\begin{itemize}
+\item 150 Hz. The lowest frequency 10,5 kHz, the highest - 20,25 kHz.
+\item 130 Hz. The lowest frequency 11,8 kHz, the highest - 20,25 kHz.
+\item 100 Hz. The lowest frequency 13,8 kHz, the highest - 20,3 kHz.
+\item 100 Hz. The lowest frequency 14 kHz, the highest - 20,5 kHz.
+\item 100 Hz. The lowest frequency 14,3 kHz, the highest - 20,8 kHz.
+\end{itemize}
+We did not want to go below 10 kHz and higher frequency than 20,5 is hard to detect for mobile phone (especially for LG). During the tests, proved to be that for almost every test cases, protocol was successful in 70\%. Except the last one always end by failure. Character which represent end of sending data has always the highest frequency. In this case it was 20,8 kHz. Only LG Swift cannot registry that frequency. SAMSUNG dealt with it flawlessly.
 \section{Installing and implementation}
 
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AKESoundGenerator</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Send</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="initializator">Initializator</string>
+    <string name="receiver">Receiver</string>
+    <string name="title_activity_initializator">You are initializator</string>
+    <string name="title_activity_init">Initializator</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="key_generation">Generation Keys Pair: </string>
+	<string name="eph_key_generation">Generation Ephemeral Keys: </string>
+	<string name="send_eph_key">Start protocol.</string>
+	<string name="in_process">In process &#8230;</string>
+	<string name="info_text">Processes</string>
+	<string name="processes"> </string>
+	<string name="confirm_setting">Confirm settings</string>
+	<string-array name="frequencies_spinner">
+        <item>10,5 kHz - 20,25 kHz. Space 150Hz</item>
+        <item>11,8 kHz - 20,25 kHz. Space 130Hz</item>
+        <item>13,8 kHz - 20,3  kHz. Space 100Hz</item>
+        <item>14,0 kHz - 20,5  kHz. Space 100Hz</item>
+    </string-array>
+    <string name="choose_setting">Choose range of frequencies.</string>
+</resources>

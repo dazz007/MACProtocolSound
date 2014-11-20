@@ -1,34 +1,36 @@
 \select@language {english}
 \select@language {english}
-\contentsline {section}{\numberline {1}Analysis of the problem}{3}
-\contentsline {subsection}{\numberline {1.1}Sound}{3}
-\contentsline {subsubsection}{\numberline {1.1.1}Frequency}{3}
-\contentsline {subsubsection}{\numberline {1.1.2}Sound intensity}{4}
-\contentsline {subsubsection}{\numberline {1.1.3}Speed of sound}{4}
-\contentsline {subsubsection}{\numberline {1.1.4}Ultrasounds}{5}
-\contentsline {subsection}{\numberline {1.2}Fourier transform}{5}
-\contentsline {subsubsection}{\numberline {1.2.1}Discrete Fourier Transform}{6}
-\contentsline {subsubsection}{\numberline {1.2.2}Fast Fourier Transform}{7}
-\contentsline {subsection}{\numberline {1.3}Diffie-Hellman Key exchange}{7}
-\contentsline {subsection}{\numberline {1.4}Random Oracle Model}{7}
-\contentsline {section}{\numberline {2}System design}{7}
-\contentsline {subsection}{\numberline {2.1}Assumptions}{7}
-\contentsline {subsection}{\numberline {2.2}Activity diagram}{8}
-\contentsline {subsection}{\numberline {2.3}Anonymous Mutual Authentication protocol - Description}{8}
-\contentsline {subsubsection}{\numberline {2.3.1}Security model assumption}{9}
-\contentsline {section}{\numberline {3}Prototype Design}{9}
-\contentsline {subsection}{\numberline {3.1}Mobile Devices}{9}
-\contentsline {subsection}{\numberline {3.2}Operating System}{10}
-\contentsline {subsection}{\numberline {3.3}Security of Android}{10}
-\contentsline {subsection}{\numberline {3.4}Application architecture}{10}
-\contentsline {subsection}{\numberline {3.5}Cryptography library}{11}
-\contentsline {subsection}{\numberline {3.6}Activity diagram}{11}
-\contentsline {subsection}{\numberline {3.7}NIST recommendation for security parameters}{11}
-\contentsline {subsection}{\numberline {3.8}Shared application model}{11}
-\contentsline {subsection}{\numberline {3.9}Java Native Interface - C++ Wrapper}{11}
-\contentsline {subsection}{\numberline {3.10}Base64}{12}
-\contentsline {subsection}{\numberline {3.11}Sound channel}{12}
-\contentsline {subsubsection}{\numberline {3.11.1}Generating sound wave}{13}
-\contentsline {subsubsection}{\numberline {3.11.2}Receiving sound}{13}
+\contentsline {section}{\numberline {1}Analysis of the problem}{4}
+\contentsline {subsection}{\numberline {1.1}Sound}{4}
+\contentsline {subsubsection}{\numberline {1.1.1}Frequency}{4}
+\contentsline {subsubsection}{\numberline {1.1.2}Sound intensity}{5}
+\contentsline {subsubsection}{\numberline {1.1.3}Speed of sound}{5}
+\contentsline {subsubsection}{\numberline {1.1.4}Ultrasounds}{6}
+\contentsline {subsection}{\numberline {1.2}Fourier transform}{6}
+\contentsline {subsubsection}{\numberline {1.2.1}Discrete Fourier Transform}{7}
+\contentsline {subsubsection}{\numberline {1.2.2}Fast Fourier Transform}{8}
+\contentsline {subsubsection}{\numberline {1.2.3}Hanning window}{8}
+\contentsline {subsection}{\numberline {1.3}Diffie-Hellman Key exchange}{8}
+\contentsline {subsection}{\numberline {1.4}Random Oracle Model}{8}
+\contentsline {section}{\numberline {2}System design}{8}
+\contentsline {subsection}{\numberline {2.1}Assumptions}{8}
+\contentsline {subsection}{\numberline {2.2}Activity diagram}{9}
+\contentsline {subsection}{\numberline {2.3}Anonymous Mutual Authentication protocol - Description}{9}
+\contentsline {subsubsection}{\numberline {2.3.1}Security model assumption}{10}
+\contentsline {section}{\numberline {3}Prototype Design}{10}
+\contentsline {subsection}{\numberline {3.1}Mobile Devices}{10}
+\contentsline {subsection}{\numberline {3.2}Operating System}{11}
+\contentsline {subsection}{\numberline {3.3}Security of Android}{11}
+\contentsline {subsection}{\numberline {3.4}Application architecture}{11}
+\contentsline {subsection}{\numberline {3.5}Cryptography library}{12}
+\contentsline {subsection}{\numberline {3.6}Activity diagram}{12}
+\contentsline {subsection}{\numberline {3.7}NIST recommendation for security parameters}{12}
+\contentsline {subsection}{\numberline {3.8}Shared application model}{12}
+\contentsline {subsection}{\numberline {3.9}Java Native Interface - C++ Wrapper}{12}
+\contentsline {subsection}{\numberline {3.10}Base64}{13}
+\contentsline {subsection}{\numberline {3.11}Sound channel}{13}
+\contentsline {subsubsection}{\numberline {3.11.1}Generating sound wave}{14}
+\contentsline {subsubsection}{\numberline {3.11.2}Receiving sound}{14}
 \contentsline {section}{\numberline {4}Tests}{15}
-\contentsline {section}{\numberline {5}Installing and implementation}{15}
+\contentsline {subsection}{\numberline {4.1}Receiving data in sound channel}{15}
+\contentsline {section}{\numberline {5}Installing and implementation}{17}

@@ -159,6 +159,8 @@ public class InitActivity extends Activity implements
 			case RA_150: Constants.FREQUENCIES = Constants.FREQUENCIES_150; break;
 			case RA_130: Constants.FREQUENCIES = Constants.FREQUENCIES_SPACE_130; break;
 			case RA_100: Constants.FREQUENCIES = Constants.FREQUENCIES_SPACE_100; break;
+			case RA_100_2: Constants.FREQUENCIES = Constants.FREQUENCIES_SPACE_100_2; break;
+			case RA_100_3: Constants.FREQUENCIES = Constants.FREQUENCIES_SPACE_100_3; break;
 			default: Constants.FREQUENCIES = Constants.FREQUENCIES_150; break;
 		}
 	}

@@ -105,6 +105,10 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 			range = Constants.RANGE.RA_130;
 		}else if(pos == 2){
 			range = Constants.RANGE.RA_100;
+		}else if(pos == 3){
+			range = Constants.RANGE.RA_100_2;
+		}else if(pos == 4){
+			range = Constants.RANGE.RA_100_3;
 		}else{
 			range = Constants.RANGE.RA_150;
 		}
