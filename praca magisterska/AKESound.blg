@@ -1,6 +1,16 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: AKESound.aux
 The style file: plain.bst
 Database file #1: AKESound.bib
+I was expecting a `,' or a `}'---line 60 of file AKESound.bib
+ : 
+ : publisher = {EE Department, Technion, Haifa, Israel, and IBM T.J. Watson Research Center}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 66 of file AKESound.bib
+ : 
+ : year = {1996}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "AMA"
 Warning--to sort, need author or key in sound_intensity
 Warning--to sort, need author or key in decibels
@@ -9,4 +19,4 @@ Warning--to sort, need author or key in fourier
 Warning--to sort, need author or key in NIST
 Warning--to sort, need author or key in JNI
 Warning--to sort, need author or key in minim_dft
-(There were 8 warnings)
+(There were 2 error messages)

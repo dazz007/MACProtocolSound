@@ -55,7 +55,7 @@ public class RecorderAudio{
 		int size = recorder.read(data.buffer_short,0,period);
 		
 		for(int i = 0 ; i < size; i++){
-			data.buffer_short[i] = (short)Math.min((int)(data.buffer_short[i] * 1), (int)Short.MAX_VALUE);
+			data.buffer_short[i] = (short)Math.min((int)(data.buffer_short[i] * 2), (int)Short.MAX_VALUE);
 		}
 		
 		if(data.buffer_short != null){

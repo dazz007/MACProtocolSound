@@ -1,4 +1,4 @@
-\documentclass[12pt,titlepage]{article}
+\documentclass[11pt,titlepage]{article}
 %\usepackage{amsmath}
 %\usepackage{amsfonts}
 %\usepackage{amssymb}
@@ -113,8 +113,8 @@
 \vspace*{\fill}
 \begin{center}
 \begin{picture}(300,510)
-  \put( 10,520){\makebox(0,0)[l]{\large \bf \textsc{Wydzia³ Podstawowych Problemów Techniki}}}
-  \put( 10,500){\makebox(0,0)[l]{\large \bf \textsc{Politechniki Wroc³awskiej}}}
+  \put( 10,520){\makebox(0,0)[l]{\large \bf \textsc{Faculty of Fundamental Problems of Technology}}}
+  \put( 10,500){\makebox(0,0)[l]{\large \bf \textsc{Wroc³aw University of Technology}}}
   \put( 10,280){\makebox(0,0)[l]{\Huge  \bf \textsc{
   Channels alternative to WiFi in }}}
   \put( 10,260){\makebox(0,0)[l]{\Huge \bf \textsc{
@@ -140,7 +140,7 @@
 
 \pagestyle{headings}
 
-\section*{Introduction}
+\section{Introduction}
 
 The goal of the dissertation is to analyze the usability of channels alternative to WiFi in Authenticated Key Establishment (AKE) protocols for mobile devices. Nowadays, more often mobile phones are used to sending secret data. Every this kind of device has embedded speaker and microphone therefore we want to check whether is possible to establish session key just using sound.
 
@@ -164,11 +164,98 @@ Dissertation is divided on X parts. The first section focus on analysis of the p
 
 Next chapter is about System design. In subsections are described assumptions of project and used cases. Then is shown diagram classes 
 
+\subsection{Problem}
+The problem is secure exchange keys between two parties, which have no knowledge of each other, in insecure, unreliable environment e.g. susceptible to eavesdropping.
+
+\vspace{5mm}
+
+The first known answer on this problem was published by Witfield Diffie and Martin Hellman. They have showed method to key exchange which is called Diffie-Hellman. Its strength and immunity to eavesdropping is based on Discrete Logarithm Problem. Existing computers are not able to compute session key from eavesdropped protocol transcript in reasonable amount of time.
+
+\vspace{5mm}
+
+Mentioned method is secure against eavesdropping, however it does not authenticate both parties to each other and thus does not guarantee security when adversary can take control over the channel in which the key establishment is being performed. Adversary taking control over the channel can perform Man-In-The-Middle-Attack (MITMA). MITMA is that, the adversary make connection with other parties trying to authenticate being not detected. He can manipulate of the communication pretending to be one of the party, changing or sending own messages, making them to believe that they are still talking to each other. The goal of these processes is obtain secrete key by attacker and thus decrypt and even modify all messages exchanged between parties.
+
+\vspace{5mm}
+
+Main ways to communicate between devices are e.g. Bluetooth or WiFi.
+\subsection{Authenticated Key Agreement}
+
+Authenticated Key Agreement Protocols base on public key cryptography and trusted authorities. In public key cryptography are required two separate keys where one is private and second one is public. This is the most common solution being used.
+
+\vspace{5mm}
+
+AKE protocols have to ensure that attacker can not obtain any information about session key from the protocol transcript. AKE protocols have to be resistant to exposed session transcript. Adversary should not be able to taking control over the communication channel having this knowledge.
+
+\subsection{Out-of-band channel}
+Beyond the focus of safety AKE protocol we wanted to study not typical communication channel to establish session key. Is worth to ensure that adversary will has as small as possible access to protocol transcript. 
+
+\vspace{5mm}
+
+During the secure exchange data are needed two channels for communication between two parties. First channel, to establish session keys, should be very difficult to spy and taking over control for adversary. The second channel can be insecure because established session key should ensure that content of protected data intended for one of the parties can be encrypt only by the party participated in protocol. For the key establishment in our work was chosen sound channel, second channel is wireless.
+
+\subsection{Related work}
 
 
 \section{Analysis of the problem}
+
+
+
+\subsection{Security Model}
+There is no one ultimately defined security model for key exchange. However, we will recourse to the requirements as most fundamental for secure key exchange protocol which H. Krawczyk presents in \cite{sign_mac}.
+
+\begin{itemize}
+\item Authentication - each party participating in KE needs to uniquely verify identities of other authenticating party.
+\item Consistency - two parties participating in KE, after establish of session key have to believe that were established common session key with party which participate in protocol. In other words, Alice has to believe that she established session key with Bob and Bob has to believe that he established session key with Alice.
+\item Secrecy - if two honest parties established session key then third party should not be able to obtain information about this session key. Third party, which watching and interfering with the protocol run, should not be able to distinguish session key from a random key.
+\end{itemize}
+
+\subsubsection{Adversarial Model}
+Is needed to consider scenario where adversary learns some secrete information from parties participate in protocol. The worst case is when adversary obtain the long term secrete key from one of the party. Having this key adversary can totally control this party. Then this party is as corrupted. This lead to belows property of the KE protocol.
+
+\begin{itemize}
+\item Real-or-Random - this is some kind of game on which basic session key security is based. When uncorrupted parties with successful end the protocol then is determined bit $b$ at random. If $b=0$ the adversary get the real session key, if $b = 1$ he receives a random value with the same length as the key. Now adversary has to output his own bit $b'$. If $b' = b$ then adversary wins the game. When the adversary wins the game with probability $P = 1/2+\epsilon$, where $\epsilon$ is negligible function then the basis session key security is achieved.
+\item Perfect Forward Secrecy (PFS) - is the property which ensure that adversary cannot learn session keys when one of the long-term private key is compromised in the future.
+\end{itemize}
+
+Above criteria ensure for key exchange protocol that they are resistant to attacks like known-key attacks and replay attacks \cite{cryptography}. For some KE protocols are needed additional requirements e.g. Identity protection - identities of authenticating parties cannot be learn by an adversary.
+
+\subsection{Analysis of out-of-band channels}
+There are a lot of techniques to transfer secret data between devices. The most popular are e.g. Bluetooth or WiFi, but no every devices has these kind of appliance. Additionally these techniques are vulnerable to attacks which are hard to detect. Participate parties in protocol are not able to say that someone is manipulating their session, hijacking messages or changing them. They do not even know that sent data reach appropriate party. 
+
+\vspace{5mm}
+
+Safety channel could be for example two devices connected by wire. For the third party would be very difficult to eavesdrop the session. Attacker should be connected also to this wire but it would be visible for the other parties and easily to detect him. Unfortunately, carrying additional cable every time when the parties want to establish session key is inconvenient.
+
+\vspace{5mm}
+
+The other possibility could be optical channel. Sharing data using e.g. QR codes is also interesting way to authentication of devices. Attacker would have difficult task to manipulate shared data if e.g. two devices are covered by some walls. However, not every device has camera with appropriate quality that can read QR codes with appropriate big public keys.
+
+\vspace{5mm}
+
+Another way is to use vibrations \cite{bump}. New smartphones have installed sensor of vibration so it is possible to create such a communication channel. Attacker to manipulate this kind of channel has to generate own vibrations and it would be easily detected by authenticating parties.
+
+\vspace{5mm}
+
+Sound channel is also one of the options. Every mobile device have speaker and microphone, so we do not need to worry about no available Internet or that the other party has not installed Bluetooth or IrDA. Using ultrasound, the signal will be not detected by humans ear. Additionally mobile phones cannot generate these waves with big intense, so transferring data should be done on small distance. Of course sound channel could be easily to manipulate. Attacker with proper speaker can generate frequencies which could disturb the communication. However, he needs to be close to the authenticating parties if generated ultrasound has to be detected by party's mobiles microphone or generate sound waves with big intense which could be audible for human. 
+
+\subsection{Sound channel parameters}
+
+Using Diffie-Hellman key exchange and asymmetric cryptography should be use the longest key length as possible. In NIST specification SP 800-131 is mentioned that recommended key length is 3072. However, in out prototype we used 1024 key length. The reason is low speed of transferring data, which is 200b/s. Decreasing time of sending one character had influence on analyzing received data. It have been taking too long time (frequency of getting data increased, so algorithm did not follow in analyze so much data in short time).
+
+\vspace{5mm}
+
+Sound channel is secured against active attacks. Adversary needs to be close to communicated party or he needs to generate ultrasound with high intense which can be detected by human, it would be heard as squeak.
+
+
+\subsection{Proposed usage of out-of-band channel}
+
+
+
+
 \subsection{Sound}
 Sound is acoustic wave propagating in different substances such as water, air (so called vibrating wire). These are waves which cause auditory sensation and at the same time in appropriate amplitude and frequency are not detected by human organ of hearing. Sound to spread need to has some medium, that is why not propagate in vacuum. Furthermore, sound is longitudinal waves, which means that particles of the medium is in the same direction as the direction of travel of the wave.
+
+
 
 \begin{center}
 	\includegraphics{img/longitudinal_wave}
@@ -192,7 +279,7 @@ Exist three division of sound as to frequency:
 Frequency specify also pitch of sound. A high frequency sound wave corresponds to a high pitch sound and low frequency sound wave corresponds to a low pitch sound.
 
 \subsubsection{Sound intensity}
-Loudness of the sound is dependent to his intensity. It is expressed by $W/m^2$ unit. This is ratio the power of the acoustic wave to surface area to which wave energy falls perpendicular during 1 second \cite{sound_intensity}. Human's ear works in such way that doubling intensity of sound, don't cause that human hear it two times louder. Human hears its logarithmized value. Logarithmized measure of sound intensity is called sound intensity level. Is measured in decibels and is given by \cite{decibels}:
+Loudness of the sound is dependent to his intensity. It is expressed by $W/m^2$ unit. This is ratio the power of the acoustic wave to surface area to which wave energy falls perpendicular during 1 second \cite{sound_intensity}. Human's ear works in such way that doubling intensity of sound, do not cause that human hear it two times louder. Human hears its logarithmized value. Logarithmized measure of sound intensity is called sound intensity level. Is measured in decibels and is given by \cite{decibels}:
 \begin{equation}
 	L = 10\log_{10}(\frac{I}{I_o})  [dB],
 \end{equation}
@@ -298,7 +385,46 @@ Protocol is very simple to implement. In the first state, parties (Alice and Bob
 
 When parties obtain ephemeral public key of another party, start compute master key $K$. Four different one-time keys are establish by hashing $K$ and number parameter - different for each one-time key. 
 
-Authenticated party is raising ephemeral public key $c_B$ (respectively, $c_A$) to power of private key $x_B$ (respectively, $x_A$). On this base authentication. Verifier compute the same value without private key but with the discrete logarithm of $c_A$ (respectively, $c_B$) ($(y_A)^(h_B)$)
+Authenticated party is raising ephemeral public key $c_B$ (respectively, $c_A$) to power of private key $x_B$ (respectively, $x_A$). On this base authentication. Verifier compute the same value without private key but with the discrete logarithm of $c_A$ (respectively, $c_B$) ($(y_A)^(h_B)$).
+\begin{table}[h]
+\caption{blablabla}
+\begin{center}
+
+\begin{tabular}{ p{4cm} p{5cm} p{4cm}}
+\textsf{\LARGE Alice} & & \textsf{\LARGE Bob} \\
+\hline
+\textsf{\newline\textbf{\small Starting screen} \newline
+\newline
+\footnotesize Alice starts the protocol as initializator}& \raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/couple.png}} & \textsf{\newline\textbf{\small Starting screen} \newline \newline
+\footnotesize Bob starts protocol as receiver.} \\
+
+\textsf{\newline\textbf{\small Send ephemeral key} \newline
+\newline
+\footnotesize Alice generates ephemeral key, encodes and start sending it by speaker.}&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/signal1.png}}&\textsf{\newline\textbf{\small Receive ephemeral key} \newline
+\newline
+\footnotesize Bob receives ephemeral key using microphone.} \\
+
+\textsf{\newline\textbf{\small Receive ephemeral key } \newline
+\newline
+\footnotesize Alice receives ephemeral key using microphone. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/second_side.png}}&\textsf{\newline\textbf{\small Send ephemeral key} \newline
+\newline
+\footnotesize Bob generates ephemeral key, encodes and start sending it by speaker.} \\
+
+\textsf{\newline\textbf{\small Send encrypted authentication data } \newline
+\newline
+\footnotesize Alice uses her and Bob's ephemeral keys to compute authentication data, encrypts it and sends by speaker. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/signal1.png}}&\textsf{\newline\textbf{\small Receive and decrypt authentication data} \newline
+\newline
+\footnotesize Bob receives and decrypts Alices authentication data.} \\
+
+\textsf{\newline\textbf{\small Receive and decrypt authentication data } \newline
+\newline
+\footnotesize Alice receives and decrypts Bobs authentication data. If it's not valid, she aborts the protocol. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=50mm]{img/session_key_est.png}}&\textsf{\newline\textbf{\small Send encrypted authentication data} \newline
+\newline
+\footnotesize Bob verifies authentication data received from Alice. If it's
+valid, he generates his authentication data and send it by microphone. If data is not valid, Bob aborts the protocol.}
+\end{tabular}
+\end{center}
+\end{table}
 
 \subsubsection{Security model assumption}
 
@@ -433,6 +559,7 @@ Before change of domain, we need to window samples, using Hanning windowing. The
 
 Now, algorithm tries to find the highest place in the output. The reason of getting data in two times shorter time than sending one character is that, in one buffer can be two frequencies. In the worst case, algorithm can find one frequency in three buffers in a row, even if in first and third buffer was also another frequency, but because of lower sound intensity or less samples representing this frequency, would not be found as a highest pitch. Dividing time of receiving by two ensure that always, at least once, expected frequency will be registered. If he finds pitch with amplitude higher than 50, for frequency lower than 14 kHz, or 10 for higher than 14 kHz (this different follows from the smaller volume for the higher frequency by hardware limitation) is checked whether caught frequency is in our dictionary (with margin of error + - 50 Hz). 
 
+
 \begin{figure}[here]
 	\centering
 	\includegraphics[width=0.70\textwidth]{img/receiving}
@@ -455,6 +582,7 @@ During tests we have focused on below factors:
 \item Position of devices terms of placement of speaker and microphone.
 \item Distance between chosen frequencies.
 \item Working during sounds in the background.
+\item Sending characters in shorter time than 30 ms.
 \end{itemize}
 
 Firstly, we have tested distance between chosen frequencies. Every character from Base64 coding is mapped to appropriate frequency. The smaller distance then is possible to use higher frequencies. We have choose three spaces:
@@ -465,7 +593,14 @@ Firstly, we have tested distance between chosen frequencies. Every character fro
 \item 100 Hz. The lowest frequency 14 kHz, the highest - 20,5 kHz.
 \item 100 Hz. The lowest frequency 14,3 kHz, the highest - 20,8 kHz.
 \end{itemize}
-We did not want to go below 10 kHz and higher frequency than 20,5 is hard to detect for mobile phone (especially for LG). During the tests, proved to be that for almost every test cases, protocol was successful in 70\%. Except the last one always end by failure. Character which represent end of sending data has always the highest frequency. In this case it was 20,8 kHz. Only LG Swift cannot registry that frequency. SAMSUNG dealt with it flawlessly.
+We did not want to go below 10 kHz and higher frequency than 20,5 is hard to detect for mobile phone (especially for LG). Distance 100 Hz is the smallest to test because of implemented algorithm. During the tests, proved to be that for almost every test cases, protocol was successful in 70\%. Except the last one always end by failure. Character which represent end of sending data has always the highest frequency. In this case it was 20,8 kHz. Only LG Swift cannot registry that frequency. Samsung dealt with it flawlessly.
+
+\vspace{5mm}
+
+There are several reason why the result was not 100\%. Sometimes, if we send, for example, frequency 20 kHz then second device receive it as 19,9. It can be caused by some distortion on the microphone on even on the speaker. What happened was that the speaker the make sound different than usual. Was needed restart of device. Sometimes it is sufficient that one of the device froze on some milliseconds and then receiving device lose some characters. 
+
+Measure of allowed distance between devices we have started with stick microphone from LG with speaker from Samsung. This gave us the best results. Received amplitude was the biggest, hence easier, for algorithm, was to find interesting for us frequency. Then we increase distance to 2 cm. In this case results was also good. Sessions keys was established almost every time. Problem was started increasing distance to 6 cm. Bigger frequencies was not registered by microphone.
+
 \section{Installing and implementation}
 
 

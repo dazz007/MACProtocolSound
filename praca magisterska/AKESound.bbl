@@ -32,6 +32,10 @@ Poziom natężenia dźwięku.
 The speed of sound.
 \newblock \url{http://www.sengpielaudio.com/calculator-speedsound.htm}.
 
+\bibitem{cryptography}
+Scott A.~Vanstone Alfred J.~Menezes, Paul C. van~Oorschot.
+\newblock Handbook of applied cryptography.
+
 \bibitem{base_64}
 Robert Harder.
 \newblock Base64.
@@ -41,6 +45,11 @@ Robert Harder.
 Steve Haynal and Heidi Haynal.
 \newblock Generating and searching families of fft algorithms.
 \newblock \url{http://jsat.ewi.tudelft.nl/content/volume7/JSAT7_13_Haynal.pdf}.
+
+\bibitem{sign_mac}
+Hugo Krawczyk.
+\newblock Sigma: the 'sign-and-mac' approach to authenticated
+  diffie-hellman and its use in the ike protocols.
 
 \bibitem{limit_sound}
 Shintaro Takeda, Ikuharu Morioka, Kazuhisa Miyashita, Akeharu Okumura, Yoshiaki

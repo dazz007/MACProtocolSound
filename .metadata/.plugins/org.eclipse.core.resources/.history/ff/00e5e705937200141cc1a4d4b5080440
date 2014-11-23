@@ -56,10 +56,11 @@ public class LineGraph implements VoiceRecObserver {
 		mRenderer.setZoomButtonsVisible(false);
 		mRenderer.setXTitle("Time");
 		mRenderer.setXLabels(10);
-		mRenderer.setYLabels(0);
+		mRenderer.setYLabels(10);
 		mRenderer.setPanEnabled(false, false);
 		mRenderer.setYTitle("Amplitude");
 		mRenderer.setShowAxes(true);
+		mRenderer.setYLabels(0);
 		mRenderer.setApplyBackgroundColor(true);
 		mRenderer.setBackgroundColor(Color.BLACK);
 		// Add single renderer to multiple renderer

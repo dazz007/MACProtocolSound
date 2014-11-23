@@ -49,6 +49,7 @@ public class LineGraph implements VoiceRecObserver {
 
 		// Customization time for line 1!
 		renderer.setColor(Color.WHITE);
+		renderer.setYLabel(0);
 		// renderer.setPointStyle(PointStyle.);
 		// renderer.setFillPoints(true);
 
@@ -56,10 +57,11 @@ public class LineGraph implements VoiceRecObserver {
 		mRenderer.setZoomButtonsVisible(false);
 		mRenderer.setXTitle("Time");
 		mRenderer.setXLabels(10);
-		mRenderer.setYLabels(0);
+		mRenderer.setYLabels(10);
 		mRenderer.setPanEnabled(false, false);
 		mRenderer.setYTitle("Amplitude");
 		mRenderer.setShowAxes(true);
+		
 		mRenderer.setApplyBackgroundColor(true);
 		mRenderer.setBackgroundColor(Color.BLACK);
 		// Add single renderer to multiple renderer
