@@ -249,8 +249,100 @@ Sound channel is secured against active attacks. Adversary needs to be close to 
 
 \subsection{Proposed usage of out-of-band channel}
 
+Lets assumed that Alice and Bob want to establish a secure connection between their mobile phones using sound channel. To be sure that every high frequency will be detected, they try to put their phone in a such way that microphone is as close as possible to speaker of the second phone and vice versa. Usually the speaker and microphone are set at the bottom of device, so mobile phones should be directed bottom to each other. Sound waves are spreading, so worth is protect against it. Good choice are boxes build in lead. Lead does not pass the waves, so attacker could have more difficult job to obtain protocol transcript. To obtain session key is processed AKE protocol. After this process further exchange of data can be done by WiFi, because of the speed of transferring data which is higher. 
 
+\vspace{5mm}
 
+\begin{itemize}
+\item Alice and Bob put their devices into the lead box. Both mobile phone are listening for the first sign. The first one which start generated sound wave will be initiator. For the best quality of transferring data mobiles should be directed bottom to each other no more than couple of millimeters.
+\item Alice decided to be initiator of the protocol. She says "Start" to the little hole in the box and her phone, after recognized her voice, start sending first data.
+\item Protocol is divided on couple of phase. First phase is sending ephemeral key by initiator (in our case by Alice) to the receiver. Each phase takes couple of seconds. Every data are encoded in sound waves with appropriate frequencies.
+\item Bob's phone uses its microphone to obtain the data sent by Alice's device.
+\item When phase is over, follow switch of the roles. Now Alice's phone will listening and Bob's phone sending data.
+\item Alice's device will receiving and decode it.
+\end{itemize}
+
+Anonymous Mutual Chip Authentication (described in detail in section 3) should ensure that even if some transferring data eavesdrop then adversary will do nothing with this data. Duration of the protocol is about 40 second - more information about duration and performance are described in section 5.
+
+\subsection{Microphones and speakers in mobile devices}
+Specification of this appliances are very different and depends on devices. During the tests could be seen that microphone from more expensive SAMSUNG Galaxy Tab is better than microphone from LG Swift L9. SAMSUNG could detect higher frequency. However, microphone from LG Swift L9 was completely enough to registered sufficiently large frequencies. Speakers also are a little different, but they have no problem to generate opportunely frequencies.
+
+\subsection{Anonymous Mutual Authentication protocol - Description}
+To establish session keys we used in our prototype Anonymous Mutual Authentication protocol which base on Diffie-Hellman key exchange. This protocol have never been implemented on the mobile phone with system Android. 
+
+\vspace{5mm}
+
+AMA originally was designed to anonymous authenticate between smart cards. Is characterized by properties:
+\begin{itemize}
+\item Forward Security - if long term keys of one of the authenticating parties compromised then established session key does not reveal.
+\item Simultability - is possible to create protocol transcript between parties without interacting with them
+\item Undetectability - having protocol transcript one cannot confirm that process really took place
+\item Privacy - eavesdropping adversary cannot tell about identity of parties performing the protocol
+\item Deniability - no one of the parties cannot convince third party that he participate in protocol.
+\end{itemize}
+
+\begin{figure}[here]
+	\centering
+	\includegraphics[width=1.2\textwidth]{img/AMA_protocol}
+	\caption{Protocol description - Anonymous Mutual Authentication. Figure from source \cite{AMA}.}
+	\label{fig:F8}
+\end{figure}
+
+Scheme of protocol is shown at the \ref{fig:F8}. In scheme are use the following notation:
+\begin{itemize}
+\item \textit{Enc} is a symmetric encryption function. \textit{$Enc_K(M)$} means encryption of $M$ using key $K$. 
+\item \textit{H} is a cryptographic hash function. 
+\item For confirming public keys are using digital certificates and public key infrastructure (PKI).
+\end{itemize}
+
+Protocol is very simple to implement. AMA is defined a cyclic group G where Computational Diffie-Hellman Problem (CDH) is hard. At the beginning, parties (Alice and Bob) generate their private key - $x_A$ (respectively, $x_B$) and public key $y_A = g^{x_A}$ (respectively, $y_A$). Then starts main procedure. Parties generate their ephemeral keys. Private is $h_A := H(a)$ (where $a$ is a random number) (respectively $h_B$, $b$) and public ephemeral key $c_A := g^{h_A}$ (respectively $c_B$). In the first phase parties exchange ephemeral keys, based on Diffie-Hellman key exchange. 
+
+When parties obtain ephemeral public key of another party, they start compute master key $K$. Four different one-time keys are establish by hashing $K$ and number parameter - different for each one-time key. 
+
+Authenticated party is raising ephemeral public key $c_B$ (respectively, $c_A$) to power of private key $x_B$ (respectively, $x_A$). On this base authentication. Verifier compute the same value without private key but with the discrete logarithm of $c_A$ (respectively, $c_B$) ($(y_A)^(h_B)$).
+\newpage
+\begin{table}[htp]
+\caption{blablabla}
+\begin{center}
+
+\begin{tabular}{ p{4cm} p{5cm} p{4cm}}
+\textsf{\LARGE Alice} & & \textsf{\LARGE Bob} \\
+\hline
+\textsf{\newline\textbf{\small Starting screen} \newline
+\newline
+\footnotesize Alice starts the protocol as initializator}& \raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/couple.png}} & \textsf{\newline\textbf{\small Starting screen} \newline \newline
+\footnotesize Bob starts protocol as receiver.} \\
+
+\textsf{\newline\textbf{\small Send ephemeral key} \newline
+\newline
+\footnotesize Alice generates ephemeral key, encodes and start sending it by speaker.}&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/signal1.png}}&\textsf{\newline\textbf{\small Receive ephemeral key} \newline
+\newline
+\footnotesize Bob receives ephemeral key using microphone.} \\
+
+\textsf{\newline\textbf{\small Receive ephemeral key } \newline
+\newline
+\footnotesize Alice receives ephemeral key using microphone. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/second_side.png}}&\textsf{\newline\textbf{\small Send ephemeral key} \newline
+\newline
+\footnotesize Bob generates ephemeral key, encodes and start sending it by speaker.} \\
+
+\textsf{\newline\textbf{\small Send encrypted authentication data } \newline
+\newline
+\footnotesize Alice uses her and Bob's ephemeral keys to compute authentication data, encrypts it and sends by speaker. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/signal1.png}}&\textsf{\newline\textbf{\small Receive and decrypt authentication data} \newline
+\newline
+\footnotesize Bob receives and decrypts Alices authentication data.} \\
+
+\textsf{\newline\textbf{\small Receive and decrypt authentication data } \newline
+\newline
+\footnotesize Alice receives and decrypts Bobs authentication data. If it's not valid, she aborts the protocol. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=50mm]{img/session_key_est.png}}&\textsf{\newline\textbf{\small Send encrypted authentication data} \newline
+\newline
+\footnotesize Bob verifies authentication data received from Alice. If it's
+valid, he generates his authentication data and send it by microphone. If data is not valid, Bob aborts the protocol.}
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsection{Security analysis}
+The key exchange protocol have to ensure that even eavesdropping data will be not useful for eavesdropper or 
 
 \subsection{Sound}
 Sound is acoustic wave propagating in different substances such as water, air (so called vibrating wire). These are waves which cause auditory sensation and at the same time in appropriate amplitude and frequency are not detected by human organ of hearing. Sound to spread need to has some medium, that is why not propagate in vacuum. Furthermore, sound is longitudinal waves, which means that particles of the medium is in the same direction as the direction of travel of the wave.
@@ -346,87 +438,10 @@ For $N$ signal samples $(x_0,x_1,x_2,...,x_{N-1})$, discrete Fourier transform g
 Computational complexity this notation is $O(N^2)$, because for $N$ elements $X_k$ series compute sum for $N$ samples \cite{fast_fourier}.
 
 \subsubsection{Fast Fourier Transform}
-Computational complexity of discrete Fourier transform is not enough to fast process more 
-data. Therefore developed a lot of algorithms, which improve its calculation. Exist algorithms, which do discrete Fourier transform having computational complexity $O(NlogN)$, where for large number of data is significant improvement. They use design paradigm divide and conquer. Precursors of these solutions are James William Cooley and John Tukey, who elaborated first faster algorithm to compute DFT, known as fast Fourier transform (FFT). It is worth mentioning that FFT is not approximate value of DFT. FFT returns the same values but do this much faster.
+Computational complexity of discrete Fourier transform is not enough to fast process more data. Therefore developed a lot of algorithms, which improve its calculation. Exist algorithms, which do discrete Fourier transform having computational complexity $O(NlogN)$, where for large number of data is significant improvement. They use design paradigm divide and conquer. Precursors of these solutions are James William Cooley and John Tukey, who elaborated first faster algorithm to compute DFT, known as fast Fourier transform (FFT). It is worth mentioning that FFT is not approximate value of DFT. FFT returns the same values but do this much faster.
 
 \subsubsection{Hanning window}
-
-
-\subsection{Diffie-Hellman Key exchange}
-\subsection{Random Oracle Model}
-
-\section{System design}
-\subsection{Assumptions}
-System should:
-\begin{itemize}
-	\item Works on every middle class mobile devices with system Android.
-	\item Generate keys and encryption during authorization process.
-	\item Use sound wave to sending encoded keys and encryptions to another party to establish authorization.
-	\item Receiving sound wave and decode received data to keys and encryption from another party to establish authorization.
-\end{itemize}
-\subsection{Activity diagram}
-\subsection{Anonymous Mutual Authentication protocol - Description}
-
-\begin{figure}[here]
-	\centering
-	\includegraphics[width=1.2\textwidth]{img/AMA_protocol}
-	\caption{Protocol description - Anonymous Mutual Authentication. Figure from source \cite{AMA}.}
-	\label{fig:F8}
-\end{figure}
-
-Scheme of protocol is shown at the \ref{fig:F8}. In scheme are use the following notation:
-\begin{itemize}
-\item \textit{Enc} is a symmetric encryption function. \textit{$Enc_K(M)$} means encryption of $M$ using key $K$. 
-\item \textit{H} is a cryptographic hash function. 
-\item For confirming public keys are using digital certificates and public key infrastructure (PKI).
-\end{itemize}
-
-Protocol is very simple to implement. In the first state, parties (Alice and Bob) generate their private key - $x_A$ (respectively, $x_B$) and public key $y_A = g^{x_A}$ (respectively, $y_A$). Then starts main procedure. Parties generate ephemeral keys. Private is $h_A := H(a)$ (where a is a random number) (respectively $h_B$, b) and public ephemeral key $c_A := g^{h_A}$ (respectively $c_B$). After this parties exchange between themselves public ephemeral key. This is standard Diffie-Hellman key agreement. 
-
-When parties obtain ephemeral public key of another party, start compute master key $K$. Four different one-time keys are establish by hashing $K$ and number parameter - different for each one-time key. 
-
-Authenticated party is raising ephemeral public key $c_B$ (respectively, $c_A$) to power of private key $x_B$ (respectively, $x_A$). On this base authentication. Verifier compute the same value without private key but with the discrete logarithm of $c_A$ (respectively, $c_B$) ($(y_A)^(h_B)$).
-\begin{table}[h]
-\caption{blablabla}
-\begin{center}
-
-\begin{tabular}{ p{4cm} p{5cm} p{4cm}}
-\textsf{\LARGE Alice} & & \textsf{\LARGE Bob} \\
-\hline
-\textsf{\newline\textbf{\small Starting screen} \newline
-\newline
-\footnotesize Alice starts the protocol as initializator}& \raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/couple.png}} & \textsf{\newline\textbf{\small Starting screen} \newline \newline
-\footnotesize Bob starts protocol as receiver.} \\
-
-\textsf{\newline\textbf{\small Send ephemeral key} \newline
-\newline
-\footnotesize Alice generates ephemeral key, encodes and start sending it by speaker.}&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/signal1.png}}&\textsf{\newline\textbf{\small Receive ephemeral key} \newline
-\newline
-\footnotesize Bob receives ephemeral key using microphone.} \\
-
-\textsf{\newline\textbf{\small Receive ephemeral key } \newline
-\newline
-\footnotesize Alice receives ephemeral key using microphone. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/second_side.png}}&\textsf{\newline\textbf{\small Send ephemeral key} \newline
-\newline
-\footnotesize Bob generates ephemeral key, encodes and start sending it by speaker.} \\
-
-\textsf{\newline\textbf{\small Send encrypted authentication data } \newline
-\newline
-\footnotesize Alice uses her and Bob's ephemeral keys to compute authentication data, encrypts it and sends by speaker. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/signal1.png}}&\textsf{\newline\textbf{\small Receive and decrypt authentication data} \newline
-\newline
-\footnotesize Bob receives and decrypts Alices authentication data.} \\
-
-\textsf{\newline\textbf{\small Receive and decrypt authentication data } \newline
-\newline
-\footnotesize Alice receives and decrypts Bobs authentication data. If it's not valid, she aborts the protocol. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=50mm]{img/session_key_est.png}}&\textsf{\newline\textbf{\small Send encrypted authentication data} \newline
-\newline
-\footnotesize Bob verifies authentication data received from Alice. If it's
-valid, he generates his authentication data and send it by microphone. If data is not valid, Bob aborts the protocol.}
-\end{tabular}
-\end{center}
-\end{table}
-
-\subsubsection{Security model assumption}
+\subsection{Encoding PCM}
 
 \section{Prototype Design}
 \subsection{Mobile Devices}
@@ -441,14 +456,21 @@ Operating system which was chosen is Android version 4.1.2 and higher. This is t
 
 The operating system should ensure that running application cannot interact with another. Each application is run in separate process having  own user ID. This sets up a kernel-level Application Sandbox, where by default application cannot interact with each other and has limited access to OS.
 
+\vspace{5mm}
+
 Furthermore, every application has to be signed by developer. Applications without signature will rejected by Google Play or the package installer on Android device. Signed certificate is verified by Package Manager after installation of application.
 
 \subsection{Application architecture}
 
 Application consist of three parts: cryptographic module, sound channel module and graphic interface. Cryptographic module is written in C++ and to use it in Android, was needed to write a wrapper using JNI (Java Native Interface). NDK (Native Development Kit) is a toolset that allows to add native-code languages such as C and C++ to Android's app. User interface consists initial screen where user choose which frequencies have to be use during sending data. In next screen is dynamic graph with recording sound wave and button which start the protocol. To show sound as sinusoid wave we used external library AChartEngine, the rest of interface are created by standard Android's libraries.
 
+\vspace{5mm}
 
-Figure 3.
+\begin{figure}[here]
+	\centering
+	\includegraphics[width=1\textwidth]{img/architecture}
+	\caption{Application architecture.}
+\end{figure}
 
 \subsection{Cryptography library}
 
@@ -460,12 +482,42 @@ Exist few of cryptography libraries which are written in Java (e.g. javax.crypto
 
 NIST recommends using 3072 bit length keys to ensure low probability of calculating discrete logarithm. This length is set as default in CryptoPP, however in our prototype we are using 1024 bit. It is caused by duration of sending data by sound. Now, sending 1024 bit length keys take some time and for needs of presentation we decided to stay with this length. For more information please check \cite{NIST}.
 
-\subsection{Shared application model}
+\subsection{Shared cryptographic module}
+Cryptographic module is designed in such way that it will be easy to use it on different platforms. Application treat it as a black box where are exchanging strings with data. Implementation is made in C++ based on DiffieHellman and Authenticated-DiffieHellman classes from Cryptopp library. It performs following cryptographic operation:
+
+\begin{itemize}
+\item Modular exponentiation
+\item Long term and ephemeral key generation (Diffie-Helman)
+\item Certificate generation and verification
+\item Secure hashing (SHA1)
+\item Symmetric encryption (AES)
+\end{itemize}
+
+Core of this module is class MututalAuthenticationChip. It is responsible for inputting, preparing and outputting data to Application. All sensitive data is kept internally using secure byte blocks.Messages generated in the protocol are converted to strings.
+For group arithmetic operations and modular exponentiation we use build in Integer class provided by the library. 
+
+\vspace{5mm}
+
+The overall implementation tightly follows the protocol specification and the only overhead is connected with conversions to provide compatibility with the rest of the application.
+\lstset{language=C++,caption={Example of CryptoPP usage for ephemeral key generation.}}
+\begin{lstlisting}
+void KeyGenerator::GenerateEphemeralKeyPair(CryptoPP::RandomNumberGenerator &rng, byte *privateKey, byte *publicKey) const
+{
+    Integer a = Integer(rng, keySize);
+    byte *aEncoded = new byte[keySize];
+    a.Encode(aEncoded, keySize);
+    privateKey = HashClass::getSHA1(aEncoded, keySize);
+    CryptoPP::Integer exponent(privateKey, keySize);
+    CryptoPP::Integer cA = a_exp_b_mod_c(g, exponent, p);   //ca = g^H(a)
+    cA.Encode(publicKey, keySize);
+}
+\end{lstlisting}
 
 \subsection{Java Native Interface - C++ Wrapper}
 
-To be able to use cryptographic part written in C++ in Android, we had to create C++ wrappers using JNI (Java Native Interface) \cite{JNI}. Main class which communicate with C++ code has native methods, for which, after appropriate compilation method, was created MACWrapper.h where definition of methods looks like below.
+To be able to use cryptographic part written in C++ in Android, we had to create C++ wrappers using JNI (Java Native Interface) \cite{JNI}. Main class which communicate with C++ code has native methods, for which, after appropriate compilation, was created MACWrapper.h where definition of methods looks like below.
 
+\lstset{language=C++,caption={Example of JNI usage for method definition.}}
 \begin{lstlisting}
 /*
  * Class:     com_example_androidake_MutualAuthenticateChip
@@ -478,6 +530,7 @@ JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_prepar
 
 Implementations of methods are in MACWrapper.cpp. There are made conversion from C++ data type to Java data type and vice versa.
 
+\lstset{language=C++,caption={Example of JNI usage for method implementation.}}
 \begin{lstlisting}
 JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_prepareMACCPP
 (JNIEnv *env, jobject thisObj, jboolean jinit) {
@@ -528,7 +581,7 @@ C = 10,3 kHz,
 / = 19,55 kHz
 
 
-Additional two characters \",\" and \".\" represent begin of data and end of data. Sample rate is 44,1 kHz. Every character is sending during 30 ms, which means that for each pitch is needed 1323 samples. To create sinus wave each sample for $ i \in (0,1322) $ is calculating by formula:
+Additional two characters "," and "." represent begin of data and end of data. Sample rate is 44,1 kHz. Every character is sending during 30 ms, which means that for each pitch is needed 1323 samples. To create sinus wave each sample for $ i \in (0,1322) $ is calculating by formula:
 \begin{center}
 $\sin($ $Frequency \ast PI \ast 2 \ast i  \over 44 100 $ $)$
 \end{center}
@@ -597,20 +650,11 @@ We did not want to go below 10 kHz and higher frequency than 20,5 is hard to det
 
 \vspace{5mm}
 
-There are several reason why the result was not 100\%. Sometimes, if we send, for example, frequency 20 kHz then second device receive it as 19,9. It can be caused by some distortion on the microphone on even on the speaker. What happened was that the speaker the make sound different than usual. Was needed restart of device. Sometimes it is sufficient that one of the device froze on some milliseconds and then receiving device lose some characters. 
+There are several reason why the result was not 100\%. Sometimes, if we send, for example, frequency 20 kHz then second device receive it as 19,9. It can be caused by some distortion on the microphone on even on the speaker. What happened was that the speaker make sound different than usual. Was needed restart of device. Sometimes it is sufficient that one of the device froze on some milliseconds and then receiving device lose some characters. 
+
+\vspace{5mm}
 
 Measure of allowed distance between devices we have started with stick microphone from LG with speaker from Samsung. This gave us the best results. Received amplitude was the biggest, hence easier, for algorithm, was to find interesting for us frequency. Then we increase distance to 2 cm. In this case results was also good. Sessions keys was established almost every time. Problem was started increasing distance to 6 cm. Bigger frequencies was not registered by microphone.
-
-\section{Installing and implementation}
-
-
-
-
-
-
-
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BIBLIOGRAFIA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.12.2)  23 NOV 2014 23:09
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.12.2)  27 NOV 2014 22:51
 entering extended mode
 **AKESound.tex
 ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.tex"
@@ -554,293 +554,310 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
 
 LaTeX Warning: Citation `bump' on page 6 undefined on input line 235.
 
-[6] <img/longitudinal_wave.png, id=32, 277.035pt x 82.05656pt>
-File: img/longitudinal_wave.png Graphic file (type png)
-
-<use img/longitudinal_wave.png>
-Package pdftex.def Info: img/longitudinal_wave.png used on input line 261.
-(pdftex.def)             Requested size: 277.03432pt x 82.05635pt.
-
-<img/frequency_1Hz.png, id=34, 347.79938pt x 161.10187pt>
-File: img/frequency_1Hz.png Graphic file (type png)
-
-<use img/frequency_1Hz.png>
-Package pdftex.def Info: img/frequency_1Hz.png used on input line 267.
-(pdftex.def)             Requested size: 179.99878pt x 83.37521pt.
-
-<img/frequency_5Hz.png, id=35, 347.79938pt x 161.10187pt>
-File: img/frequency_5Hz.png Graphic file (type png)
-
-<use img/frequency_5Hz.png>
-Package pdftex.def Info: img/frequency_5Hz.png used on input line 268.
-(pdftex.def)             Requested size: 179.99878pt x 83.37521pt.
- [7 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/longitudinal_wave.pn
-g>] [8 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/frequency_1Hz.png
- (PNG copy)> <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/frequency_5
-Hz.png (PNG copy)>]
-<img/sines.png, id=43, 422.32782pt x 316.18124pt>
-File: img/sines.png Graphic file (type png)
- <use img/sines.png>
-Package pdftex.def Info: img/sines.png used on input line 309.
-(pdftex.def)             Requested size: 200.0pt x 149.73413pt.
-
-<img/both_real_imag.png, id=44, 422.32782pt x 316.18124pt>
-File: img/both_real_imag.png Graphic file (type png)
-
-<use img/both_real_imag.png>
-Package pdftex.def Info: img/both_real_imag.png used on input line 318.
-(pdftex.def)             Requested size: 259.99756pt x 194.65535pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[9 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/sines.png>]
-<img/continues.png, id=50, 422.32782pt x 316.18124pt>
-File: img/continues.png Graphic file (type png)
- <use img/continues.png>
-Package pdftex.def Info: img/continues.png used on input line 330.
-(pdftex.def)             Requested size: 240.00244pt x 179.68483pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<img/descrete.png, id=51, 422.32782pt x 316.18124pt>
-File: img/descrete.png Graphic file (type png)
- <use img/descrete.png>
-Package pdftex.def Info: img/descrete.png used on input line 337.
-(pdftex.def)             Requested size: 240.00244pt x 179.68483pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[10 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/both_real_imag.png>]
-<img/AMA_protocol.png, id=56, 847.66687pt x 382.42876pt>
+[6] [7] <img/AMA_protocol.png, id=35, 847.66687pt x 382.42876pt>
 File: img/AMA_protocol.png Graphic file (type png)
 
 <use img/AMA_protocol.png>
-Package pdftex.def Info: img/AMA_protocol.png used on input line 372.
+Package pdftex.def Info: img/AMA_protocol.png used on input line 286.
 (pdftex.def)             Requested size: 479.99878pt x 216.55115pt.
 
-Overfull \hbox (79.99878pt too wide) in paragraph at lines 372--373
+Overfull \hbox (79.99878pt too wide) in paragraph at lines 286--287
  [][] 
  []
 
 
-LaTeX Warning: Citation `AMA' on page 11 undefined on input line 373.
+LaTeX Warning: Citation `AMA' on page 8 undefined on input line 287.
 
 
-LaTeX Warning: Citation `AMA' on page 11 undefined on input line 373.
+LaTeX Warning: Citation `AMA' on page 8 undefined on input line 287.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/continues.png>]
+[8] [9 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/AMA_protocol.png>
+]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 9.85492pt on input line 394.
+(Font)              scaled to size 9.85492pt on input line 309.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 15.55188pt on input line 394.
+(Font)              scaled to size 15.55188pt on input line 309.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 398.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 313.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 9.85492pt on input line 398.
+(Font)              scaled to size 9.85492pt on input line 313.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 398.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 313.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 8.99994pt on input line 398.
+(Font)              scaled to size 8.99994pt on input line 313.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.09995pt on input line 398.
+(Font)              scaled to size 8.09995pt on input line 313.
 
-Underfull \hbox (badness 10000) in paragraph at lines 398--398
+Underfull \hbox (badness 10000) in paragraph at lines 313--313
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 398--398
+Underfull \hbox (badness 10000) in paragraph at lines 313--313
 \T1/phv/m/n/9 Alice starts the pro-to-col
  []
 
-<img/couple.png, id=61, 397.485pt x 259.7203pt>
+<img/couple.png, id=44, 397.485pt x 259.7203pt>
 File: img/couple.png Graphic file (type png)
  <use img/couple.png>
-Package pdftex.def Info: img/couple.png used on input line 398.
+Package pdftex.def Info: img/couple.png used on input line 313.
 (pdftex.def)             Requested size: 108.00168pt x 76.81892pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 399--400
+Underfull \hbox (badness 10000) in paragraph at lines 314--315
 
  []
 
 
-Underfull \hbox (badness 7814) in paragraph at lines 399--400
+Underfull \hbox (badness 7814) in paragraph at lines 314--315
 \T1/phv/m/n/9 Bob starts pro-to-col as re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 403--403
+Underfull \hbox (badness 10000) in paragraph at lines 318--318
 
  []
 
-<img/signal1.png, id=62, 397.485pt x 259.7203pt>
+<img/signal1.png, id=45, 397.485pt x 259.7203pt>
 File: img/signal1.png Graphic file (type png)
  <use img/signal1.png>
-Package pdftex.def Info: img/signal1.png used on input line 403.
+Package pdftex.def Info: img/signal1.png used on input line 318.
 (pdftex.def)             Requested size: 108.00168pt x 76.81892pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--406
+Underfull \hbox (badness 10000) in paragraph at lines 320--321
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--406
+Underfull \hbox (badness 10000) in paragraph at lines 320--321
 \T1/phv/m/n/9 Bob re-ceives ephemeral
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 409--409
+Underfull \hbox (badness 10000) in paragraph at lines 324--324
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 409--409
+Underfull \hbox (badness 10000) in paragraph at lines 324--324
 \T1/phv/m/n/9 Alice re-ceives ephemeral
  []
 
-<img/second_side.png, id=63, 395.97937pt x 258.21469pt>
+<img/second_side.png, id=46, 395.97937pt x 258.21469pt>
 File: img/second_side.png Graphic file (type png)
 
 <use img/second_side.png>
-Package pdftex.def Info: img/second_side.png used on input line 409.
+Package pdftex.def Info: img/second_side.png used on input line 324.
 (pdftex.def)             Requested size: 107.9974pt x 76.82277pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 411--412
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 411--412
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
 \T1/phv/m/n/9 Bob gen-er-ates ephemeral
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 415--415
+Underfull \hbox (badness 10000) in paragraph at lines 330--330
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 415--415
+Underfull \hbox (badness 10000) in paragraph at lines 330--330
 \T1/phv/m/n/9 Alice uses her and Bob's
  []
 
 
-Underfull \hbox (badness 4859) in paragraph at lines 415--415
+Underfull \hbox (badness 4859) in paragraph at lines 330--330
 \T1/phv/m/n/9 ephemeral keys to com-pute
  []
 
 File: img/signal1.png Graphic file (type png)
 <use img/signal1.png>
-Package pdftex.def Info: img/signal1.png used on input line 415.
+Package pdftex.def Info: img/signal1.png used on input line 330.
 (pdftex.def)             Requested size: 108.00168pt x 76.81892pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 417--418
+Underfull \hbox (badness 10000) in paragraph at lines 332--333
 \T1/phv/b/n/10 Receive and de-crypt
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 417--418
+Underfull \hbox (badness 10000) in paragraph at lines 332--333
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 417--418
+Underfull \hbox (badness 10000) in paragraph at lines 332--333
 \T1/phv/m/n/9 Bob re-ceives and de-crypts
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 421--421
+Underfull \hbox (badness 10000) in paragraph at lines 336--336
 \T1/phv/b/n/10 Receive and de-crypt
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 421--421
+Underfull \hbox (badness 10000) in paragraph at lines 336--336
 
  []
 
 
-Underfull \hbox (badness 5331) in paragraph at lines 421--421
+Underfull \hbox (badness 5331) in paragraph at lines 336--336
 \T1/phv/m/n/9 Alice re-ceives and de-crypts
  []
 
 
-Underfull \hbox (badness 1132) in paragraph at lines 421--421
+Underfull \hbox (badness 1132) in paragraph at lines 336--336
 \T1/phv/m/n/9 Bobs au-then-ti-ca-tion data. If
  []
 
 
-Underfull \hbox (badness 1152) in paragraph at lines 421--421
+Underfull \hbox (badness 1152) in paragraph at lines 336--336
 \T1/phv/m/n/9 it's not valid, she aborts the
  []
 
-<img/session_key_est.png, id=64, 396.7322pt x 435.87843pt>
+<img/session_key_est.png, id=47, 396.7322pt x 435.87843pt>
 File: img/session_key_est.png Graphic file (type png)
 
 <use img/session_key_est.png>
-Package pdftex.def Info: img/session_key_est.png used on input line 421.
+Package pdftex.def Info: img/session_key_est.png used on input line 336.
 (pdftex.def)             Requested size: 108.00294pt x 142.26404pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 424--425
+Underfull \hbox (badness 10000) in paragraph at lines 339--340
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 424--425
+Underfull \hbox (badness 10000) in paragraph at lines 339--340
 \T1/phv/m/n/9 Bob ver-i-fies au-then-ti-ca-tion
  []
 
 
-Underfull \hbox (badness 1057) in paragraph at lines 424--425
+Underfull \hbox (badness 1057) in paragraph at lines 339--340
 \T1/phv/m/n/9 data re-ceived from Al-ice. If
  []
 
 
-Underfull \hbox (badness 5175) in paragraph at lines 424--425
+Underfull \hbox (badness 5175) in paragraph at lines 339--340
 \T1/phv/m/n/9 it's valid, he gen-er-ates his
  []
 
 
-Overfull \hbox (5.88582pt too wide) in paragraph at lines 393--426
+Overfull \hbox (5.88582pt too wide) in paragraph at lines 308--341
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 34.7126pt on input line 427.
+LaTeX Warning: Float too large for page by 34.7126pt on input line 342.
+
+<img/longitudinal_wave.png, id=48, 277.035pt x 82.05656pt>
+File: img/longitudinal_wave.png Graphic file (type png)
+
+<use img/longitudinal_wave.png>
+Package pdftex.def Info: img/longitudinal_wave.png used on input line 353.
+(pdftex.def)             Requested size: 277.03432pt x 82.05635pt.
+
+<img/frequency_1Hz.png, id=49, 347.79938pt x 161.10187pt>
+File: img/frequency_1Hz.png Graphic file (type png)
+
+<use img/frequency_1Hz.png>
+Package pdftex.def Info: img/frequency_1Hz.png used on input line 359.
+(pdftex.def)             Requested size: 179.99878pt x 83.37521pt.
+
+<img/frequency_5Hz.png, id=50, 347.79938pt x 161.10187pt>
+File: img/frequency_5Hz.png Graphic file (type png)
+
+<use img/frequency_5Hz.png>
+Package pdftex.def Info: img/frequency_5Hz.png used on input line 360.
+(pdftex.def)             Requested size: 179.99878pt x 83.37521pt.
+ [10 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/longitudinal_wave.p
+ng> <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/frequency_1Hz.png (P
+NG copy)> <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/frequency_5Hz.
+png (PNG copy)>] [11 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/cou
+ple.png> <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/signal1.png> <E
+:/GitHubFinal/MACProtocolSound/praca magisterska/img/second_side.png> <E:/GitHu
+bFinal/MACProtocolSound/praca magisterska/img/session_key_est.png>] [12] <img/s
+ines.png, id=68, 422.32782pt x 316.18124pt>
+File: img/sines.png Graphic file (type png)
+
+<use img/sines.png>
+Package pdftex.def Info: img/sines.png used on input line 401.
+(pdftex.def)             Requested size: 200.0pt x 149.73413pt.
+ <img/both_real_imag.png, id=69, 422.32782pt x 316.18124pt>
+File: img/both_real_imag.png Graphic file (type png)
+
+<use img/both_real_imag.png>
+Package pdftex.def Info: img/both_real_imag.png used on input line 410.
+(pdftex.def)             Requested size: 259.99756pt x 194.65535pt.
+ [13 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/sines.png> <E:/GitH
+ubFinal/MACProtocolSound/praca magisterska/img/both_real_imag.png>] <img/contin
+ues.png, id=76, 422.32782pt x 316.18124pt>
+File: img/continues.png Graphic file (type png)
+
+<use img/continues.png>
+Package pdftex.def Info: img/continues.png used on input line 422.
+(pdftex.def)             Requested size: 240.00244pt x 179.68483pt.
+ <img/descrete.png, id=77, 422.32782pt x 316.18124pt>
+File: img/descrete.png Graphic file (type png)
+
+<use img/descrete.png>
+Package pdftex.def Info: img/descrete.png used on input line 429.
+(pdftex.def)             Requested size: 240.00244pt x 179.68483pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/descrete.png>]
-[13 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/AMA_protocol.png>]
-[14] [15]
+[14 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/continues.png>]
+[15 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/descrete.png>]
+<img/architecture.png, id=86, 499.11469pt x 187.45032pt>
+File: img/architecture.png Graphic file (type png)
+
+<use img/architecture.png>
+Package pdftex.def Info: img/architecture.png used on input line 471.
+(pdftex.def)             Requested size: 400.0pt x 150.22931pt.
+ [16 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/architecture.png>]
+("d:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+("d:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+("d:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+)
+LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <8> not available
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 504.
+ [17]
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 511.
+ [18]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 533.
+(amsmath)                 on input line 586.
 
-[16] <img/peaks_1.png, id=84, 291.33844pt x 231.11343pt>
+[19] <img/peaks_1.png, id=103, 291.33844pt x 231.11343pt>
 File: img/peaks_1.png Graphic file (type png)
- <use img/peaks_1.png>
-Package pdftex.def Info: img/peaks_1.png used on input line 554.
-(pdftex.def)             Requested size: 179.99878pt x 142.79161pt.
 
-<img/receiving.png, id=85, 534.49687pt x 453.19313pt>
+<use img/peaks_1.png>
+Package pdftex.def Info: img/peaks_1.png used on input line 607.
+(pdftex.def)             Requested size: 179.99878pt x 142.79161pt.
+ <img/receiving.png, id=104, 534.49687pt x 453.19313pt>
 File: img/receiving.png Graphic file (type png)
- <use img/receiving.png>
-Package pdftex.def Info: img/receiving.png used on input line 565.
+
+<use img/receiving.png>
+Package pdftex.def Info: img/receiving.png used on input line 618.
 (pdftex.def)             Requested size: 279.99878pt x 237.41823pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[17 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/peaks_1.png>]
-[18 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/receiving.png>]
+[20 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/peaks_1.png>]
+[21 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/receiving.png>]
 ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.bbl"
 Underfull \hbox (badness 6032) in paragraph at lines 4--7
 []\T1/ptm/m/n/10.95 The de-screte trans-form fourier (dft): Def-i-ni-tion and n
@@ -853,7 +870,7 @@ $\T1/pcr/m/n/10.95 http : / / www . nbtwiki . net / doku . php ? id = tutorial
 : the _ discrete _ fourier _$
  []
 
-
+[22]
 Underfull \hbox (badness 3323) in paragraph at lines 19--21
 []\T1/ptm/m/n/10.95 NatÄ$[]$ˆ‰enie fali dˆ³wiÄ$[]$kowej.  $\T1/pcr/m/n/10.95 ht
 tp : / / www . fizykon . org / akustyka /$
@@ -871,37 +888,35 @@ Underfull \hbox (badness 2932) in paragraph at lines 28--30
 p : / / www . fizykon . org / akustyka /$
  []
 
-[19]) [20] [21 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/couple.pn
-g> <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/signal1.png> <E:/GitH
-ubFinal/MACProtocolSound/praca magisterska/img/second_side.png> <E:/GitHubFinal
-/MACProtocolSound/praca magisterska/img/session_key_est.png>]
-("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.aux")
+) [23] ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.aux")
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 7156 strings out of 494045
- 91661 string characters out of 3148387
- 321054 words of memory out of 3000000
- 10224 multiletter control sequences out of 15000+200000
- 82544 words of font info for 101 fonts, out of 3000000 for 9000
+ 7447 strings out of 494045
+ 95745 string characters out of 3148387
+ 346651 words of memory out of 3000000
+ 10502 multiletter control sequences out of 15000+200000
+ 83902 words of font info for 105 fonts, out of 3000000 for 9000
  753 hyphenation exceptions out of 8191
- 27i,16n,32p,998b,1064s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,15n,58p,998b,1739s stack positions out of 5000i,500n,10000p,200000b,50000s
 {d:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<d:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><d:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/cm/cmsy10.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/
-courier/ucrr8a.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a
-.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><d:/Progr
-am Files/MiKTeX 2.9/fonts/type1/urw/symbol/usyr.pfb><d:/Program Files/MiKTeX 2.
-9/fonts/type1/urw/times/utmb8a.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw
-/times/utmr8a.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb
-><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on AKESound.pdf (22 pages, 343407 bytes).
+courier/ucrb8a.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.
+pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb><d:/Progra
+m Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><d:/Program Files/MiKTeX
+ 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><d:/Program Files/MiKTeX 2.9/fonts/typ
+e1/urw/symbol/usyr.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8
+a.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><d:/Program
+ Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><d:/Program Files/MiKTeX 2.9
+/fonts/type1/urw/times/utmri8a.pfb>
+Output written on AKESound.pdf (24 pages, 383261 bytes).
 PDF statistics:
- 149 PDF objects out of 1000 (max. 8388607)
+ 164 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
