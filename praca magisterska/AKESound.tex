@@ -298,12 +298,16 @@ Scheme of protocol is shown at the \ref{fig:F8}. In scheme are use the following
 
 Protocol is very simple to implement. AMA is defined a cyclic group G where Computational Diffie-Hellman Problem (CDH) is hard. At the beginning, parties (Alice and Bob) generate their private key - $x_A$ (respectively, $x_B$) and public key $y_A = g^{x_A}$ (respectively, $y_A$). Then starts main procedure. Parties generate their ephemeral keys. Private is $h_A := H(a)$ (where $a$ is a random number) (respectively $h_B$, $b$) and public ephemeral key $c_A := g^{h_A}$ (respectively $c_B$). In the first phase parties exchange ephemeral keys, based on Diffie-Hellman key exchange. 
 
+\vspace{5mm}
+
 When parties obtain ephemeral public key of another party, they start compute master key $K$. Four different one-time keys are establish by hashing $K$ and number parameter - different for each one-time key. 
+
+\vspace{5mm}
 
 Authenticated party is raising ephemeral public key $c_B$ (respectively, $c_A$) to power of private key $x_B$ (respectively, $x_A$). On this base authentication. Verifier compute the same value without private key but with the discrete logarithm of $c_A$ (respectively, $c_B$) ($(y_A)^(h_B)$).
 \newpage
-\begin{table}[htp]
-\caption{blablabla}
+\begin{table}[H]
+\caption{Scheme of protocol used in devices.}
 \begin{center}
 
 \begin{tabular}{ p{4cm} p{5cm} p{4cm}}
@@ -343,7 +347,15 @@ valid, he generates his authentication data and send it by microphone. If data i
 \end{table}
 
 \subsection{Security analysis}
-The key exchange protocol have to ensure that even eavesdropping data will be not useful for eavesdropper or 
+The key exchange protocol is considered to be secured on the assumptions that underlying problems are hard e.g. factorization, discrete logarithm, computational diffie-hellman etc. One interesting question is what happens if those assumptions are false. Lets imagine an adversary with super efficient quantum computer that is capable of solving the above problems in reasonable time.
+
+\vspace{5mm}
+
+The adversary can have different powers over the communication channel. In the following paragraphs we will discuss different powers of the adversary and their influence over the security of the protocol.
+
+\vspace{5mm}
+
+The security analysis below does not include security proofs of AMA but the different aspects of an adversary capturing the transmission if he was able to break the aforementioned assumptions.
 
 \subsection{Sound}
 Sound is acoustic wave propagating in different substances such as water, air (so called vibrating wire). These are waves which cause auditory sensation and at the same time in appropriate amplitude and frequency are not detected by human organ of hearing. Sound to spread need to has some medium, that is why not propagate in vacuum. Furthermore, sound is longitudinal waves, which means that particles of the medium is in the same direction as the direction of travel of the wave.
@@ -383,6 +395,7 @@ where:
 	\item $I_o$ - Contractual value of the intensity which determines hearing range, which is $10^{-12}\frac{W}{m^2}.$
 \end{itemize}
 \subsubsection{Speed of sound}
+
 Speed of sound depends on center through which wave passes. Influence on speed has also temperature of the center. The slowest moves in the flue. In the air with $20^o$ temperature reach in  approximation 343 m/s (1230 km/h). In water with the same temperature speed is 1482 m/s (5335 km/h). The fastest sound spread in solid. For example in steel reach about 5960 m/s (21460 km/h) \cite{sound_speed}.
 
 \subsubsection{Ultrasounds}
@@ -443,18 +456,25 @@ Computational complexity of discrete Fourier transform is not enough to fast pro
 
 \subsubsection{Hanning window}
 Window functions are functions which are used with DFT. Often during process of DFT occur blur of spectrum, which mean that on the spectrum are seeing values for frequencies different than the real frequency of signal. To minimize this effect are used window functions. In time domain it is multiply every sample of signal by corresponding value of sample of window. The simplest window is rectangular window. Spectrum of this windowing is shown in \ref{fig:F9}
-\begin{figure}[!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{img/rectangular_window}
 	\caption{Rectangular window and its effect in spectrum of signal.}
 	\label{fig:F9}
 \end{figure}
 
-In our protocol is used Hanning window which is noticed by:
+\vspace{5mm}
 
+In our protocol is used Hanning window which is defined by:
+\begin{equation}
+	 w(n) = 0.5 (1 - \cos\left(\frac{2 \pi n}{N - 1}\right)),
+\end{equation}
+\newline where $N$ - amount of analyzed samples, $n$ - nth sample. 
 
-As one can see at \ref{fig:F10} the pitch is wider, hence is easier to determine the correct frequency.
-\begin{figure}[!]
+\vspace{5mm}
+
+As one can see at figure \ref{fig:F10} the pitch is wider, hence is easier to determine the correct frequency.
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{img/hanning_window}
 	\caption{Hanning window and its effect in spectrum of signal.}
@@ -600,7 +620,7 @@ C = 10,3 kHz,
 
 ...
 
-/ = 19,55 kHz
+. = 19,55 kHz
 
 
 Additional two characters "," and "." represent begin of data and end of data. Sample rate is 44,1 kHz. Every character is sending during 30 ms, which means that for each pitch is needed 1323 samples. To create sinus wave each sample for $ i \in (0,1322) $ is calculating by formula:
