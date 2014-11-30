@@ -1,21 +1,23 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.12.2)  27 NOV 2014 22:51
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.11.29)  30 NOV 2014 15:59
 entering extended mode
 **AKESound.tex
-("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.tex"
+
+("C:\Users\Pawel\Documents\GitHub\MACProtocolSound\praca magisterska\AKESound.t
+ex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
 croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
-lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
-ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
-vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
-an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
-romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
-sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
-senglishmax, welsh, loaded.
-("d:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("d:\Program Files\MiKTeX 2.9\tex\latex\base\size11.clo"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size11.clo"
 File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -30,31 +32,31 @@ File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("d:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("d:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count87
@@ -62,46 +64,46 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\graphics\epsfig.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\epsfig.sty"
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 \epsfxsize=\dimen105
 \epsfysize=\dimen106
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
-Package: amsmath 2000/07/18 v2.13 AMS math features
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-("d:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks15
 \ex@=\dimen107
 ))
-("d:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen108
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count88
-LaTeX Info: Redefining \frac on input line 211.
+LaTeX Info: Redefining \frac on input line 210.
 \uproot@=\count89
 \leftroot@=\count90
-LaTeX Info: Redefining \overline on input line 307.
+LaTeX Info: Redefining \overline on input line 306.
 \classnum@=\count91
 \DOTSCASE@=\count92
-LaTeX Info: Redefining \ldots on input line 379.
-LaTeX Info: Redefining \dots on input line 382.
-LaTeX Info: Redefining \cdots on input line 467.
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
 \Mathstrutbox@=\box26
 \strutbox@=\box27
 \big@size=\dimen109
-LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \macc@depth=\count93
 \c@MaxMatrixCols=\count94
 \dotsspace@=\muskip10
@@ -122,20 +124,20 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 \multlinegap=\skip44
 \multlinetaggap=\skip45
 \mathdisplay@stack=\toks19
-LaTeX Info: Redefining \[ on input line 2666.
-LaTeX Info: Redefining \] on input line 2667.
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
-Package: amssymb 2009/06/22 v3.00
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
-Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-("d:\Program Files\MiKTeX 2.9\tex\latex\ams\classes\amsthm.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
 Package: amsthm 2004/08/06 v2.20
 \thm@style=\toks20
 \thm@bodyfont=\toks21
@@ -147,7 +149,7 @@ Package: amsthm 2004/08/06 v2.20
 \thm@headsep=\skip48
 \dth@everypar=\toks25
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\booktabs\booktabs.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\booktabs\booktabs.sty"
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \heavyrulewidth=\dimen116
 \lightrulewidth=\dimen117
@@ -167,17 +169,17 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \@lastruleclass=\count103
 \@thisrulewidth=\dimen128
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\stmaryrd\stmaryrd.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\stmaryrd\stmaryrd.sty"
 Package: stmaryrd 1994/03/03 St Mary's Road symbol package
 \symstmry=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
 (Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip11
-Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\tools\longtable.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\longtable.sty"
 Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
 \LTleft=\skip49
 \LTright=\skip50
@@ -195,10 +197,10 @@ Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
 \c@LT@chunks=\count108
 \LT@p@ftn=\toks26
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\rotating\rotating.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\rotating\rotating.sty"
 Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \c@r@tfl@t=\count109
@@ -207,34 +209,34 @@ Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 \rot@float@box=\box32
 \rot@mess@toks=\toks27
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks28
 \inpenc@posthook=\toks29
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\base\cp1250.def"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\cp1250.def"
 File: cp1250.def 2008/03/30 v1.1d Input encoding file
 ))
-("d:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\fontenc.sty"
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.def"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.def"
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-("d:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.sty"
 Package: babel 2008/07/08 v3.8m The Babel package
 
 *************************************
 * Local config file bblopts.cfg used
 *
-("d:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
 File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
 )
-("d:\Program Files\MiKTeX 2.9\tex\generic\babel\english.ldf"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\english.ldf"
 Language: english 2005/03/30 v3.3o English support from the babel system
 
-("d:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.def"
 File: babel.def 2008/07/08 v3.8m Babel common definitions
 \babel@savecnt=\count110
 \U@D=\dimen130
@@ -243,18 +245,18 @@ File: babel.def 2008/07/08 v3.8m Babel common definitions
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
-("d:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("d:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-("d:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("d:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count111
@@ -270,8 +272,8 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen138
 \Gm@dimlist=\toks30
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-("d:\Program Files\MiKTeX 2.9\tex\latex\pslatex\pslatex.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\pslatex\pslatex.sty"
 Package: pslatex 1996/07/24 v1.2 pslatex emulation (DPC)
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 65.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
@@ -306,7 +308,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/ptm/m/it on input line 75.
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\ulem\ulem.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\ulem\ulem.sty"
 \UL@box=\box33
 \UL@hyphenbox=\box34
 \UL@skip=\skip55
@@ -315,14 +317,14 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 \UL@pe=\count114
 \UL@pixel=\dimen140
 \ULC@box=\box35
-Package: ulem 2011/03/18
+Package: ulem 2012/05/18
 \ULdepth=\dimen141
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\lipsum\lipsum.sty"
-Package: lipsum 2011/04/14 v1.2 150 paragraphs of Lorem Ipsum dummy text
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\lipsum\lipsum.sty"
+Package: lipsum 2014/07/27 v1.3 150 paragraphs of Lorem Ipsum dummy text
 \c@lips@count=\count115
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.sty"
 \lst@mode=\count116
 \lst@gtempboxa=\box36
 \lst@token=\toks32
@@ -336,50 +338,42 @@ Package: lipsum 2011/04/14 v1.2 150 paragraphs of Lorem Ipsum dummy text
 \lst@lineno=\count121
 \lst@maxwidth=\dimen145
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
-File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
 \c@lstnumber=\count122
 \lst@skipnumbers=\count123
 \lst@framebox=\box37
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
-File: listings.cfg 2007/02/22 1.4 listings configuration
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+File: listings.cfg 2014/09/06 1.5e listings configuration
 ))
-Package: listings 2007/02/22 1.4 (Carsten Heinz)
+Package: listings 2014/09/06 1.5e (Carsten Heinz)
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\here\Here.sty")
-("d:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count124
-\float@exts=\toks33
-\float@box=\box38
-\@float@everytoks=\toks34
-\@floatcapt=\box39
-)
-("d:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\Here.sty")
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\algorithm2e\algorithm2e.sty"
-Package: algorithm2e 2008/00/00 v3.10 algorithms environments
-\c@AlgoLine=\count125
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\algorithm2e\algorithm2e.sty"
+Package: algorithm2e 2013/01/06 v5.00 algorithms environments
+\c@AlgoLine=\count124
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\tools\xspace.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\xspace.sty"
 Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
 )
-("d:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\relsize.sty"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\relsize.sty"
 Package: relsize 2003/07/04 ver 3.1
 )
 ********************************************************
-Package `algorithm2e' Release 4.01 -- december 14 2009 --
+Package `algorithm2e' Release 5.0 -- january 06 2013 --
 - algorithm2e-announce@lirmm.fr mailing list for announcement about releases
 - algorithm2e-discussion@lirmm.fr mailing list for discussion about package
 subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
-- Author: Christophe Fiorio (fiorio@lirmm.fr)
+- Author: Christophe Fiorio (cfiorio@um2.fr)
 ********************************************************
 \skiptotal=\skip56
 \skiplinenumber=\skip57
@@ -391,36 +385,41 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \skipalgocfslide=\skip63
 \algowidth=\dimen146
 \inoutsize=\dimen147
-\inoutline=\dimen148
+\inoutindent=\dimen148
 \interspacetitleruled=\dimen149
 \interspacealgoruled=\dimen150
 \interspacetitleboxruled=\dimen151
-\algocf@inoutbox=\box40
-\algocf@inputbox=\box41
+\algocf@inoutbox=\box38
+\algocf@inputbox=\box39
 \AlCapSkip=\skip64
 \AlCapHSkip=\skip65
-\algocf@nlbox=\box42
-\algocf@hangingbox=\box43
-\algocf@capbox=\box44
-\algoheightruledefault=\skip66
-\algoheightrule=\skip67
-\algotitleheightruledefault=\skip68
-\algotitleheightrule=\skip69
-\c@algocfline=\count126
-\c@algocfproc=\count127
-\c@algocf=\count128
-\algocf@algoframe=\box45
-\algocf@algobox=\box46
+\algoskipindent=\skip66
+\algocf@nlbox=\box40
+\algocf@hangingbox=\box41
+\algocf@untilbox=\box42
+\algocf@skipuntil=\skip67
+\algocf@capbox=\box43
+\algoheightruledefault=\skip68
+\algoheightrule=\skip69
+\algotitleheightruledefault=\skip70
+\algotitleheightrule=\skip71
+\c@algocfline=\count125
+\c@algocfproc=\count126
+\c@algocf=\count127
+\algocf@algoframe=\box44
+\algocf@algobox=\box45
 )
-\c@theorem=\count129
-\c@lemma=\count130
-\c@example=\count131
-\c@corollary=\count132
-\c@definition=\count133
+\c@theorem=\count128
+\c@lemma=\count129
+\c@example=\count130
+\c@corollary=\count131
+\c@definition=\count132
 \@indexfile=\write3
 
 Writing index file AKESound.idx
-("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.aux")
+
+("C:\Users\Pawel\Documents\GitHub\MACProtocolSound\praca magisterska\AKESound.a
+ux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
 LaTeX Font Info:    ... okay on input line 108.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 108.
@@ -430,8 +429,7 @@ LaTeX Font Info:    ... okay on input line 108.
 LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 108.
 LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 10
 8.
-
-("d:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omspzccm.fd"
+ ("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omspzccm.fd"
 File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
 )
 LaTeX Font Info:    ... okay on input line 108.
@@ -440,19 +438,19 @@ LaTeX Font Info:    ... okay on input line 108.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 108.
 LaTeX Font Info:    ... okay on input line 108.
 
-("d:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count134
+\scratchcounter=\count133
 \scratchdimen=\dimen152
-\scratchbox=\box47
-\nofMPsegments=\count135
-\nofMParguments=\count136
-\everyMPshowfont=\toks35
-\MPscratchCnt=\count137
+\scratchbox=\box46
+\nofMPsegments=\count134
+\nofMParguments=\count135
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count136
 \MPscratchDim=\dimen153
-\MPnumerator=\count138
-\makeMPintoPDFobject=\count139
-\everyMPtoPDFconversion=\toks36
+\MPnumerator=\count137
+\makeMPintoPDFobject=\count138
+\everyMPtoPDFconversion=\toks34
 )
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -488,7 +486,7 @@ LaTeX Font Info:    ... okay on input line 108.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count140
+\c@lstlisting=\count139
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 116.
 LaTeX Font Info:    Font shape `T1/ptm/bx/sc' in size <12> not available
@@ -503,40 +501,40 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/sc' in size <24.88> not available
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 137.
 
-("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.toc"
+("C:\Users\Pawel\Documents\GitHub\MACProtocolSound\praca magisterska\AKESound.t
+oc"
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 3.
 LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 4.
 
-
-("d:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptmcm.fd"
+ ("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptmcm.fd"
 File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
 )
 LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 4.
 
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omlptmcm.fd"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlptmcm.fd"
 File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
 )
 LaTeX Font Info:    Try loading font information for OMX+psycm on input line 4.
 
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omxpsycm.fd"
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omxpsycm.fd"
 File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
 )
 LaTeX Font Info:    Try loading font information for U+msa on input line 4.
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
-File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 4.
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
-File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for U+stmry on input line 4.
 
-("d:\Program Files\MiKTeX 2.9\tex\latex\stmaryrd\ustmry.fd")
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\stmaryrd\ustmry.fd")
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
@@ -545,320 +543,341 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
  [1])
 \tf@toc=\write4
- [2] [3]
-[4]
+
+[2] [3] [4]
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 207.
+(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 208.
 
- [5]
-
-LaTeX Warning: Citation `bump' on page 6 undefined on input line 235.
-
-[6] [7] <img/AMA_protocol.png, id=35, 847.66687pt x 382.42876pt>
+ [5] [6] [7] [8]
+<img/AMA_protocol.png, id=38, 847.66687pt x 382.42876pt>
 File: img/AMA_protocol.png Graphic file (type png)
 
 <use img/AMA_protocol.png>
-Package pdftex.def Info: img/AMA_protocol.png used on input line 286.
+Package pdftex.def Info: img/AMA_protocol.png used on input line 287.
 (pdftex.def)             Requested size: 479.99878pt x 216.55115pt.
 
-Overfull \hbox (79.99878pt too wide) in paragraph at lines 286--287
+Overfull \hbox (79.99878pt too wide) in paragraph at lines 287--288
  [][] 
  []
 
-
-LaTeX Warning: Citation `AMA' on page 8 undefined on input line 287.
-
-
-LaTeX Warning: Citation `AMA' on page 8 undefined on input line 287.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[8] [9 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/AMA_protocol.png>
-]
+[9 <C:/Users/Pawel/Documents/GitHub/MACProtocolSound/praca magisterska/img/AMA_
+protocol.png>] [10]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 9.85492pt on input line 309.
+(Font)              scaled to size 9.85492pt on input line 310.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 15.55188pt on input line 309.
+(Font)              scaled to size 15.55188pt on input line 310.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 313.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 314.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 9.85492pt on input line 313.
+(Font)              scaled to size 9.85492pt on input line 314.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 313.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 314.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 8.99994pt on input line 313.
+(Font)              scaled to size 8.99994pt on input line 314.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.09995pt on input line 313.
+(Font)              scaled to size 8.09995pt on input line 314.
 
-Underfull \hbox (badness 10000) in paragraph at lines 313--313
+Underfull \hbox (badness 10000) in paragraph at lines 314--314
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 313--313
+Underfull \hbox (badness 10000) in paragraph at lines 314--314
 \T1/phv/m/n/9 Alice starts the pro-to-col
  []
 
-<img/couple.png, id=44, 397.485pt x 259.7203pt>
+<img/couple.png, id=47, 397.485pt x 259.7203pt>
 File: img/couple.png Graphic file (type png)
  <use img/couple.png>
-Package pdftex.def Info: img/couple.png used on input line 313.
+Package pdftex.def Info: img/couple.png used on input line 314.
 (pdftex.def)             Requested size: 108.00168pt x 76.81892pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 314--315
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
 
  []
 
 
-Underfull \hbox (badness 7814) in paragraph at lines 314--315
+Underfull \hbox (badness 7814) in paragraph at lines 315--316
 \T1/phv/m/n/9 Bob starts pro-to-col as re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--318
+Underfull \hbox (badness 10000) in paragraph at lines 319--319
 
  []
 
-<img/signal1.png, id=45, 397.485pt x 259.7203pt>
+<img/signal1.png, id=48, 397.485pt x 259.7203pt>
 File: img/signal1.png Graphic file (type png)
  <use img/signal1.png>
-Package pdftex.def Info: img/signal1.png used on input line 318.
+Package pdftex.def Info: img/signal1.png used on input line 319.
 (pdftex.def)             Requested size: 108.00168pt x 76.81892pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 320--321
+Underfull \hbox (badness 10000) in paragraph at lines 321--322
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 320--321
+Underfull \hbox (badness 10000) in paragraph at lines 321--322
 \T1/phv/m/n/9 Bob re-ceives ephemeral
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 324--324
+Underfull \hbox (badness 10000) in paragraph at lines 325--325
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 324--324
+Underfull \hbox (badness 10000) in paragraph at lines 325--325
 \T1/phv/m/n/9 Alice re-ceives ephemeral
  []
 
-<img/second_side.png, id=46, 395.97937pt x 258.21469pt>
+<img/second_side.png, id=49, 395.97937pt x 258.21469pt>
 File: img/second_side.png Graphic file (type png)
 
 <use img/second_side.png>
-Package pdftex.def Info: img/second_side.png used on input line 324.
+Package pdftex.def Info: img/second_side.png used on input line 325.
 (pdftex.def)             Requested size: 107.9974pt x 76.82277pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--327
+Underfull \hbox (badness 10000) in paragraph at lines 327--328
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--327
+Underfull \hbox (badness 10000) in paragraph at lines 327--328
 \T1/phv/m/n/9 Bob gen-er-ates ephemeral
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 330--330
+Underfull \hbox (badness 10000) in paragraph at lines 331--331
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 330--330
+Underfull \hbox (badness 10000) in paragraph at lines 331--331
 \T1/phv/m/n/9 Alice uses her and Bob's
  []
 
 
-Underfull \hbox (badness 4859) in paragraph at lines 330--330
+Underfull \hbox (badness 4859) in paragraph at lines 331--331
 \T1/phv/m/n/9 ephemeral keys to com-pute
  []
 
 File: img/signal1.png Graphic file (type png)
 <use img/signal1.png>
-Package pdftex.def Info: img/signal1.png used on input line 330.
+Package pdftex.def Info: img/signal1.png used on input line 331.
 (pdftex.def)             Requested size: 108.00168pt x 76.81892pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--333
+Underfull \hbox (badness 10000) in paragraph at lines 333--334
 \T1/phv/b/n/10 Receive and de-crypt
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--333
+Underfull \hbox (badness 10000) in paragraph at lines 333--334
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--333
+Underfull \hbox (badness 10000) in paragraph at lines 333--334
 \T1/phv/m/n/9 Bob re-ceives and de-crypts
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 336--336
+Underfull \hbox (badness 10000) in paragraph at lines 337--337
 \T1/phv/b/n/10 Receive and de-crypt
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 336--336
+Underfull \hbox (badness 10000) in paragraph at lines 337--337
 
  []
 
 
-Underfull \hbox (badness 5331) in paragraph at lines 336--336
+Underfull \hbox (badness 5331) in paragraph at lines 337--337
 \T1/phv/m/n/9 Alice re-ceives and de-crypts
  []
 
 
-Underfull \hbox (badness 1132) in paragraph at lines 336--336
+Underfull \hbox (badness 1132) in paragraph at lines 337--337
 \T1/phv/m/n/9 Bobs au-then-ti-ca-tion data. If
  []
 
 
-Underfull \hbox (badness 1152) in paragraph at lines 336--336
+Underfull \hbox (badness 1152) in paragraph at lines 337--337
 \T1/phv/m/n/9 it's not valid, she aborts the
  []
 
-<img/session_key_est.png, id=47, 396.7322pt x 435.87843pt>
+<img/session_key_est.png, id=50, 396.7322pt x 435.87843pt>
 File: img/session_key_est.png Graphic file (type png)
 
 <use img/session_key_est.png>
-Package pdftex.def Info: img/session_key_est.png used on input line 336.
+Package pdftex.def Info: img/session_key_est.png used on input line 337.
 (pdftex.def)             Requested size: 108.00294pt x 142.26404pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 339--340
+Underfull \hbox (badness 10000) in paragraph at lines 340--341
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 339--340
+Underfull \hbox (badness 10000) in paragraph at lines 340--341
 \T1/phv/m/n/9 Bob ver-i-fies au-then-ti-ca-tion
  []
 
 
-Underfull \hbox (badness 1057) in paragraph at lines 339--340
+Underfull \hbox (badness 1057) in paragraph at lines 340--341
 \T1/phv/m/n/9 data re-ceived from Al-ice. If
  []
 
 
-Underfull \hbox (badness 5175) in paragraph at lines 339--340
+Underfull \hbox (badness 5175) in paragraph at lines 340--341
 \T1/phv/m/n/9 it's valid, he gen-er-ates his
  []
 
 
-Overfull \hbox (5.88582pt too wide) in paragraph at lines 308--341
+Overfull \hbox (5.88582pt too wide) in paragraph at lines 309--342
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 34.7126pt on input line 342.
+LaTeX Warning: Float too large for page by 34.7126pt on input line 343.
 
-<img/longitudinal_wave.png, id=48, 277.035pt x 82.05656pt>
+<img/longitudinal_wave.png, id=51, 277.035pt x 82.05656pt>
 File: img/longitudinal_wave.png Graphic file (type png)
 
 <use img/longitudinal_wave.png>
-Package pdftex.def Info: img/longitudinal_wave.png used on input line 353.
+Package pdftex.def Info: img/longitudinal_wave.png used on input line 354.
 (pdftex.def)             Requested size: 277.03432pt x 82.05635pt.
 
-<img/frequency_1Hz.png, id=49, 347.79938pt x 161.10187pt>
+<img/frequency_1Hz.png, id=52, 347.79938pt x 161.10187pt>
 File: img/frequency_1Hz.png Graphic file (type png)
 
 <use img/frequency_1Hz.png>
-Package pdftex.def Info: img/frequency_1Hz.png used on input line 359.
+Package pdftex.def Info: img/frequency_1Hz.png used on input line 360.
 (pdftex.def)             Requested size: 179.99878pt x 83.37521pt.
 
-<img/frequency_5Hz.png, id=50, 347.79938pt x 161.10187pt>
+<img/frequency_5Hz.png, id=53, 347.79938pt x 161.10187pt>
 File: img/frequency_5Hz.png Graphic file (type png)
 
 <use img/frequency_5Hz.png>
-Package pdftex.def Info: img/frequency_5Hz.png used on input line 360.
+Package pdftex.def Info: img/frequency_5Hz.png used on input line 361.
 (pdftex.def)             Requested size: 179.99878pt x 83.37521pt.
- [10 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/longitudinal_wave.p
-ng> <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/frequency_1Hz.png (P
-NG copy)> <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/frequency_5Hz.
-png (PNG copy)>] [11 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/cou
-ple.png> <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/signal1.png> <E
-:/GitHubFinal/MACProtocolSound/praca magisterska/img/second_side.png> <E:/GitHu
-bFinal/MACProtocolSound/praca magisterska/img/session_key_est.png>] [12] <img/s
-ines.png, id=68, 422.32782pt x 316.18124pt>
+ [11 <C:/Users/Pawel/Documents/GitHub/MACProtocolSound/praca magisterska/img/lo
+ngitudinal_wave.png> <C:/Users/Pawel/Documents/GitHub/MACProtocolSound/praca ma
+gisterska/img/frequency_1Hz.png (PNG copy)> <C:/Users/Pawel/Documents/GitHub/MA
+CProtocolSound/praca magisterska/img/frequency_5Hz.png (PNG copy)>] [12 <C:/Use
+rs/Pawel/Documents/GitHub/MACProtocolSound/praca magisterska/img/couple.png> <C
+:/Users/Pawel/Documents/GitHub/MACProtocolSound/praca magisterska/img/signal1.p
+ng> <C:/Users/Pawel/Documents/GitHub/MACProtocolSound/praca magisterska/img/sec
+ond_side.png> <C:/Users/Pawel/Documents/GitHub/MACProtocolSound/praca magisters
+ka/img/session_key_est.png>] [13]
+<img/sines.png, id=71, 422.32782pt x 316.18124pt>
 File: img/sines.png Graphic file (type png)
-
-<use img/sines.png>
-Package pdftex.def Info: img/sines.png used on input line 401.
+ <use img/sines.png>
+Package pdftex.def Info: img/sines.png used on input line 402.
 (pdftex.def)             Requested size: 200.0pt x 149.73413pt.
- <img/both_real_imag.png, id=69, 422.32782pt x 316.18124pt>
+
+<img/both_real_imag.png, id=72, 422.32782pt x 316.18124pt>
 File: img/both_real_imag.png Graphic file (type png)
 
 <use img/both_real_imag.png>
-Package pdftex.def Info: img/both_real_imag.png used on input line 410.
+Package pdftex.def Info: img/both_real_imag.png used on input line 411.
 (pdftex.def)             Requested size: 259.99756pt x 194.65535pt.
- [13 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/sines.png> <E:/GitH
-ubFinal/MACProtocolSound/praca magisterska/img/both_real_imag.png>] <img/contin
-ues.png, id=76, 422.32782pt x 316.18124pt>
+ [14 <C:/Users/Pawel/Documents/GitHub/MACProtocolSound/praca magisterska/img/si
+nes.png> <C:/Users/Pawel/Documents/GitHub/MACProtocolSound/praca magisterska/im
+g/both_real_imag.png>]
+<img/continues.png, id=79, 422.32782pt x 316.18124pt>
 File: img/continues.png Graphic file (type png)
-
-<use img/continues.png>
-Package pdftex.def Info: img/continues.png used on input line 422.
+ <use img/continues.png>
+Package pdftex.def Info: img/continues.png used on input line 423.
 (pdftex.def)             Requested size: 240.00244pt x 179.68483pt.
- <img/descrete.png, id=77, 422.32782pt x 316.18124pt>
-File: img/descrete.png Graphic file (type png)
 
-<use img/descrete.png>
-Package pdftex.def Info: img/descrete.png used on input line 429.
+<img/descrete.png, id=80, 422.32782pt x 316.18124pt>
+File: img/descrete.png Graphic file (type png)
+ <use img/descrete.png>
+Package pdftex.def Info: img/descrete.png used on input line 430.
 (pdftex.def)             Requested size: 240.00244pt x 179.68483pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[14 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/continues.png>]
-[15 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/descrete.png>]
-<img/architecture.png, id=86, 499.11469pt x 187.45032pt>
+[15 <C:/Users/Pawel/Documents/GitHub/MACProtocolSound/praca magisterska/img/con
+tinues.png>]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `!tbp') on input line 446.
+
+<img/rectangular_window.png, id=85, 252.19218pt x 213.04594pt>
+File: img/rectangular_window.png Graphic file (type png)
+
+<use img/rectangular_window.png>
+Package pdftex.def Info: img/rectangular_window.png used on input line 448.
+(pdftex.def)             Requested size: 240.00244pt x 202.75008pt.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `!tbp') on input line 455.
+
+<img/hanning_window.png, id=86, 260.47313pt x 217.5628pt>
+File: img/hanning_window.png Graphic file (type png)
+
+<use img/hanning_window.png>
+Package pdftex.def Info: img/hanning_window.png used on input line 457.
+(pdftex.def)             Requested size: 240.00244pt x 200.46562pt.
+ [16 <C:/Users/Pawel/Documents/GitHub/MACProtocolSound/praca magisterska/img/de
+screte.png>] [17 <C:/Users/Pawel/Documents/GitHub/MACProtocolSound/praca magist
+erska/img/rectangular_window.png> <C:/Users/Pawel/Documents/GitHub/MACProtocolS
+ound/praca magisterska/img/hanning_window.png>]
+<img/architecture.png, id=95, 499.11469pt x 187.45032pt>
 File: img/architecture.png Graphic file (type png)
 
 <use img/architecture.png>
-Package pdftex.def Info: img/architecture.png used on input line 471.
+Package pdftex.def Info: img/architecture.png used on input line 491.
 (pdftex.def)             Requested size: 400.0pt x 150.22931pt.
- [16 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/architecture.png>]
-("d:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
-File: lstlang1.sty 2004/09/05 1.3 listings language file
-)
-("d:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
-File: lstlang1.sty 2004/09/05 1.3 listings language file
-)
-("d:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
-File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-)
-LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <8> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 504.
- [17]
-LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 511.
- [18]
-
-Package amsmath Warning: Foreign command \over;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 586.
-
-[19] <img/peaks_1.png, id=103, 291.33844pt x 231.11343pt>
-File: img/peaks_1.png Graphic file (type png)
-
-<use img/peaks_1.png>
-Package pdftex.def Info: img/peaks_1.png used on input line 607.
-(pdftex.def)             Requested size: 179.99878pt x 142.79161pt.
- <img/receiving.png, id=104, 534.49687pt x 453.19313pt>
-File: img/receiving.png Graphic file (type png)
-
-<use img/receiving.png>
-Package pdftex.def Info: img/receiving.png used on input line 618.
-(pdftex.def)             Requested size: 279.99878pt x 237.41823pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[20 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/peaks_1.png>]
-[21 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/receiving.png>]
-("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.bbl"
+[18] [19 <C:/Users/Pawel/Documents/GitHub/MACProtocolSound/praca magisterska/im
+g/architecture.png>]
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2014/09/06 1.5e listings language file
+)
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2014/09/06 1.5e listings language file
+)
+("f:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
+)
+LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <8> not available
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 524.
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 531.
+ [20]
+[21]
+
+Package amsmath Warning: Foreign command \over;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 606.
+
+<img/peaks_1.png, id=112, 291.33844pt x 231.11343pt>
+File: img/peaks_1.png Graphic file (type png)
+ <use img/peaks_1.png>
+Package pdftex.def Info: img/peaks_1.png used on input line 627.
+(pdftex.def)             Requested size: 179.99878pt x 142.79161pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<img/receiving.png, id=113, 534.49687pt x 453.19313pt>
+File: img/receiving.png Graphic file (type png)
+ <use img/receiving.png>
+Package pdftex.def Info: img/receiving.png used on input line 638.
+(pdftex.def)             Requested size: 279.99878pt x 237.41823pt.
+
+[22] [23 <C:/Users/Pawel/Documents/GitHub/MACProtocolSound/praca magisterska/im
+g/peaks_1.png> <C:/Users/Pawel/Documents/GitHub/MACProtocolSound/praca magister
+ska/img/receiving.png>] [24]
+("C:\Users\Pawel\Documents\GitHub\MACProtocolSound\praca magisterska\AKESound.b
+bl"
 Underfull \hbox (badness 6032) in paragraph at lines 4--7
 []\T1/ptm/m/n/10.95 The de-screte trans-form fourier (dft): Def-i-ni-tion and n
 u-mer-i-cal ex-am-ples.
@@ -870,7 +889,7 @@ $\T1/pcr/m/n/10.95 http : / / www . nbtwiki . net / doku . php ? id = tutorial
 : the _ discrete _ fourier _$
  []
 
-[22]
+
 Underfull \hbox (badness 3323) in paragraph at lines 19--21
 []\T1/ptm/m/n/10.95 NatÄ$[]$ˆ‰enie fali dˆ³wiÄ$[]$kowej.  $\T1/pcr/m/n/10.95 ht
 tp : / / www . fizykon . org / akustyka /$
@@ -888,35 +907,34 @@ Underfull \hbox (badness 2932) in paragraph at lines 28--30
 p : / / www . fizykon . org / akustyka /$
  []
 
-) [23] ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.aux")
-
-LaTeX Warning: There were undefined references.
-
- ) 
+[25]) [26]
+("C:\Users\Pawel\Documents\GitHub\MACProtocolSound\praca magisterska\AKESound.a
+ux") ) 
 Here is how much of TeX's memory you used:
- 7447 strings out of 494045
- 95745 string characters out of 3148387
- 346651 words of memory out of 3000000
- 10502 multiletter control sequences out of 15000+200000
+ 7666 strings out of 493921
+ 101041 string characters out of 3144875
+ 344372 words of memory out of 3000000
+ 10724 multiletter control sequences out of 15000+200000
  83902 words of font info for 105 fonts, out of 3000000 for 9000
- 753 hyphenation exceptions out of 8191
- 33i,15n,58p,998b,1739s stack positions out of 5000i,500n,10000p,200000b,50000s
-{d:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<d:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><d:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmsy10.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/
-courier/ucrb8a.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.
-pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a.pfb><d:/Progra
-m Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><d:/Program Files/MiKTeX
- 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><d:/Program Files/MiKTeX 2.9/fonts/typ
-e1/urw/symbol/usyr.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8
-a.pfb><d:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><d:/Program
- Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><d:/Program Files/MiKTeX 2.9
-/fonts/type1/urw/times/utmri8a.pfb>
-Output written on AKESound.pdf (24 pages, 383261 bytes).
+ 879 hyphenation exceptions out of 8191
+ 33i,15n,58p,998b,1637s stack positions out of 5000i,500n,10000p,200000b,50000s
+{f:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<f:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><f:/
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><f:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><f:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><f:/Program
+ Files (x86)/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><f:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><f:/Program Files (x86)/MiKTe
+X 2.9/fonts/type1/urw/courier/ucrro8a.pfb><f:/Program Files (x86)/MiKTeX 2.9/fo
+nts/type1/urw/helvetic/uhvb8a.pfb><f:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/urw/helvetic/uhvr8a.pfb><f:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/sy
+mbol/usyr.pfb><f:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.p
+fb><f:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><f:/Prog
+ram Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><f:/Program Files (
+x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on AKESound.pdf (27 pages, 402480 bytes).
 PDF statistics:
- 164 PDF objects out of 1000 (max. 8388607)
+ 177 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 86 words of extra memory for PDF output out of 10000 (max. 10000000)
 

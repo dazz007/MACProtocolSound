@@ -198,7 +198,8 @@ During the secure exchange data are needed two channels for communication betwee
 
 \section{Analysis of the problem}
 
-
+ In this section we will focus on problem of establishing secure connection in insecure channel between two parties. At first the parties need to authenticate each other and then create common session key, which will be needed to symmetric encryption of the communication. We describe the adversarial model where is assumed that each of the parties secretly holds a long-term private key that enables unique authentication of this party. There
+ is also a trusted mechanism for binding identities with public keys. The private and public key with proper length are bounded in such way that obtain private key from public key is impossible. The communication channel can be completely controlled by an adversary that can intercept, delete, delay, modify or inject messages at will. There is a relation between the requirements of the security model and a well-defined attack scenario. In the second part of this section are described necessary issues to create sound channel.
 
 \subsection{Security Model}
 There is no one ultimately defined security model for key exchange. However, we will recourse to the requirements as most fundamental for secure key exchange protocol which H. Krawczyk presents in \cite{sign_mac}.
@@ -232,7 +233,7 @@ The other possibility could be optical channel. Sharing data using e.g. QR codes
 
 \vspace{5mm}
 
-Another way is to use vibrations \cite{bump}. New smartphones have installed sensor of vibration so it is possible to create such a communication channel. Attacker to manipulate this kind of channel has to generate own vibrations and it would be easily detected by authenticating parties.
+Another way is to use vibrations []. New smartphones have installed sensor of vibration so it is possible to create such a communication channel. Attacker to manipulate this kind of channel has to generate own vibrations and it would be easily detected by authenticating parties.
 
 \vspace{5mm}
 
@@ -441,7 +442,28 @@ Computational complexity this notation is $O(N^2)$, because for $N$ elements $X_
 Computational complexity of discrete Fourier transform is not enough to fast process more data. Therefore developed a lot of algorithms, which improve its calculation. Exist algorithms, which do discrete Fourier transform having computational complexity $O(NlogN)$, where for large number of data is significant improvement. They use design paradigm divide and conquer. Precursors of these solutions are James William Cooley and John Tukey, who elaborated first faster algorithm to compute DFT, known as fast Fourier transform (FFT). It is worth mentioning that FFT is not approximate value of DFT. FFT returns the same values but do this much faster.
 
 \subsubsection{Hanning window}
-\subsection{Encoding PCM}
+Window functions are functions which are used with DFT. Often during process of DFT occur blur of spectrum, which mean that on the spectrum are seeing values for frequencies different than the real frequency of signal. To minimize this effect are used window functions. In time domain it is multiply every sample of signal by corresponding value of sample of window. The simplest window is rectangular window. Spectrum of this windowing is shown in \ref{fig:F9}
+\begin{figure}[!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{img/rectangular_window}
+	\caption{Rectangular window and its effect in spectrum of signal.}
+	\label{fig:F9}
+\end{figure}
+
+In our protocol is used Hanning window which is noticed by:
+
+
+As one can see at \ref{fig:F10} the pitch is wider, hence is easier to determine the correct frequency.
+\begin{figure}[!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{img/hanning_window}
+	\caption{Hanning window and its effect in spectrum of signal.}
+	\label{fig:F10}
+\end{figure}
+
+\subsection{Pulse-Code Modulation}
+
+Pulse-Code Modulation (PCM) is a method used to digitally represent sampled analog signals. PCM is based on representation of the instantaneous value of the signal (Sampling) at uniform intervals (sampling rate). The sampled analog data are represent by binary data. During the demodulation, sample rate should be at least two times greater that frequency of receiving analog signal (greater than the Nyquist frequency $f_s / 2$ ). This ensure that sampled values represent analog signal without errors. In our prototype sample rate is 44,1 kHz. The highest frequency which we use in application is about 20,5 kHz so 44,1 kHz is sufficient. 
 
 \section{Prototype Design}
 \subsection{Mobile Devices}

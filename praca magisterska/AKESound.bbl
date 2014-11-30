@@ -48,8 +48,12 @@ Steve Haynal and Heidi Haynal.
 
 \bibitem{sign_mac}
 Hugo Krawczyk.
-\newblock Sigma: the 'sign-and-mac' approach to authenticated
-  diffie-hellman and its use in the ike protocols.
+\newblock Sigma the 'sign-and-mac' approach to authenticated diffie-hellman and
+  its use in the ike protocols.
+
+\bibitem{AMA}
+Lukasz Krzywiecki Miroslaw~Kutylowski Lucjan~Hanzlik, Kamil~Kluczniak.
+\newblock Mutual chip authentication.
 
 \bibitem{limit_sound}
 Shintaro Takeda, Ikuharu Morioka, Kazuhisa Miyashita, Akeharu Okumura, Yoshiaki
