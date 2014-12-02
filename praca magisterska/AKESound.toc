@@ -1,10 +1,11 @@
 \select@language {english}
 \select@language {english}
 \contentsline {section}{\numberline {1}Introduction}{3}
-\contentsline {subsection}{\numberline {1.1}Problem}{4}
+\contentsline {subsection}{\numberline {1.1}Problem}{3}
 \contentsline {subsection}{\numberline {1.2}Authenticated Key Agreement}{4}
 \contentsline {subsection}{\numberline {1.3}Out-of-band channel}{4}
-\contentsline {subsection}{\numberline {1.4}Related work}{5}
+\contentsline {subsection}{\numberline {1.4}AKE in out of-band channel}{5}
+\contentsline {subsection}{\numberline {1.5}Related work}{5}
 \contentsline {section}{\numberline {2}Analysis of the problem}{5}
 \contentsline {subsection}{\numberline {2.1}Security Model}{5}
 \contentsline {subsubsection}{\numberline {2.1.1}Adversarial Model}{6}
@@ -14,29 +15,37 @@
 \contentsline {subsection}{\numberline {2.5}Microphones and speakers in mobile devices}{8}
 \contentsline {subsection}{\numberline {2.6}Anonymous Mutual Authentication protocol - Description}{8}
 \contentsline {subsection}{\numberline {2.7}Security analysis}{12}
-\contentsline {subsection}{\numberline {2.8}Sound}{12}
-\contentsline {subsubsection}{\numberline {2.8.1}Frequency}{12}
-\contentsline {subsubsection}{\numberline {2.8.2}Sound intensity}{13}
-\contentsline {subsubsection}{\numberline {2.8.3}Speed of sound}{13}
-\contentsline {subsubsection}{\numberline {2.8.4}Ultrasounds}{14}
-\contentsline {subsection}{\numberline {2.9}Fourier transform}{14}
-\contentsline {subsubsection}{\numberline {2.9.1}Discrete Fourier Transform}{15}
-\contentsline {subsubsection}{\numberline {2.9.2}Fast Fourier Transform}{15}
-\contentsline {subsubsection}{\numberline {2.9.3}Hanning window}{16}
-\contentsline {subsection}{\numberline {2.10}Pulse-Code Modulation}{18}
-\contentsline {section}{\numberline {3}Prototype Design}{18}
-\contentsline {subsection}{\numberline {3.1}Mobile Devices}{18}
-\contentsline {subsection}{\numberline {3.2}Operating System}{19}
-\contentsline {subsection}{\numberline {3.3}Security of Android}{19}
-\contentsline {subsection}{\numberline {3.4}Application architecture}{19}
-\contentsline {subsection}{\numberline {3.5}Cryptography library}{19}
-\contentsline {subsection}{\numberline {3.6}Activity diagram}{20}
-\contentsline {subsection}{\numberline {3.7}NIST recommendation for security parameters}{20}
-\contentsline {subsection}{\numberline {3.8}Shared cryptographic module}{20}
-\contentsline {subsection}{\numberline {3.9}Java Native Interface - C++ Wrapper}{21}
-\contentsline {subsection}{\numberline {3.10}Base64}{22}
-\contentsline {subsection}{\numberline {3.11}Sound channel}{22}
-\contentsline {subsubsection}{\numberline {3.11.1}Generating sound wave}{22}
-\contentsline {subsubsection}{\numberline {3.11.2}Receiving sound}{23}
-\contentsline {section}{\numberline {4}Tests}{24}
-\contentsline {subsection}{\numberline {4.1}Receiving data in sound channel}{24}
+\contentsline {subsubsection}{\numberline {2.7.1}No access to protocol transcript}{12}
+\contentsline {subsubsection}{\numberline {2.7.2}Partial access to protocol transcript}{12}
+\contentsline {subsubsection}{\numberline {2.7.3}Full access to protocol transcript}{13}
+\contentsline {subsection}{\numberline {2.8}Possible vectors of attack on a sound channel}{13}
+\contentsline {subsubsection}{\numberline {2.8.1}Manipulating speaker}{13}
+\contentsline {subsubsection}{\numberline {2.8.2}Manipulating microphone}{14}
+\contentsline {subsubsection}{\numberline {2.8.3}Eavesdropping}{14}
+\contentsline {subsubsection}{\numberline {2.8.4}Malicious implementation}{14}
+\contentsline {subsection}{\numberline {2.9}Sound}{14}
+\contentsline {subsubsection}{\numberline {2.9.1}Frequency}{15}
+\contentsline {subsubsection}{\numberline {2.9.2}Sound intensity}{15}
+\contentsline {subsubsection}{\numberline {2.9.3}Speed of sound}{16}
+\contentsline {subsubsection}{\numberline {2.9.4}Ultrasounds}{16}
+\contentsline {subsection}{\numberline {2.10}Fourier transform}{16}
+\contentsline {subsubsection}{\numberline {2.10.1}Discrete Fourier Transform}{17}
+\contentsline {subsubsection}{\numberline {2.10.2}Fast Fourier Transform}{19}
+\contentsline {subsubsection}{\numberline {2.10.3}Hanning window}{19}
+\contentsline {subsection}{\numberline {2.11}Pulse-Code Modulation}{20}
+\contentsline {section}{\numberline {3}Prototype Design}{21}
+\contentsline {subsection}{\numberline {3.1}Mobile Devices}{21}
+\contentsline {subsection}{\numberline {3.2}Operating System}{21}
+\contentsline {subsection}{\numberline {3.3}Security of Android}{21}
+\contentsline {subsection}{\numberline {3.4}Application architecture}{21}
+\contentsline {subsection}{\numberline {3.5}Cryptography library}{22}
+\contentsline {subsection}{\numberline {3.6}Design pattern}{22}
+\contentsline {subsection}{\numberline {3.7}NIST recommendation for security parameters}{22}
+\contentsline {subsection}{\numberline {3.8}Shared cryptographic module}{22}
+\contentsline {subsection}{\numberline {3.9}Java Native Interface - C++ Wrapper}{23}
+\contentsline {subsection}{\numberline {3.10}Base64}{24}
+\contentsline {subsection}{\numberline {3.11}Sound channel}{24}
+\contentsline {subsubsection}{\numberline {3.11.1}Generating sound wave}{25}
+\contentsline {subsubsection}{\numberline {3.11.2}Receiving sound}{25}
+\contentsline {section}{\numberline {4}Tests}{27}
+\contentsline {subsection}{\numberline {4.1}Receiving data in sound channel}{27}

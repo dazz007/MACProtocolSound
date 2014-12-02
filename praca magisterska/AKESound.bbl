@@ -55,10 +55,28 @@ Hugo Krawczyk.
 Lukasz Krzywiecki Miroslaw~Kutylowski Lucjan~Hanzlik, Kamil~Kluczniak.
 \newblock Mutual chip authentication.
 
+\bibitem{key_exchange}
+Hugo~Krawczyk Ran~Canetti.
+\newblock Analysis of key-exchange protocols and their use for building secure
+  channels. advances in cryptology.
+
+\bibitem{laser_mic}
+Mike Szczys.
+\newblock Laser mic makes eavesdropping remarkably simple.
+
 \bibitem{limit_sound}
 Shintaro Takeda, Ikuharu Morioka, Kazuhisa Miyashita, Akeharu Okumura, Yoshiaki
   Yoshida, and Kenji Matsumoto.
 \newblock Age variation in the upper limit of hearing.
 \newblock \url{http://link.springer.com/content/pdf/10.1007%2FBF00243505}.
+
+\bibitem{security_canetti_krawczyk}
+SaanJae~Moon Xinghua~Li, Jianfeng~Ma.
+\newblock On the security of cenetti-krawczyk model.
+
+\bibitem{efficient_eck}
+Zheng Yang.
+\newblock Efficient eck-secure authenticated key exchange protocols in the
+  standard model.
 
 \end{thebibliography}
