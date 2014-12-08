@@ -174,7 +174,7 @@ Mentioned method is secure against eavesdropping, however it does not authentica
 
 \vspace{5mm}
 
-To exchange data are used mainly radio channels like Bluetooth, IRDa, Internet. Is possible to gain control over these kind of channels and make MITMA or others attacks including eavesdropping. We want to check how sound waves will be useful to establishing secure channel.
+To exchange data are used mainly radio channels like Bluetooth, IRDa, Internet. Is possible to gain control over these kind of channels and make MITMA or others attacks including eavesdropping. We want to check how sound waves (especially ultrasound) will be useful to establishing secure channel.
 
 
 \subsection{Authenticated Key Agreement}
@@ -202,7 +202,7 @@ During the secure exchange data are needed two channels for communication betwee
 
 \section{Analysis of the problem}
 
-In this section we will focus on problem of establishing secure connection in insecure channel between two parties. At first the parties need to authenticate each other and then create common session key, which will be needed to symmetric encryption of the communication. We describe the adversarial model where is assumed that each of the parties secretly holds a long-term private key that enables unique authentication of this party. There is also a trusted mechanism for binding identities with public keys. The private and public key with proper length are bounded in such way that obtain private key from public key is impossible. The communication channel can be completely controlled by an adversary that can intercept, delete, delay, modify or inject messages at will. There is a relation between the requirements of the security model and a well-defined attack scenario. In the second part of this section are described necessary issues to create sound channel.
+In this section we will focus on problem of establishing secure connection in insecure channel between two parties. At first the parties need to authenticate each other and then create common session key, which will be needed to symmetric encryption of the communication. We describe the adversarial model where is assumed that each of the parties secretly holds a long-term private key that enables unique authentication of this party. There is also a trusted mechanism for binding identities with public keys. The private and public key with proper length are bounded in such way that obtain private key from public key is very hard to do. The communication channel can be completely controlled by an adversary that can intercept, delete, delay, modify or inject messages at will. There is a relation between the requirements of the security model and a well-defined attack scenario. In the second part of this section are described necessary issues to create sound channel.
 
 \subsection{Security Model}
 There is no one ultimately defined security model for key exchange. However, we will recourse to the requirements as most fundamental for secure key exchange protocol which H. Krawczyk presents in \cite{sign_mac}.
@@ -268,10 +268,21 @@ Lets assumed that Alice and Bob want to establish a secure connection between th
 
 Anonymous Mutual Chip Authentication (described in detail in section 3) should ensure that even if some transferring data eavesdrop then adversary will do nothing with this data. Duration of the protocol is about 40 second - more information about duration and performance are described in section 5.
 
+\subsection{Enhance the project}
+Lets imagine that Alice and Bob want to establish secure channel being far away from each other. They can authenticate each other using telephone line. Is possible to run application during the calling but the microphone receiving the signal is unavailable in the app. So to this experiment would be needed second pair of mobile phones which will be used as intermediary. Each intermediary phone should be set as handsfree because of loudness of sound. Authenticated phones should be apply as close as possible to intermediary phone. Now when intermediary phones established the connection, the authenticated devices can start the protocol, the sound signal will be transferring by telephone line. Device on the other side will be receiving the signal. 
+
+\vspace{5mm}
+
+Disadvantage in our protocol is speed of transferring data. In every 15 milliseconds are received samples which are put to the queue. Another process gets these samples and analyze them. For our test devices, receiving data in every 15 second was the most optimal method. Algorithm analyzing this data follow with computing, so in queue do not accumulate to much data. Decreasing period receiving data to 10 millisecond cause that decoder of sound did not keep up and outcome was sometimes couple of seconds after the last received character. To improve that is worth to considering client-server model. Mobile phone as a client gathering the data and send to the external server. Server with much more computing power could decode the data definitely faster and returns the result to the client. Server could do much more complex computing, hence the results would be with better precision.
+
+\vspace{5mm}
+
+For now the sound channel use bandwidth from 10,5 kHz to 20,25 kHz. For the reason please check section with Base64 conversion. These frequencies (especially below 19 kHz) could be audible for the most of the people (it sounds like squeaking). If we would want to exchange data using sound which is inaudible, we could use just simple binary representation. Sending data using 0 and 1 would be needed only two frequencies, so taking the highest as possible (for example 19,9 kHz and 20,10) would ensure that exchanging of data would be inaudible for the most people. Of course at the expense of length of sending data. It would be achievable also with hexadecimal representation. Would be needed to use bigger bandwidth than from binary representation but the length of data would be smaller.
+
 \subsection{Microphones and speakers in mobile devices}
 Specification of this appliances are very different and depends on devices. During the tests could be seen that microphone from more expensive SAMSUNG Galaxy Tab is better than microphone from LG Swift L9. SAMSUNG could detect higher frequency. However, microphone from LG Swift L9 was completely enough to registered sufficiently large frequencies. Speakers also are a little different, but they have no problem to generate opportunely frequencies.
 
-\subsection{Anonymous Mutual Authentication protocol - Description}
+\subsection{Anonymous Mutual Authentication}
 To establish session keys we used in our prototype Anonymous Mutual Authentication protocol which base on Diffie-Hellman key exchange. This protocol have never been implemented on the mobile phone with system Android. 
 
 \vspace{5mm}
@@ -299,7 +310,7 @@ Scheme of protocol is shown at the \ref{fig:F8}. In scheme are use the following
 \item For confirming public keys are using digital certificates and public key infrastructure (PKI).
 \end{itemize}
 
-Protocol is very simple to implement. AMA is defined a cyclic group G where Computational Diffie-Hellman Problem (CDH) is hard. At the beginning, parties (Alice and Bob) generate their private key - $x_A$ (respectively, $x_B$) and public key $y_A = g^{x_A}$ (respectively, $y_A$). Then starts main procedure. Parties generate their ephemeral keys. Private is $h_A := H(a)$ (where $a$ is a random number) (respectively $h_B$, $b$) and public ephemeral key $c_A := g^{h_A}$ (respectively $c_B$). In the first phase parties exchange ephemeral keys, based on Diffie-Hellman key exchange. 
+Protocol is very simple to implement. AMA is defined a cyclic group G where Computational Diffie-Hellman Problem (CDH) is hard to solve. At the beginning, parties (Alice and Bob) generate their private key - $x_A$ (respectively, $x_B$) and public key $y_A = g^{x_A}$ (respectively, $y_A$). Then starts main procedure. Parties generate their ephemeral keys. Private is $h_A := H(a)$ (where $a$ is a random number) (respectively $h_B$, $b$) and public ephemeral key $c_A := g^{h_A}$ (respectively $c_B$). In the first phase parties exchange ephemeral keys, based on Diffie-Hellman key exchange. 
 
 \vspace{5mm}
 
@@ -307,7 +318,12 @@ When parties obtain ephemeral public key of another party, they start compute ma
 
 \vspace{5mm}
 
-Authenticated party is raising ephemeral public key $c_B$ (respectively, $c_A$) to power of private key $x_B$ (respectively, $x_A$). On this base authentication. Verifier compute the same value without private key but with the discrete logarithm of $c_A$ (respectively, $c_B$) ($(y_A)^(h_B)$).
+To authentication, parties encrypt their certificates $cert_A$ and $cert_B$ and the challenge values $r_A$ and $r_B$ which are the hash of two keys 
+Authenticated party is raising ephemeral public key $c_B$ (respectively, $c_A$) to power of private key $x_A$ (respectively, $x_A$). Verifier compute the same value without private key but with the discrete logarithm of $c_A$ (respectively, $c_B$) which is $y_A^{h_B}$ ($y_B^{h_A}$). If the compared values are equal then $K_{session}$ is the hash of master key $K$ and new parameter.
+
+\vspace{5mm}
+
+This protocol is proved to be secure under Random Oracle Model (ROM) for the used hash function $H$. Additionally is secure under Computational Diffie Hellman Assumption.
 \newpage
 \begin{table}[H]
 \caption{Scheme of protocol used in devices.}
@@ -665,9 +681,9 @@ C = 10,3 kHz,
 
 Additional two characters "," and "." represent begin of data and end of data. Sample rate is 44,1 kHz. Every character is sending by 30 ms, which means that for each pitch is needed 1323 samples. To create sinus wave each sample for $ i \in (0,1322) $ is calculating by formula:
 \begin{center}
-$\sin($ $frequency \ast PI \ast 2 \ast i  \over 44 100 $ $)$
+$F(i) = \sin($ $f \ast PI \ast 2 \ast i  \over 44 100 $ $)$
 \end{center}
-
+where $f$ is the target frequency.
 These samples are processed by AudioTrack library to sound using PCM encoding. 
 
 
@@ -728,7 +744,7 @@ Firstly, we have tested distance between chosen frequencies. Every character fro
 \item 100 Hz. The lowest frequency 14 kHz, the highest - 20,5 kHz.
 \item 100 Hz. The lowest frequency 14,3 kHz, the highest - 20,8 kHz.
 \end{itemize}
-We did not want to go below 10 kHz and higher frequency than 20,5 is hard to detect for mobile phone (especially for LG). Distance 100 Hz is the smallest to test because of implemented algorithm. During the tests, proved to be that for almost every test cases, protocol was successful in 70\%. Except the last one always end by failure. Character which represent end of sending data has always the highest frequency. In this case it was 20,8 kHz. Only LG Swift cannot registry that frequency. Samsung dealt with it flawlessly.
+We did not want to go below 10 kHz and higher frequency than 20,5 is hard to detect for mobile phone (especially for LG). Distance 100 Hz is the smallest to test because of implemented algorithm (margin of error is + - 50 Hz). During the tests, proved to be that for almost every test cases, protocol was successful in 70\%. Except the last one which always end by failure. Character which represent end of sending data has always the highest frequency. In this case it was 20,8 kHz. Only LG Swift cannot registry that frequency - Samsung dealt with it flawlessly.
 
 \vspace{5mm}
 
@@ -736,8 +752,14 @@ There are several reason why the result was not 100\%. Sometimes, if we send, fo
 
 \vspace{5mm}
 
-Measure of allowed distance between devices we have started with stick microphone from LG with speaker from Samsung. This gave us the best results. Received amplitude was the biggest, hence easier, for algorithm, was to find interesting for us frequency. Then we increase distance to 2 cm. In this case results was also good. Sessions keys was established almost every time. Problem was started increasing distance to 6 cm. Bigger frequencies was not registered by microphone.
+Measure of allowed distance between devices we have started with stick microphone from LG with speaker from Samsung. This gave us the best results. Received amplitude was the biggest, hence easier, for algorithm, was to find interesting for us frequency. Then we increased distance to 2 cm. In this case results were also good. Sessions keys were established almost every time. Problem was started increasing distance to 6 cm. Higher frequencies were not registered by microphone. Placing the devices parallel the protocol always end by failure. The LG was not able to gain all frequencies in such way. Samsung again has been receiving data without problems. 
 
+\vspace{5mm}
+
+The next test rely on checking influence of background sound. As we know, from the previous test, the best results were when devices were close to each other (maximal 2 cm from each other), so we have tested it in such position. At beginning we have checked it at the University during the break between lectures. A lot of students was talking and laughing but even this, did not interfere with protocol. Almost every attempt was ended with success. Then we have used third device which was generating constantly chosen frequency. We have put this device very close to the participants. First disturbing frequency was 8 kHz. Because of that bandwidth is from 10,5 to 20,25 we have suspected that 8 kHz will not cause the problem and we was right. Algorithm analyzing data has not mistaken. The problem was just after increasing disturbing frequency above 10,5 kHz, but was needed to stick speaker of this device to microphone of protocol participant. Otherwise, the protocol always ends with success. 
+
+
+\subsection{Summary}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BIBLIOGRAFIA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -32,7 +32,7 @@ public class AudioPlayer implements AudioPlayerSubject{
 		audiotrack = new AudioTrack(AudioManager.STREAM_MUSIC, sampleRate,
 				AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT,
 				Constants.DEFAULT_BUFFER_SIZE, AudioTrack.MODE_STREAM);
-		audiotrack.setStereoVolume(AudioTrack.getMaxVolume(),AudioTrack.getMaxVolume());
+		audiotrack.setStereoVolume(AudioTrack.getMinVolume(),AudioTrack.getMaxVolume());
 		queueWithDataAL = new ArrayList<Buffer>();
 		indexesOfSigns = new ArrayList<Integer>();
 		state = Constants.STOP_STATE;

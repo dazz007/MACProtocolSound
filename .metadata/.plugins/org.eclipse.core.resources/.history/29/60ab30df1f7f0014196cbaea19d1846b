@@ -54,9 +54,9 @@ public class RecorderAudio{
 		long time = System.currentTimeMillis();
 		int size = recorder.read(data.buffer_short,0,period);
 		
-//		for(int i = 0 ; i < size; i++){
-//			data.buffer_short[i] = (short)Math.min((int)(data.buffer_short[i] * 1), (int)Short.MAX_VALUE);
-//		}
+		for(int i = 0 ; i < size; i++){
+			data.buffer_short[i] = (short)Math.min((int)(data.buffer_short[i] * 1), (int)Short.MAX_VALUE);
+		}
 		
 		if(data.buffer_short != null){
 			data.setTime(time);
