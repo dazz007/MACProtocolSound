@@ -6,13 +6,9 @@ I was expecting a `,' or a `}'---line 72 of file AKESound.bib
  : year = {1996}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Unbalanced braces---line 96 of file AKESound.bib
- : 
- : }
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 Too many commas in name 1 of "Lucjan Hanzlik, Kamil Kluczniak, Lukasz Krzywiecki, Miroslaw Kutylowski" for entry AMA
 while executing---line 1049 of file plain.bst
+Warning--to sort, need author or key in vibrat
 Warning--to sort, need author or key in sound_intensity
 Warning--to sort, need author or key in decibels
 Warning--to sort, need author or key in sound_speed
@@ -22,4 +18,4 @@ Warning--to sort, need author or key in JNI
 Warning--to sort, need author or key in minim_dft
 Too many commas in name 1 of "Lucjan Hanzlik, Kamil Kluczniak, Lukasz Krzywiecki, Miroslaw Kutylowski" for entry AMA
 while executing---line 1090 of file plain.bst
-(There were 4 error messages)
+(There were 3 error messages)

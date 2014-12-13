@@ -32,6 +32,9 @@ Poziom natężenia dźwięku.
 The speed of sound.
 \newblock \url{http://www.sengpielaudio.com/calculator-speedsound.htm}.
 
+\bibitem{vibrat}
+Vibrations usage in out-of-band channel.
+
 \bibitem{cryptography}
 Scott A.~Vanstone Alfred J.~Menezes, Paul C. van~Oorschot.
 \newblock Handbook of applied cryptography.
@@ -55,6 +58,11 @@ Hugo Krawczyk.
 Lukasz Krzywiecki Miroslaw~Kutylowski Lucjan~Hanzlik, Kamil~Kluczniak.
 \newblock Mutual chip authentication.
 
+\bibitem{QRcode}
+Pawel Nuzka.
+\newblock Authentication and communication protocol for mobile devices in
+  optical channel.
+
 \bibitem{key_exchange}
 Hugo~Krawczyk Ran~Canetti.
 \newblock Analysis of key-exchange protocols and their use for building secure
@@ -63,6 +71,8 @@ Hugo~Krawczyk Ran~Canetti.
 \bibitem{laser_mic}
 Mike Szczys.
 \newblock Laser mic makes eavesdropping remarkably simple.
+\newblock
+  \url{http://hackaday.com/2010/09/25/laser-mic-makes-eavesdropping-remarkably-simple/}.
 
 \bibitem{limit_sound}
 Shintaro Takeda, Ikuharu Morioka, Kazuhisa Miyashita, Akeharu Okumura, Yoshiaki
