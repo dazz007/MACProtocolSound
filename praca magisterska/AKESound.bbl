@@ -16,7 +16,7 @@ Minim fft class.
   \url{http://code.compartmental.net/minim/javadoc/ddf/minim/analysis/FFT.html}.
 
 \bibitem{sound_intensity}
-Natężenie fali dźwiękowej.
+Natezenie fali dzwiekowej.
 \newblock \url{http://www.fizykon.org/akustyka/akustyka_natezenie_fali.htm}.
 
 \bibitem{NIST}
@@ -25,7 +25,7 @@ Nist sp 800-131 recommendation for key length.
   \url{http://csrc.nist.gov/publications/nistpubs/800-131A/sp800-131A.pdf}.
 
 \bibitem{decibels}
-Poziom natężenia dźwięku.
+Poziom natezenia dzwieku.
 \newblock \url{http://www.fizykon.org/akustyka/akustyka_poziom_natezenia.htm}.
 
 \bibitem{sound_speed}
@@ -37,7 +37,16 @@ Vibrations usage in out-of-band channel.
 
 \bibitem{cryptography}
 Scott A.~Vanstone Alfred J.~Menezes, Paul C. van~Oorschot.
-\newblock Handbook of applied cryptography.
+\newblock {\em Handbook of Applied Cryptography}.
+
+\bibitem{android_sec}
+Android.
+\newblock \url{https://source.android.com/devices/tech/security/}.
+
+\bibitem{NAXOS}
+Anton~Mityagin Brian~LaMacchia, Kristin~Lauter.
+\newblock {\em Stronger Security of Authenticated Key Exchange}.
+\newblock Microsoft Research, 1 Microsoft Way, Redmond, WA.
 
 \bibitem{base_64}
 Robert Harder.
@@ -49,14 +58,28 @@ Steve Haynal and Heidi Haynal.
 \newblock Generating and searching families of fft algorithms.
 \newblock \url{http://jsat.ewi.tudelft.nl/content/volume7/JSAT7_13_Haynal.pdf}.
 
+\bibitem{HMQV}
+Hugo Krawczyk.
+\newblock {\em HMQV: A High-Performance Secure Diffie-Hellman Protocol}.
+\newblock IBM T.J.Watson Research Center, Yorktown Heights, NY.
+
 \bibitem{sign_mac}
 Hugo Krawczyk.
-\newblock Sigma the 'sign-and-mac' approach to authenticated diffie-hellman and
-  its use in the ike protocols.
+\newblock {\em SIGMA the 'SIGn-and-MAc' Approach to Authenticated
+  Diffie-Hellman and its Use in the IKE Protocols}.
+\newblock EE Department, Technion, Haifa, Israel, and IBM T.J. Watson Research
+  Center.
+
+\bibitem{KEA}
+Anton~Mityagin Kristin~Lauter.
+\newblock Security analysis of kea authenticated key exchange protocol.
 
 \bibitem{AMA}
 Lukasz Krzywiecki Miroslaw~Kutylowski Lucjan~Hanzlik, Kamil~Kluczniak.
-\newblock Mutual chip authentication.
+\newblock {\em Mutual Chip Authentication}.
+\newblock Faculty of Fundamental Problems of Technology,
+  \foreignlanguage{polish}{Wrocław University of Technology, Wrocław,
+  Poland}.
 
 \bibitem{QRcode}
 Pawel Nuzka.
@@ -65,8 +88,20 @@ Pawel Nuzka.
 
 \bibitem{key_exchange}
 Hugo~Krawczyk Ran~Canetti.
-\newblock Analysis of key-exchange protocols and their use for building secure
-  channels. advances in cryptology.
+\newblock {\em Analysis of key-exchange protocols and their use for building
+  secure channels. Advances in Cryptology}.
+\newblock 2001.
+
+\bibitem{EKE2}
+M.~Merrit S.~Bellovin.
+\newblock {\em Encrypted key exchange: Password-based protocols secure against
+  dictionary attacks.}
+
+\bibitem{EKE}
+M.~Merrit S.~Bellovin.
+\newblock {\em Augmented encrypted key exchange: a password-based protocol
+  secure against dictionary atttacks and password file compromise}.
+\newblock 1993.
 
 \bibitem{laser_mic}
 Mike Szczys.
@@ -77,8 +112,11 @@ Mike Szczys.
 \bibitem{limit_sound}
 Shintaro Takeda, Ikuharu Morioka, Kazuhisa Miyashita, Akeharu Okumura, Yoshiaki
   Yoshida, and Kenji Matsumoto.
-\newblock Age variation in the upper limit of hearing.
-\newblock \url{http://link.springer.com/content/pdf/10.1007%2FBF00243505}.
+\newblock {\em Age variation in the upper limit of hearing}.
+
+\bibitem{cankraw2}
+SaanJae~Moon Xinghua~Li, Jianfeng~Ma.
+\newblock {\em On the security of Cenetti-Krawczyk model}.
 
 \bibitem{security_canetti_krawczyk}
 SaanJae~Moon Xinghua~Li, Jianfeng~Ma.

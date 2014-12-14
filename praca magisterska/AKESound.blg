@@ -3,19 +3,52 @@ The style file: plain.bst
 Database file #1: AKESound.bib
 I was expecting a `,' or a `}'---line 72 of file AKESound.bib
  : 
- : year = {1996}
+ : year={1996}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 123 of file AKESound.bib
+ : 
+ : PAGES = {72–-84},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 141 of file AKESound.bib
+ : 
+ : title = {Obtaining a secure and efficient key agreement protocol from (H)MQV and NAXOS}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "CMQV"
+Warning--I didn't find a database entry for "cankraw1"
 Too many commas in name 1 of "Lucjan Hanzlik, Kamil Kluczniak, Lukasz Krzywiecki, Miroslaw Kutylowski" for entry AMA
 while executing---line 1049 of file plain.bst
-Warning--to sort, need author or key in vibrat
 Warning--to sort, need author or key in sound_intensity
 Warning--to sort, need author or key in decibels
 Warning--to sort, need author or key in sound_speed
 Warning--to sort, need author or key in fourier
+Warning--to sort, need author or key in vibrat
 Warning--to sort, need author or key in NIST
 Warning--to sort, need author or key in JNI
 Warning--to sort, need author or key in minim_dft
+Warning--empty author in vibrat
+Warning--empty journal in vibrat
+Warning--empty year in vibrat
+Warning--empty publisher in cryptography
+Warning--empty year in cryptography
+Warning--empty year in NAXOS
+Warning--empty year in HMQV
+Warning--empty year in sign_mac
 Too many commas in name 1 of "Lucjan Hanzlik, Kamil Kluczniak, Lukasz Krzywiecki, Miroslaw Kutylowski" for entry AMA
 while executing---line 1090 of file plain.bst
-(There were 3 error messages)
+Warning--empty year in AMA
+Warning--empty publisher in key_exchange
+Warning--empty publisher in EKE2
+Warning--empty year in EKE2
+Warning--empty publisher in EKE
+Warning--empty publisher in limit_sound
+Warning--empty year in limit_sound
+Warning--empty publisher in cankraw2
+Warning--empty year in cankraw2
+Warning--empty journal in security_canetti_krawczyk
+Warning--empty year in security_canetti_krawczyk
+Warning--empty journal in efficient_eck
+Warning--empty year in efficient_eck
+(There were 5 error messages)
