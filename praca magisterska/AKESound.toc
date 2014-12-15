@@ -27,7 +27,7 @@
 \contentsline {subsection}{\numberline {2.7}Enhance the project}{20}
 \contentsline {subsection}{\numberline {2.8}Microphones and speakers in mobile devices}{21}
 \contentsline {subsection}{\numberline {2.9}Security analysis}{21}
-\contentsline {subsubsection}{\numberline {2.9.1}No access to protocol transcript}{22}
+\contentsline {subsubsection}{\numberline {2.9.1}No access to protocol transcript}{21}
 \contentsline {subsubsection}{\numberline {2.9.2}Partial access to protocol transcript}{22}
 \contentsline {subsubsection}{\numberline {2.9.3}Full access to protocol transcript}{23}
 \contentsline {subsubsection}{\numberline {2.9.4}Possible vectors of attack on a sound channel}{23}
@@ -37,7 +37,7 @@
 \contentsline {subsubsection}{\numberline {2.9.8}Malicious implementation}{24}
 \contentsline {section}{\numberline {3}Prototype Design}{24}
 \contentsline {subsection}{\numberline {3.1}Mobile Devices}{24}
-\contentsline {subsection}{\numberline {3.2}Operating System}{25}
+\contentsline {subsection}{\numberline {3.2}Operating System}{24}
 \contentsline {subsection}{\numberline {3.3}Security of Android}{25}
 \contentsline {subsection}{\numberline {3.4}Application architecture}{25}
 \contentsline {subsection}{\numberline {3.5}Cryptography library}{26}
@@ -45,10 +45,10 @@
 \contentsline {subsection}{\numberline {3.7}NIST recommendation for security parameters}{27}
 \contentsline {subsection}{\numberline {3.8}Shared cryptographic module}{27}
 \contentsline {subsection}{\numberline {3.9}Java Native Interface - C++ Wrapper}{28}
-\contentsline {subsection}{\numberline {3.10}Base64}{29}
+\contentsline {subsection}{\numberline {3.10}Base64}{28}
 \contentsline {subsection}{\numberline {3.11}Sound channel}{29}
-\contentsline {subsubsection}{\numberline {3.11.1}Generating sound wave}{30}
-\contentsline {subsubsection}{\numberline {3.11.2}Receiving sound}{30}
-\contentsline {section}{\numberline {4}Tests}{32}
-\contentsline {subsection}{\numberline {4.1}Receiving data in sound channel}{32}
-\contentsline {subsection}{\numberline {4.2}Summary}{34}
+\contentsline {subsubsection}{\numberline {3.11.1}Generating sound wave}{29}
+\contentsline {subsubsection}{\numberline {3.11.2}Receiving sound}{29}
+\contentsline {section}{\numberline {4}Tests}{31}
+\contentsline {subsection}{\numberline {4.1}Receiving data in sound channel}{31}
+\contentsline {subsection}{\numberline {4.2}Summary}{33}

@@ -16,7 +16,7 @@ Minim fft class.
   \url{http://code.compartmental.net/minim/javadoc/ddf/minim/analysis/FFT.html}.
 
 \bibitem{sound_intensity}
-Natezenie fali dzwiekowej.
+Nateżenie fali dźwiękowej.
 \newblock \url{http://www.fizykon.org/akustyka/akustyka_natezenie_fali.htm}.
 
 \bibitem{NIST}
@@ -25,7 +25,7 @@ Nist sp 800-131 recommendation for key length.
   \url{http://csrc.nist.gov/publications/nistpubs/800-131A/sp800-131A.pdf}.
 
 \bibitem{decibels}
-Poziom natezenia dzwieku.
+Poziom nateżenia dźwieku.
 \newblock \url{http://www.fizykon.org/akustyka/akustyka_poziom_natezenia.htm}.
 
 \bibitem{sound_speed}
@@ -38,6 +38,7 @@ Vibrations usage in out-of-band channel.
 \bibitem{cryptography}
 Scott A.~Vanstone Alfred J.~Menezes, Paul C. van~Oorschot.
 \newblock {\em Handbook of Applied Cryptography}.
+\newblock 1996.
 
 \bibitem{android_sec}
 Android.
@@ -46,7 +47,6 @@ Android.
 \bibitem{NAXOS}
 Anton~Mityagin Brian~LaMacchia, Kristin~Lauter.
 \newblock {\em Stronger Security of Authenticated Key Exchange}.
-\newblock Microsoft Research, 1 Microsoft Way, Redmond, WA.
 
 \bibitem{base_64}
 Robert Harder.
@@ -61,25 +61,19 @@ Steve Haynal and Heidi Haynal.
 \bibitem{HMQV}
 Hugo Krawczyk.
 \newblock {\em HMQV: A High-Performance Secure Diffie-Hellman Protocol}.
-\newblock IBM T.J.Watson Research Center, Yorktown Heights, NY.
 
 \bibitem{sign_mac}
 Hugo Krawczyk.
 \newblock {\em SIGMA the 'SIGn-and-MAc' Approach to Authenticated
   Diffie-Hellman and its Use in the IKE Protocols}.
-\newblock EE Department, Technion, Haifa, Israel, and IBM T.J. Watson Research
-  Center.
 
 \bibitem{KEA}
 Anton~Mityagin Kristin~Lauter.
 \newblock Security analysis of kea authenticated key exchange protocol.
 
 \bibitem{AMA}
-Lukasz Krzywiecki Miroslaw~Kutylowski Lucjan~Hanzlik, Kamil~Kluczniak.
+Ł. Krzywiecki M.~Kutyłowski L.~Hanzlik, K.~Kluczniak.
 \newblock {\em Mutual Chip Authentication}.
-\newblock Faculty of Fundamental Problems of Technology,
-  \foreignlanguage{polish}{Wrocław University of Technology, Wrocław,
-  Poland}.
 
 \bibitem{QRcode}
 Pawel Nuzka.
@@ -96,6 +90,7 @@ Hugo~Krawczyk Ran~Canetti.
 M.~Merrit S.~Bellovin.
 \newblock {\em Encrypted key exchange: Password-based protocols secure against
   dictionary attacks.}
+\newblock 1992.
 
 \bibitem{EKE}
 M.~Merrit S.~Bellovin.
@@ -116,7 +111,7 @@ Shintaro Takeda, Ikuharu Morioka, Kazuhisa Miyashita, Akeharu Okumura, Yoshiaki
 
 \bibitem{cankraw2}
 SaanJae~Moon Xinghua~Li, Jianfeng~Ma.
-\newblock {\em On the security of Cenetti-Krawczyk model}.
+\newblock On the security of cenetti-krawczyk model.
 
 \bibitem{security_canetti_krawczyk}
 SaanJae~Moon Xinghua~Li, Jianfeng~Ma.

@@ -12,7 +12,6 @@
 %\usepackage[T1]{fontenc}
 %\usepackage[english]{babel}
 %\usepackage[MeX]{polski}
-%
 %\usepackage{makeidx}
 %\usepackage{listings}
 %\usepackage{url}
@@ -82,7 +81,7 @@
 
 \newtheorem{theorem}{Twierdzenie}[section]
 \newtheorem{lemma}{Lemat}[section]
-\newtheorem{example}{Przyk³ad}[section]
+\newtheorem{example}{Przyklad}[section]
 \newtheorem{corollary}{Wniosek}[section]
 \newtheorem{definition}{Definicja}[section]
 
@@ -107,22 +106,18 @@
 \vspace*{\fill}
 \begin{center}
 \begin{picture}(300,510)
-  \put( 10,520){\makebox(0,0)[l]{\large \bf \textsc{Faculty of Fundamental Problems of Technology}}}
-  \put( 10,500){\makebox(0,0)[l]{\large \bf \textsc{Wrocław University of Technology}}}
-  \put( 10,280){\makebox(0,0)[l]{\Huge  \bf \textsc{
-  Channels alternative to WiFi in }}}
-  \put( 10,260){\makebox(0,0)[l]{\Huge \bf \textsc{
-  Authenticated Key Establishment }}}
-  \put( 10,240){\makebox(0,0)[l]{\Huge \bf \textsc{
-  protocols for mobile devices}}}
-  \put(100,200){\makebox(0,0)[l]{\large     \textsc{Paweł Kędzia}}}
-
-  \put(170, 80){\makebox(0,0)[l]{\large  {In partial fulfillment of the requirements}}}
-  \put(170, 60){\makebox(0,0)[l]{\large  {for the degree of Master of Engineering}}}
-  \put(170, 40){\makebox(0,0)[l]{\large  { }}}
-  \put(170, 20){\makebox(0,0)[l]{\large  {Thesis Supervisor}}}
-  \put(170, 0){\makebox(0,0)[l]{\large  {dr inż. Łukasza Krzywieckiego}}}
-  \put(100,-80){\makebox(0,0)[bl]{\large \bf \textsc{Wrocław 2010}}}
+\put(10,520){\makebox(0,0)[l]{\large \bf \textsc{Faculty of Fundamental Problems of Technology}}}
+\put(10,500){\makebox(0,0)[l]{\large \bf \textsc{Wrocław University of Technology}}}
+\put(10,280){\makebox(0,0)[l]{\Huge  \bf \textsc{Channels alternative to WiFi in }}}
+\put(10,260){\makebox(0,0)[l]{\Huge \bf \textsc{Authenticated Key Establishment }}}
+\put(10,240){\makebox(0,0)[l]{\Huge \bf \textsc{protocols for mobile devices}}}
+\put(100,200){\makebox(0,0)[l]{\large \textsc{Paweł Kędzia}}}
+\put(170, 80){\makebox(0,0)[l]{\large  {In partial fulfillment of the requirements}}}
+\put(170, 60){\makebox(0,0)[l]{\large  {for the degree of Master of Engineering}}}
+\put(170, 40){\makebox(0,0)[l]{\large  { }}}
+\put(170, 20){\makebox(0,0)[l]{\large  {Thesis Supervisor}}}
+\put(170, 0){\makebox(0,0)[l]{\large  {dr inż. Łukasz Krzywiecki}}}
+\put(100,-80){\makebox(0,0)[bl]{\large \bf \textsc{Wroclaw 2014}}}
 \end{picture}
 \end{center}
 \vspace*{\fill}
@@ -145,15 +140,15 @@ Mobile devices to transfer data mainly use Internet. Disadvantage of this method
 \vspace{5mm}
 
 To authentication and key agreement between mobile devices was chosen Anonymous Mutual Authentication (AMA) protocol \cite{AMA}. AMA is symmetric, which means  participants execute the same operation (with some little difference in order of operations). One of
-the advantage of this protocol eases implementation on resource limited devices. It was originally designed for authenticating electronic documents, it proved to be portable.
+the advantage of this protocol is eases implementation on resource limited devices. It was originally designed for authenticating electronic documents, it proved to be portable.
 
 \vspace{5mm}
 
-Application created on Android system will serve as proof of concept. There are application which use sound channel to exchange data, but none of them are used to establishing session keys. To use our application there is need just mobile phone/smartphone with software Android ( version 4.1.2 or higher ), working speaker and microphone, of course.
+Application created on Android system will serve as proof of concept. There are applications which use sound channel to exchange data, but none of them are used to establishing session keys. To use our application there is need just mobile phone/smartphone with software Android ( version 4.1.2 or higher ), working speaker and microphone, of course.
 
 \vspace{5mm}
 
-The first section focus on analysis of the problem. It explains principal issues used to create the application. It consists some information about security problem and necessary definitions to create sound channel. In the next chapter is described design of prototype. What was used, how application work etc. Then are shown results of test.
+The first section focuses on analysis of the problem. It explains principal issues used to create the application. It consists some information about security problem and necessary definitions to create sound channel. In the next chapter is described design of prototype. What was used, how application work etc. Then are shown results of test.
 
 
 \subsection{Problem}
@@ -193,7 +188,7 @@ Every mobile device have speaker and microphone. That is why the sound channel s
 
 
 \subsection{Related work}
-There are several ways to establish key. To prevent MITM attacks both parties have to authenticate to each other. There are many solutions that address this problem. One is to use shared secret password which prevents MITM as in EKE protocol \cite{EKE}. It was refined by many researches \cite{EKE, EKE2}. The requirement of pre-shared password between the parties might be impractical in many scenarios. There is also a family of Authenticated Key Agreement protocols (AKE) like Sigma \cite{sign_mac}, HMQV \cite{HMQV}, KEA \cite{KEA}, CMQV \cite{CMQV}, Naxos and Naxos pls like protocols \cite{AMA, NAXOS}. The security requirements and security model definition in AKE protocols were proposed by Cenetti and Krawczyk in \cite{cankraw1, cankraw2}. In this paper we focus on usage of optical channel for authentication thus in practice any key agreement protocol that is secure against active adversary could be used. Out-of-band channels for key agreement protocols are discussed in [2, 3, 4, 16].
+There are several ways to establish session key. To prevent MITM attacks both parties have to authenticate to each other. There are many solutions that address this problem. One is to use shared secret password which prevents MITM as in EKE protocol \cite{EKE}. It was refined by many researches \cite{EKE, EKE2}. The requirement of pre-shared password between the parties might be impractical in many scenarios. There is also a family of Authenticated Key Agreement protocols (AKE) like Sigma \cite{sign_mac}, HMQV \cite{HMQV}, KEA \cite{KEA}, CMQV \cite{CMQV}, Naxos and Naxos plus like protocols \cite{AMA, NAXOS}. The security requirements and security model definition in AKE protocols were proposed by Cenetti and Krawczyk in \cite{cankraw1, cankraw2}. In this paper we focus on usage of optical channel for authentication thus in practice any key agreement protocol that is secure against active adversary could be used. Out-of-band channels for key agreement protocols are discussed in [2, 3, 4, 16].
 
 \section{Analysis of the problem}
 
@@ -204,13 +199,13 @@ To establish session keys we used in our prototype Anonymous Mutual Authenticati
 
 \vspace{5mm}
 
-AMA originally was designed to anonymous authenticate between smart cards. Is characterized by properties:
+AMA originally was designed to anonymous authenticate between smart cards. It is characterized by properties:
 \begin{itemize}
 \item Forward Security - if long term keys of one of the authenticating parties compromised then established session key does not reveal.
-\item Simultability - is possible to create protocol transcript between parties without interacting with them
+\item Simultability - it is possible to create protocol transcript between parties without interacting with them
 \item Undetectability - having protocol transcript one cannot confirm that process really took place
 \item Privacy - eavesdropping adversary cannot tell about identity of parties performing the protocol
-\item Deniability - no one of the parties cannot convince third party that he participate in protocol.
+\item Deniability - no one of the participants can convince third party that he participate in protocol.
 \end{itemize}
 
 \begin{figure}[H]
@@ -220,7 +215,7 @@ AMA originally was designed to anonymous authenticate between smart cards. Is ch
 	\label{fig:F8}
 \end{figure}
 
-Scheme of protocol is shown at the \ref{fig:F8}. In scheme are use the following notation:
+Scheme of protocol is shown at the figure \ref{fig:F8}. In the scheme are used the following notations:
 \begin{itemize}
 \item \textit{Enc} is a symmetric encryption function. \textit{$Enc_K(M)$} means encryption of $M$ using key $K$. 
 \item \textit{H} is a cryptographic hash function. 
@@ -233,12 +228,12 @@ AMA is defined in a cyclic group G where Computational Diffie-Hellman Problem (C
 Given a cyclic group G with order $q$, and ($g$,$g^a$,$g^b$) where $g$ us a random generator of $G$, and ($a$,$b$) where chosen randomly from the set {0,1,...,$q-1$} it is computationally intractable to compute the value $g^{ab}$.
 \end{assumption}
 
-At the beginning, parties (Alice and Bob) generate their private key - $x_A$ (respectively, $x_B$) and public key $y_A = g^{x_A}$ (respectively, $y_A$). Then parties generate their ephemeral keys. Private is $h_A$ := $H(a)$ (where $a$ is a random number) (respectively $h_B$, $b$) and public ephemeral key $c_A$ := $g^{h_A}$ (respectively $c_B$). Then participants exchange their ephemeral keys, based on Diffie-Hellman key exchange. Note that in this phase parties do not exchange any identity information.
+At the beginning, parties (Alice and Bob) generate their private key - $x_A$ (respectively, $x_B$) and public key $y_A = g^{x_A}$ (respectively, $y_B$). Then parties generate their ephemeral keys. Private is $h_A$ := $H(a)$ (where $a$ is a random number) (respectively $h_B$, $b$) and public ephemeral key $c_A$ := $g^{h_A}$ (respectively, $c_B$). Then participants exchange their ephemeral keys, based on Diffie-Hellman key exchange. Note that in this phase parties do not exchange any identity information.
 
 \vspace{5mm}
 
-When parties obtain ephemeral public key of another party, they start compute master
-key $K$. Four different one-time keys are establish by hashing $K$ and numeric parameter - different for each one-time key.
+When parties obtain ephemeral public key, they start compute master
+key $K$. Four different one-time keys are established by hashing $K$ and numeric parameter - different for each one-time key.
 
 \vspace{5mm}
 
@@ -294,12 +289,16 @@ valid, he generates his authentication data and send it by microphone. If data i
 \end{center}
 \end{table}
 \subsection{Sound}
-Sound is acoustic wave propagating in different substances such as water, air (so called vibrating wire). These are waves which cause auditory sensation and at the same time in appropriate amplitude and frequency are not detected by human organ of hearing. Sound to spread need to has some medium, that is why not propagate in vacuum. Furthermore, sound is longitudinal waves, which means that particles of the medium is in the same direction as the direction of travel of the wave.
+Sound and its properties have one of the important role in our dissertation. All of the data are sent using sound waves, so in this section are explained necessary issues associated with it. 
+
+\vspace{5mm}
+
+Sound is an acoustic wave propagating in different substances such as water, air (so called vibrating wire). There are waves which cause auditory sensation and at the same time, in appropriate amplitude and frequency, are not detected by human organ of hearing. Sound to spread needs to have some medium, that is why not propagate in vacuum. Furthermore, sound is longitudinal waves, which means that particles of the medium is in the same direction as the direction of travel of the wave.
 
 
 
 \begin{center}
-	\includegraphics{img/longitudinal_wave}
+		\includegraphics[width=0.45\textwidth]{img/longitudinal_wave}
 \end{center}
 \subsubsection{Frequency}
 Audio frequency is measured in hertz (Hz), where 1 Hz means one cycle per second. Below figures show graphs of audio frequency 1 Hz and 5 Hz.
@@ -309,7 +308,7 @@ Audio frequency is measured in hertz (Hz), where 1 Hz means one cycle per second
 	\includegraphics[width=0.45\textwidth]{img/frequency_5Hz}
 \end{center}
 
-Exist three division of sound as to frequency:
+There exist three division of sound as to frequency:
 \begin{itemize}
 	\item Infrasound - frequency is lower than 16~Hz.
 	\item Hearable sound - frequency is greater than 16~Hz and lower than 20~kHz.
@@ -317,34 +316,34 @@ Exist three division of sound as to frequency:
 	\item Hipersound - frequency is greater than 10~GHz.
 \end{itemize}
 
-Frequency specify also pitch of sound. A high frequency sound wave corresponds to a high pitch sound and low frequency sound wave corresponds to a low pitch sound.
+Frequency specify also pitch of sound. A high frequency sound wave corresponds to a high pitch of sound and low frequency sound wave corresponds to a low pitch of sound.
 
 \subsubsection{Sound intensity}
-Loudness of the sound is dependent to his intensity. It is expressed by $W/m^2$ unit. This is ratio the power of the acoustic wave to surface area to which wave energy falls perpendicular during 1 second \cite{sound_intensity}. Human's ear works in such way that doubling intensity of sound, do not cause that human hear it two times louder. Human hears its logarithmized value. Logarithmized measure of sound intensity is called sound intensity level. Is measured in decibels and is given by \cite{decibels}:
+Loudness of the sound is dependent to his intensity. It is expressed by $W/m^2$ unit. This is ratio the power of the acoustic wave to surface area to which wave energy falls perpendicular during 1 second \cite{sound_intensity}. Human's ear works in such way that doubling intensity of sound, do not cause that human hear it two times louder. Human hears its logarithmized value. Logarithmized measure of sound intensity is called sound intensity level. It is measured in decibels and is given by \cite{decibels}:
 \begin{equation}
-	L = 10\log_{10}(\frac{I}{I_o})  [dB],
+	L = 10\log_{10}\left(\frac{I}{I_o}\right)  [dB],
 \end{equation}
 where:
 \begin{itemize}
-	\item $L$ - Sound intensity level.
-	\item $I$ - Sound intensity.
+	\item $L$ - Sound intensity level,
+	\item $I$ - Sound intensity,
 	\item $I_o$ - Contractual value of the intensity which determines hearing range, which is $10^{-12}\frac{W}{m^2}.$
 \end{itemize}
 \subsubsection{Speed of sound}
 
-Speed of sound depends on center through which wave passes. Influence on speed has also temperature of the center. The slowest moves in the flue. In the air with $20^o$ temperature reach in  approximation 343 m/s (1230 km/h). In water with the same temperature speed is 1482 m/s (5335 km/h). The fastest sound spread in solid. For example in steel reach about 5960 m/s (21460 km/h) \cite{sound_speed}.
+Speed of sound depends on center through which wave passes. Influence on speed has also temperature of the center. The slowest it moves in the flue. In the air with $20^o$ temperature reach in  approximation 343 m/s (1230 km/h). In water with the same temperature speed is 1482 m/s (5335 km/h). The fastest sound spreads in solid. For example in steel it reach about 5960 m/s (21460 km/h) \cite{sound_speed}.
 
 \subsubsection{Ultrasounds}
-The present app largely, to sending data, uses ultrasound. Ultrasound are sound waves, which are inaudible for human, on the grounds of their too high frequency. Have adopted that ultrasounds starts from 20 kHz, but really everything depends on how good hearing human has. Children hear the highest frequencies. Increasing age the upper limit of hearing descend \cite{limit_sound}. Ultrasounds end at frequencies  of several GHz, where hipersounds start. Contractual it is 10 GHz.  Ultrasounds have many applications. Using them one can detect objects and specify distance to them. Are used in medicine where whereby ultrasonography (USG) we can find not available for human eye diseases, watching e.g. internal organs. 
+The present application largely, to sending data, uses ultrasound. Ultrasounds are sound waves, which are inaudible for human, on the grounds of their too high frequency. Have adopted that ultrasounds starts from 20 kHz, but really everything depends on how good hearing human has. Children hear the highest frequencies. Increasing age the upper limit of hearing descend \cite{limit_sound}. Ultrasounds end at frequencies of several GHz, where hipersounds start. Contractual it is 10 GHz.  Ultrasounds have many applications. Using them one can detect objects and specify distance to them. Are used in medicine where whereby ultrasonography (USG) we can find not available for human eye diseases, watching e.g. internal organs. 
 
 \subsubsection{Fourier transform}
-By Fourier transform one can change function $f(x)$ in time domain to $F(s)$ in frequency domain. In other words, distribute the function $f(x)$ to series of periodic functions, in such way that show how frequencies consist of the function $f(x)$. The formula for the Fourier transform looks as fallows:
+Using Fourier transform one can change function $f(x)$ in time domain to $F(s)$ in frequency domain. In other words, it distributes the function $f(x)$ to series of periodic functions, in such way that it shows how frequencies consist of the function $f(x)$. The formula for the Fourier transform looks as fallows:
 
 \begin{equation}
 	F(s) = \int\limits^\infty_{-\infty} f(x) e^{-i2\pi xs} dx.
 \end{equation}
 
-Sum of three functions with frequencies 3 Hz 7 Hz and 11 Hz on a graph:
+Sum of three functions with frequencies 3 Hz, 7 Hz and 11 Hz on a graph:
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{img/sines}
@@ -361,10 +360,10 @@ Passing function $f(x)$ from figure \ref{fig:F4} through Fourier transform we wi
 	\label{fig:F5}
 \end{figure}
 
-As you can see on above figure, time domain was changed on frequency domain. On graphs are bigger values for frequencies which had summed functions.
+As you can see on above figure, time domain was changed on frequency domain. On graphs are bigger values for frequencies which had functions summed.
 
 \subsubsection{Discrete Fourier Transform}
-Application analyzes periodically finite number of samples of sound. To converse to frequency domain is used Discrete Fourier transform (DFT). Inserted samples are in the form of complex numbers, but in practice used only real numbers. Output samples are complex numbers. The following graphs show continuous signal and discretized signal \cite{fourier}:
+Application analyzes periodically finite number of samples of sound. To converse to frequency domain is used Discrete Fourier Transform (DFT). Inserted samples are in the form of complex numbers, but in practice used only real numbers. Output samples are complex numbers. The following graphs show continuous signal and discretized signal \cite{fourier}:
 
 \begin{figure}[H]
 	\centering
@@ -387,7 +386,7 @@ For $N$ signal samples $(x_0,x_1,x_2,...,x_{N-1})$, discrete Fourier transform g
 Computational complexity this notation is $O(N^2)$, because for $N$ elements $X_k$ series compute sum for $N$ samples \cite{fast_fourier}.
 
 \subsubsection{Fast Fourier Transform}
-Computational complexity of discrete Fourier transform is not enough to fast process more data. Therefore developed a lot of algorithms, which improve its calculation. Exist algorithms, which do discrete Fourier transform having computational complexity $O(NlogN)$, where for large number of data is significant improvement. They use design paradigm divide and conquer. Precursors of these solutions are James William Cooley and John Tukey, who elaborated first faster algorithm to compute DFT, known as fast Fourier transform (FFT). It is worth mentioning that FFT is not approximate value of DFT. FFT returns the same values but do this much faster.
+Computational complexity of Discrete Fourier Transform is not enough to fast process more data. Therefore were developed a lot of algorithms, which improve its calculation. There are algorithms, which do Discrete Fourier Transform having computational complexity $O(NlogN)$, where for large number of data is significant improvement. They use design paradigm divide and conquer. Precursors of these solutions are James William Cooley and John Tukey, who elaborated first faster algorithm to compute DFT, known as Fast Fourier Transform (FFT). It is worth to mention that FFT is not approximate value of DFT. FFT returns the same values but do this much faster.
 
 \subsubsection{Hanning window}
 Window functions are functions which are used with DFT. Often during process of DFT occur blur of spectrum, which mean that on the spectrum are seeing values for frequencies different than the real frequency of signal. To minimize this effect are used window functions. In time domain it is multiply every sample of signal by corresponding value of sample of window. The simplest window is rectangular window. Spectrum of this windowing is shown in \ref{fig:F9}
@@ -425,7 +424,7 @@ We introduce this phenomenon because of one of the possibility to prevent agains
 eavesdropping. Doppler effect is that the receiver get different frequency of wave from frequency which is generated by moving source relative to the receiver. The simplest example
 is when ambulance with turn on siren is coming to us. Then we are receiving higher frequencies
 from the emitted frequency. When ambulance is passing us then we hear the same
-frequencies. When is moving away then we hear the lower frequencies. Observed frequency $f$ is given by:
+frequencies. When it is moving away then we hear the lower frequencies. Observed frequency $f$ is given by:
 
 \begin{equation}
 	f = f_{0} \cdot \left(\frac {c}{c + v_{s}}\right),
@@ -461,11 +460,11 @@ There is no one ultimately defined security model for key exchange. However, we 
 \end{itemize}
 
 \subsubsection{Adversarial Model}
-Is needed to consider scenario where adversary learns some secrete information from parties participant in protocol. The worst case is when adversary obtain the long term secrete key from one of the party. Having this key adversary can completely control this party and the party is consider corrupted. This lead to belows property of the KE protocol.
+There is needed to consider scenario where adversary learns some secrete information from participants of protocol. The worst case is when adversary obtain the long term secrete key from one of the party. Having this key adversary can completely control this party and the party is consider as corrupted. This lead to the fundamental property of key exchange protocols:
 
 \begin{itemize}
 \item Real-or-Random - this is some kind of game on which basic session key security is based. When uncorrupted parties with successful end the protocol then is determined bit $b$ at random. If $b=0$ the adversary get the real session key, if $b = 1$ he receives a random value with the same length as the key. Now adversary has to output his own bit $b'$. If $b' = b$ then adversary wins the game. When the adversary wins the game with probability $P = 1/2+\epsilon$, where $\epsilon$ is negligible function then the basis session key security is achieved.
-\item Perfect Forward Secrecy (PFS) - is the property which ensure that adversary cannot learn session keys when one of the long-term private key is compromised in the future.
+\item Perfect Forward Secrecy (PFS) - is the property which ensure that adversary cannot learn session keys from future when one of the long-term private key is compromised.
 \end{itemize}
 
 Above criteria ensure for key exchange protocol that they are resistant to attacks like known-key attacks and replay attacks \cite{cryptography}. For some KE protocols are needed additional requirements e.g. Identity protection - identities of authenticating parties cannot be learn by an adversary.
@@ -487,7 +486,7 @@ Another way is to use vibrations \cite{vibrat}. New smartphones have installed s
 
 \vspace{5mm}
 
-Sound channel is also one of the options. Every mobile device has speaker and microphone, so we do not need to worry about no available Internet or that the other party has not installed Bluetooth or IrDA or even camera. Using ultrasounds, the signal will be not detected by humans ear. Additionally mobile phones cannot generate these waves with big intense, so transferring data should be done on small distance. Of course, sound channel could be easily to manipulate. Attacker with proper speaker can generate frequencies which could disturb the communication. However, he needs to be close to the authenticating parties if generated ultrasound has to be detected by party,s mobiles microphone or generate sound waves with big intense which could be audible for human. Additionally is worth to consider use this kind of channel mixing with another channel. For example, ephemeral keys will be sending by sound channel then encrypted values by Bluetooth.
+Sound channel is also one of the options. Every mobile device has speaker and microphone, so we do not need to worry about no available Internet or that the other party has not installed Bluetooth or IrDA or even camera. Using ultrasounds, the signal will be not detected by humans ear. Additionally mobile phones cannot generate these waves with big intense, so transferring data should be done on small distance. Of course, sound channel could be easily to manipulate. Attacker with proper speaker can generate frequencies which could disturb the communication. However, he needs to be close to the authenticating parties if generated ultrasound has to be detected by party's mobiles microphone or generate sound waves with big intense which could be audible for human. Additionally is worth to consider to use this kind of channel mixing with another channel. For example, ephemeral keys will be sending by sound channel then encrypted values by Bluetooth or one party everything sends by sound waves when the second party uses just electromagnetic channel.
 
 \subsection{Proposed usage of out-of-band channel}
 
@@ -512,14 +511,14 @@ Using Diffie-Hellman key exchange and asymmetric cryptography should be use the 
 
 \vspace{5mm}
 
-Sound channel is secured against active attacks. Adversary needs to be close to communicated party or he needs to generate ultrasound with high intense which can be detected by human, it would be heard as squeak.
+%Sound channel is secured against active attacks. Adversary needs to be %close to communicated party or he needs to generate ultrasound with high %intense which can be detected by human, it would be heard as squeak.
 
 \subsection{Enhance the project}
-Lets imagine that Alice and Bob want to establish secure channel being far away from each other. They can authenticate each other using telephone line. Is possible to run application during the calling but the microphone receiving the signal is unavailable in the app. So to this experiment would be needed second pair of mobile phones which will be used as intermediary. Each intermediary phone should be set as handsfree because of loudness of sound. Authenticated phones should be apply as close as possible to intermediary phone. Now when intermediary phones established the connection, the authenticated devices can start the protocol, the sound signal will be transferring by telephone line. Device on the other side will be receiving the signal. 
+Lets imagine that Alice and Bob want to establish secure channel being far away from each other. They can authenticate each other using telephone line. It is possible to run application during the calling but the microphone receiving the signal is unavailable in the application. So to this experiment would be needed second pair of mobile phones which will be used as intermediary. Each intermediary phone should be set as handsfree because of loudness of sound. Authenticated phones should be apply as close as possible to intermediary phone. Now when intermediary phones established the connection, the authenticated devices can start the protocol, the sound signal will be transferring by telephone line. Device on the other side will be receiving the signal. 
 
 \vspace{5mm}
 
-Disadvantage in our protocol is speed of transferring data. In every 15 milliseconds are received samples which are put to the queue. Another process gets these samples and analyze them. For our test devices, receiving data in every 15 second was the most optimal method. Algorithm analyzing this data follow with computing, so in queue do not accumulate to much data. Decreasing period receiving data to 10 millisecond cause that decoder of sound did not keep up and outcome was sometimes couple of seconds after the last received character. To improve that is worth to considering client-server model. Mobile phone as a client gathering the data and send to the external server. Server with much more computing power could decode the data definitely faster and returns the result to the client. Server could do much more complex computing, hence the results would be with better precision.
+Disadvantage in our protocol is speed of transferring data. In every 15 milliseconds are received samples which are put to the queue. Another process gets these samples and analyze them. For our test devices, receiving data in every 15 second was the most optimal method. Algorithm analyzing this data follow with computing, so in queue is not accumulate to much data. Decreasing period receiving data to 10 millisecond cause that decoder of sound did not keep up and outcome was sometimes couple of seconds after the last received character. To improve that is worth to considering client-server model. Mobile phone as a client gathering the data and send to the external server. Server with much more computing power could decode the data definitely faster and returns the result to the client. Server could do much more complex computing, hence the results would be with better precision.
 
 \vspace{5mm}
 
@@ -557,22 +556,22 @@ However in practice it is possible for an adversary to partially eavesdrop the c
 Partial access to protocol transcript in sound channel will be depends on many factors. At first microphone has to have appropriate sensitivity level. Sensitivity level is given by:
 
 \begin{equation}
-	L_m = 20 lg(\frac{M}{M_0})dB,
+	L_m = 20 lg\left(\frac{M}{M_0}\right)[dB],
 \end{equation}
 
 where $M$ is sensitivity [mV/Pa] and $M_0$ is the 1000 mV/Pa (1 V/Pa) reference output ratio. Microphone sensitivity $M$ depends also on frequency and the angle of incidence. The important role of receiving signal have speakers generating this signal. Sensitivity level of speaker is given by: 
 
 \begin{equation}
-	L_s = 10 lg(\frac{p_A}{p_0})dB,
+	L_s = 10 lg\left(\frac{p_A}{p_0}\right)dB,
 \end{equation}
 
 where $p_A$ is sound pressure generated by speaker powered 1V*A, $p_0$ is a reference pressure which has value $2*10^{-5}$ Pa. Frequency also has influence on sensitivity level of speaker. The next thing which should be consider is distance microphone from speaker. Too big distance and too low sensitivity of microphone could causing that microphone will not able to gain sounds wave or at least some frequencies. Sound pressure decreases proportionally with increase of distance. So when sound level $L_{1}$ is measured at a distance $r_1$, the sound level $L_2$ at the distance $r_2$ is given by:
 
 \begin{equation}
-	L_2 = L_1 + 20 lg (\frac{r_1}{r_2}).
+	L_2 = L_1 + 20 lg \left(\frac{r_1}{r_2}\right)dB.
 \end{equation}
 
-These factors contribute to some probability $\bar{p}$ that adversary and participants will have this type of devices satisfying the conditions. Otherwise, adversary not being able to receive all frequencies he will gain transcript with data having no sense.
+These factors contribute to some probability $\bar{p}$ that adversary and participants will have this type of devices satisfying the conditions. Otherwise, adversary not being able to receive all frequencies. He will gain transcript with data having no sense. So it would be similar situation when adversary has no access to the transcript.  
 
 
 \subsubsection{Full access to protocol transcript}
@@ -743,7 +742,7 @@ C = 10,3 kHz,
 
 Additional two characters "," and "." represent begin of data and end of data. Sample rate is 44,1 kHz. Every character is sending by 30 ms, which means that for each pitch is needed 1323 samples. To create sinus wave each sample for $ i \in (0,1322) $ is calculating by formula:
 \begin{center}
-$F(i) = \sin($ $f \ast PI \ast 2 \ast i  \over 44 100 $ $)$
+$F(i) = \sin\left( f \ast \pi \ast 2 \ast i  \over 44 100  \right)$
 \end{center}
 where $f$ is the target frequency.
 These samples are processed by AudioTrack library to sound using PCM encoding. 
@@ -792,7 +791,7 @@ During tests we have focused on below factors:
 \item Position of devices terms of placement of speaker and microphone.
 \item Distance between chosen frequencies.
 \item Working during sounds in the background.
-\item Sending characters in shorter time than 30 ms.
+\item Volume of sound
 \end{itemize}
 
 Firstly, we have tested distance between chosen frequencies. Every character from Base64 coding is mapped to appropriate frequency. The smaller distance then is possible to use higher frequencies. We have choose three spaces:
