@@ -28,7 +28,6 @@
 \usepackage{url}
 \usepackage{longtable}
 \usepackage[figuresright]{rotating}
-
 %\usepackage[MeX]{polski}
 %\usepackage[cp1250]{inputenc}
 
@@ -39,7 +38,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{geometry}
 \usepackage{pslatex}
-\usepackage{ulem}
+\usepackage[normalem]{ulem} %to strike the words
 
 \usepackage{lipsum}
 \usepackage{amsmath}               
@@ -188,7 +187,7 @@ Every mobile device have speaker and microphone. That is why the sound channel s
 
 
 \subsection{Related work}
-There are several ways to establish session key. To prevent MITM attacks both parties have to authenticate to each other. There are many solutions that address this problem. One is to use shared secret password which prevents MITM as in EKE protocol \cite{EKE}. It was refined by many researches \cite{EKE, EKE2}. The requirement of pre-shared password between the parties might be impractical in many scenarios. There is also a family of Authenticated Key Agreement protocols (AKE) like Sigma \cite{sign_mac}, HMQV \cite{HMQV}, KEA \cite{KEA}, CMQV \cite{CMQV}, Naxos and Naxos plus like protocols \cite{AMA, NAXOS}. The security requirements and security model definition in AKE protocols were proposed by Cenetti and Krawczyk in \cite{cankraw1, cankraw2}. In this paper we focus on usage of optical channel for authentication thus in practice any key agreement protocol that is secure against active adversary could be used. Out-of-band channels for key agreement protocols are discussed in [2, 3, 4, 16].
+There are several ways to establish session key. To prevent MITM attacks both parties have to authenticate to each other. There are many solutions that address this problem. One is to use shared secret password which prevents MITM as in EKE protocol \cite{EKE}. It was refined by many researches \cite{EKE, EKE2}. The requirement of pre-shared password between the parties might be impractical in many scenarios. There is also a family of Authenticated Key Agreement protocols (AKE) like Sigma \cite{sign_mac}, HMQV \cite{HMQV}, KEA \cite{KEA}, CMQV \cite{CMQV}, Naxos and Naxos plus like protocols \cite{AMA, NAXOS}. The security requirements and security model definition in AKE protocols were proposed by Cenetti and Krawczyk in \cite{security_canetti_krawczyk, key_exchange}. In this paper we focus on usage of optical channel for authentication thus in practice any key agreement protocol that is secure against active adversary could be used. Out-of-band channels for key agreement protocols are discussed in \cite{chirp, sib, ad_hoc, veh, vibrat}.
 
 \section{Analysis of the problem}
 
@@ -503,7 +502,7 @@ Lets assumed that Alice and Bob want to establish a secure connection between th
 \item Alice's device will receiving and decode it.
 \end{itemize}
 
-Anonymous Mutual Chip Authentication (described in detail in section above) should ensure that even if some transferring data eavesdrop then adversary will do nothing with this data. Duration of the protocol is about 40 second - more information about duration and performance are described in section 5.
+Anonymous Mutual Chip Authentication (described in detail in section above) should ensure that even if some transferring data eavesdrop then adversary will do nothing with this data. Duration of the protocol is about 35 second - more information about duration and performance are described in section 5.
 
 \subsection{Sound channel parameters}
 
@@ -514,11 +513,11 @@ Using Diffie-Hellman key exchange and asymmetric cryptography should be use the 
 %Sound channel is secured against active attacks. Adversary needs to be %close to communicated party or he needs to generate ultrasound with high %intense which can be detected by human, it would be heard as squeak.
 
 \subsection{Enhance the project}
-Lets imagine that Alice and Bob want to establish secure channel being far away from each other. They can authenticate each other using telephone line. It is possible to run application during the calling but the microphone receiving the signal is unavailable in the application. So to this experiment would be needed second pair of mobile phones which will be used as intermediary. Each intermediary phone should be set as handsfree because of loudness of sound. Authenticated phones should be apply as close as possible to intermediary phone. Now when intermediary phones established the connection, the authenticated devices can start the protocol, the sound signal will be transferring by telephone line. Device on the other side will be receiving the signal. 
+Lets imagine that Alice and Bob want to establish secure channel being far away from each other. They can authenticate each other using telephone line. It is possible to run application during the calling but the microphone receiving the signal is unavailable in the application. So to this experiment would be needed second pair of mobile phones which will be used as intermediary. Each intermediary phone should be set as handsfree because of loudness of sound. Authenticated phones should be apply as close as possible to intermediary phone. Now when intermediary phones established the connection, the authenticated devices can start the protocol, the sound signal will be transferring by telephone line. Device on the other side will be receiving the signal. There is possible use computers as intermediary. There are a lot of voice communicator which would be useful.
 
 \vspace{5mm}
 
-Disadvantage in our protocol is speed of transferring data. In every 15 milliseconds are received samples which are put to the queue. Another process gets these samples and analyze them. For our test devices, receiving data in every 15 second was the most optimal method. Algorithm analyzing this data follow with computing, so in queue is not accumulate to much data. Decreasing period receiving data to 10 millisecond cause that decoder of sound did not keep up and outcome was sometimes couple of seconds after the last received character. To improve that is worth to considering client-server model. Mobile phone as a client gathering the data and send to the external server. Server with much more computing power could decode the data definitely faster and returns the result to the client. Server could do much more complex computing, hence the results would be with better precision.
+Disadvantage in our protocol is speed of transferring data. In every 15 milliseconds are received samples which are put to the queue. Another process gets these samples and analyze them. For our test devices, receiving data in every 15 second was the most optimal method. Algorithm analyzing this data follow with computing, so in queue is not accumulate to much data. Decreasing period receiving data to 10 millisecond cause that decoder of sound did not keep up and outcome was sometimes couple of seconds after the last received character. To improve that is worth to considering client-server model like in \cite{chirp}. Mobile phone as a client gathering the data and send to the external server. Server with much more computing power could decode the data definitely faster and returns the result to the client. Server could do much more complex computing, hence the results would be with better precision.
 
 \vspace{5mm}
 
@@ -556,19 +555,19 @@ However in practice it is possible for an adversary to partially eavesdrop the c
 Partial access to protocol transcript in sound channel will be depends on many factors. At first microphone has to have appropriate sensitivity level. Sensitivity level is given by:
 
 \begin{equation}
-	L_m = 20 lg\left(\frac{M}{M_0}\right)[dB],
+	L_m = 20 log_{10}\left(\frac{M}{M_0}\right)[dB],
 \end{equation}
 
-where $M$ is sensitivity [mV/Pa] and $M_0$ is the 1000 mV/Pa (1 V/Pa) reference output ratio. Microphone sensitivity $M$ depends also on frequency and the angle of incidence. The important role of receiving signal have speakers generating this signal. Sensitivity level of speaker is given by: 
+where $M$ is sensitivity [mV/Pa] and $M_0$ is the 1000 mV/Pa (1 V/Pa) reference output ratio. $M = \frac{U}{p_A}$ where U is the effective voltage microphone and $p_A$ is the sound pressure. Microphone sensitivity $M$ depends also on frequency and the angle of incidence. The important role of receiving signal have speakers generating this signal. Sensitivity level of speaker is given by: 
 
 \begin{equation}
-	L_s = 10 lg\left(\frac{p_A}{p_0}\right)dB,
+	L_s = 10 log_{10}\left(\frac{p_A}{p_0}\right)[dB],
 \end{equation}
 
 where $p_A$ is sound pressure generated by speaker powered 1V*A, $p_0$ is a reference pressure which has value $2*10^{-5}$ Pa. Frequency also has influence on sensitivity level of speaker. The next thing which should be consider is distance microphone from speaker. Too big distance and too low sensitivity of microphone could causing that microphone will not able to gain sounds wave or at least some frequencies. Sound pressure decreases proportionally with increase of distance. So when sound level $L_{1}$ is measured at a distance $r_1$, the sound level $L_2$ at the distance $r_2$ is given by:
 
 \begin{equation}
-	L_2 = L_1 + 20 lg \left(\frac{r_1}{r_2}\right)dB.
+	L_2 = L_1 + 20 log_{10} \left(\frac{r_1}{r_2}\right)[dB].
 \end{equation}
 
 These factors contribute to some probability $\bar{p}$ that adversary and participants will have this type of devices satisfying the conditions. Otherwise, adversary not being able to receive all frequencies. He will gain transcript with data having no sense. So it would be similar situation when adversary has no access to the transcript.  
@@ -578,7 +577,7 @@ These factors contribute to some probability $\bar{p}$ that adversary and partic
 Imagine that an adversary uses some kind of microphone with high sensitivity so he can capture all communication between authenticating devices. As mentioned in the previous section in order to secure against eavesdropping the key exchange protocol must use difficulty to inverse problems like the discrete logarithm problem used in the Diffie-Hellman key exchange scheme.
 
 \subsubsection{Possible vectors of attack on a sound channel}
-There are two ways to attack the sound channel. The first one is trying to generate sound wave which can drown or change sending data by one of the authenticate parties. Additionally one can in some ways force microphone to gaining frequencies in another bandwidth. Soundproofing box or case could hinder these type of attack. The second possibility to prevent against eavesdropping attack is using phenomenon of Doppler effect. Lets imagine that two mobile devices are put on some kind of tape. This tape in appropriate high speed starts randomly moving in different ways. Authenticated devices will be in the same position relative to each other but they will be constantly on the move relative to third party. Doppler effect will cause that eavesdropper will receive different frequencies than generating. For more details of Doppler effect see the section "Doppler effect" above. Good solution would be mixing the channel. For example, first phase (exchanging ephemeral keys) would be process by out-of-band channel but second phase (encrypted identity information) by commonly used radiation channel (WiFi, Bluetooth).
+There are two ways to attack the sound channel. The first one is trying to generate sound wave which can drown or change sending data by one of the authenticate parties. Additionally one can in some ways force microphone to gaining frequencies in another bandwidth. Soundproofing box or case could make it more difficult. The second possibility to prevent against eavesdropping attack is using phenomenon of Doppler effect. Lets imagine that two mobile devices are put on some kind of tape. This tape in appropriate high speed starts randomly moving in different ways. Authenticated devices will be in the same position relative to each other but they will be constantly on the move relative to third party. Doppler effect will cause that eavesdropper will receive different frequencies than generating. For more details of Doppler effect see the section "Doppler effect" above. Good solution would be mixing the channel. For example, first phase (exchanging ephemeral keys) would be process by out-of-band channel but second phase (encrypted identity information) by commonly used radiation channel (WiFi, Bluetooth).
 
 \subsubsection{Manipulating speaker}
 One of the vector attack is manipulating of the speaker. Assume that adversary want to run malicious program which take control over the speaker. He can generates waves what he wants, hence he can send malicious data and encryption due to which he can learn something about the protocol. System has to ensure that during process of key exchange any kind of background application cannot interrupt this. Android ensure security in that way but do not forget about different type of viruses. Unfortunately we do not have influence on this. Manipulation from external is based on using additionally speaker which will generate sound in used bandwidth. This method could mislead of the receiving microphone. It would be easy to disturb the signal but then recorder will gain data with no sense. Attacker would has to start generate sound in perfect time with appropriate intense. Large distance could causing that would be necessary some calculation about speed of sound. High intense (which would be needed if microphone would has to receive high frequencies from distance) could cause that signal would be audible for human, hence attacker could be exposed. Inserting authenticated parties to some soundproofing box could minimize effectiveness of these methods of attacks.
@@ -775,7 +774,7 @@ Now, algorithm tries to find the highest place in the output. The reason of gett
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.70\textwidth]{img/receiving}
-	\caption{Figure show received frequencies in time.}
+	\caption{Figure shows received frequencies in time.}
 \end{figure}
 
 Caught value is put to the memory and wait for the next result. If current frequency is different than before we change the previous frequency to one of the 64 signs. Otherwise we increment the counter. If counter gain value three (maximal number of occurrences on received character in three further buffers), counter is reset and return adequate character.
@@ -784,7 +783,6 @@ Caught value is put to the memory and wait for the next result. If current frequ
 \section{Tests}
 To all tests was used two devices: LG Swift L9 with system Android 4.1.2 and tablet Samsung GALAXY Tab 2 with Android 4.2.2. 
 
-\subsection{Receiving data in sound channel}
 During tests we have focused on below factors:
 \begin{itemize}
 \item Distance between devices.
@@ -802,7 +800,7 @@ Firstly, we have tested distance between chosen frequencies. Every character fro
 \item 100 Hz. The lowest frequency 14 kHz, the highest - 20,5 kHz.
 \item 100 Hz. The lowest frequency 14,3 kHz, the highest - 20,8 kHz.
 \end{itemize}
-We did not want to go below 10 kHz and higher frequency than 20,5 is hard to detect for mobile phone (especially for LG). Distance 100 Hz is the smallest to test because of implemented algorithm (margin of error is + - 50 Hz). During the tests, proved to be that for almost every test cases, protocol was successful in 70\%. Except the last one which always end by failure. Character which represent end of sending data has always the highest frequency. In this case it was 20,8 kHz. Only LG Swift cannot registry that frequency - Samsung dealt with it flawlessly.
+We did not want to go below 10 kHz and higher frequency than 20,5 is hard to detect for mobile phone (especially for LG). Distance 100 Hz is the smallest to test because of implemented algorithm (margin of error is + - 50 Hz). During the tests, proved to be that for almost every test cases, protocol was successful in 80\%. Except the last one which always end by failure. Character which represent end of sending data has always the highest frequency. In the last case it was 20,8 kHz. Only LG Swift cannot registry that frequency - Samsung dealt with it flawlessly. Duration of protocol is about 34,5 seconds.
 
 \vspace{5mm}
 
@@ -816,8 +814,20 @@ Measure of allowed distance between devices we have started with stick microphon
 
 The next test rely on checking influence of background sound. As we know, from the previous test, the best results were when devices were close to each other (maximal 2 cm from each other), so we have tested it in such position. At beginning we have checked it at the University during the break between lectures. A lot of students was talking and laughing but even this, did not interfere with protocol. Almost every attempt was ended with success. Then we have used third device which was generating constantly chosen frequency. We have put this device very close to the participants. First disturbing frequency was 8 kHz. Because of that bandwidth is from 10,5 to 20,25 we have suspected that 8 kHz will not cause the problem and we was right. Algorithm analyzing data has not mistaken. The problem was just after increasing disturbing frequency above 10,5 kHz, but was needed to stick speaker of this device to microphone of protocol participant. Otherwise, the protocol always ends with success. 
 
+\vspace{5mm}
+
+Volume set on 70\% on both devices was sufficient to run the protocol. Set this value below 70\% cause that character denoting start of transmission was not detected.
+
+
 
 \subsection{Summary}
+
+In the dissertation is showed that is possible to use sound channel to establish session key. There is no need Internet connection or another electromagnetic channels, so proposed protocol Anonymous Mutual Authenticated could be called even on the place without reach, using mobile devices with embedded speaker and microphone. 
+
+\vspace{5mm}
+
+There is showed that using appropriate techniques is possible to prevent from eavesdropping using e.g. Doppler effect. Mixing sound channel with another kind of channels, for sure, make it more difficult. Establishing the authentication could be much faster if would be use client-server model. Computer as a server would analyze data faster and results would be better.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BIBLIOGRAFIA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

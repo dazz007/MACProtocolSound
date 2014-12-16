@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.15)  16 DEC 2014 00:02
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.15)  16 DEC 2014 22:34
 entering extended mode
 **AKESound.tex
 ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.tex"
@@ -627,24 +627,24 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 
 Writing index file AKESound.idx
 ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 101.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 100.
 LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 10
-1.
+0.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omspzccm.fd"
 File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
 )
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -696,18 +696,18 @@ LaTeX Font Info:    ... okay on input line 101.
 
 \c@lstlisting=\count140
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 109.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 108.
 LaTeX Font Info:    Font shape `T1/ptm/bx/sc' in size <12> not available
-(Font)              Font shape `T1/ptm/b/sc' tried instead on input line 109.
+(Font)              Font shape `T1/ptm/b/sc' tried instead on input line 108.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 111.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 110.
 LaTeX Font Info:    Font shape `T1/ptm/bx/sc' in size <24.88> not available
-(Font)              Font shape `T1/ptm/b/sc' tried instead on input line 111.
+(Font)              Font shape `T1/ptm/b/sc' tried instead on input line 110.
 [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 126.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 125.
 
 ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.toc"
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
@@ -752,96 +752,89 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
  [1])
 \tf@toc=\write4
 
-[2] [3] [4]
-
-LaTeX Warning: Citation `CMQV' on page 5 undefined on input line 191.
-
-
-LaTeX Warning: Citation `cankraw1' on page 5 undefined on input line 191.
-
-[5]
+[2] [3] [4] [5]
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 204.
+(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 203.
 
  <img/AMA_protocol.png, id=23, 847.66687pt x 382.42876pt>
 File: img/AMA_protocol.png Graphic file (type png)
 
 <use img/AMA_protocol.png>
-Package pdftex.def Info: img/AMA_protocol.png used on input line 213.
+Package pdftex.def Info: img/AMA_protocol.png used on input line 212.
 (pdftex.def)             Requested size: 479.99878pt x 216.55115pt.
 
-Overfull \hbox (79.99878pt too wide) in paragraph at lines 213--214
+Overfull \hbox (79.99878pt too wide) in paragraph at lines 212--213
  [][] 
  []
 
 [6 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/AMA_protocol.png>]
 [7] [8]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 9.85492pt on input line 257.
+(Font)              scaled to size 9.85492pt on input line 256.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 15.55188pt on input line 257.
+(Font)              scaled to size 15.55188pt on input line 256.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 261.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 260.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 9.85492pt on input line 261.
+(Font)              scaled to size 9.85492pt on input line 260.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 261.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 260.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 8.99994pt on input line 261.
+(Font)              scaled to size 8.99994pt on input line 260.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.09995pt on input line 261.
+(Font)              scaled to size 8.09995pt on input line 260.
 
-Underfull \hbox (badness 10000) in paragraph at lines 261--261
+Underfull \hbox (badness 10000) in paragraph at lines 260--260
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 261--261
+Underfull \hbox (badness 10000) in paragraph at lines 260--260
 \T1/phv/m/n/9 Alice starts the pro-to-col
  []
 
 <img/couple.png, id=40, 397.485pt x 259.7203pt>
 File: img/couple.png Graphic file (type png)
  <use img/couple.png>
-Package pdftex.def Info: img/couple.png used on input line 261.
+Package pdftex.def Info: img/couple.png used on input line 260.
 (pdftex.def)             Requested size: 108.00168pt x 76.81892pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 262--263
+Underfull \hbox (badness 10000) in paragraph at lines 261--262
 
  []
 
 
-Underfull \hbox (badness 7814) in paragraph at lines 262--263
+Underfull \hbox (badness 7814) in paragraph at lines 261--262
 \T1/phv/m/n/9 Bob starts pro-to-col as re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 266--266
+Underfull \hbox (badness 10000) in paragraph at lines 265--265
 
  []
 
 <img/signal1.png, id=41, 397.485pt x 259.7203pt>
 File: img/signal1.png Graphic file (type png)
  <use img/signal1.png>
-Package pdftex.def Info: img/signal1.png used on input line 266.
+Package pdftex.def Info: img/signal1.png used on input line 265.
 (pdftex.def)             Requested size: 108.00168pt x 76.81892pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 268--269
+Underfull \hbox (badness 10000) in paragraph at lines 267--268
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 268--269
+Underfull \hbox (badness 10000) in paragraph at lines 267--268
 \T1/phv/m/n/9 Bob re-ceives ephemeral
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--272
+Underfull \hbox (badness 10000) in paragraph at lines 271--271
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--272
+Underfull \hbox (badness 10000) in paragraph at lines 271--271
 \T1/phv/m/n/9 Alice re-ceives ephemeral
  []
 
@@ -849,74 +842,74 @@ Underfull \hbox (badness 10000) in paragraph at lines 272--272
 File: img/second_side.png Graphic file (type png)
 
 <use img/second_side.png>
-Package pdftex.def Info: img/second_side.png used on input line 272.
+Package pdftex.def Info: img/second_side.png used on input line 271.
 (pdftex.def)             Requested size: 107.9974pt x 76.82277pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
+Underfull \hbox (badness 10000) in paragraph at lines 273--274
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
+Underfull \hbox (badness 10000) in paragraph at lines 273--274
 \T1/phv/m/n/9 Bob gen-er-ates ephemeral
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--278
+Underfull \hbox (badness 10000) in paragraph at lines 277--277
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--278
+Underfull \hbox (badness 10000) in paragraph at lines 277--277
 \T1/phv/m/n/9 Alice uses her and Bob's
  []
 
 
-Underfull \hbox (badness 4859) in paragraph at lines 278--278
+Underfull \hbox (badness 4859) in paragraph at lines 277--277
 \T1/phv/m/n/9 ephemeral keys to com-pute
  []
 
 File: img/signal1.png Graphic file (type png)
 <use img/signal1.png>
-Package pdftex.def Info: img/signal1.png used on input line 278.
+Package pdftex.def Info: img/signal1.png used on input line 277.
 (pdftex.def)             Requested size: 108.00168pt x 76.81892pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
+Underfull \hbox (badness 10000) in paragraph at lines 279--280
 \T1/phv/b/n/10 Receive and de-crypt
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
+Underfull \hbox (badness 10000) in paragraph at lines 279--280
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
+Underfull \hbox (badness 10000) in paragraph at lines 279--280
 \T1/phv/m/n/9 Bob re-ceives and de-crypts
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 284--284
+Underfull \hbox (badness 10000) in paragraph at lines 283--283
 \T1/phv/b/n/10 Receive and de-crypt
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 284--284
+Underfull \hbox (badness 10000) in paragraph at lines 283--283
 
  []
 
 
-Underfull \hbox (badness 5331) in paragraph at lines 284--284
+Underfull \hbox (badness 5331) in paragraph at lines 283--283
 \T1/phv/m/n/9 Alice re-ceives and de-crypts
  []
 
 
-Underfull \hbox (badness 1132) in paragraph at lines 284--284
+Underfull \hbox (badness 1132) in paragraph at lines 283--283
 \T1/phv/m/n/9 Bobs au-then-ti-ca-tion data. If
  []
 
 
-Underfull \hbox (badness 1152) in paragraph at lines 284--284
+Underfull \hbox (badness 1152) in paragraph at lines 283--283
 \T1/phv/m/n/9 it's not valid, she aborts the
  []
 
@@ -924,30 +917,30 @@ Underfull \hbox (badness 1152) in paragraph at lines 284--284
 File: img/session_key_est.png Graphic file (type png)
 
 <use img/session_key_est.png>
-Package pdftex.def Info: img/session_key_est.png used on input line 284.
+Package pdftex.def Info: img/session_key_est.png used on input line 283.
 (pdftex.def)             Requested size: 108.00294pt x 142.26404pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--288
+Underfull \hbox (badness 10000) in paragraph at lines 286--287
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--288
+Underfull \hbox (badness 10000) in paragraph at lines 286--287
 \T1/phv/m/n/9 Bob ver-i-fies au-then-ti-ca-tion
  []
 
 
-Underfull \hbox (badness 1057) in paragraph at lines 287--288
+Underfull \hbox (badness 1057) in paragraph at lines 286--287
 \T1/phv/m/n/9 data re-ceived from Al-ice. If
  []
 
 
-Underfull \hbox (badness 5175) in paragraph at lines 287--288
+Underfull \hbox (badness 5175) in paragraph at lines 286--287
 \T1/phv/m/n/9 it's valid, he gen-er-ates his
  []
 
 
-Overfull \hbox (5.88582pt too wide) in paragraph at lines 256--289
+Overfull \hbox (5.88582pt too wide) in paragraph at lines 255--288
  [] 
  []
 
@@ -963,21 +956,21 @@ Sound/praca magisterska/img/session_key_est.png>]
 File: img/longitudinal_wave.png Graphic file (type png)
 
 <use img/longitudinal_wave.png>
-Package pdftex.def Info: img/longitudinal_wave.png used on input line 301.
+Package pdftex.def Info: img/longitudinal_wave.png used on input line 300.
 (pdftex.def)             Requested size: 179.99878pt x 53.31483pt.
 
 <img/frequency_1Hz.png, id=54, 347.79938pt x 161.10187pt>
 File: img/frequency_1Hz.png Graphic file (type png)
 
 <use img/frequency_1Hz.png>
-Package pdftex.def Info: img/frequency_1Hz.png used on input line 307.
+Package pdftex.def Info: img/frequency_1Hz.png used on input line 306.
 (pdftex.def)             Requested size: 179.99878pt x 83.37521pt.
 
 <img/frequency_5Hz.png, id=55, 347.79938pt x 161.10187pt>
 File: img/frequency_5Hz.png Graphic file (type png)
 
 <use img/frequency_5Hz.png>
-Package pdftex.def Info: img/frequency_5Hz.png used on input line 308.
+Package pdftex.def Info: img/frequency_5Hz.png used on input line 307.
 (pdftex.def)             Requested size: 179.99878pt x 83.37521pt.
  [10 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/longitudinal_wave.p
 ng> <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/frequency_1Hz.png> <
@@ -986,13 +979,13 @@ E:/GitHubFinal/MACProtocolSound/praca magisterska/img/frequency_5Hz.png>] [11]
 File: img/sines.png Graphic file (type png)
 
 <use img/sines.png>
-Package pdftex.def Info: img/sines.png used on input line 349.
+Package pdftex.def Info: img/sines.png used on input line 348.
 (pdftex.def)             Requested size: 200.0pt x 149.73413pt.
  <img/both_real_imag.png, id=68, 422.32782pt x 316.18124pt>
 File: img/both_real_imag.png Graphic file (type png)
 
 <use img/both_real_imag.png>
-Package pdftex.def Info: img/both_real_imag.png used on input line 358.
+Package pdftex.def Info: img/both_real_imag.png used on input line 357.
 (pdftex.def)             Requested size: 259.99756pt x 194.65535pt.
  [12 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/sines.png> <E:/GitH
 ubFinal/MACProtocolSound/praca magisterska/img/both_real_imag.png>] <img/contin
@@ -1000,13 +993,13 @@ ues.png, id=77, 422.32782pt x 316.18124pt>
 File: img/continues.png Graphic file (type png)
 
 <use img/continues.png>
-Package pdftex.def Info: img/continues.png used on input line 370.
+Package pdftex.def Info: img/continues.png used on input line 369.
 (pdftex.def)             Requested size: 240.00244pt x 179.68483pt.
  <img/descrete.png, id=78, 422.32782pt x 316.18124pt>
 File: img/descrete.png Graphic file (type png)
 
 <use img/descrete.png>
-Package pdftex.def Info: img/descrete.png used on input line 377.
+Package pdftex.def Info: img/descrete.png used on input line 376.
 (pdftex.def)             Requested size: 240.00244pt x 179.68483pt.
  [13 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/continues.png>] [14
  <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/descrete.png>] <img/rec
@@ -1014,14 +1007,14 @@ tangular_window.png, id=87, 243.15843pt x 247.67531pt>
 File: img/rectangular_window.png Graphic file (type png)
 
 <use img/rectangular_window.png>
-Package pdftex.def Info: img/rectangular_window.png used on input line 395.
+Package pdftex.def Info: img/rectangular_window.png used on input line 394.
 (pdftex.def)             Requested size: 240.00244pt x 244.45857pt.
 
 <img/hanning_window.png, id=88, 232.61906pt x 259.7203pt>
 File: img/hanning_window.png Graphic file (type png)
 
 <use img/hanning_window.png>
-Package pdftex.def Info: img/hanning_window.png used on input line 413.
+Package pdftex.def Info: img/hanning_window.png used on input line 412.
 (pdftex.def)             Requested size: 240.00244pt x 267.97064pt.
  [15 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/rectangular_window.
 png>] [16 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/hanning_window
@@ -1030,16 +1023,17 @@ png>] [16 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/hanning_window
 File: img/architecture.png Graphic file (type png)
 
 <use img/architecture.png>
-Package pdftex.def Info: img/architecture.png used on input line 622.
+Package pdftex.def Info: img/architecture.png used on input line 621.
 (pdftex.def)             Requested size: 400.0pt x 150.22931pt.
- [25 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/architecture.png>] 
+ [25]
 <img/Design.png, id=127, 150.5625pt x 412.54124pt>
 File: img/Design.png Graphic file (type png)
-
-<use img/Design.png>
-Package pdftex.def Info: img/Design.png used on input line 636.
+ <use img/Design.png>
+Package pdftex.def Info: img/Design.png used on input line 635.
 (pdftex.def)             Requested size: 120.00122pt x 328.81853pt.
- [26 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/Design.png>]
+
+[26 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/architecture.png>]
+[27 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/Design.png>]
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
 File: lstlang1.sty 2014/09/06 1.5e listings language file
 )
@@ -1050,30 +1044,30 @@ File: lstlang1.sty 2014/09/06 1.5e listings language file
 File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
 )
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <8> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 663.
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 662.
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 670.
- [27]
-[28]
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 669.
+ [28]
+[29]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 745.
+(amsmath)                 on input line 744.
 
-[29] <img/peaks_1.png, id=143, 291.33844pt x 231.11343pt>
+<img/peaks_1.png, id=143, 291.33844pt x 231.11343pt>
 File: img/peaks_1.png Graphic file (type png)
-
-<use img/peaks_1.png>
-Package pdftex.def Info: img/peaks_1.png used on input line 766.
+ <use img/peaks_1.png>
+Package pdftex.def Info: img/peaks_1.png used on input line 765.
 (pdftex.def)             Requested size: 179.99878pt x 142.79161pt.
- <img/receiving.png, id=144, 534.49687pt x 453.19313pt>
+
+[30] <img/receiving.png, id=148, 534.49687pt x 453.19313pt>
 File: img/receiving.png Graphic file (type png)
 
 <use img/receiving.png>
-Package pdftex.def Info: img/receiving.png used on input line 777.
+Package pdftex.def Info: img/receiving.png used on input line 776.
 (pdftex.def)             Requested size: 279.99878pt x 237.41823pt.
- [30 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/peaks_1.png>] [31 <
-E:/GitHubFinal/MACProtocolSound/praca magisterska/img/receiving.png>] [32]
+ [31 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/peaks_1.png>] [32 <
+E:/GitHubFinal/MACProtocolSound/praca magisterska/img/receiving.png>] [33]
 ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.bbl"
 Underfull \hbox (badness 6032) in paragraph at lines 4--7
 []\T1/ptm/m/n/10.95 The de-screte trans-form fourier (dft): Def-i-ni-tion and n
@@ -1104,55 +1098,52 @@ Underfull \hbox (badness 2012) in paragraph at lines 28--30
 ww . fizykon . org / akustyka / akustyka _$
  []
 
-[33]
-Underfull \hbox (badness 2856) in paragraph at lines 66--69
-[]\T1/ptm/m/n/10.95 Hugo Krawczyk.  |   []   |   []   |   []   |   []   |   [] 
-  |   []
+[34] [35]
+Underfull \hbox (badness 7685) in paragraph at lines 128--131
+[]\T1/ptm/m/n/10.95 Kazuhisa Miyashita Ake-haru Oku-mura Yoshi-aki Yoshida Shin
+-taro Takeda,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 102--106
+Underfull \hbox (badness 10000) in paragraph at lines 137--141
 []\T1/ptm/m/n/10.95 Mike Szczys.  Laser mic makes eaves-drop-ping re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 102--106
+Underfull \hbox (badness 10000) in paragraph at lines 137--141
 \T1/ptm/m/n/10.95 mark-ably sim-ple.  $\T1/pcr/m/n/10.95 http : / / hackaday . 
 com / 2010 / 09 / 25 /$
  []
 
-) [34] ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.aux")
-
-LaTeX Warning: There were undefined references.
-
- ) 
+) [36] ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.aux") ) 
 Here is how much of TeX's memory you used:
- 7827 strings out of 493921
- 102073 string characters out of 3144875
- 355351 words of memory out of 3000000
- 10913 multiletter control sequences out of 15000+200000
+ 7829 strings out of 493921
+ 102078 string characters out of 3144875
+ 342397 words of memory out of 3000000
+ 10915 multiletter control sequences out of 15000+200000
  83902 words of font info for 105 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 33i,14n,58p,1287b,1655s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/
-fonts/type1/urw/courier/ucrro8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
-pe1/urw/helvetic/uhvb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/
-helvetic/uhvr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/symbol/u
-syr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:
-/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/M
-iKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/
-fonts/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on AKESound.pdf (35 pages, 457216 bytes).
+ 33i,14n,58p,1287b,1212s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/
+Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)
+/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files (x86)/MiKTeX 2
+.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
+type1/urw/courier/ucrro8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/ur
+w/helvetic/uhvb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/helvet
+ic/uhvr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/symbol/usyr.pf
+b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 
+2.9/fonts/type1/urw/times/utmri8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
+type1/urw/zapfchan/uzcmi8a.pfb>
+Output written on AKESound.pdf (37 pages, 461117 bytes).
 PDF statistics:
- 214 PDF objects out of 1000 (max. 8388607)
+ 223 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

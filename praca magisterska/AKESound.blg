@@ -1,39 +1,57 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: AKESound.aux
 The style file: plain.bst
 Database file #1: AKESound.bib
-Warning--I didn't find a database entry for "CMQV"
-Warning--I didn't find a database entry for "cankraw1"
-Too many commas in name 1 of "L. Hanzlik, K. Kluczniak, Ł. Krzywiecki, M. Kutyłowski" for entry AMA
+I was expecting a `,' or a `}'---line 76 of file AKESound.bib
+ : 
+ : PAGES = {},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Too many commas in name 1 of "Ming Li, Shucheng Yu, Joshua D. Guttman, Wenjing Lou, Kui Ren" for entry ad_hoc
 while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Ming Li, Shucheng Yu, Joshua D. Guttman, Wenjing Lou, Kui Ren" for entry ad_hoc
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Shlomi Dolev, Łukasz Krzywiecki, Nisha Panwar, Michael Segal" for entry veh
+while executing---line 1049 of file plain.bst
+Warning--to sort, need author or key in vibrat
 Warning--to sort, need author or key in sound_intensity
 Warning--to sort, need author or key in decibels
 Warning--to sort, need author or key in sound_speed
+Too many commas in name 1 of "Shintaro Takeda, Ikuharu Morioka, Kazuhisa Miyashita, Akeharu Okumura, Yoshiaki Yoshida and Kenji Matsumoto" for entry limit_sound
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Shintaro Takeda, Ikuharu Morioka, Kazuhisa Miyashita, Akeharu Okumura, Yoshiaki Yoshida and Kenji Matsumoto" for entry limit_sound
+while executing---line 1049 of file plain.bst
 Warning--to sort, need author or key in fourier
-Warning--to sort, need author or key in vibrat
 Warning--to sort, need author or key in NIST
 Warning--to sort, need author or key in JNI
 Warning--to sort, need author or key in minim_dft
 Warning--empty author in vibrat
 Warning--empty journal in vibrat
 Warning--empty year in vibrat
-Warning--empty publisher in cryptography
-Warning--empty publisher in NAXOS
+Warning--empty year in cryptography
 Warning--empty year in NAXOS
-Warning--empty publisher in HMQV
-Warning--empty year in HMQV
-Warning--empty publisher in sign_mac
-Warning--empty year in sign_mac
-Too many commas in name 1 of "L. Hanzlik, K. Kluczniak, Ł. Krzywiecki, M. Kutyłowski" for entry AMA
-while executing---line 1090 of file plain.bst
-Warning--empty publisher in AMA
 Warning--empty year in AMA
-Warning--empty publisher in key_exchange
-Warning--empty publisher in EKE2
-Warning--empty publisher in EKE
+Warning--empty year in sib
+Warning--empty year in HMQV
+Warning--empty year in sign_mac
+Too many commas in name 1 of "Ming Li, Shucheng Yu, Joshua D. Guttman, Wenjing Lou, Kui Ren" for entry ad_hoc
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "Ming Li, Shucheng Yu, Joshua D. Guttman, Wenjing Lou, Kui Ren" for entry ad_hoc
+while executing---line 1090 of file plain.bst
+Warning--empty publisher in ad_hoc
+Warning--empty year in ad_hoc
+Warning--empty year in QRcode
+Too many commas in name 1 of "Shintaro Takeda, Ikuharu Morioka, Kazuhisa Miyashita, Akeharu Okumura, Yoshiaki Yoshida and Kenji Matsumoto" for entry limit_sound
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "Shintaro Takeda, Ikuharu Morioka, Kazuhisa Miyashita, Akeharu Okumura, Yoshiaki Yoshida and Kenji Matsumoto" for entry limit_sound
+while executing---line 1090 of file plain.bst
 Warning--empty publisher in limit_sound
 Warning--empty year in limit_sound
+Too many commas in name 1 of "Shlomi Dolev, Łukasz Krzywiecki, Nisha Panwar, Michael Segal" for entry veh
+while executing---line 1090 of file plain.bst
+Warning--empty publisher in veh
+Warning--empty year in veh
 Warning--empty journal in security_canetti_krawczyk
 Warning--empty year in security_canetti_krawczyk
 Warning--empty journal in efficient_eck
 Warning--empty year in efficient_eck
-(There were 2 error messages)
+(There were 11 error messages)

@@ -37,8 +37,8 @@ Vibrations usage in out-of-band channel.
 
 \bibitem{cryptography}
 Scott A.~Vanstone Alfred J.~Menezes, Paul C. van~Oorschot.
-\newblock {\em Handbook of Applied Cryptography}.
-\newblock 1996.
+\newblock {\em \textit{Handbook of Applied Cryptography}}.
+\newblock CRC Press.
 
 \bibitem{android_sec}
 Android.
@@ -46,7 +46,18 @@ Android.
 
 \bibitem{NAXOS}
 Anton~Mityagin Brian~LaMacchia, Kristin~Lauter.
-\newblock {\em Stronger Security of Authenticated Key Exchange}.
+\newblock {\em \textit{Stronger Security of Authenticated Key Exchange}}.
+\newblock Microsoft Research, 1 Microsoft Way, Redmond, WA.
+
+\bibitem{chirp}
+Chirp.
+\newblock \url{http://chirp.io/}.
+
+\bibitem{AMA}
+Lucjan Hanzlik, Kamil Kluczniak, Łukasz Krzywiecki, and Mirosław Kutyłowski.
+\newblock {\em \textit{Mutual Chip Authentication}}.
+\newblock Faculty of Fundamental Problems of Technology, Wrocław University of
+  Technology.
 
 \bibitem{base_64}
 Robert Harder.
@@ -55,48 +66,72 @@ Robert Harder.
 
 \bibitem{fast_fourier}
 Steve Haynal and Heidi Haynal.
-\newblock Generating and searching families of fft algorithms.
+\newblock \textit{Generating and Searching Families of FFT Algorithms}.
 \newblock \url{http://jsat.ewi.tudelft.nl/content/volume7/JSAT7_13_Haynal.pdf}.
+
+\bibitem{sib}
+M.K.~Reiter J.M~McCune, A.~Perrig.
+\newblock {\em Seeing-is-believing: using camera phones for human-verifiable
+  authentication}.
+\newblock Carnegie Mellon Univ., Pittsburgh, PA, USA.
 
 \bibitem{HMQV}
 Hugo Krawczyk.
-\newblock {\em HMQV: A High-Performance Secure Diffie-Hellman Protocol}.
+\newblock {\em \textit{HMQV: A High-Performance Secure Diffie-Hellman
+  Protocol}}.
+\newblock IBM T.J.Watson Research Center, Yorktown Heights, NY.
 
 \bibitem{sign_mac}
 Hugo Krawczyk.
-\newblock {\em SIGMA the 'SIGn-and-MAc' Approach to Authenticated
-  Diffie-Hellman and its Use in the IKE Protocols}.
+\newblock {\em \textit{SIGMA the 'SIGn-and-MAc' Approach to Authenticated
+  Diffie-Hellman and its Use in the IKE Protocols}}.
+\newblock EE Department, Technion, Haifa, Israel, and IBM T.J. Watson Research
+  Center.
 
 \bibitem{KEA}
 Anton~Mityagin Kristin~Lauter.
-\newblock Security analysis of kea authenticated key exchange protocol.
+\newblock \textit{Security Analysis of KEA Authenticated Key Exchange
+  Protocol}.
 
-\bibitem{AMA}
-Ł. Krzywiecki M.~Kutyłowski L.~Hanzlik, K.~Kluczniak.
-\newblock {\em Mutual Chip Authentication}.
+\bibitem{ad_hoc}
+Joshua D. Guttman Wenjing Lou Kui~Ren Ming~Li, Shucheng~Yu.
+\newblock {\em Secure Ad Hoc Trust Initialization and Key Management in
+  Wireless Body Area Networks}.
 
 \bibitem{QRcode}
 Pawel Nuzka.
-\newblock Authentication and communication protocol for mobile devices in
-  optical channel.
+\newblock {\em \textit{Authentication and communication protocol for mobile
+  devices in optical channel}}.
+\newblock Faculty of Fundamental Problems of Technology, Wroclaw University of
+  Technology.
 
 \bibitem{key_exchange}
 Hugo~Krawczyk Ran~Canetti.
-\newblock {\em Analysis of key-exchange protocols and their use for building
-  secure channels. Advances in Cryptology}.
-\newblock 2001.
+\newblock {\em \textit{Analysis of key-exchange protocols and their use for
+  building secure channels. Advances in Cryptology}}.
+\newblock EUROCRYPT, 2001.
 
 \bibitem{EKE2}
 M.~Merrit S.~Bellovin.
-\newblock {\em Encrypted key exchange: Password-based protocols secure against
-  dictionary attacks.}
-\newblock 1992.
+\newblock {\em \textit{Encrypted key exchange: Password-based protocols secure
+  against dictionary attacks.}}
+\newblock In Proceedings of the IEEE Symposium on Security and Privacy, 1992.
 
 \bibitem{EKE}
 M.~Merrit S.~Bellovin.
-\newblock {\em Augmented encrypted key exchange: a password-based protocol
-  secure against dictionary atttacks and password file compromise}.
-\newblock 1993.
+\newblock {\em \textit{Augmented encrypted key exchange: a password-based
+  protocol secure against dictionary atttacks and password file compromise}}.
+\newblock In Proceedings of the ACM Conference on Computer and Communications
+  Security (CCS), 1993.
+
+\bibitem{limit_sound}
+Kazuhisa Miyashita Akeharu Okumura Yoshiaki~Yoshida Shintaro~Takeda,
+  Ikuharu~Morioka and Kenji Matsumoto.
+\newblock {\em Age variation in the upper limit of hearing}.
+
+\bibitem{veh}
+Nisha Panwar Michael~Segal Shlomi~Dolev, Łukasz~Krzywiecki.
+\newblock {\em Certificating Vehicle Public Key with Vehicle Attributes}.
 
 \bibitem{laser_mic}
 Mike Szczys.
@@ -104,22 +139,18 @@ Mike Szczys.
 \newblock
   \url{http://hackaday.com/2010/09/25/laser-mic-makes-eavesdropping-remarkably-simple/}.
 
-\bibitem{limit_sound}
-Shintaro Takeda, Ikuharu Morioka, Kazuhisa Miyashita, Akeharu Okumura, Yoshiaki
-  Yoshida, and Kenji Matsumoto.
-\newblock {\em Age variation in the upper limit of hearing}.
-
-\bibitem{cankraw2}
-SaanJae~Moon Xinghua~Li, Jianfeng~Ma.
-\newblock On the security of cenetti-krawczyk model.
+\bibitem{CMQV}
+Berkant Ustaoglu.
+\newblock \textit{Obtaining a secure and efficient key agreement protocol from
+  (H)MQV and NAXOS}.
 
 \bibitem{security_canetti_krawczyk}
 SaanJae~Moon Xinghua~Li, Jianfeng~Ma.
-\newblock On the security of cenetti-krawczyk model.
+\newblock \textit{On the security of Cenetti-Krawczyk model}.
 
 \bibitem{efficient_eck}
 Zheng Yang.
-\newblock Efficient eck-secure authenticated key exchange protocols in the
-  standard model.
+\newblock \textit{Efficient eCK-secure Authenticated Key Exchange Protocols in
+  the Standard Model}.
 
 \end{thebibliography}
