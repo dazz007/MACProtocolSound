@@ -22,6 +22,7 @@
 \usepackage{epsfig}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{tabularx}
 \usepackage{amsthm}
 \usepackage{booktabs}
 \usepackage{stmaryrd}
@@ -62,7 +63,7 @@
 			tabsize=2}
 
 \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
-
+\newcolumntype{L}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}%
 
 \selectlanguage{english}
 
@@ -207,13 +208,42 @@ AMA originally was designed to anonymous authenticate between smart cards. It is
 \item Deniability - no one of the participants can convince third party that he participate in protocol.
 \end{itemize}
 
+\newcommand{\newCA}{$c_A$}
+\newcommand{\newCB}{$c_B$}
+\newcommand{\newEncA}{$Enc_{K_A}(cert_A,r_A)$}
+\newcommand{\newEncB}{$Enc_{K_B}(cert_B,r_B)$}
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=1.2\textwidth]{img/AMA_protocol}
-	\caption{Protocol description - Anonymous Mutual Authentication. Figure from source \cite{AMA}.}
-	\label{fig:F8}
-\end{figure}
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ | p{6.5cm} p{3.5cm} p{6.5cm} | }
+		\hline
+		Alice &  & Bob \\
+		\hline
+		$x_A$ - private key & & $x_B$ - private key \\
+		$y_A = g^{x_A}$ - public key & & $y_B = g^{x_B}$ - public key \\
+		$cert_A$ - certificate for $y_A$ & & $cert_B$ - certificate for $y_B$ \\
+		\hline
+		& MAIN PROCEDURE & \\
+		\hline
+		choose $a$ at random & & choose $b$ at random \\
+		$h_A := H(a)$ & & $h_B := H(b)$ \\
+		$c_A := g^{h_A}$ & $\xrightarrow{\text{\hspace{1cm}\text{\newCA}\hspace{1cm}}}$ & $c_B := g^{h_B}$ \\
+		& $\xleftarrow{\text{\hspace{1cm}\text{\newCB}\hspace{1cm}}}$ & \\
+		$K := c^{h_A}_{B}$ & & $K := c_{A}^{h_B}$ \\
+		$K_A := H(K,1), K_B := H(K,2)$ & & $K_A := H(K,1), K_B := H(K,2)$  \\
+		$K'_A := H(K,3), K'_B := H(K,4)$ & & $K'_A := H(K,3), K'_B := H(K,4)$ \\
+		& $\xrightarrow{\text{\hspace{0.5cm}\text{\newEncA}\hspace{0.5cm}}}$ & check $cert_A$, proceed with random values if $r_A \neq H(y_{A}^{h_B}, K'_A)$ \\
+		& $\xleftarrow{\text{\hspace{0.5cm}\text{\newEncB}\hspace{0.5cm}}}$ & $r_B := H(c_{A}^{x_B},K'_B)$ \\
+		check $cert_B$, proceed with random values if $r_B \neq H(y_{B}^{h_A}, K'_B)$ & & \\
+		$K_{session}:= H(K,5)$ & & $K_{session}:= H(K,5)$ \\
+		\hline
+	\end{tabular}
+	\label{tab:singlebest}
+		
+\end{table}
+\caption{Protocol description - Anonymous Mutual Authentication. Figure from source \cite{AMA}.}
+\end{figure}
 Scheme of protocol is shown at the figure \ref{fig:F8}. In the scheme are used the following notations:
 \begin{itemize}
 \item \textit{Enc} is a symmetric encryption function. \textit{$Enc_K(M)$} means encryption of $M$ using key $K$. 
