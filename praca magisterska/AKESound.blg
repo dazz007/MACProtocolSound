@@ -21,6 +21,7 @@ while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Shintaro Takeda, Ikuharu Morioka, Kazuhisa Miyashita, Akeharu Okumura, Yoshiaki Yoshida and Kenji Matsumoto" for entry limit_sound
 while executing---line 1049 of file plain.bst
 Warning--to sort, need author or key in fourier
+Warning--to sort, need author or key in chart_eng
 Warning--to sort, need author or key in NIST
 Warning--to sort, need author or key in JNI
 Warning--to sort, need author or key in minim_dft

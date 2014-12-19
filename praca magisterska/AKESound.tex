@@ -29,6 +29,7 @@
 \usepackage{url}
 \usepackage{longtable}
 \usepackage[figuresright]{rotating}
+\usepackage{verbatim}
 %\usepackage[MeX]{polski}
 %\usepackage[cp1250]{inputenc}
 
@@ -167,6 +168,23 @@ Mentioned method is secure against eavesdropping, however it does not authentica
 To exchange data are used mainly electromagnetic radiation channels like Bluetooth, IRDa or Internet. We have wanted to check another options to exchanging data between devices, which does not use electromagnetic radiation. We have decided to study sound channel.
 
 
+
+
+%\subsection{Out-of-band channel}
+
+
+
+\subsection{AKE in out of-band channel}
+Every mobile device have speaker and microphone. That is why the sound channel seems a reasonable choice as an out-of-band key establishment channel for mobile devices. Internet is not always available, so using this type of channel could be good alternative. Devices are still improving, hence speakers and microphones have better quality with each next generation. This paper is proof of concept and shows that it is possible to use this channel, at least partially, in these kind of applications. Each of the authenticating parties sequentially use their microphones and speaker to exchange data.
+
+
+%\subsection{Related work}
+
+
+\section{Analysis of the problem}
+
+In this section we will focus on problem of establishing secure connection in insecure channel between two parties. At first the parties need to authenticate each other and then create common session key, which will be needed to symmetric encryption of the communication. We describe the adversarial model where is assumed that each of the parties secretly holds a long-term private key that enables unique authentication of this party. There is also a trusted mechanism for binding identities with public keys. The private and public key with proper length are bounded in such way that obtain private key from public key is very hard to do. The communication channel can be completely controlled by an adversary that can intercept, delete, delay, modify or inject messages at will. There is a relation between the requirements of the security model and a well-defined attack scenario. In the second part of this section are described necessary issues to create sound channel.
+
 \subsection{Authenticated Key Agreement}
 
 Authenticated Key Agreement Protocols base on public key cryptography and trusted authorities which are the most common solution being used. In public key cryptography are required two separate keys, where one is private and second one is public.
@@ -175,24 +193,8 @@ Authenticated Key Agreement Protocols base on public key cryptography and truste
 
 AKE protocols have to ensure that attacker can not obtain any information about session key from the protocol transcript. AKE protocols have to be resistant to exposed session transcript. Adversary should not be able to taking control over the communication channel having this knowledge.
 
-\subsection{Out-of-band channel}
-Beyond the security of AKE protocol, we wanted to study not typical communication channel to establish session key, which could hinder the manipulation in protocol transcript.
-
-\vspace{5mm}
-
-During the secure exchange data are needed two channels for communication between two parties. First channel, to establish session keys, should be difficult to eavesdrop and taking over control for adversary. The second channel can be insecure because established session key should ensure that content of protected data intended for one of the parties can be encrypt only by the party participated in protocol. For the key establishment, in our work, was chosen sound channel. We are aware there exist a lot of different type of microphone which are able to eavesdropping the sound waves. However, we will introduce some methods which could hinder in activity of attacker. The second channel for secure communication is wireless.
-
-
-\subsection{AKE in out of-band channel}
-Every mobile device have speaker and microphone. That is why the sound channel seems a reasonable choice as an out-of-band key establishment channel for mobile devices. Internet is not always available, so using this type of channel could be good alternative. Devices are still improving, hence speakers and microphones have better quality with each next generation. This paper is proof of concept and shows that it is possible to use this channel, at least partially, in these kind of applications. Each of the authenticating parties sequentially use their microphones and speaker to exchange data.
-
-
-\subsection{Related work}
 There are several ways to establish session key. To prevent MITM attacks both parties have to authenticate to each other. There are many solutions that address this problem. One is to use shared secret password which prevents MITM as in EKE protocol \cite{EKE}. It was refined by many researches \cite{EKE, EKE2}. The requirement of pre-shared password between the parties might be impractical in many scenarios. There is also a family of Authenticated Key Agreement protocols (AKE) like Sigma \cite{sign_mac}, HMQV \cite{HMQV}, KEA \cite{KEA}, CMQV \cite{CMQV}, Naxos and Naxos plus like protocols \cite{AMA, NAXOS}. The security requirements and security model definition in AKE protocols were proposed by Cenetti and Krawczyk in \cite{security_canetti_krawczyk, key_exchange}. In this paper we focus on usage of optical channel for authentication thus in practice any key agreement protocol that is secure against active adversary could be used. Out-of-band channels for key agreement protocols are discussed in \cite{chirp, sib, ad_hoc, veh, vibrat}.
 
-\section{Analysis of the problem}
-
-In this section we will focus on problem of establishing secure connection in insecure channel between two parties. At first the parties need to authenticate each other and then create common session key, which will be needed to symmetric encryption of the communication. We describe the adversarial model where is assumed that each of the parties secretly holds a long-term private key that enables unique authentication of this party. There is also a trusted mechanism for binding identities with public keys. The private and public key with proper length are bounded in such way that obtain private key from public key is very hard to do. The communication channel can be completely controlled by an adversary that can intercept, delete, delay, modify or inject messages at will. There is a relation between the requirements of the security model and a well-defined attack scenario. In the second part of this section are described necessary issues to create sound channel.
 
 \subsection{Anonymous Mutual Authentication}
 To establish session keys we used in our prototype Anonymous Mutual Authentication protocol which base on Diffie-Hellman key exchange. 
@@ -243,8 +245,9 @@ AMA originally was designed to anonymous authenticate between smart cards. It is
 		
 \end{table}
 \caption{Protocol description - Anonymous Mutual Authentication. Figure from source \cite{AMA}.}
+\label{fig:F8}
 \end{figure}
-Scheme of protocol is shown at the figure \ref{fig:F8}. In the scheme are used the following notations:
+Scheme of protocol is shown at the fig. \ref{fig:F8}. In the scheme are used the following notations:
 \begin{itemize}
 \item \textit{Enc} is a symmetric encryption function. \textit{$Enc_K(M)$} means encryption of $M$ using key $K$. 
 \item \textit{H} is a cryptographic hash function. 
@@ -317,12 +320,77 @@ valid, he generates his authentication data and send it by microphone. If data i
 \end{tabular}
 \end{center}
 \end{table}
+
+\subsection{Security Model}
+There is no one ultimately defined security model for key exchange. However, we will recourse to the requirements as most fundamental for secure key exchange protocol which H. Krawczyk presents in \cite{sign_mac}.
+
+\begin{itemize}
+	\item Authentication - each party participating in KE needs to uniquely verify identities of other authenticating party.
+	\item Consistency - two parties participating in KE, after establish of session key have to believe that were established common session key with party which participate in protocol. In other words, Alice has to believe that she established session key with Bob and Bob has to believe that he established session key with Alice.
+	\item Secrecy - if two honest parties established session key then third party should not be able to obtain information about this session key. Third party, which watching and interfering with the protocol run, should not be able to distinguish session key from a random key.
+\end{itemize}
+
+\subsubsection{Adversarial Model}
+There is needed to consider scenario where adversary learns some secrete information from participants of protocol. The worst case is when adversary obtain the long term secrete key from one of the party. Having this key adversary can completely control this party and the party is consider as corrupted. This lead to the fundamental property of key exchange protocols:
+
+\begin{itemize}
+	\item Real-or-Random - this is some kind of game on which basic session key security is based. When uncorrupted parties with successful end the protocol then is determined bit $b$ at random. If $b=0$ the adversary get the real session key, if $b = 1$ he receives a random value with the same length as the key. Now adversary has to output his own bit $b'$. If $b' = b$ then adversary wins the game. When the adversary wins the game with probability $P = 1/2+\epsilon$, where $\epsilon$ is negligible function then the basis session key security is achieved.
+	\item Perfect Forward Secrecy (PFS) - is the property which ensure that adversary cannot learn session keys from future when one of the long-term private key is compromised.
+\end{itemize}
+
+Above criteria ensure for key exchange protocol that they are resistant to attacks like known-key attacks and replay attacks \cite{cryptography}. For some KE protocols are needed additional requirements e.g. Identity protection - identities of authenticating parties cannot be learn by an adversary.
+
+\subsection{Analysis of out-of-band channels}
+Beyond the security of AKE protocol, we wanted to study not typical communication channel to establish session key, which could hinder the manipulation in protocol transcript.
+
+\vspace{5mm}
+
+During the secure exchange data are needed two channels for communication between two parties. First channel, to establish session keys, should be difficult to eavesdrop and taking over control for adversary. The second channel can be insecure because established session key should ensure that content of protected data intended for one of the parties can be encrypt only by the party participated in protocol. 
+%For the key establishment, in our work, was chosen sound channel. We are aware there exist a lot of different type of microphone which are able to eavesdropping the sound waves. However, we will introduce some methods which could hinder in activity of attacker. The second channel for secure communication is wireless.
+
+
+There are a lot of techniques to transfer secret data between devices. The most popular are e.g. Bluetooth, IrDA or WiFi. These techniques use electromagnetic waves. To manipulating, changing or eavesdropping messages are needed devices which operates on electromagnetic radiation (e.g. bug in the phone). So it is worth to consider out-of-band channel which is not so commonly used as electromagnetic devices, and use another medium.
+
+\vspace{5mm}
+
+Safety channel could be, for example, two devices connected by wire. For the third party would be very difficult to eavesdrop the session. Attacker should be connected also to this wire but it would be visible for the other parties and easily to detect. Unfortunately, carrying additional cable every time when the parties want to establish session key is inconvenient.
+
+\vspace{5mm}
+
+The other possibility could be optical channel \cite{QRcode}. Sharing data using e.g. QR codes is also interesting way to authentication of devices. Attacker would have difficult task to manipulate shared data if e.g. two devices are covered by some walls. However, not every device has camera with appropriate quality that can read QR codes with appropriate big public keys.
+
+\vspace{5mm}
+
+Another way is to use vibrations \cite{vibrat}. New smartphones have installed sensor of vibration so it is possible to create such a communication channel. Attacker to manipulate this kind of channel has to generate own vibrations and it would be easily detected by authenticating parties.
+
+\vspace{5mm}
+
+Sound channel is also one of the options. Every mobile device has speaker and microphone, so we do not need to worry about no available Internet or that the other party has not installed Bluetooth or IrDA or even camera. Using ultrasounds, the signal will be not detected by humans ear. Additionally mobile phones cannot generate these waves with big intense, so transferring data should be done on small distance. Of course, sound channel could be easily to manipulate. Attacker with proper speaker can generate frequencies which could disturb the communication. However, he needs to be close to the authenticating parties if generated ultrasound has to be detected by party's mobiles microphone or generate sound waves with big intense which could be audible for human. Additionally is worth to consider to use this kind of channel mixing with another channel. For example, ephemeral keys will be sending by sound channel then encrypted values by Bluetooth or one party everything sends by sound waves when the second party uses just electromagnetic channel.
+
+
+\subsection{Proposed usage of out-of-band channel}
+
+Lets assumed that Alice and Bob want to establish a secure connection between their mobile phones using sound channel. To be sure that every high frequency will be detected, they try to put their phone in a such way that microphone is as close as possible to speaker of the second phone and vice versa. Usually the speaker and microphone are set at the bottom of device, so mobile phones should be directed bottom to each other. To obtain session key is processed AKE protocol. After this process further exchange of data can be done by WiFi, because of the speed of transferring data which is higher. 
+
+\vspace{5mm}
+
+\begin{itemize}
+	\item Alice and Bob put their devices into the lead box. Both mobile phone are listening for the first sign. The first one which start generated sound wave will be initiator. For the best quality of transferring data mobiles should be directed bottom to each other no more than couple of millimeters.
+	\item Alice decided to be initiator of the protocol. She says "Start" to the little hole in the box and her phone, after recognized her voice, start sending first data.
+	\item Protocol is divided on couple of phase. First phase is sending ephemeral key by initiator (in our case by Alice) to the receiver. Each phase takes couple of seconds. Every data are encoded in sound waves with appropriate frequencies.
+	\item Bob's phone uses its microphone to obtain the data sent by Alice's device.
+	\item When phase is over, follow switch of the roles. Now Alice's phone will listening and Bob's phone sending data.
+	\item Alice's device will receiving and decode it.
+\end{itemize}
+
+Anonymous Mutual Chip Authentication (described in detail in section above) should ensure that even if some transferring data eavesdrop then adversary will do nothing with this data. Duration of the protocol is about 35 second - more information about duration and performance are described in section 5.
+
 \subsection{Sound}
 Sound and its properties have one of the important role in our dissertation. All of the data are sent using sound waves, so in this section are explained necessary issues associated with it. 
 
 \vspace{5mm}
 
-Sound is an acoustic wave propagating in different substances such as water, air (so called vibrating wire). There are waves which cause auditory sensation and at the same time, in appropriate amplitude and frequency, are not detected by human organ of hearing. Sound to spread needs to have some medium, that is why not propagate in vacuum. Furthermore, sound is longitudinal waves, which means that particles of the medium is in the same direction as the direction of travel of the wave.
+Sound is an acoustic wave propagating in various substances such as water, air (so called vibrating wire). There are waves which cause auditory sensation and at the same time, in appropriate amplitude and frequency, are not detected by human organ of hearing. Sound to spread needs to have some medium, that is why not propagate in vacuum. Furthermore, sound is longitudinal waves, which means that particles of the medium is in the same direction as the direction of travel of the wave.
 
 
 
@@ -366,7 +434,9 @@ Speed of sound depends on center through which wave passes. Influence on speed h
 The present application largely, to sending data, uses ultrasound. Ultrasounds are sound waves, which are inaudible for human, on the grounds of their too high frequency. Have adopted that ultrasounds starts from 20 kHz, but really everything depends on how good hearing human has. Children hear the highest frequencies. Increasing age the upper limit of hearing descend \cite{limit_sound}. Ultrasounds end at frequencies of several GHz, where hipersounds start. Contractual it is 10 GHz.  Ultrasounds have many applications. Using them one can detect objects and specify distance to them. Are used in medicine where whereby ultrasonography (USG) we can find not available for human eye diseases, watching e.g. internal organs. 
 
 \subsubsection{Fourier transform}
-Using Fourier transform one can change function $f(x)$ in time domain to $F(s)$ in frequency domain. In other words, it distributes the function $f(x)$ to series of periodic functions, in such way that it shows how frequencies consist of the function $f(x)$. The formula for the Fourier transform looks as fallows:
+In our prototype microphone receives signal as a sinus wave. Because of this that we need to know the frequency of this signal we have to use some transform which turn sinus wave into the frequency spectrum. The solution is to use \textit{Fourier transform}.
+
+Using \textit{Fourier transform} one can change function $f(x)$ in time domain to $F(s)$ in frequency domain. In other words, it distributes the function $f(x)$ to series of periodic functions, in such way that it shows how frequencies consist of the function $f(x)$. The formula for the \textit{Fourier transform} looks as fallows:
 
 \begin{equation}
 	F(s) = \int\limits^\infty_{-\infty} f(x) e^{-i2\pi xs} dx.
@@ -380,19 +450,19 @@ Sum of three functions with frequencies 3 Hz, 7 Hz and 11 Hz on a graph:
 	\label{fig:F4}
 \end{figure}
 
-Passing function $f(x)$ from figure \ref{fig:F4} through Fourier transform we will get the following graphs:
+Passing function $f(x)$ from fig. \ref{fig:F4} through \textit{Fourier transform} we will get the following graphs:
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.65\textwidth]{img/both_real_imag}
-	\caption{On the top real part results of Fourier transform, on the bottom imaginary part.}
+	\caption{On the top real part results of \textit{Fourier transform}, on the bottom imaginary part.}
 	\label{fig:F5}
 \end{figure}
 
 As you can see on above figure, time domain was changed on frequency domain. On graphs are bigger values for frequencies which had functions summed.
 
 \subsubsection{Discrete Fourier Transform}
-Application analyzes periodically finite number of samples of sound. To converse to frequency domain is used Discrete Fourier Transform (DFT). Inserted samples are in the form of complex numbers, but in practice used only real numbers. Output samples are complex numbers. The following graphs show continuous signal and discretized signal \cite{fourier}:
+Application analyzes periodically finite number of samples of sound. To converse to frequency domain is used \textit{discrete Fourier transform} (\textit{DFT}). Inserted samples are in the form of complex numbers, but in practice used only real numbers. Output samples are complex numbers. The following graphs show continuous signal and discretized signal \cite{fourier}:
 
 \begin{figure}[H]
 	\centering
@@ -408,17 +478,17 @@ Application analyzes periodically finite number of samples of sound. To converse
 	\label{fig:F7}
 \end{figure}
 
-For $N$ signal samples $(x_0,x_1,x_2,...,x_{N-1})$, discrete Fourier transform gives series $X_k$ for $k = 0,1, 2, 3, ..., N-1$ using notation \cite{fourier}:
+For $N$ signal samples $(x_0,x_1,x_2,...,x_{N-1})$, \textit{discrete Fourier transform} gives series $X_k$ for $k = 0,1, 2, 3, ..., N-1$ using notation \cite{fourier}:
 \begin{equation}
 	X_k =  \sum\limits_{n=0}^{N-1} x_ne^{-i2\pi \frac{k}{N}n}.
 \end{equation}
 Computational complexity this notation is $O(N^2)$, because for $N$ elements $X_k$ series compute sum for $N$ samples \cite{fast_fourier}.
 
 \subsubsection{Fast Fourier Transform}
-Computational complexity of Discrete Fourier Transform is not enough to fast process more data. Therefore were developed a lot of algorithms, which improve its calculation. There are algorithms, which do Discrete Fourier Transform having computational complexity $O(NlogN)$, where for large number of data is significant improvement. They use design paradigm divide and conquer. Precursors of these solutions are James William Cooley and John Tukey, who elaborated first faster algorithm to compute DFT, known as Fast Fourier Transform (FFT). It is worth to mention that FFT is not approximate value of DFT. FFT returns the same values but do this much faster.
+Computational complexity of \textit{discrete Fourier transform} is not enough to fast process more data. Therefore were developed a lot of algorithms, which improve its calculation. There are algorithms, which do \textit{discrete Fourier transform} having computational complexity $O(NlogN)$, where for large number of data is significant improvement. They use design paradigm divide and conquer. Precursors of these solutions are James William Cooley and John Tukey, who elaborated first faster algorithm to compute \textit{DFT}, known as \textit{fast Fourier transform} (\textit{FFT}). It is worth to mention that \textit{FFT} is not approximate value of \textit{DFT}. \textit{FFT} returns the same values but do this much faster.
 
 \subsubsection{Hanning window}
-Window functions are functions which are used with DFT. Often during process of DFT occur blur of spectrum, which mean that on the spectrum are seeing values for frequencies different than the real frequency of signal. To minimize this effect are used window functions. In time domain it is multiply every sample of signal by corresponding value of sample of window. The simplest window is rectangular window. Spectrum of this windowing is shown in \ref{fig:F9}
+Window functions are functions which are used with \textit{DFT}. Often during process of \textit{DFT} occur blur of spectrum, which mean that on the spectrum are seeing values for frequencies different than the real frequency of signal. To minimize this effect are used window functions. In time domain it is multiply every sample of signal by corresponding value of sample of window. The simplest window is rectangular window. Spectrum of this windowing is shown in \ref{fig:F9}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{img/rectangular_window}
@@ -436,7 +506,7 @@ In our protocol is used Hanning window which is defined by:
 
 \vspace{5mm}
 
-As one can see at figure \ref{fig:F10} the pitch is wider, hence is easier to determine the correct frequency.
+As one can see at fig. \ref{fig:F10} the pitch is wider, hence is easier to determine the correct frequency.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{img/hanning_window}
@@ -446,8 +516,8 @@ As one can see at figure \ref{fig:F10} the pitch is wider, hence is easier to de
 
 \subsubsection{Pulse-Code Modulation}
 
-Pulse-Code Modulation (PCM) is a method used to digitally represent sampled analog signals. PCM is based on representation of the instantaneous value of the signal (Sampling) at uniform intervals (sampling rate). The sampled analog data are represent by binary data. During the demodulation, sample rate should be at least two times greater that frequency of receiving analog signal (greater than the Nyquist frequency $f_s / 2$ ). This ensure that sampled values represent analog signal without errors. In our prototype sample rate is 44,1 kHz. The highest frequency which we use in application is about 20,5 kHz so 44,1 kHz is sufficient. 
-
+\textit{Pulse-Code Modulation} (\textit{PCM}) is a method used to digitally represent sampled analog signals. \textit{PCM} is based on representation of the instantaneous value of the signal (Sampling) at uniform intervals (sampling rate). The sampled analog data are represent by binary data. During the demodulation, sample rate should be at least two times greater that frequency of receiving analog signal (greater than the Nyquist frequency $f_s / 2$ ). This ensure that sampled values represent analog signal without errors. In our prototype sample rate is 44,1 kHz. The highest frequency which we use in application is about 20,5 kHz so 44,1 kHz is sufficient. 
+\begin{comment}
 \subsubsection{Doppler effect}
 We introduce this phenomenon because of one of the possibility to prevent against effective
 eavesdropping. Doppler effect is that the receiver get different frequency of wave from frequency which is generated by moving source relative to the receiver. The simplest example
@@ -478,61 +548,8 @@ The formula (5) shows describe situation when source is moving when observer is 
 \end{equation}
 
 In our case authenticated parties are not moving relative to each other, but they can both moving relative to eavesdropper.
+\end{comment}
 
-\subsection{Security Model}
-There is no one ultimately defined security model for key exchange. However, we will recourse to the requirements as most fundamental for secure key exchange protocol which H. Krawczyk presents in \cite{sign_mac}.
-
-\begin{itemize}
-\item Authentication - each party participating in KE needs to uniquely verify identities of other authenticating party.
-\item Consistency - two parties participating in KE, after establish of session key have to believe that were established common session key with party which participate in protocol. In other words, Alice has to believe that she established session key with Bob and Bob has to believe that he established session key with Alice.
-\item Secrecy - if two honest parties established session key then third party should not be able to obtain information about this session key. Third party, which watching and interfering with the protocol run, should not be able to distinguish session key from a random key.
-\end{itemize}
-
-\subsubsection{Adversarial Model}
-There is needed to consider scenario where adversary learns some secrete information from participants of protocol. The worst case is when adversary obtain the long term secrete key from one of the party. Having this key adversary can completely control this party and the party is consider as corrupted. This lead to the fundamental property of key exchange protocols:
-
-\begin{itemize}
-\item Real-or-Random - this is some kind of game on which basic session key security is based. When uncorrupted parties with successful end the protocol then is determined bit $b$ at random. If $b=0$ the adversary get the real session key, if $b = 1$ he receives a random value with the same length as the key. Now adversary has to output his own bit $b'$. If $b' = b$ then adversary wins the game. When the adversary wins the game with probability $P = 1/2+\epsilon$, where $\epsilon$ is negligible function then the basis session key security is achieved.
-\item Perfect Forward Secrecy (PFS) - is the property which ensure that adversary cannot learn session keys from future when one of the long-term private key is compromised.
-\end{itemize}
-
-Above criteria ensure for key exchange protocol that they are resistant to attacks like known-key attacks and replay attacks \cite{cryptography}. For some KE protocols are needed additional requirements e.g. Identity protection - identities of authenticating parties cannot be learn by an adversary.
-
-\subsection{Analysis of out-of-band channels}
-There are a lot of techniques to transfer secret data between devices. The most popular are e.g. Bluetooth, IrDA or WiFi. These techniques use electromagnetic waves. To manipulating, changing or eavesdropping messages are needed devices which operates on electromagnetic radiation (e.g. bug in the phone). So it is worth to consider out-of-band channel which is not so commonly used as electromagnetic devices.
-
-\vspace{5mm}
-
-Safety channel could be, for example, two devices connected by wire. For the third party would be very difficult to eavesdrop the session. Attacker should be connected also to this wire but it would be visible for the other parties and easily to detect. Unfortunately, carrying additional cable every time when the parties want to establish session key is inconvenient.
-
-\vspace{5mm}
-
-The other possibility could be optical channel \cite{QRcode}. Sharing data using e.g. QR codes is also interesting way to authentication of devices. Attacker would have difficult task to manipulate shared data if e.g. two devices are covered by some walls. However, not every device has camera with appropriate quality that can read QR codes with appropriate big public keys.
-
-\vspace{5mm}
-
-Another way is to use vibrations \cite{vibrat}. New smartphones have installed sensor of vibration so it is possible to create such a communication channel. Attacker to manipulate this kind of channel has to generate own vibrations and it would be easily detected by authenticating parties.
-
-\vspace{5mm}
-
-Sound channel is also one of the options. Every mobile device has speaker and microphone, so we do not need to worry about no available Internet or that the other party has not installed Bluetooth or IrDA or even camera. Using ultrasounds, the signal will be not detected by humans ear. Additionally mobile phones cannot generate these waves with big intense, so transferring data should be done on small distance. Of course, sound channel could be easily to manipulate. Attacker with proper speaker can generate frequencies which could disturb the communication. However, he needs to be close to the authenticating parties if generated ultrasound has to be detected by party's mobiles microphone or generate sound waves with big intense which could be audible for human. Additionally is worth to consider to use this kind of channel mixing with another channel. For example, ephemeral keys will be sending by sound channel then encrypted values by Bluetooth or one party everything sends by sound waves when the second party uses just electromagnetic channel.
-
-\subsection{Proposed usage of out-of-band channel}
-
-Lets assumed that Alice and Bob want to establish a secure connection between their mobile phones using sound channel. To be sure that every high frequency will be detected, they try to put their phone in a such way that microphone is as close as possible to speaker of the second phone and vice versa. Usually the speaker and microphone are set at the bottom of device, so mobile phones should be directed bottom to each other. To obtain session key is processed AKE protocol. After this process further exchange of data can be done by WiFi, because of the speed of transferring data which is higher. 
-
-\vspace{5mm}
-
-\begin{itemize}
-\item Alice and Bob put their devices into the lead box. Both mobile phone are listening for the first sign. The first one which start generated sound wave will be initiator. For the best quality of transferring data mobiles should be directed bottom to each other no more than couple of millimeters.
-\item Alice decided to be initiator of the protocol. She says "Start" to the little hole in the box and her phone, after recognized her voice, start sending first data.
-\item Protocol is divided on couple of phase. First phase is sending ephemeral key by initiator (in our case by Alice) to the receiver. Each phase takes couple of seconds. Every data are encoded in sound waves with appropriate frequencies.
-\item Bob's phone uses its microphone to obtain the data sent by Alice's device.
-\item When phase is over, follow switch of the roles. Now Alice's phone will listening and Bob's phone sending data.
-\item Alice's device will receiving and decode it.
-\end{itemize}
-
-Anonymous Mutual Chip Authentication (described in detail in section above) should ensure that even if some transferring data eavesdrop then adversary will do nothing with this data. Duration of the protocol is about 35 second - more information about duration and performance are described in section 5.
 
 \subsection{Sound channel parameters}
 
@@ -542,16 +559,6 @@ Using Diffie-Hellman key exchange and asymmetric cryptography should be use the 
 
 %Sound channel is secured against active attacks. Adversary needs to be %close to communicated party or he needs to generate ultrasound with high %intense which can be detected by human, it would be heard as squeak.
 
-\subsection{Enhance the project}
-Lets imagine that Alice and Bob want to establish secure channel being far away from each other. They can authenticate each other using telephone line. It is possible to run application during the calling but the microphone receiving the signal is unavailable in the application. So to this experiment would be needed second pair of mobile phones which will be used as intermediary. Each intermediary phone should be set as handsfree because of loudness of sound. Authenticated phones should be apply as close as possible to intermediary phone. Now when intermediary phones established the connection, the authenticated devices can start the protocol, the sound signal will be transferring by telephone line. Device on the other side will be receiving the signal. There is possible use computers as intermediary. There are a lot of voice communicator which would be useful.
-
-\vspace{5mm}
-
-Disadvantage in our protocol is speed of transferring data. In every 15 milliseconds are received samples which are put to the queue. Another process gets these samples and analyze them. For our test devices, receiving data in every 15 second was the most optimal method. Algorithm analyzing this data follow with computing, so in queue is not accumulate to much data. Decreasing period receiving data to 10 millisecond cause that decoder of sound did not keep up and outcome was sometimes couple of seconds after the last received character. To improve that is worth to considering client-server model like in \cite{chirp}. Mobile phone as a client gathering the data and send to the external server. Server with much more computing power could decode the data definitely faster and returns the result to the client. Server could do much more complex computing, hence the results would be with better precision.
-
-\vspace{5mm}
-
-For now the sound channel use bandwidth from 10,5 kHz to 20,25 kHz. For the reason please check section with Base64 conversion. These frequencies (especially below 19 kHz) could be audible for the most of the people (it sounds like squeaking). If we would want to exchange data using sound which is inaudible, we could use just simple binary representation. Sending data using 0 and 1 would be needed only two frequencies, so taking the highest as possible (for example 19,9 kHz and 20,10) would ensure that exchanging of data would be inaudible for the most people. Of course at the expense of length of sending data. It would be achievable also with hexadecimal representation. Would be needed to use bigger bandwidth than from binary representation but the length of data would be smaller.
 
 \subsection{Microphones and speakers in mobile devices}
 Specification of this appliances are very different and depends on devices. During the tests could be seen that microphone from more expensive SAMSUNG Galaxy Tab is better than microphone from LG Swift L9. SAMSUNG could detect higher frequency. However, microphone from LG Swift L9 was completely enough to registered sufficiently large frequencies. Speakers also are a little different, but they have no problem to generate opportunely frequencies.
@@ -607,7 +614,8 @@ These factors contribute to some probability $\bar{p}$ that adversary and partic
 Imagine that an adversary uses some kind of microphone with high sensitivity so he can capture all communication between authenticating devices. As mentioned in the previous section in order to secure against eavesdropping the key exchange protocol must use difficulty to inverse problems like the discrete logarithm problem used in the Diffie-Hellman key exchange scheme.
 
 \subsubsection{Possible vectors of attack on a sound channel}
-There are two ways to attack the sound channel. The first one is trying to generate sound wave which can drown or change sending data by one of the authenticate parties. Additionally one can in some ways force microphone to gaining frequencies in another bandwidth. Soundproofing box or case could make it more difficult. The second possibility to prevent against eavesdropping attack is using phenomenon of Doppler effect. Lets imagine that two mobile devices are put on some kind of tape. This tape in appropriate high speed starts randomly moving in different ways. Authenticated devices will be in the same position relative to each other but they will be constantly on the move relative to third party. Doppler effect will cause that eavesdropper will receive different frequencies than generating. For more details of Doppler effect see the section "Doppler effect" above. Good solution would be mixing the channel. For example, first phase (exchanging ephemeral keys) would be process by out-of-band channel but second phase (encrypted identity information) by commonly used radiation channel (WiFi, Bluetooth).
+There are two ways to attack the sound channel. The first one is trying to generate sound wave which can drown or change sending data by one of the authenticate parties. Additionally one can in some ways force microphone to gaining frequencies in another bandwidth. Soundproofing box or case could make it more difficult. %The second possibility to prevent against eavesdropping attack is using phenomenon of Doppler effect. Lets imagine that two mobile devices are put on some kind of tape. This tape in appropriate high speed starts randomly moving in different ways. Authenticated devices will be in the same position relative to each other but they will be constantly on the move relative to third party. Doppler effect will cause that eavesdropper will receive different frequencies than generating. For more details of Doppler effect see the section "Doppler effect" above. 
+Good solution would be mixing of the channels. For example, first phase (exchanging ephemeral keys) would be process by out-of-band channel but second phase (encrypted identity information) by commonly used radiation channel (WiFi, Bluetooth). Then adversary would have to has devices which detect two types of waves - electromagnetic and acoustic.
 
 \subsubsection{Manipulating speaker}
 One of the vector attack is manipulating of the speaker. Assume that adversary want to run malicious program which take control over the speaker. He can generates waves what he wants, hence he can send malicious data and encryption due to which he can learn something about the protocol. System has to ensure that during process of key exchange any kind of background application cannot interrupt this. Android ensure security in that way but do not forget about different type of viruses. Unfortunately we do not have influence on this. Manipulation from external is based on using additionally speaker which will generate sound in used bandwidth. This method could mislead of the receiving microphone. It would be easy to disturb the signal but then recorder will gain data with no sense. Attacker would has to start generate sound in perfect time with appropriate intense. Large distance could causing that would be necessary some calculation about speed of sound. High intense (which would be needed if microphone would has to receive high frequencies from distance) could cause that signal would be audible for human, hence attacker could be exposed. Inserting authenticated parties to some soundproofing box could minimize effectiveness of these methods of attacks.
@@ -616,7 +624,7 @@ One of the vector attack is manipulating of the speaker. Assume that adversary w
 Manipulation of microphone would be possible only if attacker would have access to the application. He could e.g. reduce or increase bandwidth of frequencies. Adversary could totally change the bandwidth, outside of the know range for authenticated parties and at the same time generate his sound waves in chosen bandwidth.
 
 \subsubsection{Eavesdropping}
-There are exist a lot of devices to eavesdropping. One of the example is microphone with high sensitivity which allow to eavesdrop the sounds even from a large distance e.g. parabolic or shotgun  microphone. To gain ultrasounds for eavesdropper would be useful instrument detecting ultrasonics from bats. The next one is using laser \cite{laser_mic}. The special laser is a transmitter and the infrared measure of surface vibration. This method also allows to gain data from a large distance. However beyond the soundproofing boxes is worth to use phenomenon of Doppler effect. Constantly moving devices will cause that emitted frequencies will be different than observer will registered. 
+There are exist a lot of devices to eavesdropping. One of the example is microphone with high sensitivity which allow to eavesdrop the sounds even from a large distance e.g. parabolic or shotgun  microphone. To gain ultrasounds for eavesdropper would be useful instrument detecting ultrasonics from bats. The next one is using laser \cite{laser_mic}. The special laser is a transmitter and the infrared measure of surface vibration. This method also allows to gain data from a large distance. 
 
 \subsubsection{Malicious implementation}
 An adversary could try to swap a genuine application for the key exchange on the authenticating device with a malicious one and thus gain the session key. To ensure both parties that they use genuine software, it should be signed with a certificate of a trusted authority and it should be downloaded from a secure server. This case is mentioned in security assumptions in section 3.3.
@@ -626,7 +634,7 @@ An adversary could try to swap a genuine application for the key exchange on the
 \section{Prototype Design}
 \subsection{Mobile Devices}
 
-AMA attempts to be simple in implement and does not require high-power computing. So it is ideal to implement it on chip cards. Due to the fact the chip cards are slowly replacing by mobile phones we have decided to implement AMA on this devices. Operating system which we have chosen is Android, because it is one of the most frequently used software on mobile phones. The lowest version, for which program should work without problems is Android 4.1.2. Core of the AMA was implemented in C++. Sound channel and layout was made using Android's libraries. 
+AMA does not require high-power computing. So it is ideal to implement it on chip cards. Due to the fact the chip cards are slowly replacing by mobile phones we have decided to implement AMA on this devices. Operating system which we have chosen is Android, because it is one of the most frequently used software on mobile phones. The lowest version, for which program should work without problems is Android 4.1.2. Core of the AMA was implemented in C++. Sound channel and layout was made using Android's libraries. 
 
 \subsection{Operating System}
 
@@ -634,7 +642,7 @@ Operating system which was chosen is Android version 4.1.2 and higher. This is t
 
 \subsection{Security of Android}
 
-The operating system should ensure that running application cannot interact with another. Each application is run in separate process having  own user ID. This sets up a kernel-level Application Sandbox, where by default application cannot interact with each other and has limited access to OS.
+The operating system should ensure that running application cannot interact with another. Each application is run in separate process having own user ID. This sets up a kernel-level Application Sandbox, where by default application cannot interact with each other and has limited access to OS.
 
 \vspace{5mm}
 
@@ -642,7 +650,7 @@ Furthermore, every application has to be signed by developer. Applications witho
 
 \subsection{Application architecture}
 
-Application consist of three parts: cryptographic module, sound channel module and graphic interface. Cryptographic module is written in C++ and to use it in Android, was needed to write a wrapper using JNI (Java Native Interface). NDK (Native Development Kit) is a toolset that allows to add native-code languages such as C and C++ to Android's app. User interface consists initial screen where user choose which frequencies have to be use during sending data. In next screen is dynamic graph with recording sound wave and button which start the protocol. To show sound as sinusoid wave we used external library AChartEngine, the rest of interface are created by standard Android's libraries.
+Application consist of three parts: cryptographic module, sound channel module and graphic interface. Cryptographic module is written in \textit{C++} and to use it in Android, was needed to write a wrapper using \textit{JNI} (\textit{Java Native Interface}). \textit{NDK} (\textit{Native Development Kit}) is a toolset that allows to add native-code languages such as \textit{C} and \textit{C++} to Android's application. User interface consists initial screen where user choose which frequencies have to be use during sending data. In next screen is dynamic graph with recording sound wave and button which start the protocol. To show sound as sinusoid wave we used external library \textit{AChartEngine} \cite{chart_eng}, the rest of interface are created by standard Android's libraries.
 
 \vspace{5mm}
 
@@ -654,7 +662,7 @@ Application consist of three parts: cryptographic module, sound channel module a
 
 \subsection{Cryptography library}
 
-Exist few of cryptography libraries which are written in Java (e.g. javax.crypto, BouncyCastle), but we wanted to create cryptography module which is independent of the platform. The choice fell on CryptoPP. It is free, open source cryptography library written in C++. The library is objectives and very easy to use. Ensures symmetric and asymmetric cryptography along with signatures and secure hash function. Is used by such companies as Microsoft or Symantec.
+There are exist few of cryptography libraries which are written in Java (e.g. \textit{javax.crypto}, \textit{BouncyCastle}), but we wanted to create cryptography module which is independent of the platform. The choice fell on \textit{CryptoPP}. It is free, open source cryptography library written in \textit{C++}. The library is objectives and very easy to use. Library ensures symmetric and asymmetric cryptography along with signatures and secure hash function. It is used by such companies as Microsoft or Symantec.
 
 \subsection{Design pattern}
 
@@ -703,7 +711,7 @@ void KeyGenerator::GenerateEphemeralKeyPair(CryptoPP::RandomNumberGenerator &rng
 
 \subsection{Java Native Interface - C++ Wrapper}
 
-To be able to use cryptographic part written in C++ in Android, we had to create C++ wrappers using JNI (Java Native Interface) \cite{JNI}. Main class which communicate with C++ code has native methods, for which, after appropriate compilation, was created MACWrapper.h where definition of methods looks like below.
+To be able to use cryptographic part written in \textit{C++} in Android, we had to create \textit{C++} wrappers using \textit{JNI} (\textit{Java Native Interface}) \cite{JNI}. Main class which communicate with \textit{C++} code has native methods, for which, after appropriate compilation, was created \textit{MACWrapper.h} where definition of methods looks like below.
 
 \lstset{language=C++,caption={Example of JNI usage for method definition.}}
 \begin{lstlisting}
@@ -716,7 +724,7 @@ JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_prepar
   (JNIEnv *, jobject, jboolean);
 \end{lstlisting}
 
-Implementations of methods are in MACWrapper.cpp. There are made conversion from C++ data type to Java data type and vice versa.
+Implementations of methods are in \textit{MACWrapper.cpp}. There are made conversion from \textit{C++} data type to Java data type and vice versa.
 
 \lstset{language=C++,caption={Example of JNI usage for method implementation.}}
 \begin{lstlisting}
@@ -752,42 +760,117 @@ public static String fromHexToBase64(byte[] hex_byte) {
 
 \subsection{Sound channel}
 
-Sound channel was one of the most difficult part during creation of application. One of the reason was inaccessibility of library whereby we could transform received sound data to cryptographic data. Whole process of analysis received data had to be created from beginning. At beginning we had doubt about sensitivity and precision of speaker and microphone in mobile devices, especially when we wanted to use ultrasonic waves which could be hard to interpreter. Fortunately, doubts were dispelled after first testing of this channel. Results of working will be describe in Test section. Here we focus on principle of operation.
+Sound channel was one of the most difficult part during creation of application. One of the reason was inaccessibility of library whereby we could transform received sound data to cryptographic data. Whole process of analysis received data had to be created from the scratch. At beginning we had doubt about sensitivity and precision of speaker and microphone in mobile devices, especially when we wanted to use ultrasonic waves which could be hard to interpreter. Fortunately, doubts were dispelled after first testing of this channel. Results of working will be describe in 4 section. Here we focus on principle of operation.
 
 \subsubsection{Generating sound wave}
 
 Class responsible for generating sound wave get data presented in Base64 (Check section with Base64). Every character A-Z, a-z, 0-9, + and / is mapped to one of the 64 frequencies.
+\begin{table}
+	\centering
+	\begin{tabular}{| c | c |}
+		\hline
+		Character & Frequency [kHz] \\
+		\hline
+		A & 10 \\
+		\hline
+		B & 10,15 \\
+		\hline
+		C & 10,3 \\
+		\hline
+		$\vdots$ & $\vdots$ \\
+		\hline
+		. & 19,55 \\
+		\hline
+	\end{tabular}
+	\caption{Mapping characters to frequencies.}
+\end{table}
 
-A = 10 kHz,
-
-B = 10,15 kHz,
-
-C = 10,3 kHz,
-
-...
-
-. = 19,55 kHz
 
 
-Additional two characters "," and "." represent begin of data and end of data. Sample rate is 44,1 kHz. Every character is sending by 30 ms, which means that for each pitch is needed 1323 samples. To create sinus wave each sample for $ i \in (0,1322) $ is calculating by formula:
+Additional two characters "," and "." represent begin of data and end of data. Sample rate is 44,1 kHz. Every character is sending by 30 ms (this is the lowest value which we achieve during optimization of prototype), which means that for each pitch is needed 1323 samples. To create sinus wave each sample for $ i \in (0,1322) $ is calculating by formula:
 \begin{center}
-$F(i) = \sin\left( f \ast \pi \ast 2 \ast i  \over 44 100  \right)$
+$F(i) = \sin\left( f \cdot \pi \cdot 2 \cdot i  \over 44 100  \right)$
 \end{center}
 where $f$ is the target frequency.
-These samples are processed by AudioTrack library to sound using PCM encoding. 
+These samples are processed by \textit{AudioTrack} library to sound using \textit{PCM} encoding. In the listing is shown peace of code preparing sinus waves in appropriate frequencies.
+
+
+\lstset{language=JAVA,caption={Method converting characters on sinus waves.}}
+\begin{lstlisting}
+/* --------- Constants and variable used in code -------------------------*/
+// Constants.DEFAULT_NUM_SAMPLES = 1323; - Number of samples needed to 	   
+//										   encode one character.		   
+// Constants.FREQUENCIES - all 66 used frequencies;						   
+// Constants.DEFAULT_BUFFER_SIZE = 8192;								   
+// Constants.RAMP = 30; - on the edge of buffor with samples is needed     
+//						  to decrease the amplitude to avoid scratching    
+// Input:																   
+// List<Integer> inofsign; - signs which will be converted on frequencies  
+/*------------------------------------------------------------------------*/
+
+public ArrayList<Buffer> encodesDataToBuffers(List<Integer> inofsign) {
+
+	ArrayList<Buffer> queue_with_data_AL = new ArrayList<Buffer>();
+	for (int index : inofsign) {
+		
+		int totalCount = Constants.DEFAULT_NUM_SAMPLES; 
+		double per = (double) (( Constants.FREQUENCIES[index] * 2 * Math.PI )  / Constants.SAMPLING);
+		double d = 0;
+		
+		int mFilledSize = 0;
+		Buffer buffer = new Buffer();
+		int ramp = totalCount / Constants.RAMP;
+		short[] buffer_data = new short[Constants.DEFAULT_BUFFER_SIZE];
+		
+		for(int i = 0; i < totalCount ; ++i){
+		
+			if(mFilledSize >= Constants.DEFAULT_BUFFER_SIZE - 1){
+				buffer.setBufferShort(buffer_data);
+				buffer.setSize(mFilledSize);
+				mFilledSize = 0;
+				queue_with_data_AL.add(buffer);
+				buffer = new Buffer();
+				buffer_data = new short[Constants.DEFAULT_BUFFER_SIZE];
+			}
+			double out = (double) Math.sin(d);
+			final short val;
+			if(i < ramp){
+				val = (short) ((out * Short.MAX_VALUE * i / ramp));
+			}else if(i < totalCount - ramp){
+				val = (short) ((out * Short.MAX_VALUE));
+			}else{
+				val = (short) ((out * Short.MAX_VALUE * (totalCount-i)/ramp));
+			}
+			
+			buffer_data[mFilledSize++] = (short) ( val );
+			d+=per;
+			
+		}
+		
+		
+		buffer.setBufferShort(buffer_data);
+		buffer.setSize(mFilledSize);
+		queue_with_data_AL.add(buffer);
+		
+		mFilledSize = 0;
+
+	}
+	return queue_with_data_AL;
+}
+\end{lstlisting} 
 
 
 \subsubsection{Receiving sound}
 
-Retrieving sound is more complicated than sending. In separate process, using AudioRecord library, in every 15 milliseconds (if sending of one character takes 30 ms), are taken samples and then, as one buffer, are appended to array of buffers. Separate process, in the same time, takes first buffer from array and analyses it. 
+Retrieving sound is more complicated than sending. In separate process, using \textit{AudioRecord} library, in every 15 milliseconds (if sending of one character takes 30 ms), are taken samples and then, as one buffer, are appended to array of buffers. Separate process, in the same time, takes first buffer from array and analyses it. 
 
 \vspace{5mm}
 
-At this moment, the samples are as short integer values which represent sound in time domain (sinusoid). To check in which frequency was received sound is needed to convert the sampled function from time domain to the frequency domain. We used to this Discrete Transform Fourier. Library which we have chosen to run DFT is \cite{minim_dft}. 
+At this moment, the samples are as short integer values which represent sound in time domain (sinusoid). To check in which frequency was received sound is needed to convert the sampled function from time domain to the frequency domain. We used to this \textit{discrete Fourier transform }. Library which we have chosen to run \textit{DFT} is \cite{minim_dft}. 
 
 \vspace{5mm}
 
-Before change of domain, we need to window samples, using Hanning windowing. Thereby, chart in frequency domain is more readable and is easier to find the place with the highest pitch. Windowed samples are put into DFT method and on the output we have result in frequency domain. The effect on the graph looks like at \ref{fig:F2}.
+Before change of domain, we need to window samples, using Hanning windowing. Thereby, chart in frequency domain is more readable and is easier to find the place with the highest pitch. Windowed samples are put into \textit{DFT} method and on the output we have result in frequency domain. The effect on the graph looks like at \ref{fig:F2}.
 
 
 \begin{figure}[H]
@@ -798,7 +881,7 @@ Before change of domain, we need to window samples, using Hanning windowing. The
 
 
 
-Now, algorithm tries to find the highest place in the output. The reason of getting data in two times shorter time than sending one character is that, in one buffer can be two frequencies. In the worst case, algorithm can find one frequency in three buffers in a row, even if in first and third buffer was also another frequency, but because of lower sound intensity or less samples representing this frequency, would not be found as a highest pitch. Dividing time of receiving by two ensure that always, at least once, expected frequency will be registered. If he finds pitch with amplitude higher than 50, for frequency lower than 14 kHz, or 10 for higher than 14 kHz (this different follows from the smaller volume for the higher frequency by hardware limitation) is checked whether caught frequency is in our dictionary (with margin of error + - 50 Hz). 
+Now, algorithm tries to find the highest place in the output. The reason of getting data in two times shorter time than sending one character is that, in one buffer can be two frequencies. In the worst case, algorithm can find one frequency in three buffers in a row, even if in first and third buffer was also another frequency, but because of lower sound intensity or less samples representing this frequency, would not be found as a highest pitch. Dividing time of receiving by two ensure that always, at least once, expected frequency will be registered. If he finds pitch with amplitude higher than 50, for frequency lower than 14 kHz (this value was chosen after testing of prototype, these frequencies always exceed this limit), or 10 for higher than 14 kHz (this different follows from the smaller volume for the higher frequency by hardware limitation) is checked whether caught frequency is in our dictionary (with margin of error + - 50 Hz). 
 
 
 \begin{figure}[H]
@@ -809,7 +892,87 @@ Now, algorithm tries to find the highest place in the output. The reason of gett
 
 Caught value is put to the memory and wait for the next result. If current frequency is different than before we change the previous frequency to one of the 64 signs. Otherwise we increment the counter. If counter gain value three (maximal number of occurrences on received character in three further buffers), counter is reset and return adequate character.
 
+\lstset{language=JAVA,caption={Method finding frequency with highest aplitude.}}
+\begin{lstlisting}
+/* --------- Constants and variable used in code -------------------------*/
+// Constants.AMPLITUDE_LT_14K = 50; - Limit of amplitude for frequencies
+							          lower than 14 kHz		   
+// Constants.AMPLITUDE_GT_14K = 10; -  Limit of amplitude for frequencies
+									   greater than 14 kHz	
+// Constants.SAMPLING = 44,1 kHz - sampling rate of sound
+// Constants.K14 = 2660 - place in fft array when starts frequencies greater than 14 kHz.
+// Constants.START_ST = 1800 - place from which algorithm must start to searching peak.
+// Input:																   
+// FFT fft; - data prepared by Discrete Fourier Transform.  
+/*------------------------------------------------------------------------*/
+private int findPitch(FFT fft) {
+	float max_band = 0;
+	int max_peak = 0;
+	int k14 = Constants.K14;
+	for (int i = Constants.START_ST; i < fft.specSize(); i++) {
+		if (i < k14) {
+			if (fft.getBand(i) > Constants.AMPLITUDE_LT_14K)
+				if (fft.getBand(i) > max_band) {
+					max_peak = i;
+					max_band = fft.getBand(i);
+				}
+		} else {
+			if (fft.getBand(i) > Constants.AMPLITUDE_GT_14K)
+				if (fft.getBand(i) > max_band) {
+					max_peak = i;
+					max_band = fft.getBand(i);
+				}
+		}
+	}
+	int frequency = max_peak * (Constants.SAMPLING / 2) / fft.specSize();
+	return frequency;
 
+}
+\end{lstlisting}
+\lstset{language=JAVA,caption={Method changing founded freqency on appropriate character.}}
+\begin{lstlisting}
+/* --------- Constants and variable used in code -------------------------*/
+// Constants.FREQUENCIES - all 66 used frequencies;
+// Constants.BORDER = 50 - error range
+Input:
+int freq; - Found frequncy by method findPitch(FFT)
+
+/*------------------------------------------------------------------------*/
+
+private void checkPitch(int freq) {
+	String sign = "";
+	if (freq > Constants.FREQUENCIES[0] - 100) {
+		if (current_freq != null) {
+			if (current_freq.getFrequency() - Constants.BORDER < freq
+			&& current_freq.getFrequency() + Constants.BORDER > freq) {
+				current_freq.increaseCount();
+				sign = current_freq.foundAndReturnChar();
+				if (!sign.equals(Constants.NOEND_STR)) {
+					vrs.onRecognition(String.valueOf(sign));
+				}
+			} else {
+				sign = current_freq.returnChar();
+				if (!sign.equals(Constants.NOEND_STR)) {
+					vrs.onRecognition(String.valueOf(sign));
+				}
+				current_freq = new FrequencyTime();
+				current_freq.setFrequency(freq);
+			}
+		} else {
+			current_freq = new FrequencyTime();
+			current_freq.setFrequency(freq);
+		}
+	} else {
+		if (current_freq != null) {
+			sign = current_freq.returnChar();
+		if (!sign.equals(Constants.NOEND_STR)) {
+			vrs.onRecognition(String.valueOf(sign));
+		}
+		current_freq = null;
+		}
+	}
+}
+\end{lstlisting}
 \section{Tests}
 To all tests was used two devices: LG Swift L9 with system Android 4.1.2 and tablet Samsung GALAXY Tab 2 with Android 4.2.2. 
 
@@ -823,13 +986,26 @@ During tests we have focused on below factors:
 \end{itemize}
 
 Firstly, we have tested distance between chosen frequencies. Every character from Base64 coding is mapped to appropriate frequency. The smaller distance then is possible to use higher frequencies. We have choose three spaces:
-\begin{itemize}
-\item 150 Hz. The lowest frequency 10,5 kHz, the highest - 20,25 kHz.
-\item 130 Hz. The lowest frequency 11,8 kHz, the highest - 20,25 kHz.
-\item 100 Hz. The lowest frequency 13,8 kHz, the highest - 20,3 kHz.
-\item 100 Hz. The lowest frequency 14 kHz, the highest - 20,5 kHz.
-\item 100 Hz. The lowest frequency 14,3 kHz, the highest - 20,8 kHz.
-\end{itemize}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c |}
+		\hline
+		Distance [Hz] & The lowest frequency [kHz] & The highest frequency [kHz]\\
+		\hline
+		150 & 10,5 & 20,25 \\
+		\hline
+		130 & 11,8 & 20,25 \\
+		\hline
+		100 & 13,8 & 20,3 \\
+		\hline
+		100 & 14 & 20,5 \\
+		\hline
+		100 & 14,3 & 20,8 \\
+		\hline
+	\end{tabular}
+	\caption{Mapping characters to frequencies.}
+\end{table}
+
 We did not want to go below 10 kHz and higher frequency than 20,5 is hard to detect for mobile phone (especially for LG). Distance 100 Hz is the smallest to test because of implemented algorithm (margin of error is + - 50 Hz). During the tests, proved to be that for almost every test cases, protocol was successful in 80\%. Except the last one which always end by failure. Character which represent end of sending data has always the highest frequency. In the last case it was 20,8 kHz. Only LG Swift cannot registry that frequency - Samsung dealt with it flawlessly. Duration of protocol is about 34,5 seconds.
 
 \vspace{5mm}
@@ -848,7 +1024,16 @@ The next test rely on checking influence of background sound. As we know, from t
 
 Volume set on 70\% on both devices was sufficient to run the protocol. Set this value below 70\% cause that character denoting start of transmission was not detected.
 
+\section{Possible development of the project}
+Lets imagine that Alice and Bob want to establish secure channel being far away from each other. They can authenticate each other using telephone line. It is possible to run application during the calling but the microphone receiving the signal is unavailable in the application. So to this experiment would be needed second pair of mobile phones which will be used as intermediary. Each intermediary phone should be set as handsfree because of loudness of sound. Authenticated phones should be apply as close as possible to intermediary phone. Now when intermediary phones established the connection, the authenticated devices can start the protocol, the sound signal will be transferring by telephone line. Device on the other side will be receiving the signal. There is possible use computers as intermediary. There are a lot of voice communicator which would be useful.
 
+\vspace{5mm}
+
+Disadvantage in our protocol is speed of transferring data. In every 15 milliseconds are received samples which are put to the queue. Another process gets these samples and analyze them. For our test devices, receiving data in every 15 second was the most optimal method. Algorithm analyzing this data follow with computing, so in queue is not accumulate to much data. Decreasing period receiving data to 10 millisecond cause that decoder of sound did not keep up and outcome was sometimes couple of seconds after the last received character. To improve that is worth to considering client-server model like in \cite{chirp}. Mobile phone as a client gathering the data and send to the external server. Server with much more computing power could decode the data definitely faster and returns the result to the client. Server could do much more complex computing, hence the results would be with better precision.
+
+\vspace{5mm}
+
+For now the sound channel use bandwidth from 10,5 kHz to 20,25 kHz. For the reason please check section with Base64 conversion. These frequencies (especially below 19 kHz) could be audible for the most of the people (it sounds like squeaking). If we would want to exchange data using sound which is inaudible, we could use just simple binary representation. Sending data using 0 and 1 would be needed only two frequencies, so taking the highest as possible (for example 19,9 kHz and 20,10) would ensure that exchanging of data would be inaudible for the most people. Of course at the expense of length of sending data. It would be achievable also with hexadecimal representation. Would be needed to use bigger bandwidth than from binary representation but the length of data would be smaller.
 
 \subsection{Summary}
 
