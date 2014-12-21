@@ -1,26 +1,25 @@
 \select@language {english}
 \select@language {english}
 \contentsline {section}{\numberline {1}Introduction}{3}
-\contentsline {subsection}{\numberline {1.1}Problem}{3}
-\contentsline {subsection}{\numberline {1.2}AKE in out of-band channel}{4}
+\contentsline {subsection}{\numberline {1.1}Related work}{4}
 \contentsline {section}{\numberline {2}Analysis of the problem}{4}
 \contentsline {subsection}{\numberline {2.1}Authenticated Key Agreement}{5}
 \contentsline {subsection}{\numberline {2.2}Anonymous Mutual Authentication}{5}
-\contentsline {subsection}{\numberline {2.3}Security Model}{9}
-\contentsline {subsubsection}{\numberline {2.3.1}Adversarial Model}{9}
-\contentsline {subsection}{\numberline {2.4}Analysis of out-of-band channels}{10}
-\contentsline {subsection}{\numberline {2.5}Proposed usage of out-of-band channel}{11}
-\contentsline {subsection}{\numberline {2.6}Sound}{11}
+\contentsline {subsection}{\numberline {2.3}Security Model}{7}
+\contentsline {subsubsection}{\numberline {2.3.1}Adversarial Model}{8}
+\contentsline {subsection}{\numberline {2.4}Analysis of out-of-band channels}{8}
+\contentsline {subsection}{\numberline {2.5}Proposed usage of out-of-band channel}{9}
+\contentsline {subsection}{\numberline {2.6}Sound}{12}
 \contentsline {subsubsection}{\numberline {2.6.1}Frequency}{12}
-\contentsline {subsubsection}{\numberline {2.6.2}Sound intensity}{12}
+\contentsline {subsubsection}{\numberline {2.6.2}Sound intensity}{13}
 \contentsline {subsubsection}{\numberline {2.6.3}Speed of sound}{13}
 \contentsline {subsubsection}{\numberline {2.6.4}Ultrasounds}{13}
-\contentsline {subsubsection}{\numberline {2.6.5}Fourier transform}{13}
+\contentsline {subsubsection}{\numberline {2.6.5}Fourier transform}{14}
 \contentsline {subsubsection}{\numberline {2.6.6}Discrete Fourier Transform}{15}
-\contentsline {subsubsection}{\numberline {2.6.7}Fast Fourier Transform}{16}
-\contentsline {subsubsection}{\numberline {2.6.8}Hanning window}{16}
+\contentsline {subsubsection}{\numberline {2.6.7}Fast Fourier Transform}{17}
+\contentsline {subsubsection}{\numberline {2.6.8}Hanning window}{17}
 \contentsline {subsubsection}{\numberline {2.6.9}Pulse-Code Modulation}{18}
-\contentsline {subsection}{\numberline {2.7}Sound channel parameters}{18}
+\contentsline {subsection}{\numberline {2.7}Sound channel parameters}{19}
 \contentsline {subsection}{\numberline {2.8}Microphones and speakers in mobile devices}{19}
 \contentsline {subsection}{\numberline {2.9}Security analysis}{19}
 \contentsline {subsubsection}{\numberline {2.9.1}No access to protocol transcript}{19}
@@ -34,17 +33,17 @@
 \contentsline {section}{\numberline {3}Prototype Design}{22}
 \contentsline {subsection}{\numberline {3.1}Mobile Devices}{22}
 \contentsline {subsection}{\numberline {3.2}Operating System}{22}
-\contentsline {subsection}{\numberline {3.3}Security of Android}{22}
-\contentsline {subsection}{\numberline {3.4}Application architecture}{22}
+\contentsline {subsection}{\numberline {3.3}Security of Android}{23}
+\contentsline {subsection}{\numberline {3.4}Application architecture}{23}
 \contentsline {subsection}{\numberline {3.5}Cryptography library}{23}
-\contentsline {subsection}{\numberline {3.6}Design pattern}{23}
+\contentsline {subsection}{\numberline {3.6}Design pattern}{24}
 \contentsline {subsection}{\numberline {3.7}NIST recommendation for security parameters}{24}
-\contentsline {subsection}{\numberline {3.8}Shared cryptographic module}{24}
-\contentsline {subsection}{\numberline {3.9}Java Native Interface - C++ Wrapper}{25}
+\contentsline {subsection}{\numberline {3.8}Shared cryptographic module}{25}
+\contentsline {subsection}{\numberline {3.9}Java Native Interface - C++ Wrapper}{26}
 \contentsline {subsection}{\numberline {3.10}Base64}{26}
-\contentsline {subsection}{\numberline {3.11}Sound channel}{26}
+\contentsline {subsection}{\numberline {3.11}Sound channel}{27}
 \contentsline {subsubsection}{\numberline {3.11.1}Generating sound wave}{27}
-\contentsline {subsubsection}{\numberline {3.11.2}Receiving sound}{28}
+\contentsline {subsubsection}{\numberline {3.11.2}Receiving sound}{29}
 \contentsline {section}{\numberline {4}Tests}{32}
-\contentsline {section}{\numberline {5}Possible development of the project}{33}
-\contentsline {subsection}{\numberline {5.1}Summary}{34}
+\contentsline {section}{\numberline {5}Possible development of the project}{34}
+\contentsline {section}{\numberline {6}Summary}{34}

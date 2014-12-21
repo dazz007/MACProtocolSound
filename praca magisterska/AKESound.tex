@@ -151,8 +151,8 @@ Application created on Android system will serve as proof of concept. There are 
 
 The first section focuses on analysis of the problem. It explains principal issues used to create the application. It consists some information about security problem and necessary definitions to create sound channel. In the next chapter is described design of prototype. What was used, how application work etc. Then are shown results of test.
 
+\vspace{5mm}
 
-\subsection{Problem}
 The problem is secure exchange keys between two parties, which have no knowledge of each other, in insecure, unreliable environment e.g. susceptible to eavesdropping.
 
 \vspace{5mm}
@@ -174,11 +174,12 @@ To exchange data are used mainly electromagnetic radiation channels like Bluetoo
 
 
 
-\subsection{AKE in out of-band channel}
-Every mobile device have speaker and microphone. That is why the sound channel seems a reasonable choice as an out-of-band key establishment channel for mobile devices. Internet is not always available, so using this type of channel could be good alternative. Devices are still improving, hence speakers and microphones have better quality with each next generation. This paper is proof of concept and shows that it is possible to use this channel, at least partially, in these kind of applications. Each of the authenticating parties sequentially use their microphones and speaker to exchange data.
+%\subsection{AKE in out of-band channel}
 
 
-%\subsection{Related work}
+\subsection{Related work}
+There are several ways to establish secure channel generating session key.
+There are solutions where are used shared secret password which prevent Man-In-The-Middle attacks as in \cite{EKE, EKE2}. However, pre-shared passwords are not always practical in many scenarios. There are protocols such as \textit{KEA} \cite{KEA}, \textit{CMQV} \cite{CMQV},\textit{HMQV} \cite{HMQV}, \textit{Naxos}, \textit{Naxos+} \cite{NAXOS} and \textit{SIGMA} \cite{sign_mac} which are in the Authenticated Key Agreement family. The security requirements and security model definition in AKE protocols were proposed by Cenetti and Krawczyk in \cite{security_canetti_krawczyk, key_exchange}. To exchange data we used sound channel which is one of the considered out-of-band channel for key exchange protocols. This kind of channel are discussed in \cite{chirp, sib, ad_hoc, veh, vibrat}.
 
 
 \section{Analysis of the problem}
@@ -186,28 +187,23 @@ Every mobile device have speaker and microphone. That is why the sound channel s
 In this section we will focus on problem of establishing secure connection in insecure channel between two parties. At first the parties need to authenticate each other and then create common session key, which will be needed to symmetric encryption of the communication. We describe the adversarial model where is assumed that each of the parties secretly holds a long-term private key that enables unique authentication of this party. There is also a trusted mechanism for binding identities with public keys. The private and public key with proper length are bounded in such way that obtain private key from public key is very hard to do. The communication channel can be completely controlled by an adversary that can intercept, delete, delay, modify or inject messages at will. There is a relation between the requirements of the security model and a well-defined attack scenario. In the second part of this section are described necessary issues to create sound channel.
 
 \subsection{Authenticated Key Agreement}
-
-Authenticated Key Agreement Protocols base on public key cryptography and trusted authorities which are the most common solution being used. In public key cryptography are required two separate keys, where one is private and second one is public.
+Authenticated Key Agreement (or Authenticated Key Exchange) Protocols are such protocols where two parties can establish a common session key which will be use to symmetric encryption in further communication between parties. They base on public key cryptography and trusted authorities which are the most common solution being used. In public key cryptography (asymmetric cryptography) are required two separate keys, where one is private and second one is public. The keys are mathematical related to each other.
 
 \vspace{5mm}
 
-AKE protocols have to ensure that attacker can not obtain any information about session key from the protocol transcript. AKE protocols have to be resistant to exposed session transcript. Adversary should not be able to taking control over the communication channel having this knowledge.
+AKE protocols have to ensure that attacker can not obtain any information about session key from the protocol transcript. They have to be resistant to exposed session transcript. Adversary should not be able to taking control over the communication channel having this knowledge.
 
-There are several ways to establish session key. To prevent MITM attacks both parties have to authenticate to each other. There are many solutions that address this problem. One is to use shared secret password which prevents MITM as in EKE protocol \cite{EKE}. It was refined by many researches \cite{EKE, EKE2}. The requirement of pre-shared password between the parties might be impractical in many scenarios. There is also a family of Authenticated Key Agreement protocols (AKE) like Sigma \cite{sign_mac}, HMQV \cite{HMQV}, KEA \cite{KEA}, CMQV \cite{CMQV}, Naxos and Naxos plus like protocols \cite{AMA, NAXOS}. The security requirements and security model definition in AKE protocols were proposed by Cenetti and Krawczyk in \cite{security_canetti_krawczyk, key_exchange}. In this paper we focus on usage of optical channel for authentication thus in practice any key agreement protocol that is secure against active adversary could be used. Out-of-band channels for key agreement protocols are discussed in \cite{chirp, sib, ad_hoc, veh, vibrat}.
 
 
 \subsection{Anonymous Mutual Authentication}
-To establish session keys we used in our prototype Anonymous Mutual Authentication protocol which base on Diffie-Hellman key exchange. 
-
-\vspace{5mm}
-
+To establish session keys we used in our prototype Anonymous Mutual Authentication protocol which base on Diffie-Hellman key exchange.
 AMA originally was designed to anonymous authenticate between smart cards. It is characterized by properties:
 \begin{itemize}
-\item Forward Security - if long term keys of one of the authenticating parties compromised then established session key does not reveal.
-\item Simultability - it is possible to create protocol transcript between parties without interacting with them
-\item Undetectability - having protocol transcript one cannot confirm that process really took place
-\item Privacy - eavesdropping adversary cannot tell about identity of parties performing the protocol
-\item Deniability - no one of the participants can convince third party that he participate in protocol.
+\item \textit{Forward Security} - if long term keys of one of the authenticating parties compromised then established session key does not reveal,
+\item \textit{Simultability} - it is possible to create protocol transcript between parties without interacting with them,
+\item \textit{Undetectability} - having protocol transcript one cannot confirm that process really took place,
+\item \textit{Privacy} - eavesdropping adversary cannot tell about identity of parties performing the protocol
+\item \textit{Deniability} - no one of the participants can convince third party that he participate in protocol.
 \end{itemize}
 
 \newcommand{\newCA}{$c_A$}
@@ -254,11 +250,6 @@ Scheme of protocol is shown at the fig. \ref{fig:F8}. In the scheme are used the
 \item For confirming public keys are using digital certificates and public key infrastructure (PKI).
 \end{itemize}
 
-AMA is defined in a cyclic group G where Computational Diffie-Hellman Problem (CDH) is hard
-
-\begin{assumption}
-Given a cyclic group G with order $q$, and ($g$,$g^a$,$g^b$) where $g$ us a random generator of $G$, and ($a$,$b$) where chosen randomly from the set {0,1,...,$q-1$} it is computationally intractable to compute the value $g^{ab}$.
-\end{assumption}
 
 At the beginning, parties (Alice and Bob) generate their private key - $x_A$ (respectively, $x_B$) and public key $y_A = g^{x_A}$ (respectively, $y_B$). Then parties generate their ephemeral keys. Private is $h_A$ := $H(a)$ (where $a$ is a random number) (respectively $h_B$, $b$) and public ephemeral key $c_A$ := $g^{h_A}$ (respectively, $c_B$). Then participants exchange their ephemeral keys, based on Diffie-Hellman key exchange. Note that in this phase parties do not exchange any identity information.
 
@@ -274,55 +265,25 @@ To authentication, parties encrypt their certificates $cert_A$ and $cert_B$ and 
 \vspace{5mm}
 
 This protocol is proved to be secure under Random Oracle Model (ROM) for the used
-hash function $H$. In ROM, hash function $H$ is modeled as an oracle $\mathcal{O}_H$. For a query $x$, oracle responds $y$ if in internal table $T$ exist entry ($x$, $y$). If there is no such an entry for $x$, then $\mathcal{O}_H$ selects $y$ at random, creates entry ($x$, $y$) is in $T$ and answers $y$. In this model the only available operation concerning hash function $H$ is asking for values for concrete arguments. Hence, having value $y$ the only way to get $x$ = $H^{-1}(y)$ is to remember it from a previous query or ask a query with new $x$ and get $y$ by accident. Security proof of symmetric encryption is shown by series of games, for more details see \cite{AMA}. 
+hash function $H$. In ROM, hash function $H$ is modeled as an oracle $\mathcal{O}_H$. For a query $x$, oracle responds $y$ if in internal table $T$ exist entry ($x$, $y$). If there is no such an entry for $x$, then $\mathcal{O}_H$ selects $y$ at random, creates entry ($x$, $y$) is in $T$ and answers $y$. In this model the only available operation concerning hash function $H$ is asking for values for concrete arguments. Hence, having value $y$ the only way to get $x$ = $H^{-1}(y)$ is to remember it from a previous query or ask a query with new $x$ and get $y$ by accident. 
+
+\vspace{5mm}
+
+Besides ROM, its security base on aforementioned CDH assumption which is hard to solve.
+\begin{assumption}
+	\textbf{(CDH Assumption)} 
+	Given a cyclic group G with order $q$, and ($g$,$g^a$,$g^b$) where $g$ us a random generator of $G$, and ($a$,$b$) where chosen randomly from the set {0,1,...,$q-1$} it is computationally intractable to compute the value $g^{ab}$.
+\end{assumption}
+ In the protocol is used symmetric encryption. Security proof of this is shown by series of games, for more details see \cite{AMA}. 
 
 \vspace{5mm}
 
 The practical part of this paper was to implement AMA on mobile devices as to our best knowledge there is no practical implementation of AMA for smartphones.
 
-\newpage
-\begin{table}[H]
-\caption{Scheme of protocol used in devices.}
-\begin{center}
 
-\begin{tabular}{ p{4cm} p{5cm} p{4cm}}
-\textsf{\LARGE Alice} & & \textsf{\LARGE Bob} \\
-\hline
-\textsf{\newline\textbf{\small Starting screen} \newline
-\newline
-\footnotesize Alice starts the protocol as initializator}& \raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/couple.png}} & \textsf{\newline\textbf{\small Starting screen} \newline \newline
-\footnotesize Bob starts protocol as receiver.} \\
-
-\textsf{\newline\textbf{\small Send ephemeral key} \newline
-\newline
-\footnotesize Alice generates ephemeral key, encodes and start sending it by speaker.}&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/signal1.png}}&\textsf{\newline\textbf{\small Receive ephemeral key} \newline
-\newline
-\footnotesize Bob receives ephemeral key using microphone.} \\
-
-\textsf{\newline\textbf{\small Receive ephemeral key } \newline
-\newline
-\footnotesize Alice receives ephemeral key using microphone. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/second_side.png}}&\textsf{\newline\textbf{\small Send ephemeral key} \newline
-\newline
-\footnotesize Bob generates ephemeral key, encodes and start sending it by speaker.} \\
-
-\textsf{\newline\textbf{\small Send encrypted authentication data } \newline
-\newline
-\footnotesize Alice uses her and Bob's ephemeral keys to compute authentication data, encrypts it and sends by speaker. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/signal1.png}}&\textsf{\newline\textbf{\small Receive and decrypt authentication data} \newline
-\newline
-\footnotesize Bob receives and decrypts Alices authentication data.} \\
-
-\textsf{\newline\textbf{\small Receive and decrypt authentication data } \newline
-\newline
-\footnotesize Alice receives and decrypts Bobs authentication data. If it's not valid, she aborts the protocol. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=50mm]{img/session_key_est.png}}&\textsf{\newline\textbf{\small Send encrypted authentication data} \newline
-\newline
-\footnotesize Bob verifies authentication data received from Alice. If it's
-valid, he generates his authentication data and send it by microphone. If data is not valid, Bob aborts the protocol.}
-\end{tabular}
-\end{center}
-\end{table}
 
 \subsection{Security Model}
-There is no one ultimately defined security model for key exchange. However, we will recourse to the requirements as most fundamental for secure key exchange protocol which H. Krawczyk presents in \cite{sign_mac}.
+There is no one ultimately defined security model for key exchange (KE). However, we will recourse to the requirements as most fundamental for secure key exchange protocol which H. Krawczyk presents in \cite{sign_mac}.
 
 \begin{itemize}
 	\item Authentication - each party participating in KE needs to uniquely verify identities of other authenticating party.
@@ -368,6 +329,10 @@ Another way is to use vibrations \cite{vibrat}. New smartphones have installed s
 Sound channel is also one of the options. Every mobile device has speaker and microphone, so we do not need to worry about no available Internet or that the other party has not installed Bluetooth or IrDA or even camera. Using ultrasounds, the signal will be not detected by humans ear. Additionally mobile phones cannot generate these waves with big intense, so transferring data should be done on small distance. Of course, sound channel could be easily to manipulate. Attacker with proper speaker can generate frequencies which could disturb the communication. However, he needs to be close to the authenticating parties if generated ultrasound has to be detected by party's mobiles microphone or generate sound waves with big intense which could be audible for human. Additionally is worth to consider to use this kind of channel mixing with another channel. For example, ephemeral keys will be sending by sound channel then encrypted values by Bluetooth or one party everything sends by sound waves when the second party uses just electromagnetic channel.
 
 
+\begin{comment}
+\subsection{AKE in out of-band channel}
+Every mobile device have speaker and microphone. That is why the sound channel seems a reasonable choice as an out-of-band key establishment channel for mobile devices. Internet is not always available, so using this type of channel could be good alternative. Devices are still improving, hence speakers and microphones have better quality with each next generation. This paper is proof of concept and shows that it is possible to use this channel, at least partially, in these kind of applications. Each of the authenticating parties sequentially use their microphones and speaker to exchange data.
+\end{comment}
 \subsection{Proposed usage of out-of-band channel}
 
 Lets assumed that Alice and Bob want to establish a secure connection between their mobile phones using sound channel. To be sure that every high frequency will be detected, they try to put their phone in a such way that microphone is as close as possible to speaker of the second phone and vice versa. Usually the speaker and microphone are set at the bottom of device, so mobile phones should be directed bottom to each other. To obtain session key is processed AKE protocol. After this process further exchange of data can be done by WiFi, because of the speed of transferring data which is higher. 
@@ -385,6 +350,47 @@ Lets assumed that Alice and Bob want to establish a secure connection between th
 
 Anonymous Mutual Chip Authentication (described in detail in section above) should ensure that even if some transferring data eavesdrop then adversary will do nothing with this data. Duration of the protocol is about 35 second - more information about duration and performance are described in section 5.
 
+\newpage
+\begin{table}[H]
+	\caption{Scheme of protocol used in devices.}
+	\begin{center}
+		
+		\begin{tabular}{ p{4cm} p{5cm} p{4cm}}
+			\textsf{\LARGE Alice} & & \textsf{\LARGE Bob} \\
+			\hline
+			\textsf{\newline\textbf{\small Starting screen} \newline
+				\newline
+				\footnotesize Alice starts the protocol as initializator}& \raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/couple.png}} & \textsf{\newline\textbf{\small Starting screen} \newline \newline
+				\footnotesize Bob starts protocol as receiver.} \\
+			
+			\textsf{\newline\textbf{\small Send ephemeral key} \newline
+				\newline
+				\footnotesize Alice generates ephemeral key, encodes and start sending it by speaker.}&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/signal1.png}}&\textsf{\newline\textbf{\small Receive ephemeral key} \newline
+				\newline
+				\footnotesize Bob receives ephemeral key using microphone.} \\
+			
+			\textsf{\newline\textbf{\small Receive ephemeral key } \newline
+				\newline
+				\footnotesize Alice receives ephemeral key using microphone. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/second_side.png}}&\textsf{\newline\textbf{\small Send ephemeral key} \newline
+				\newline
+				\footnotesize Bob generates ephemeral key, encodes and start sending it by speaker.} \\
+			
+			\textsf{\newline\textbf{\small Send encrypted authentication data } \newline
+				\newline
+				\footnotesize Alice uses her and Bob's ephemeral keys to compute authentication data, encrypts it and sends by speaker. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/signal1.png}}&\textsf{\newline\textbf{\small Receive and decrypt authentication data} \newline
+				\newline
+				\footnotesize Bob receives and decrypts Alices authentication data.} \\
+			
+			\textsf{\newline\textbf{\small Receive and decrypt authentication data } \newline
+				\newline
+				\footnotesize Alice receives and decrypts Bobs authentication data. If it's not valid, she aborts the protocol. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=50mm]{img/session_key_est.png}}&\textsf{\newline\textbf{\small Send encrypted authentication data} \newline
+				\newline
+				\footnotesize Bob verifies authentication data received from Alice. If it's
+				valid, he generates his authentication data and send it by microphone. If data is not valid, Bob aborts the protocol.}
+		\end{tabular}
+	\end{center}
+\end{table}
+
 \subsection{Sound}
 Sound and its properties have one of the important role in our dissertation. All of the data are sent using sound waves, so in this section are explained necessary issues associated with it. 
 
@@ -400,6 +406,7 @@ Sound is an acoustic wave propagating in various substances such as water, air (
 \subsubsection{Frequency}
 Audio frequency is measured in hertz (Hz), where 1 Hz means one cycle per second. Below figures show graphs of audio frequency 1 Hz and 5 Hz.
 
+
 \begin{center}
 	\includegraphics[width=0.45\textwidth]{img/frequency_1Hz}
 	\includegraphics[width=0.45\textwidth]{img/frequency_5Hz}
@@ -407,10 +414,10 @@ Audio frequency is measured in hertz (Hz), where 1 Hz means one cycle per second
 
 There exist three division of sound as to frequency:
 \begin{itemize}
-	\item Infrasound - frequency is lower than 16~Hz.
+	\item Infrasound - frequency is lower than 16~Hz. Too low frequency to be audible for human. Infrasounds have very large length of wave, more than 17 meters. They have influence on humans comfort. On high level we can feel pressure in ears, discomfort, excessive fatigue or somnolence.
 	\item Hearable sound - frequency is greater than 16~Hz and lower than 20~kHz.
-	\item Ultrasound - frequency is greater than 20~kHz.
-	\item Hipersound - frequency is greater than 10~GHz.
+	\item Ultrasound - frequency is greater than 20~kHz. Too high to be audible for human. Ultrasounds are used inter alia in medicine (USG) or in sonars. 
+	\item Hipersound - frequency is greater than 10~GHz. They can spread only in crystals, because of such a high frequency. The wave is smaller than distance between molecules in the environment. They disappear in the gases.
 \end{itemize}
 
 Frequency specify also pitch of sound. A high frequency sound wave corresponds to a high pitch of sound and low frequency sound wave corresponds to a low pitch of sound.
@@ -434,7 +441,7 @@ Speed of sound depends on center through which wave passes. Influence on speed h
 The present application largely, to sending data, uses ultrasound. Ultrasounds are sound waves, which are inaudible for human, on the grounds of their too high frequency. Have adopted that ultrasounds starts from 20 kHz, but really everything depends on how good hearing human has. Children hear the highest frequencies. Increasing age the upper limit of hearing descend \cite{limit_sound}. Ultrasounds end at frequencies of several GHz, where hipersounds start. Contractual it is 10 GHz.  Ultrasounds have many applications. Using them one can detect objects and specify distance to them. Are used in medicine where whereby ultrasonography (USG) we can find not available for human eye diseases, watching e.g. internal organs. 
 
 \subsubsection{Fourier transform}
-In our prototype microphone receives signal as a sinus wave. Because of this that we need to know the frequency of this signal we have to use some transform which turn sinus wave into the frequency spectrum. The solution is to use \textit{Fourier transform}.
+In our prototype microphone receives signal as a sinus wave. Because of that we need to know the frequency of this signal, we have to use some transform which turn sinus wave into the frequency spectrum. The solution is to use \textit{Fourier transform}.
 
 Using \textit{Fourier transform} one can change function $f(x)$ in time domain to $F(s)$ in frequency domain. In other words, it distributes the function $f(x)$ to series of periodic functions, in such way that it shows how frequencies consist of the function $f(x)$. The formula for the \textit{Fourier transform} looks as fallows:
 
@@ -566,7 +573,7 @@ Specification of this appliances are very different and depends on devices. Duri
 
 
 \subsection{Security analysis}
-The key exchange protocol is considered to be secured on the assumptions that underlying problems are hard e.g. factorization, discrete logarithm, computational Diffie-Hellman etc. One interesting question is what happens if those assumptions are false. Lets imagine an adversary with super efficient quantum computer that is capable of solving the above problems in reasonable time.
+The key exchange protocol is considered to be secured on the assumptions that underlying problems are hard e.g. factorization, discrete logarithm, computational Diffie-Hellman etc. One interesting question is what happens if those assumptions are false. It could happened if implementation of cryptography module has some error or an adversary has super efficient quantum computer that is capable of solving the above problems in reasonable time.
 
 \vspace{5mm}
 
@@ -589,25 +596,9 @@ However in practice it is possible for an adversary to partially eavesdrop the c
 
 \subsubsection{Partial access to protocol transcript}
 
-Partial access to protocol transcript in sound channel will be depends on many factors. At first microphone has to have appropriate sensitivity level. Sensitivity level is given by:
+Partial access to protocol transcript in sound channel depends on many factors. Participant's microphone, speakers and adversary's microphone have to have appropriate conditions which allow adversary to eavesdrop the transcript. For more details see section 2.9.7 about eavesdropping.
 
-\begin{equation}
-	L_m = 20 log_{10}\left(\frac{M}{M_0}\right)[dB],
-\end{equation}
-
-where $M$ is sensitivity [mV/Pa] and $M_0$ is the 1000 mV/Pa (1 V/Pa) reference output ratio. $M = \frac{U}{p_A}$ where U is the effective voltage microphone and $p_A$ is the sound pressure. Microphone sensitivity $M$ depends also on frequency and the angle of incidence. The important role of receiving signal have speakers generating this signal. Sensitivity level of speaker is given by: 
-
-\begin{equation}
-	L_s = 10 log_{10}\left(\frac{p_A}{p_0}\right)[dB],
-\end{equation}
-
-where $p_A$ is sound pressure generated by speaker powered 1V*A, $p_0$ is a reference pressure which has value $2*10^{-5}$ Pa. Frequency also has influence on sensitivity level of speaker. The next thing which should be consider is distance microphone from speaker. Too big distance and too low sensitivity of microphone could causing that microphone will not able to gain sounds wave or at least some frequencies. Sound pressure decreases proportionally with increase of distance. So when sound level $L_{1}$ is measured at a distance $r_1$, the sound level $L_2$ at the distance $r_2$ is given by:
-
-\begin{equation}
-	L_2 = L_1 + 20 log_{10} \left(\frac{r_1}{r_2}\right)[dB].
-\end{equation}
-
-These factors contribute to some probability $\bar{p}$ that adversary and participants will have this type of devices satisfying the conditions. Otherwise, adversary not being able to receive all frequencies. He will gain transcript with data having no sense. So it would be similar situation when adversary has no access to the transcript.  
+Factors described in 2.9.7 contribute to some probability $\bar{p}$ that adversary and participants will have this type of devices satisfying the conditions. Otherwise, adversary is not being able to receive all frequencies. He will gain transcript with data having no sense. So it would be similar situation when adversary has no access to the transcript.  
 
 
 \subsubsection{Full access to protocol transcript}
@@ -624,6 +615,25 @@ One of the vector attack is manipulating of the speaker. Assume that adversary w
 Manipulation of microphone would be possible only if attacker would have access to the application. He could e.g. reduce or increase bandwidth of frequencies. Adversary could totally change the bandwidth, outside of the know range for authenticated parties and at the same time generate his sound waves in chosen bandwidth.
 
 \subsubsection{Eavesdropping}
+Eavesdropping in sound channel depends on many factors.
+ At first microphone has to have appropriate sensitivity level. Sensitivity level is given by:
+ 
+ \begin{equation}
+ L_m = 20 log_{10}\left(\frac{M}{M_0}\right)[dB],
+ \end{equation}
+ 
+ where $M$ is sensitivity [mV/Pa] and $M_0$ is the 1000 mV/Pa (1 V/Pa) reference output ratio. $M = \frac{U}{p_A}$ where U is the effective voltage microphone and $p_A$ is the sound pressure. Microphone sensitivity $M$ depends also on frequency and the angle of incidence. The important role of receiving signal have speakers generating this signal. Sensitivity level of speaker is given by: 
+ 
+ \begin{equation}
+ L_s = 10 log_{10}\left(\frac{p_A}{p_0}\right)[dB],
+ \end{equation}
+ 
+ where $p_A$ is sound pressure generated by speaker powered $1V \cdot A$, $p_0$ is a reference pressure which has value $2*10^{-5}$ Pa. Frequency also has influence on sensitivity level of speaker. The next thing which should be consider is distance microphone from speaker. Too big distance and too low sensitivity of microphone could causing that microphone will not able to gain sounds wave or at least some frequencies. Sound pressure decreases proportionally with increase of distance. So when sound level $L_{1}$ is measured at a distance $r_1$, the sound level $L_2$ at the distance $r_2$ is given by:
+ 
+ \begin{equation}
+ L_2 = L_1 + 20 log_{10} \left(\frac{r_1}{r_2}\right)[dB].
+ \end{equation}
+
 There are exist a lot of devices to eavesdropping. One of the example is microphone with high sensitivity which allow to eavesdrop the sounds even from a large distance e.g. parabolic or shotgun  microphone. To gain ultrasounds for eavesdropper would be useful instrument detecting ultrasonics from bats. The next one is using laser \cite{laser_mic}. The special laser is a transmitter and the infrared measure of surface vibration. This method also allows to gain data from a large distance. 
 
 \subsubsection{Malicious implementation}
@@ -638,7 +648,7 @@ AMA does not require high-power computing. So it is ideal to implement it on chi
 
 \subsection{Operating System}
 
-Operating system which was chosen is Android version 4.1.2 and higher. This is the newest version which was available for device which has been using in tests. Second device to tests has Android 4.2.2. This software has every required libraries whereby is possible to create sound channel between two devices (AudioTrack and AudioRecord). Additionally, Android allows to use of modules written in C++. 
+Operating system which was chosen is Android version 4.1.2 and higher. This is the newest version which was available for device which has been using in tests. Second device to tests has Android 4.2.2. This software has every required libraries whereby is possible to create sound channel between two devices (\textit{AudioTrack} and \textit{AudioRecord}). Additionally, Android allows to use of modules written in C++. 
 
 \subsection{Security of Android}
 
@@ -676,20 +686,20 @@ Application architecture base on Model-View-Controller pattern. As model is incl
 
 \subsection{NIST recommendation for security parameters}
 
-NIST recommends using 3072 bit length keys to ensure low probability of calculating discrete logarithm. This length is set as default in CryptoPP, however in our prototype we are using 1024 bit. It is caused by duration of sending data by sound. Now, sending 1024 bit length keys take some time and for needs of presentation we decided to stay with this length. For more information please check \cite{NIST}.
+\textit{NIST} recommends using 3072 bit length keys to ensure low probability of calculating discrete logarithm. This length is set as default in \textit{CryptoPP}, however in our prototype we are using 1024 bit. It is caused by duration of sending data by sound. Now, sending 1024 bit length keys take some time and for needs of presentation we decided to stay with this length. For more information please check \cite{NIST}.
 
 \subsection{Shared cryptographic module}
-Cryptographic module is designed in such way that it will be easy to use it on different platforms. Application treat it as a black box where are exchanging strings with data. Implementation is made in C++ based on DiffieHellman and Authenticated-DiffieHellman classes from CryptoPP library. It performs following cryptographic operation:
+Cryptographic module is designed in such way that it will be easy to use it on different platforms. Application treat it as a black box where are exchanging strings with data. Implementation is made in C++ based on \textit{Diffie-Hellman} and \textit{Authenticated-Diffie-Hellman} classes from CryptoPP library. It performs following cryptographic operation:
 
 \begin{itemize}
 \item Modular exponentiation
 \item Long term and ephemeral key generation (Diffie-Helman)
 \item Certificate generation and verification
-\item Secure hashing (SHA1)
-\item Symmetric encryption (AES)
+\item Secure hashing (\textit{SHA1})
+\item Symmetric encryption (\textit{AES})
 \end{itemize}
 
-Core of this module is class MututalAuthenticationChip. It is responsible for inputting, preparing and outputting data to Application. All sensitive data is kept internally using secure byte blocks. Messages generated in the protocol are converted to strings.
+Core of this module is class \textit{MututalAuthenticationChip}. It is responsible for inputting, preparing and outputting data to Application. All sensitive data is kept internally using secure byte blocks. Messages generated in the protocol are converted to strings.
 For group arithmetic operations and modular exponentiation we use build in Integer class provided by the library. 
 
 \vspace{5mm}
@@ -706,6 +716,17 @@ void KeyGenerator::GenerateEphemeralKeyPair(CryptoPP::RandomNumberGenerator &rng
     CryptoPP::Integer exponent(privateKey, keySize);
     CryptoPP::Integer cA = a_exp_b_mod_c(g, exponent, p);   //ca = g^H(a)
     cA.Encode(publicKey, keySize);
+}
+\end{lstlisting}
+
+\lstset{language=C++,caption={Example of CryptoPP usage for hash function.}}
+\begin{lstlisting}
+byte * HashClass::getSHA1(const byte * input, int length)
+{
+	CryptoPP::SHA1 sha;
+	byte *digest = new byte [CryptoPP::SHA1::DIGESTSIZE];
+	sha.CalculateDigest(digest, input, length);
+	return digest;
 }
 \end{lstlisting}
 
@@ -741,7 +762,7 @@ JNIEXPORT void JNICALL Java_com_example_androidake_MutualAuthenticateChip_prepar
 
 \subsection{Base64}
 
-One of the biggest problem was decided in what representation data should be sending. First choice was standard binary representation with 0 and 1. During creation of sound channel we have found that sending one ephemeral key, which has 1024 bits will take too long. So we decided to reduce sending data using Base64 conversion. Six bits are transform to one of the 64 defined signs. Hence, instead of sending 1024 sings we send just about 172. Data which come from cryptographic module are in Hexadecimal representation. To converse we have used library created by Robert Harder \cite{base_64}. 
+One of the biggest problem was decided in what representation data should be sending. First choice was standard binary representation with 0 and 1. During creation of sound channel we have found that sending one ephemeral key, which has 1024 bits will take too long. So we decided to reduce sending data using \textit{Base64} conversion. Six bits are transform to one of the 64 defined signs. Hence, instead of sending 1024 sings we send just about 172. Data which come from cryptographic module are in Hexadecimal representation. To converse we have used library created by Robert Harder \cite{base_64}. 
 
 \begin{lstlisting}[caption={Example of code converting from Hex String to Base64 String}]
 public static String fromHexToBase64(byte[] hex_byte) {
@@ -779,6 +800,10 @@ Class responsible for generating sound wave get data presented in Base64 (Check 
 		\hline
 		$\vdots$ & $\vdots$ \\
 		\hline
+		/ & 19,25 \\
+		\hline
+		, & 19,4 \\
+		\hline
 		. & 19,55 \\
 		\hline
 	\end{tabular}
@@ -795,7 +820,7 @@ where $f$ is the target frequency.
 These samples are processed by \textit{AudioTrack} library to sound using \textit{PCM} encoding. In the listing is shown peace of code preparing sinus waves in appropriate frequencies.
 
 
-\lstset{language=JAVA,caption={Method converting characters on sinus waves.}}
+\lstset{language=JAVA,caption={Method converting characters to sinus waves.}}
 \begin{lstlisting}
 /* --------- Constants and variable used in code -------------------------*/
 // Constants.DEFAULT_NUM_SAMPLES = 1323; - Number of samples needed to 	   
@@ -978,14 +1003,14 @@ To all tests was used two devices: LG Swift L9 with system Android 4.1.2 and tab
 
 During tests we have focused on below factors:
 \begin{itemize}
-\item Distance between devices.
-\item Position of devices terms of placement of speaker and microphone.
-\item Distance between chosen frequencies.
-\item Working during sounds in the background.
-\item Volume of sound
+\item Distance between devices,
+\item Position of devices terms of placement of speaker and microphone,
+\item Distance between chosen frequencies,
+\item Working during sounds in the background,
+\item Volume of sound.
 \end{itemize}
 
-Firstly, we have tested distance between chosen frequencies. Every character from Base64 coding is mapped to appropriate frequency. The smaller distance then is possible to use higher frequencies. We have choose three spaces:
+Firstly, we have tested distance between chosen frequencies. Every character from \textit{Base64} coding is mapped to appropriate frequency. The smaller distance then is possible to use higher frequencies. We have choose three spaces:
 \begin{table}[H]
 	\centering
 	\begin{tabular}{| c | c | c |}
@@ -1033,15 +1058,21 @@ Disadvantage in our protocol is speed of transferring data. In every 15 millisec
 
 \vspace{5mm}
 
-For now the sound channel use bandwidth from 10,5 kHz to 20,25 kHz. For the reason please check section with Base64 conversion. These frequencies (especially below 19 kHz) could be audible for the most of the people (it sounds like squeaking). If we would want to exchange data using sound which is inaudible, we could use just simple binary representation. Sending data using 0 and 1 would be needed only two frequencies, so taking the highest as possible (for example 19,9 kHz and 20,10) would ensure that exchanging of data would be inaudible for the most people. Of course at the expense of length of sending data. It would be achievable also with hexadecimal representation. Would be needed to use bigger bandwidth than from binary representation but the length of data would be smaller.
+For now the sound channel use bandwidth from 10,5 kHz to 20,25 kHz. For the reason please check section with \textit{Base64} conversion. These frequencies (especially below 19 kHz) could be audible for the most of the people (it sounds like squeaking). If we would want to exchange data using sound which is inaudible, we could use just simple binary representation. Sending data using 0 and 1 would be needed only two frequencies, so taking the highest as possible (for example 19,9 kHz and 20,10) would ensure that exchanging of data would be inaudible for the most people. Of course at the expense of length of sending data. It would be achievable also with hexadecimal representation. Would be needed to use bigger bandwidth than from binary representation but the length of data would be smaller.
 
-\subsection{Summary}
+\section{Summary}
 
 In the dissertation is showed that is possible to use sound channel to establish session key. There is no need Internet connection or another electromagnetic channels, so proposed protocol Anonymous Mutual Authenticated could be called even on the place without reach, using mobile devices with embedded speaker and microphone. 
 
 \vspace{5mm}
 
-There is showed that using appropriate techniques is possible to prevent from eavesdropping using e.g. Doppler effect. Mixing sound channel with another kind of channels, for sure, make it more difficult. Establishing the authentication could be much faster if would be use client-server model. Computer as a server would analyze data faster and results would be better.
+
+In the prototype we used the bandwidth of frequencies which are audible for human, however it is possible to use only these frequencies which are not detected by humans ears. Our mobile devices, which are medium priced products did not have problem to send and receive frequency between 19-20,5 kHz which are inaudible for the most people.
+
+\vspace{5mm}
+
+There is showed that using this type of channel could surprise the attacker which could not be preparing to eavesdrop/manipulate exchanging data in acoustic waves. Mixing the sound channel with another kind of channels, for sure, could make it even more difficult. Duration of the protocol execution is not so fast as in radiation channels, however it is good enough to be applied in practical solution. Establishing the authentication could be much faster if would be use client-server model. Computer as a server would analyze data faster and results would be better.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BIBLIOGRAFIA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

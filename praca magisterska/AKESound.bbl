@@ -1,8 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{chart_eng}
-\url{http://www.achartengine.org/}.
-
 \bibitem{fourier}
 The descrete transform fourier (dft): Definition and numerical examples.
 \newblock
@@ -37,6 +34,10 @@ The speed of sound.
 
 \bibitem{vibrat}
 Vibrations usage in out-of-band channel.
+
+\bibitem{chart_eng}
+AChartEngine.
+\newblock \url{http://www.achartengine.org/}.
 
 \bibitem{cryptography}
 Scott A.~Vanstone Alfred J.~Menezes, Paul C. van~Oorschot.
