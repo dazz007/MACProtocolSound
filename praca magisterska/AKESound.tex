@@ -117,7 +117,7 @@
 \put(170, 60){\makebox(0,0)[l]{\large  {for the degree of Master of Engineering}}}
 \put(170, 40){\makebox(0,0)[l]{\large  { }}}
 \put(170, 20){\makebox(0,0)[l]{\large  {Thesis Supervisor}}}
-\put(170, 0){\makebox(0,0)[l]{\large  {dr inż. Łukasz Krzywiecki}}}
+\put(170, 0){\makebox(0,0)[l]{\large  {dr inz. Lukasz Krzywiecki}}}
 \put(100,-80){\makebox(0,0)[bl]{\large \bf \textsc{Wroclaw 2014}}}
 \end{picture}
 \end{center}
@@ -179,7 +179,7 @@ To exchange data are used mainly electromagnetic radiation channels like Bluetoo
 
 \subsection{Related work}
 There are several ways to establish secure channel generating session key.
-There are solutions where are used shared secret password which prevent Man-In-The-Middle attacks as in \cite{EKE, EKE2}. However, pre-shared passwords are not always practical in many scenarios. There are protocols such as \textit{KEA} \cite{KEA}, \textit{CMQV} \cite{CMQV},\textit{HMQV} \cite{HMQV}, \textit{Naxos}, \textit{Naxos+} \cite{NAXOS} and \textit{SIGMA} \cite{sign_mac} which are in the Authenticated Key Agreement family. The security requirements and security model definition in AKE protocols were proposed by Cenetti and Krawczyk in \cite{security_canetti_krawczyk, key_exchange}. To exchange data we used sound channel which is one of the considered out-of-band channel for key exchange protocols. This kind of channel are discussed in \cite{chirp, sib, ad_hoc, veh, vibrat}.
+There are solutions where are used shared secret password which prevent Man-In-The-Middle attacks as in \cite{EKE, EKE2}. However, pre-shared passwords are not always practical in many scenarios. There are protocols such as KEA \cite{KEA}, CMQV \cite{CMQV}, HMQV \cite{HMQV}, Naxos, Naxos+ \cite{NAXOS} and SIGMA \cite{sign_mac} which are in the Authenticated Key Agreement family. The security requirements and security model definition in AKE protocols were proposed by Cenetti and Krawczyk in \cite{security_canetti_krawczyk, key_exchange}. To exchange data we used sound channel which is one of the considered out-of-band channel for key exchange protocols. This kind of channel are discussed in \cite{chirp, sib, ad_hoc, veh, vibrat, audio_modem}.
 
 
 \section{Analysis of the problem}
@@ -206,12 +206,20 @@ AMA originally was designed to anonymous authenticate between smart cards. It is
 \item \textit{Deniability} - no one of the participants can convince third party that he participate in protocol.
 \end{itemize}
 
+
 \newcommand{\newCA}{$c_A$}
 \newcommand{\newCB}{$c_B$}
 \newcommand{\newEncA}{$Enc_{K_A}(cert_A,r_A)$}
 \newcommand{\newEncB}{$Enc_{K_B}(cert_B,r_B)$}
 \begin{figure}[H]
 
+\begin{center}
+\includegraphics[width=1.1\textwidth]{img/AMAprotocol.pdf}
+\caption{Protocol description - Anonymous Mutual Authentication.}
+\label{fig:F8}
+\end{center}
+\end{figure}
+\begin{comment}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{ | p{6.5cm} p{3.5cm} p{6.5cm} | }
@@ -231,6 +239,7 @@ AMA originally was designed to anonymous authenticate between smart cards. It is
 		$K := c^{h_A}_{B}$ & & $K := c_{A}^{h_B}$ \\
 		$K_A := H(K,1), K_B := H(K,2)$ & & $K_A := H(K,1), K_B := H(K,2)$  \\
 		$K'_A := H(K,3), K'_B := H(K,4)$ & & $K'_A := H(K,3), K'_B := H(K,4)$ \\
+		$r_A := H(c_{B}^{x_A},K'_A)$& & \\
 		& $\xrightarrow{\text{\hspace{0.5cm}\text{\newEncA}\hspace{0.5cm}}}$ & check $cert_A$, proceed with random values if $r_A \neq H(y_{A}^{h_B}, K'_A)$ \\
 		& $\xleftarrow{\text{\hspace{0.5cm}\text{\newEncB}\hspace{0.5cm}}}$ & $r_B := H(c_{A}^{x_B},K'_B)$ \\
 		check $cert_B$, proceed with random values if $r_B \neq H(y_{B}^{h_A}, K'_B)$ & & \\
@@ -243,7 +252,8 @@ AMA originally was designed to anonymous authenticate between smart cards. It is
 \caption{Protocol description - Anonymous Mutual Authentication. Figure from source \cite{AMA}.}
 \label{fig:F8}
 \end{figure}
-Scheme of protocol is shown at the fig. \ref{fig:F8}. In the scheme are used the following notations:
+\end{comment}
+Scheme of protocol is shown at the fig. \ref{fig:F8} \cite{AMA}. In the scheme are used the following notations:
 \begin{itemize}
 \item \textit{Enc} is a symmetric encryption function. \textit{$Enc_K(M)$} means encryption of $M$ using key $K$. 
 \item \textit{H} is a cryptographic hash function. 
@@ -291,7 +301,7 @@ There is no one ultimately defined security model for key exchange (KE). However
 	\item Secrecy - if two honest parties established session key then third party should not be able to obtain information about this session key. Third party, which watching and interfering with the protocol run, should not be able to distinguish session key from a random key.
 \end{itemize}
 
-\subsubsection{Adversarial Model}
+%\subsubsection{Adversarial Model}
 There is needed to consider scenario where adversary learns some secrete information from participants of protocol. The worst case is when adversary obtain the long term secrete key from one of the party. Having this key adversary can completely control this party and the party is consider as corrupted. This lead to the fundamental property of key exchange protocols:
 
 \begin{itemize}
@@ -404,6 +414,10 @@ Sound is an acoustic wave propagating in various substances such as water, air (
 		\includegraphics[width=0.45\textwidth]{img/longitudinal_wave}
 \end{center}
 \subsubsection{Frequency}
+In our application, in sound channel part, differentiating of frequencies is a primary task. Data are sent by various frequencies which later are analysed and changed to adequate binary data. So in this section is described what the frequency of sound is.
+
+\vspace{5mm}
+
 Audio frequency is measured in hertz (Hz), where 1 Hz means one cycle per second. Below figures show graphs of audio frequency 1 Hz and 5 Hz.
 
 
@@ -441,7 +455,9 @@ Speed of sound depends on center through which wave passes. Influence on speed h
 The present application largely, to sending data, uses ultrasound. Ultrasounds are sound waves, which are inaudible for human, on the grounds of their too high frequency. Have adopted that ultrasounds starts from 20 kHz, but really everything depends on how good hearing human has. Children hear the highest frequencies. Increasing age the upper limit of hearing descend \cite{limit_sound}. Ultrasounds end at frequencies of several GHz, where hipersounds start. Contractual it is 10 GHz.  Ultrasounds have many applications. Using them one can detect objects and specify distance to them. Are used in medicine where whereby ultrasonography (USG) we can find not available for human eye diseases, watching e.g. internal organs. 
 
 \subsubsection{Fourier transform}
-In our prototype microphone receives signal as a sinus wave. Because of that we need to know the frequency of this signal, we have to use some transform which turn sinus wave into the frequency spectrum. The solution is to use \textit{Fourier transform}.
+In our prototype, microphone receives signal as a sinus wave. Because of that we need to know the frequency of this signal, we have to use some transform which turn sinus wave into the frequency spectrum. The solution is to use \textit{Fourier transform}.
+
+\vspace{5mm}
 
 Using \textit{Fourier transform} one can change function $f(x)$ in time domain to $F(s)$ in frequency domain. In other words, it distributes the function $f(x)$ to series of periodic functions, in such way that it shows how frequencies consist of the function $f(x)$. The formula for the \textit{Fourier transform} looks as fallows:
 
@@ -469,7 +485,7 @@ Passing function $f(x)$ from fig. \ref{fig:F4} through \textit{Fourier transform
 As you can see on above figure, time domain was changed on frequency domain. On graphs are bigger values for frequencies which had functions summed.
 
 \subsubsection{Discrete Fourier Transform}
-Application analyzes periodically finite number of samples of sound. To converse to frequency domain is used \textit{discrete Fourier transform} (\textit{DFT}). Inserted samples are in the form of complex numbers, but in practice used only real numbers. Output samples are complex numbers. The following graphs show continuous signal and discretized signal \cite{fourier}:
+Application analyses periodically finite number of samples of sound. To converse to frequency domain is used \textit{discrete Fourier transform} (\textit{DFT}). Inserted samples are in the form of complex numbers, but in practice used only real numbers. Output samples are complex numbers. The following graphs show continuous signal and discretized signal \cite{fourier}:
 
 \begin{figure}[H]
 	\centering
@@ -509,7 +525,7 @@ In our protocol is used Hanning window which is defined by:
 \begin{equation}
 	 w(n) = 0.5 (1 - \cos\left(\frac{2 \pi n}{N - 1}\right)),
 \end{equation}
-\newline where $N$ - amount of analyzed samples, $n$ - nth sample. 
+\newline where $N$ - amount of analysed samples, $n$ - nth sample. 
 
 \vspace{5mm}
 
@@ -522,8 +538,11 @@ As one can see at fig. \ref{fig:F10} the pitch is wider, hence is easier to dete
 \end{figure}
 
 \subsubsection{Pulse-Code Modulation}
+The application uses Pulse-Code Modulation (PCM)). This modulation is ensured by \textit{AudioTrack} library.
 
-\textit{Pulse-Code Modulation} (\textit{PCM}) is a method used to digitally represent sampled analog signals. \textit{PCM} is based on representation of the instantaneous value of the signal (Sampling) at uniform intervals (sampling rate). The sampled analog data are represent by binary data. During the demodulation, sample rate should be at least two times greater that frequency of receiving analog signal (greater than the Nyquist frequency $f_s / 2$ ). This ensure that sampled values represent analog signal without errors. In our prototype sample rate is 44,1 kHz. The highest frequency which we use in application is about 20,5 kHz so 44,1 kHz is sufficient. 
+\vspace{5mm}
+
+Pulse-Code Modulation is a method used to digitally represent sampled analog signals. \textit{PCM} is based on representation of the instantaneous value of the signal (Sampling) at uniform intervals (sampling rate). The sampled analog data are represent by binary data. During the demodulation, sample rate should be at least two times greater that frequency of receiving analog signal (greater than the Nyquist frequency $f_s / 2$ ). This ensure that sampled values represent analog signal without errors. In our prototype sample rate is 44,1 kHz. The highest frequency which we use in application is about 20,5 kHz so 44,1 kHz is sufficient. 
 \begin{comment}
 \subsubsection{Doppler effect}
 We introduce this phenomenon because of one of the possibility to prevent against effective
@@ -561,18 +580,17 @@ In our case authenticated parties are not moving relative to each other, but the
 \subsection{Sound channel parameters}
 
 Using Diffie-Hellman key exchange and asymmetric cryptography should be use the longest key length as possible. In NIST specification SP 800-131 is mentioned that recommended key length is 3072. However, in our prototype we used 1024 key length. The reason is low speed of transferring data, which is 200b/s. Decreasing time of sending one character had influence on analyzing received data. It have been taking too long time (frequency of getting data increased, so algorithm did not follow in analyze so much data in short time).
-
-\vspace{5mm}
-
 %Sound channel is secured against active attacks. Adversary needs to be %close to communicated party or he needs to generate ultrasound with high %intense which can be detected by human, it would be heard as squeak.
 
 
 \subsection{Microphones and speakers in mobile devices}
 Specification of this appliances are very different and depends on devices. During the tests could be seen that microphone from more expensive SAMSUNG Galaxy Tab is better than microphone from LG Swift L9. SAMSUNG could detect higher frequency. However, microphone from LG Swift L9 was completely enough to registered sufficiently large frequencies. Speakers also are a little different, but they have no problem to generate opportunely frequencies.
 
+\subsection{Security analysis over the sound channel}
+In this section we will analyse the security of chosen out-of-band channel. The most popular way to communication between devices is channel which uses electromagnetic radiation (WiFi, Bluetooth, IrDA etc.) which consists of propagated in space electromagnetic field disturbance. This way is being chosen because of, inter alia, its speed of transfer data and undetectable for human's senses. However, because of widespread use, there are a lot of devices which base on radiation waves and could be use by potentially adversary to eavesdropping or manipulating of protocol transcript. In our channel we use mechanical waves, which means that wave propagates as an oscillation of matter, and therefore transfers energy through a medium. In our case the medium is air. So, there are needed different type of devices which use mechanical waves to eavesdropping or manipulating channel. That is why sound channel was chosen. In terms of security, adversary would has to be prepare to gain different type of spectrum. Using mechanical waves in turns with electromagnetic waves would require from adversary greater involvement and works.
 
+\vspace{5mm}
 
-\subsection{Security analysis}
 The key exchange protocol is considered to be secured on the assumptions that underlying problems are hard e.g. factorization, discrete logarithm, computational Diffie-Hellman etc. One interesting question is what happens if those assumptions are false. It could happened if implementation of cryptography module has some error or an adversary has super efficient quantum computer that is capable of solving the above problems in reasonable time.
 
 \vspace{5mm}
@@ -598,9 +616,13 @@ However in practice it is possible for an adversary to partially eavesdrop the c
 
 Partial access to protocol transcript in sound channel depends on many factors. Participant's microphone, speakers and adversary's microphone have to have appropriate conditions which allow adversary to eavesdrop the transcript. For more details see section 2.9.7 about eavesdropping.
 
+\vspace{5mm}
+
 Factors described in 2.9.7 contribute to some probability $\bar{p}$ that adversary and participants will have this type of devices satisfying the conditions. Otherwise, adversary is not being able to receive all frequencies. He will gain transcript with data having no sense. So it would be similar situation when adversary has no access to the transcript.  
 
+\vspace{5mm}
 
+Lets imagine what will happen when adversary will not gain one of the ephemeral key.
 \subsubsection{Full access to protocol transcript}
 Imagine that an adversary uses some kind of microphone with high sensitivity so he can capture all communication between authenticating devices. As mentioned in the previous section in order to secure against eavesdropping the key exchange protocol must use difficulty to inverse problems like the discrete logarithm problem used in the Diffie-Hellman key exchange scheme.
 

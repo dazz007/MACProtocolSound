@@ -48,6 +48,10 @@ Scott A.~Vanstone Alfred J.~Menezes, Paul C. van~Oorschot.
 Android.
 \newblock \url{https://source.android.com/devices/tech/security/}.
 
+\bibitem{audio_modem}
+Applidium.
+\newblock \url{http://applidium.com/en/news/data_transfer_through_sound/}.
+
 \bibitem{NAXOS}
 Anton~Mityagin Brian~LaMacchia, Kristin~Lauter.
 \newblock {\em \textit{Stronger Security of Authenticated Key Exchange}}.

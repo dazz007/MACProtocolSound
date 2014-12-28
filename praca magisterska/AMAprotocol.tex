@@ -1,40 +1,42 @@
-\documentclass[12pt]{article}
+\documentclass[border=0pt]{standalone}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{siunitx}
+\sisetup{binary-units = true,table-format=7.0}
 \begin{document}
+\newcommand{\newCA}{$c_A$}
+\newcommand{\newCB}{$c_B$}
+\newcommand{\newEncA}{$Enc_{K_A}(cert_A,r_A)$}
+\newcommand{\newEncB}{$Enc_{K_B}(cert_B,r_B)$}
+%\begin{minipage}{1\textwidth}
 \begin{table}
 	\centering
-	%\makebox[0pt][c]{\parbox{1.2\textwidth}{%
-			\begin{minipage}[b]{0.32\hsize}\centering
-				\begin{tabular}{ | c | c |}
-					\hline
-					\textbf{Feat. id} & \textbf{F-Measure} \\ \hline
-					0 & 0.4286 \\ \hline
-					17 & 0.3973 \\ \hline
-				\end{tabular}
-				\caption{xxx}
-				\label{tab:singlebest}
-			\end{minipage}
-			\hfill
-			\begin{minipage}[b]{0.32\hsize}\centering
-				\begin{tabular}{ | c | c |}
-					\hline
-					\textbf{Feat. id} & \textbf{F-Measure} \\ \hline
-					25 & 0.4494 \\ \hline
-					11 & 0.4457 \\ \hline
-				\end{tabular}
-				\caption{xxxx}
-				\label{tab:twobest}
-			\end{minipage}
-			\hfill
-			\begin{minipage}[b]{0.32\hsize}\centering
-				\begin{tabular}{ | c | c |}
-					\hline
-					\textbf{Feat. id} & \textbf{F-Measure} \\ \hline
-					18 & 0.4595 \\ \hline
-					19 & 0.4565 \\ \hline
-				\end{tabular}
-				\caption{xxxx}
-				\label{tab:threebest}
-			\end{minipage}%
-	%	}}
-	\end{table}
+	\begin{tabular}{ | p{6.5cm} p{3.5cm} p{6.5cm} | }
+		\hline
+		Alice &  & Bob \\
+		\hline
+		$x_A$ - private key & & $x_B$ - private key \\
+		$y_A = g^{x_A}$ - public key & & $y_B = g^{x_B}$ - public key \\
+		$cert_A$ - certificate for $y_A$ & & $cert_B$ - certificate for $y_B$ \\
+		\hline
+		& MAIN PROCEDURE & \\
+		\hline
+		choose $a$ at random & & choose $b$ at random \\
+		$h_A := H(a)$ & & $h_B := H(b)$ \\
+		$c_A := g^{h_A}$ & $\xrightarrow{\text{\hspace{1cm}\text{\newCA}\hspace{1cm}}}$ & $c_B := g^{h_B}$ \\
+		& $\xleftarrow{\text{\hspace{1cm}\text{\newCB}\hspace{1cm}}}$ & \\
+		$K := c^{h_A}_{B}$ & & $K := c_{A}^{h_B}$ \\
+		$K_A := H(K,1), K_B := H(K,2)$ & & $K_A := H(K,1), K_B := H(K,2)$  \\
+		$K'_A := H(K,3), K'_B := H(K,4)$ & & $K'_A := H(K,3), K'_B := H(K,4)$ \\
+		$r_A := H(c_{B}^{x_A},K'_A)$& & \\
+		& $\xrightarrow{\text{\hspace{0.5cm}\text{\newEncA}\hspace{0.5cm}}}$ & check $cert_A$, proceed with random values if $r_A \neq H(y_{A}^{h_B}, K'_A)$ \\
+		& $\xleftarrow{\text{\hspace{0.5cm}\text{\newEncB}\hspace{0.5cm}}}$ & $r_B := H(c_{A}^{x_B},K'_B)$ \\
+		check $cert_B$, proceed with random values if $r_B \neq H(y_{B}^{h_A}, K'_B)$ & & \\
+		$K_{session}:= H(K,5)$ & & $K_{session}:= H(K,5)$ \\
+		\hline
+	\end{tabular}
+	\label{tab:singlebest}
+		
+\end{table}
+%\end{minipage}
 \end{document}
