@@ -1,34 +1,36 @@
 \select@language {english}
 \select@language {english}
 \contentsline {section}{\numberline {1}Introduction}{3}
-\contentsline {subsection}{\numberline {1.1}Related work}{4}
-\contentsline {section}{\numberline {2}Analysis of the problem}{4}
+\contentsline {subsection}{\numberline {1.1}Problem}{4}
+\contentsline {subsection}{\numberline {1.2}Related work}{4}
+\contentsline {section}{\numberline {2}Analysis of the problem}{5}
 \contentsline {subsection}{\numberline {2.1}Authenticated Key Agreement}{5}
-\contentsline {subsection}{\numberline {2.2}Anonymous Mutual Authentication}{5}
-\contentsline {subsection}{\numberline {2.3}Security Model}{7}
-\contentsline {subsection}{\numberline {2.4}Analysis of out-of-band channels}{8}
-\contentsline {subsection}{\numberline {2.5}Proposed usage of out-of-band channel}{9}
-\contentsline {subsection}{\numberline {2.6}Sound}{12}
-\contentsline {subsubsection}{\numberline {2.6.1}Frequency}{12}
-\contentsline {subsubsection}{\numberline {2.6.2}Sound intensity}{13}
-\contentsline {subsubsection}{\numberline {2.6.3}Speed of sound}{13}
-\contentsline {subsubsection}{\numberline {2.6.4}Ultrasounds}{13}
-\contentsline {subsubsection}{\numberline {2.6.5}Fourier transform}{14}
-\contentsline {subsubsection}{\numberline {2.6.6}Discrete Fourier Transform}{15}
-\contentsline {subsubsection}{\numberline {2.6.7}Fast Fourier Transform}{17}
-\contentsline {subsubsection}{\numberline {2.6.8}Hanning window}{17}
-\contentsline {subsubsection}{\numberline {2.6.9}Pulse-Code Modulation}{18}
-\contentsline {subsection}{\numberline {2.7}Sound channel parameters}{19}
-\contentsline {subsection}{\numberline {2.8}Microphones and speakers in mobile devices}{19}
-\contentsline {subsection}{\numberline {2.9}Security analysis over the sound channel}{19}
-\contentsline {subsubsection}{\numberline {2.9.1}No access to protocol transcript}{20}
-\contentsline {subsubsection}{\numberline {2.9.2}Partial access to protocol transcript}{20}
-\contentsline {subsubsection}{\numberline {2.9.3}Full access to protocol transcript}{21}
-\contentsline {subsubsection}{\numberline {2.9.4}Possible vectors of attack on a sound channel}{21}
-\contentsline {subsubsection}{\numberline {2.9.5}Manipulating speaker}{21}
-\contentsline {subsubsection}{\numberline {2.9.6}Manipulating microphone}{22}
-\contentsline {subsubsection}{\numberline {2.9.7}Eavesdropping}{22}
-\contentsline {subsubsection}{\numberline {2.9.8}Malicious implementation}{23}
+\contentsline {subsubsection}{\numberline {2.1.1}Security Model}{5}
+\contentsline {subsubsection}{\numberline {2.1.2}Adversarial Model}{6}
+\contentsline {subsection}{\numberline {2.2}Anonymous Mutual Authentication}{6}
+\contentsline {subsection}{\numberline {2.3}Analysis of out-of-band channels}{8}
+\contentsline {subsection}{\numberline {2.4}Proposed usage of out-of-band channel}{10}
+\contentsline {subsection}{\numberline {2.5}Sound}{12}
+\contentsline {subsubsection}{\numberline {2.5.1}Frequency}{12}
+\contentsline {subsubsection}{\numberline {2.5.2}Sound intensity}{13}
+\contentsline {subsubsection}{\numberline {2.5.3}Speed of sound}{13}
+\contentsline {subsubsection}{\numberline {2.5.4}Ultrasounds}{13}
+\contentsline {subsubsection}{\numberline {2.5.5}Fourier transform}{14}
+\contentsline {subsubsection}{\numberline {2.5.6}Discrete Fourier Transform}{15}
+\contentsline {subsubsection}{\numberline {2.5.7}Fast Fourier Transform}{17}
+\contentsline {subsubsection}{\numberline {2.5.8}Hanning window}{17}
+\contentsline {subsubsection}{\numberline {2.5.9}Pulse-Code Modulation}{18}
+\contentsline {subsection}{\numberline {2.6}Sound channel parameters}{19}
+\contentsline {subsection}{\numberline {2.7}Microphones and speakers in mobile devices}{19}
+\contentsline {subsection}{\numberline {2.8}Security analysis over the sound channel}{19}
+\contentsline {subsubsection}{\numberline {2.8.1}No access to protocol transcript}{20}
+\contentsline {subsubsection}{\numberline {2.8.2}Partial access to protocol transcript}{20}
+\contentsline {subsubsection}{\numberline {2.8.3}Full access to protocol transcript}{21}
+\contentsline {subsubsection}{\numberline {2.8.4}Possible vectors of attack on a sound channel}{21}
+\contentsline {subsubsection}{\numberline {2.8.5}Manipulating speaker}{21}
+\contentsline {subsubsection}{\numberline {2.8.6}Manipulating microphone}{22}
+\contentsline {subsubsection}{\numberline {2.8.7}Eavesdropping}{22}
+\contentsline {subsubsection}{\numberline {2.8.8}Malicious implementation}{23}
 \contentsline {section}{\numberline {3}Prototype Design}{23}
 \contentsline {subsection}{\numberline {3.1}Mobile Devices}{23}
 \contentsline {subsection}{\numberline {3.2}Operating System}{23}
