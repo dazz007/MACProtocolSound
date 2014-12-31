@@ -1,0 +1,16 @@
+-Ile jest liczb pierwszych - dowód
+-podstawy teorii liczb
+-dyskretny logarytm
+-grupy cykliczne
+-cia³a
+liczby pierwsze - testy pierwszoœci
+-chiñskie twierdzenie o resztach
+-rozk³ad liczb na czynniki pierwsze
+-ile jest liczb pierwszych w jakimœ zakresie
+-z³o¿onoœæ obliczeniowa
+-funkcja greena
+-Algorytm euklidesa
+-oszcowanie czasu wykonywania dzia³añ arytmetycznych
+-zamiana podstaw, operacje bitowe
+-dzia³ania modula
+Funckja eulera

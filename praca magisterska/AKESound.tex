@@ -186,43 +186,45 @@ There are solutions where are used shared secret password which prevent Man-In-T
 In this section we will focus on the problem of establishing secure connection in insecure channel between two parties. At first the parties need to authenticate each other and then create common session key, which will be needed to symmetric encryption of the communication. We describe the adversarial model where is assumed that each party secretly holds a long-term private key that enables unique authentication of this party. There is also a trusted mechanism for binding identities with public keys. The private and public key with proper length are bounded in such way that obtain private key from public key is very hard to do. The communication channel can be completely controlled by an adversary that can intercept, delete, delay, modify or inject messages at will. There is a relation between the requirements of the security model and a well-defined attack scenario. In the second part of this section are described necessary issues to create sound channel.
 
 \subsection{Authenticated Key Agreement}
-Authenticated Key Agreement (or Authenticated Key Exchange) Protocols are such protocols where two parties can establish a common session key which will be use to symmetric encryption in further communication between parties. They base on public key cryptography and trusted authorities which are the most common solution being used. In public key cryptography (asymmetric cryptography) are required two separate keys, where one is private and second one is public. The keys are mathematical related to each other.
+Authenticated key exchange (AKE) protocols allow two parties to establish a common session key which will be use to symmetric encryption in further communication between parties. AKE also ensures authenticity of the parties. The protocols base on public key cryptography and trusted authorities which are the most common solution being used. In public key cryptography (asymmetric cryptography) are required two separate keys, where one is private and second one is public. The keys are mathematical related to each other.
 
 \vspace{5mm}
 
-AKE protocols have to ensure that attacker can not obtain any information about session key from the protocol transcript. They have to be resistant to exposed session transcript. Adversary should not be able to taking control over the communication channel having this knowledge.
+AKE protocols have to ensure that attacker cannot obtain any information about session key from the protocol transcript. They have to be resistant to exposed session transcript. Adversary should not be able to taking control over the communication channel having this knowledge.
+
+\vspace{5mm}
+
+The design and analysis of secure AKE protocols is non-trival task. After many years of research, some important issues are still without satisfactory treatment. There are some proposed security models on the basis of create and analyses the key-exchange protocols. In below subsections we discuss about one of the security model on which security of AKE protocols underlies and adversarial model.
 
 \subsubsection{Security Model}
-There is no one ultimately defined security model for key exchange (KE). However, we will recourse to the requirements as most fundamental for secure key exchange protocol which H. Krawczyk presents in \cite{sign_mac}.
+We stress that there is no one ultimately defined security model for key exchange (KE). Security definitions can be different and it depends on the underlying mathematical methodology, the purposed application setting, etc. It is difficult to formalize correctly the notion of "secure key-exchange protocol". However, we recourse to the requirements as most fundamental for secure key exchange protocol which H. Krawczyk presents in \cite{sign_mac}. 
 
 \begin{itemize}
-	\item Authentication - each party participating in KE needs to uniquely verify identities of other authenticating party.
-	\item Consistency - two parties participating in KE, after establish of session key have to believe that were established common session key with party which participate in protocol. In other words, Alice has to believe that she established session key with Bob and Bob has to believe that he established session key with Alice.
-	\item Secrecy - if two honest parties established session key then third party should not be able to obtain information about this session key. Third party, which watching and interfering with the protocol run, should not be able to distinguish session key from a random key.
+	\item \textit{Authentication} - each party participating in KE needs to uniquely verify identities of other authenticating party.
+	\item \textit{Consistency} - two parties participating in KE, after establish of session key have to believe that were established common session key with party which participate in protocol. In other words, Alice has to believe that she established session key with Bob and Bob has to believe that he established session key with Alice.
+	\item \textit{Secrecy} - if two honest parties established session key then third party should not be able to obtain information about this session key. Third party, which watching and interfering with the protocol run, should not be able to distinguish session key from a random key.
 \end{itemize}
+
+It is worth to notice that above requirements exist only with relation to well-defined attack model, which we describe in the next subsection.
 
 \subsubsection{Adversarial Model}
-There is needed to consider scenario where adversary learns some secrete information from participants of protocol. The worst case is when adversary obtain the long term secrete key from one of the party. Having this key adversary can completely control this party and the party is consider as corrupted. This lead to the fundamental property of key exchange protocols:
+In the adversarial model the attacker is able to listen the all transmitted information, delay, delete, change or inject messages at will. The attacker can also overtaking control the scheduling of all protocol events, such as initiation of protocols or message delivery. Additionally he is able to obtain the long term secrete key from the party. Having this key adversary can completely control this party and the party is consider as corrupted. This lead to the fundamental property of key exchange protocols:
 
 \begin{itemize}
-	\item Real-or-Random - this is some kind of game on which basic session key security is based. When uncorrupted parties with successful end the protocol then is determined bit $b$ at random. If $b=0$ the adversary get the real session key, if $b = 1$ he receives a random value with the same length as the key. Now adversary has to output his own bit $b'$. If $b' = b$ then adversary wins the game. When the adversary wins the game with probability $P = 1/2+\epsilon$, where $\epsilon$ is negligible function then the basis session key security is achieved.
-	\item Perfect Forward Secrecy (PFS) - is the property which ensure that adversary cannot learn session keys from future when one of the long-term private key is compromised.
+	\item \textit{Real-or-Random} - this is some kind of game on which basic session key security is based. When uncorrupted parties with successful end the protocol then is determined bit $b$ at random. If $b=0$ the adversary get the real session key, if $b = 1$ he receives a random value with the same length as the key. Now adversary has to output his own bit $b'$. If $b' = b$ then adversary wins the game. When the adversary wins the game with probability $P = 1/2+\epsilon$, where $\epsilon$ is negligible function then the basis session key security is achieved.
+	\item \textit{Perfect Forward Secrecy (PFS)} - it is the property which ensure that compromise of long-term keys does not compromise past session keys. This mean that if adversary obtain some secrete informations (e.g. long-term key) of corrupted party then he nothing learns about previous sessions where the party participated.
 \end{itemize}
 
-Above criteria ensure for key exchange protocol that they are resistant to attacks like known-key attacks and replay attacks \cite{cryptography}. For some KE protocols are needed additional requirements e.g. Identity protection - identities of authenticating parties cannot be learn by an adversary.
+Above criteria ensure for key exchange protocol that they are resistant to attacks like known-key attacks and replay attacks (see \cite{cryptography}). For some KE protocols are needed additional requirements e.g. Identity protection - identities of authenticating parties cannot be learn by an adversary.
 
 
 \subsection{Anonymous Mutual Authentication}
-To establish session keys we used in our prototype Anonymous Mutual Authentication protocol which base on Diffie-Hellman key exchange.
-AMA originally was designed to anonymous authenticate between smart cards. It is characterized by properties:
+To establish session keys we used in our prototype Anonymous Mutual Authentication (AMA) protocol which base on Diffie-Hellman key exchange. AMA is symmetric which means that participants do the same code but with different order of operation. AMA originally was designed to anonymous authenticate between smart cards, so it is easy to implement it on resource limited devices. The protocol scheme is shown in Fig. \ref{fig:F8} \cite{AMA}. In the scheme the following notations are used:
 \begin{itemize}
-\item \textit{Forward Security} - if long term keys of one of the authenticating parties compromised then established session key does not reveal,
-\item \textit{Simultability} - it is possible to create protocol transcript between parties without interacting with them,
-\item \textit{Undetectability} - having protocol transcript one cannot confirm that process really took place,
-\item \textit{Privacy} - eavesdropping adversary cannot tell about identity of parties performing the protocol
-\item \textit{Deniability} - no one of the participants can convince third party that he participate in protocol.
-\end{itemize}
-
+	\item \textit{Enc} is a symmetric encryption function. \textit{$Enc_K(M)$} means encryption of $M$ using key $K$. 
+	\item \textit{H} is a cryptographic hash function. 
+	\item For confirming public keys are using digital certificates and public key infrastructure (PKI).
+\end{itemize} 
 
 \newcommand{\newCA}{$c_A$}
 \newcommand{\newCB}{$c_B$}
@@ -270,13 +272,6 @@ AMA originally was designed to anonymous authenticate between smart cards. It is
 \label{fig:F8}
 \end{figure}
 \end{comment}
-Scheme of protocol is shown at the fig. \ref{fig:F8} \cite{AMA}. In the scheme are used the following notations:
-\begin{itemize}
-\item \textit{Enc} is a symmetric encryption function. \textit{$Enc_K(M)$} means encryption of $M$ using key $K$. 
-\item \textit{H} is a cryptographic hash function. 
-\item For confirming public keys are using digital certificates and public key infrastructure (PKI).
-\end{itemize}
-
 
 At the beginning, parties (Alice and Bob) generate their private key - $x_A$ (respectively, $x_B$) and public key $y_A = g^{x_A}$ (respectively, $y_B$). Then parties generate their ephemeral keys. Private is $h_A$ := $H(a)$ (where $a$ is a random number) (respectively $h_B$, $b$) and public ephemeral key $c_A$ := $g^{h_A}$ (respectively, $c_B$). Then participants exchange their ephemeral keys, based on Diffie-Hellman key exchange. Note that in this phase parties do not exchange any identity information.
 
@@ -296,7 +291,7 @@ hash function $H$. In ROM, hash function $H$ is modeled as an oracle $\mathcal{O
 
 \vspace{5mm}
 
-Besides ROM, its security base on aforementioned CDH assumption which is hard to solve.
+Besides ROM, protocol security bases on aforementioned CDH assumption which is hard to solve.
 \begin{assumption}
 	\textbf{(CDH Assumption)} 
 	Given a cyclic group G with order $q$, and ($g$,$g^a$,$g^b$) where $g$ us a random generator of $G$, and ($a$,$b$) where chosen randomly from the set {0,1,...,$q-1$} it is computationally intractable to compute the value $g^{ab}$.
@@ -304,6 +299,19 @@ Besides ROM, its security base on aforementioned CDH assumption which is hard to
  In the protocol is used symmetric encryption. Security proof of this is shown by series of games, for more details see \cite{AMA}. 
 
 \vspace{5mm}
+
+The protocol is characterized by properties:
+ \begin{itemize}
+ 	\item \textit{Forward Security} - if long term keys of one of the authenticating parties compromised then established session key does not reveal,
+ 	\item \textit{Simultability} - it is possible to create extended protocol transcript between parties without interacting with them, but with the same probability distribution as in case of real interactions,
+ 	\item \textit{Undetectability} - having protocol transcript one cannot confirm that process really took place,
+ 	\item \textit{Privacy} - eavesdropping adversary cannot tell about identity of parties performing the protocol
+ 	\item \textit{Deniability} - no one of the participants can convince third party that he participate in protocol.
+ \end{itemize}
+
+\vspace{5mm}
+
+
 
 The practical part of this paper was to implement AMA on mobile devices as to our best knowledge there is no practical implementation of AMA for smartphones.
 
@@ -1064,17 +1072,15 @@ There are several reason why the result was not 100\%. Sometimes, if we send, fo
 	\centering
 	\begin{tabular}{| c | c |}
 		\hline
-		Distance [cm] & The lowest frequency [kHz] \\
+		Distance [cm] & Session ended with success \\
 		\hline
-		150 & 10,5 \\
+		0 & success \\
 		\hline
-		130 & 11,8 \\
+		2 & success \\
 		\hline
-		100 & 13,8 \\
+		3 & failure \\
 		\hline
-		100 & 14   \\
-		\hline
-		100 & 14,3 \\
+		4 & failure \\
 		\hline
 	\end{tabular}
 	\caption{Mapping characters to frequencies.}
@@ -1084,7 +1090,27 @@ Measure of allowed distance between devices we have started with stick microphon
 
 \vspace{5mm}
 
-The next test rely on checking influence of background sound. As we know, from the previous test, the best results were when devices were close to each other (maximal 2 cm from each other), so we have tested it in such position. At beginning we have checked it at the University during the break between lectures. A lot of students was talking and laughing but even this, did not interfere with protocol. Almost every attempt was ended with success. Then we have used third device which was generating constantly chosen frequency. We have put this device very close to the participants. First disturbing frequency was 8 kHz. Because of that bandwidth is from 10,5 to 20,25 we have suspected that 8 kHz will not cause the problem and we was right. Algorithm analyzing data has not mistaken. The problem was just after increasing disturbing frequency above 10,5 kHz, but was needed to stick speaker of this device to microphone of protocol participant. Otherwise, the protocol always ends with success. 
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{| c | c |}
+			\hline
+			Type of noises & Session ended with success \\
+			\hline
+			School at break & success \\
+			\hline
+			8 kHz, distance 5 cm & success \\
+			\hline
+			8 kHz, distance 0 cm & success \\
+			\hline
+			10,5-20 kHz, distance 5 cm & success \\
+			\hline
+			10,5-20 kHz, distance 2 cm & false \\
+			\hline
+		\end{tabular}
+		\caption{Mapping characters to frequencies.}
+	\end{table}
+
+The next test rely on checking influence of background sound. As we know, from the previous test, the best results were when devices were close to each other (maximal 2 cm from each other), so we have tested it in such position. At beginning we have checked it at the University during the break between lectures. A lot of students was talking and laughing but even this, did not interfere with protocol. Almost every attempt was ended with success. Then we have used third device which was generating constantly chosen frequency. We have put this device very close to the participants. First disturbing frequency was 8 kHz. Because of that bandwidth is from 10,5 to 20,25 we have suspected that 8 kHz will not cause the problem and we was right. Algorithm analysing data has not mistaken. The problem was just after increasing disturbing frequency above 10,5 kHz, but was needed to stick speaker of this device to microphone of protocol participant. Otherwise, the protocol always ends with success. 
 
 \vspace{5mm}
 
