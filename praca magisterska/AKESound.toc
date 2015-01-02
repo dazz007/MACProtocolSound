@@ -4,10 +4,10 @@
 \contentsline {subsection}{\numberline {1.1}Problem}{4}
 \contentsline {subsection}{\numberline {1.2}Related work}{4}
 \contentsline {section}{\numberline {2}Analysis of the problem}{5}
-\contentsline {subsection}{\numberline {2.1}Authenticated Key Agreement}{5}
+\contentsline {subsection}{\numberline {2.1}Authenticated Key Agreement Protocols}{5}
 \contentsline {subsubsection}{\numberline {2.1.1}Security Model}{5}
 \contentsline {subsubsection}{\numberline {2.1.2}Adversarial Model}{6}
-\contentsline {subsection}{\numberline {2.2}Anonymous Mutual Authentication}{7}
+\contentsline {subsection}{\numberline {2.2}Anonymous Mutual Authentication Protocol}{7}
 \contentsline {subsection}{\numberline {2.3}Analysis of out-of-band channels}{9}
 \contentsline {subsection}{\numberline {2.4}Proposed usage of out-of-band channel}{10}
 \contentsline {subsection}{\numberline {2.5}Sound}{13}
@@ -27,8 +27,8 @@
 \contentsline {subsubsection}{\numberline {2.8.2}Partial access to protocol transcript}{21}
 \contentsline {subsubsection}{\numberline {2.8.3}Full access to protocol transcript}{22}
 \contentsline {subsubsection}{\numberline {2.8.4}Possible vectors of attack on a sound channel}{22}
-\contentsline {subsubsection}{\numberline {2.8.5}Manipulating speaker}{22}
-\contentsline {subsubsection}{\numberline {2.8.6}Manipulating microphone}{23}
+\contentsline {subsubsection}{\numberline {2.8.5}Speaker manipulating}{22}
+\contentsline {subsubsection}{\numberline {2.8.6}Microphone manipulating}{23}
 \contentsline {subsubsection}{\numberline {2.8.7}Eavesdropping}{23}
 \contentsline {subsubsection}{\numberline {2.8.8}Malicious implementation}{24}
 \contentsline {section}{\numberline {3}Prototype Design}{24}
@@ -37,14 +37,14 @@
 \contentsline {subsection}{\numberline {3.3}Security of Android}{24}
 \contentsline {subsection}{\numberline {3.4}Application architecture}{24}
 \contentsline {subsection}{\numberline {3.5}Cryptography library}{25}
-\contentsline {subsection}{\numberline {3.6}Design pattern}{25}
-\contentsline {subsection}{\numberline {3.7}NIST recommendation for security parameters}{26}
-\contentsline {subsection}{\numberline {3.8}Shared cryptographic module}{26}
-\contentsline {subsection}{\numberline {3.9}Java Native Interface - C++ Wrapper}{27}
+\contentsline {subsection}{\numberline {3.6}Design pattern}{26}
+\contentsline {subsection}{\numberline {3.7}NIST recommendation for security parameters}{27}
+\contentsline {subsection}{\numberline {3.8}Shared cryptographic module}{27}
+\contentsline {subsection}{\numberline {3.9}Java Native Interface - C++ Wrapper}{28}
 \contentsline {subsection}{\numberline {3.10}Base64}{28}
 \contentsline {subsection}{\numberline {3.11}Sound channel}{29}
 \contentsline {subsubsection}{\numberline {3.11.1}Generating sound wave}{29}
-\contentsline {subsubsection}{\numberline {3.11.2}Receiving sound}{31}
-\contentsline {section}{\numberline {4}Tests}{34}
-\contentsline {section}{\numberline {5}Possible development of the project}{36}
-\contentsline {section}{\numberline {6}Summary}{37}
+\contentsline {subsubsection}{\numberline {3.11.2}Receiving sound}{32}
+\contentsline {section}{\numberline {4}Tests}{36}
+\contentsline {section}{\numberline {5}Possible development of the project}{38}
+\contentsline {section}{\numberline {6}Summary}{39}
