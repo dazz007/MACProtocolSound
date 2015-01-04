@@ -80,7 +80,7 @@
 \newcommand{\IFF}{\leftrightarrow}
 \newcommand{\IMP}{\rightarrow}
 
-\newtheorem{theorem}{Twierdzenie}[section]
+\newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemat}[section]
 \newtheorem{example}{Przyklad}[section]
 \newtheorem{corollary}{Wniosek}[section]
@@ -111,7 +111,7 @@
 \put(10,500){\makebox(0,0)[l]{\large \bf \textsc{Wrocław University of Technology}}}
 \put(-20,280){\makebox(0,0)[l]{\Huge  \bf \textsc{Authentication and Communication}}}
 \put(10,260){\makebox(0,0)[l]{\Huge \bf \textsc{Protocol For Mobile Devices}}}
-\put(40,240){\makebox(0,0)[l]{\Huge \bf \textsc{in Optical Channel}}}
+\put(40,240){\makebox(0,0)[l]{\Huge \bf \textsc{in Sound Channel}}}
 \put(100,200){\makebox(0,0)[l]{\large \textsc{Paweł Kędzia}}}
 \put(170, 80){\makebox(0,0)[l]{\large  {In partial fulfillment of the requirements}}}
 \put(170, 60){\makebox(0,0)[l]{\large  {for the degree of Master of Engineering}}}
@@ -309,17 +309,21 @@ In some proofs of protocol security is used Decisional Diffie-Hellman assumption
 	is a random generator of $G$, and ($a$,$b$,$c$) were chosen randomly from the set {0,1,...,$q-1$} it is computationally intractable to distinguish the value $g^{ab}$ from $g^{c}$.
 \end{assumption}
 
-In the protocol symmetric encryption is used. Its security proof is shown by series of games, for more details see \cite{AMA}. 
-
-\vspace{5mm}
 
 The protocol is characterized by properties:
  \begin{itemize}
  	
- 	\item \textit{Undetectability} - having protocol transcript one cannot confirm that the process really took place,
- 	\item \textit{Simultability} - this property results from the above property. It is possible to create extended protocol transcript between parties without interacting with them, but with the same probability distribution as in case of real interactions,
- 	\item \textit{Deniability} - in ROM model, no one of the participants can convince third party that he participate in protocol. It would be possible only if convincing party would resolve CDH which is hard (for more detail see \cite{AMA}), 
- 	\item \textit{Privacy} - eavesdropping adversary cannot tell about identity of parties performing the protocol,
+ 	\item \textit{Undetectability} - having protocol transcript one cannot confirm that the process really took place;
+ 	\item \textit{Simultability} - this property results from the above property. It is possible to create extended protocol transcript (protocol transcript appended with ephemeral $a$ and $b$) between parties without interacting with them, but with the same probability distribution as in case of real interactions. The proof consists of that it shows that third party Eve is able to prepare a fake protocol. She chooses $a$ and $b$ at random and she computes $c_A$, $c_B$, $K$, $K_A$, $K'_A$, $K_B$, $K'_B$. Challenge values are computed in such a way that: $r_A := H(y_A^{h_B},K'_A)$, $r_B := H(y_B^{h_A},K'_B)$, so the values are the same as in the real transcript. Then she prepares the encryptions according to the protocol. Eve using these values to creates fake protocol transcript;
+ 	\item \textit{Deniability} - in ROM model, no one of the participants can convince third party that he participate in protocol. It would be possible only if convincing party would resolve CDH which is hard (see more detail in \cite{AMA});
+ 	\item \textit{Privacy} - eavesdropping adversary cannot tell about identity of parties performing the protocol. It is proven by series of games in \cite{AMA} for two cases. In the first case adversary is observing a single transmission. The adversary is not able to learn something about the parties if the following advantage is negligible: Let $T$ = $(m_1,...,m_2)$ be a tuple of all messages exchanged between A and B in an protocol execution which ended successfully. $R$ denotes a tuple $(r_1,...,r_2)$ of independent random values. The advantage of an adversary $\mathcal{A}^{bind}$, $\textbf{Adv}(\mathcal{A}^{bind})$, is at least $\epsilon$, if there is strategy for adversary such that difference between the probability that $\mathcal{A}^{bind}$ returns "0" for given ($PK_A$, $PK_B$, $T$) and  the probability that $\mathcal{A}^{bind}$ returns "0" for given ($PK_A$, $PK_B$, $R$) is at least $\epsilon$.
+ 	
+ 	\begin{theorem}
+ 	For AMA, $\textbf{Adv}(\mathcal{A}^{bind})$ is negligibly small, assuming hardness of DDH Problem and ROM model for H.  
+ 	\end{theorem}
+ 	
+ 	The second case considers that the adversary has access to some interactions between Alice and Bob (allegedly). For more details see \cite{AMA}.
+ 	
  	\item \textit{Forward Security} - if long term keys of one of the authenticating parties is compromised then established session key does not reveal.
  	
 
@@ -327,12 +331,21 @@ The protocol is characterized by properties:
 
 \vspace{5mm}
 
+Foregoing properties are described and proved in \cite{AMA} using mentioned assumptions and series of games, additionally there are security proofs of symmetric encryption for which in \cite{AMA} following lemmas was described:
 
+\begin{lemma}
+Assume that scheme E is deterministic, DDH is hard and a collision for H may be found with a negligible probability only. If B receives $E_1$ which equals $E_{K_A}(cert_A, r_A)$ as computed by B, then with overwhelming probability $x_A$ has been used for computing $E_1$.
+\end{lemma}
+
+\begin{lemma}
+In the ROM model for H, if B receives $E_1$ which equals $E_{K_A}(cert_A,r_A)$ as it would  be computed by B, then with overwhelming probability A has received $c_B$ not manipulated by the adversary.
+\end{lemma}
+
+\begin{lemma}
+Assume ROM model for H and that Computational Diffie-Hellman Problem is hard. If adversary $\mathcal{A}$ sends $E_1$which equals $E_{K_A}(cert_A, r_A)$ as it would be computed by B, then with overwhelming probability A participates in the interaction and $c_A$ sent by A is delivered to B.
+\end{lemma}
 
 The practical part of this paper was to implement AMA on mobile devices as to our best knowledge there is no practical implementation of AMA for smartphones.
-
-
-
 
 \subsection{Analysis of out-of-band channels}
 In this disseration, beyond focusing on safety of AMA protocol against active adversary, we want to analyse unusual communication channels, which prevent the adversary to overtaking control this channel.
@@ -342,6 +355,8 @@ In this disseration, beyond focusing on safety of AMA protocol against active ad
 During the secure exchange data two channels are needed for communication between two parties. First channel, to establish session keys, should be difficult to eavesdrop and taking over control for adversary. The second channel can be insecure because established session key should ensure that content of protected data intended for one of the parties can be encrypted only by the party participated in protocol. 
 %For the key establishment, in our work, was chosen sound channel. We are aware there exist a lot of different type of microphone which are able to eavesdropping the sound waves. However, we will introduce some methods which could hinder in activity of attacker. The second channel for secure communication is wireless.
 
+
+\vspace{5mm}
 
 There are many techniques to transfer secret data between devices. The most popular are e.g. Bluetooth, IrDA or WiFi. These techniques use electromagnetic waves. Devices which operates on electromagnetic radiation (e.g. bug in the phone) are needed for manipulating, changing or eavesdropping messages. So it is worth to consider out-of-band channel which is not so commonly used as electromagnetic devices.
 
@@ -359,7 +374,10 @@ Another way is to use vibrations \cite{vibrat}. New smartphones have installed s
 
 \vspace{5mm}
 
-Sound channel is also one of the options. Every mobile device has a speaker and a microphone, so we do not need to worry about unavailable Internet or that the other party has not installed Bluetooth or IrDA or even a camera. Using ultrasounds, the signal is not detected by humans ear. Additionally mobile phones cannot generate these waves with big intensity, so transferring data should be done within a small distance. Of course, sound channel could be easily manipulated. Attacker with proper speaker can generate frequencies which could disturb the communication. However, he needs to be close to the authenticating parties if generated ultrasound has to be detected by party's mobiles microphone or generate sound waves with big intensity which could be audible for human. Additionally it is worth to consider the usage of kind of channel mixed with another channel. For example, ephemeral keys are sent by sound channel then encrypted values by Bluetooth or one party sends data by sound waves when the second party uses just electromagnetic channel.
+Sound channel is also one of the options. Every mobile device has a speaker and a microphone, so we do not need to worry about unavailable Internet or that the other party has not installed Bluetooth or IrDA or even a camera. Using ultrasounds, the signal is not detected by humans ear. Additionally mobile phones cannot generate these waves with big intensity, so transferring data should be done within a small distance. Sound waves are mechanical waves which are characterized by different properties from electromagnetic waves (WiFi, Bluetooth etc.). Hence, adversary needs to have additional devices to be able to manipulate or eavesdrop sound channel. 
+\begin{comment}Of course, sound channel could be easily manipulated. Attacker with proper speaker can generate frequencies which could disturb the communication. However, he needs to be close to the authenticating parties if generated ultrasound has to be detected by party's mobiles microphone or generate sound waves with big intensity which could be audible for human. 
+\end{comment} 
+It is worth to consider the usage of kind of channel mixed with another channel. For example, ephemeral keys are sent by sound channel then encrypted values by Bluetooth or one party sends data by sound waves when the second party uses just electromagnetic channel. Then adversary would have hinder task to manipulate mechanical and electromagnetic channel at the same time.
 
 
 \begin{comment}
@@ -389,37 +407,37 @@ Anonymous Mutual Chip Authentication (described in detail in foregoing section) 
 	\begin{center}
 		
 		\begin{tabular}{ p{4cm} p{5cm} p{4cm}}
-			\textsf{\LARGE Alice} & & \textsf{\LARGE Bob} \\
+			\LARGE Alice & & \LARGE Bob \\
 			\hline
-			\textsf{\newline\textbf{\small Starting screen} \newline
+			\textbf{\small Starting screen} \newline
 				\newline
-				\footnotesize Alice starts the protocol as initializator}& \raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/couple.png}} & \textsf{\newline\textbf{\small Starting screen} \newline \newline
-				\footnotesize Bob starts protocol as receiver.} \\
+				\footnotesize Alice starts the protocol as initializator& \raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/couple.png}} & \textbf{\small Starting screen} \newline \newline
+				\footnotesize Bob starts protocol as receiver. \\
 			
-			\textsf{\newline\textbf{\small Send ephemeral key} \newline
+			\textbf{\small Send ephemeral key} \newline
 				\newline
-				\footnotesize Alice generates ephemeral key, encodes and start sending it by speaker.}&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/signal1.png}}&\textsf{\newline\textbf{\small Receive ephemeral key} \newline
+				\footnotesize Alice generates ephemeral key, encodes and start sending it by speaker.&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/signal1.png}}&\textbf{\small Receive ephemeral key} \newline
 				\newline
-				\footnotesize Bob receives ephemeral key using microphone.} \\
+				\footnotesize Bob receives ephemeral key using microphone. \\
 			
-			\textsf{\newline\textbf{\small Receive ephemeral key } \newline
+			\textbf{\small Receive ephemeral key } \newline
 				\newline
-				\footnotesize Alice receives ephemeral key using microphone. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/second_side.png}}&\textsf{\newline\textbf{\small Send ephemeral key} \newline
+				\footnotesize Alice receives ephemeral key using microphone. &\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/second_side.png}}&\textbf{\small Send ephemeral key} \newline
 				\newline
-				\footnotesize Bob generates ephemeral key, encodes and start sending it by speaker.} \\
+				\footnotesize Bob generates ephemeral key, encodes and start sending it by speaker. \\
 			
-			\textsf{\newline\textbf{\small Send encrypted authentication data } \newline
+			\textbf{\small Send encrypted authentication data } \newline
 				\newline
-				\footnotesize Alice uses her and Bob's ephemeral keys to compute authentication data, encrypts it and sends by speaker. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/signal1.png}}&\textsf{\newline\textbf{\small Receive and decrypt authentication data} \newline
+				\footnotesize Alice uses her and Bob's ephemeral keys to compute authentication data, encrypts it and sends by speaker. &\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=27mm]{img/signal1.png}}&\textbf{\small Receive and decrypt authentication data} \newline
 				\newline
-				\footnotesize Bob receives and decrypts Alices authentication data.} \\
+				\footnotesize Bob receives and decrypts Alices authentication data. \\
 			
-			\textsf{\newline\textbf{\small Receive and decrypt authentication data } \newline
+			\textbf{\small Receive and decrypt authentication data } \newline
 				\newline
-				\footnotesize Alice receives and decrypts Bobs authentication data. If it's not valid, she aborts the protocol. }&\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=50mm]{img/session_key_est.png}}&\textsf{\newline\textbf{\small Send encrypted authentication data} \newline
+				\footnotesize Alice receives and decrypts Bobs authentication data. If it's not valid, she aborts the protocol. &\raisebox{-\totalheight}{\includegraphics[width=0.27\textwidth, height=50mm]{img/session_key_est.png}}&\textbf{\small Send encrypted authentication data} \newline
 				\newline
 				\footnotesize Bob verifies authentication data received from Alice. If it's
-				valid, he generates his authentication data and send it by microphone. If data is not valid, Bob aborts the protocol.}
+				valid, he generates his authentication data and send it by microphone. If data is not valid, Bob aborts the protocol.
 		\end{tabular}
 	\end{center}
 \end{table}
@@ -445,8 +463,8 @@ Audio frequency is measured in hertz (Hz), where 1 Hz means one cycle per second
 
 
 \begin{center}
-	\includegraphics[width=0.45\textwidth]{img/frequency_1Hz}
-	\includegraphics[width=0.45\textwidth]{img/frequency_5Hz}
+	\includegraphics[width=0.45\textwidth]{img/frequency_1Hz.pdf}
+	\includegraphics[width=0.45\textwidth]{img/frequency_5Hz.pdf}
 \end{center}
 
 There are four divisions of sound as to frequency:
@@ -491,7 +509,7 @@ Using \textit{Fourier transform} one can change function $f(x)$ in time domain t
 Sum of three functions with frequencies 3 Hz, 7 Hz and 11 Hz on a graph:
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{img/sines}
+	\includegraphics[width=0.6\textwidth]{img/sines.pdf}
 	\caption{$f(x) = \sin(2\pi \cdot 3t)+\sin(2 \pi \cdot 7 t)+\sin(2  \pi \cdot 11  t)$, where t is current time.}
 	\label{fig:F4}
 \end{figure}
@@ -537,7 +555,7 @@ Computational complexity of \textit{discrete Fourier transform} is not enough fo
 Window functions are functions which are used with \textit{DFT}. Often during process of \textit{DFT} occur blur of spectrum, which means that on the spectrum values for frequencies different than the real frequency of signal are seen. To minimize this effect window functions are used. In time domain it multiplies every sample of signal by corresponding value of window sample. The simplest window is a rectangular window. Spectrum of this windowing is shown in \ref{fig:F9}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth]{img/rectangular_window}
+	\includegraphics[width=0.5\textwidth]{img/rectangular_window}
 	\caption{Rectangular window and its effect in spectrum of signal.}
 	\label{fig:F9}
 \end{figure}
@@ -561,7 +579,7 @@ As one can see at fig. \ref{fig:F10} the pitch is wider, hence is easier to dete
 \end{figure}
 
 \subsubsection{Pulse-Code Modulation}
-The application uses Pulse-Code Modulation (PCM)). This modulation is ensured by \textit{AudioTrack} library.
+The application uses \textit{Pulse-Code Modulation} (\textit{PCM}). This modulation is ensured by \textit{AudioTrack} library.
 
 \vspace{5mm}
 
@@ -599,12 +617,12 @@ The formula (5) shows describe situation when source is moving when observer is 
 In our case authenticated parties are not moving relative to each other, but they can both moving relative to eavesdropper.
 \end{comment}
 
-
+\begin{comment}
 \subsection{Sound channel parameters}
 
 Using Diffie-Hellman key exchange and asymmetric cryptography there should be used the key as long as possible. In NIST specification SP 800-131 it is mentioned that recommended key length is 3072. However, in our prototype we used 1024 key length. The reason is low speed of transferring data, which is 200b/s. Decreasing time of sending one character had influence on analyzing received data. It took too long time (frequency of getting data increased, so algorithm did not follow analysing so many data in short time).
 %Sound channel is secured against active attacks. Adversary needs to be %close to communicated party or he needs to generate ultrasound with high %intensity which can be detected by human, it would be heard as squeak.
-
+\end{comment}
 
 \subsection{Microphones and speakers in mobile devices}
 Specifications of those appliances are very different and depend on devices. During the tests it could be noticed that microphone from more expensive SAMSUNG Galaxy Tab is better than microphone from LG Swift L9. SAMSUNG could detect higher frequency. However, microphone from LG Swift L9 was completely enough to registered sufficiently large frequencies. Speakers are also slightly  different, however without difficulties in  generating opportunely frequencies.
@@ -731,10 +749,10 @@ Application architecture bases on Model-View-Controller pattern. Model includes 
 
 \subsection{NIST recommendation for security parameters}
 
-\textit{NIST} recommends using 3072 bit length keys to ensure low probability of calculating discrete logarithm. This length is set as default in \textit{CryptoPP}, however in our prototype we are using 1024 bit. It is caused by duration of sending data by sound. At present, sending 1024 bit length keys takes some time and for the needs of presentation we decided to stay with this length. For more information please check \cite{NIST}.
+\textit{NIST} recommends using 3072 bit length keys to ensure low probability of calculating discrete logarithm. This length is set as default in \textit{CryptoPP}, however in our prototype we are using 1024 bit. It is caused by duration of sending data by sound (200b/s). At present, sending 1024 bit length keys takes some time and for the needs of presentation we decided to stay with this length. For more information please check \cite{NIST}.
 
 \subsection{Shared cryptographic module}
-Cryptographic module is designed in a such way that it will be easy to use it on different platforms. Application treats it as a black box where strings with data are exchanged. Implementation is made in C++ based on \textit{Diffie-Hellman} and \textit{Authenticated-Diffie-Hellman} classes from CryptoPP library. It performs following cryptographic operation:
+Cryptographic module is designed in a such way that it will be easy to use it on different platforms. Application treats it as a black box where strings with data are exchanged. Implementation is made in C++ based on \textit{Diffie-Hellman} and \textit{Authenticated-Diffie-Hellman} classes from \textit{CryptoPP} library. It performs following cryptographic operation:
 
 \begin{itemize}
 \item Modular exponentiation
@@ -976,6 +994,8 @@ Now, algorithm tries to find the highest place in the output. The reason of gett
 \end{figure}
 
 Caught value is put to the memory and waits for the next result. If current frequency is different than previously we change the previous frequency to one of the 64 signs. Otherwise we increment the counter. If counter gains the value of three (maximal number of occurrences on received character in three further buffers), counter is reset and returns the adequate character.
+
+
 \begin{minipage}{\linewidth}
 \lstset{language=JAVA,caption={Method finding frequency with highest aplitude.}}
 \begin{lstlisting}
