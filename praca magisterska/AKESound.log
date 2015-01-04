@@ -1,8 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.5.25)  4 JAN 2015 16:15
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.21)  4 JAN 2015 22:39
 entering extended mode
 **AKESound.tex
-("C:\Users\pke\Documents\GitHub\MACProtocolSound\praca magisterska\AKESound.tex
-"
+("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -554,7 +553,7 @@ Package: ulem 2012/05/18
 \ULdepth=\dimen148
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lipsum\lipsum.sty"
-Package: lipsum 2011/04/14 v1.2 150 paragraphs of Lorem Ipsum dummy text
+Package: lipsum 2014/07/27 v1.3 150 paragraphs of Lorem Ipsum dummy text
 \c@lips@count=\count116
 )
 \c@assumption=\count117
@@ -574,15 +573,15 @@ Package: lipsum 2011/04/14 v1.2 150 paragraphs of Lorem Ipsum dummy text
 \lst@maxwidth=\dimen152
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
-File: lstmisc.sty 2014/03/04 1.5c (Carsten Heinz)
+File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
 \c@lstnumber=\count124
 \lst@skipnumbers=\count125
 \lst@framebox=\box37
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.cfg"
-File: listings.cfg 2014/03/04 1.5c listings configuration
+File: listings.cfg 2014/09/06 1.5e listings configuration
 ))
-Package: listings 2014/03/04 1.5c (Carsten Heinz)
+Package: listings 2014/09/06 1.5e (Carsten Heinz)
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\Here.sty")
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
@@ -652,8 +651,7 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \@indexfile=\write3
 
 Writing index file AKESound.idx
-("C:\Users\pke\Documents\GitHub\MACProtocolSound\praca magisterska\AKESound.aux
-")
+("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
 LaTeX Font Info:    ... okay on input line 102.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 102.
@@ -663,7 +661,8 @@ LaTeX Font Info:    ... okay on input line 102.
 LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 102.
 LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 10
 2.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omspzccm.fd"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omspzccm.fd"
 File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
 )
 LaTeX Font Info:    ... okay on input line 102.
@@ -735,13 +734,13 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/sc' in size <24.88> not available
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 127.
 
-("C:\Users\pke\Documents\GitHub\MACProtocolSound\praca magisterska\AKESound.toc
-"
+("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.toc"
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 3.
 LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 4.
 
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptmcm.fd"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptmcm.fd"
 File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
 )
 LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 4.
@@ -793,8 +792,7 @@ Overfull \hbox (40.00244pt too wide) in paragraph at lines 241--242
  [] 
  []
 
-[7 <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magisterska/img/AMApro
-tocol.pdf>]
+[7 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/AMAprotocol.pdf>]
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10.95> not available
 (Font)              Font shape `T1/ptm/b/it' tried instead on input line 301.
 
@@ -962,11 +960,10 @@ Overfull \hbox (5.88582pt too wide) in paragraph at lines 409--442
 Overfull \vbox (12.8865pt too high) has occurred while \output is active []
 
 
-[13 <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magisterska/img/coupl
-e.png> <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magisterska/img/si
-gnal1.png> <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magisterska/im
-g/second_side.png> <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magist
-erska/img/session_key_est.png>]
+[13 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/couple.png> <E:/GitH
+ubFinal/MACProtocolSound/praca magisterska/img/signal1.png> <E:/GitHubFinal/MAC
+ProtocolSound/praca magisterska/img/second_side.png> <E:/GitHubFinal/MACProtoco
+lSound/praca magisterska/img/session_key_est.png>]
 <img/longitudinal_wave.png, id=102, 277.035pt x 82.05656pt>
 File: img/longitudinal_wave.png Graphic file (type png)
 
@@ -987,14 +984,13 @@ File: img/frequency_5Hz.pdf Graphic file (type pdf)
 <use img/frequency_5Hz.pdf>
 Package pdftex.def Info: img/frequency_5Hz.pdf used on input line 467.
 (pdftex.def)             Requested size: 179.99878pt x 107.9978pt.
- [14 <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magisterska/img/long
-itudinal_wave.png> <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magist
-erska/img/frequency_1Hz.pdf> <C:/Users/pke/Documents/GitHub/MACProtocolSound/pr
-aca magisterska/img/frequency_5Hz.pdf
+ [14 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/longitudinal_wave.p
+ng> <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/frequency_1Hz.pdf> <
+E:/GitHubFinal/MACProtocolSound/praca magisterska/img/frequency_5Hz.pdf
 
-pdfTeX warning: pdflatex.exe (file C:/Users/pke/Documents/GitHub/MACProtocolSou
-nd/praca magisterska/img/frequency_5Hz.pdf): PDF inclusion: multiple pdfs with 
-page group included in a single page
+pdfTeX warning: pdflatex.exe (file E:/GitHubFinal/MACProtocolSound/praca magist
+erska/img/frequency_5Hz.pdf): PDF inclusion: multiple pdfs with page group incl
+uded in a single page
 >] [15] <img/sines.pdf, id=129, 361.35pt x 216.81pt>
 File: img/sines.pdf Graphic file (type pdf)
  <use img/sines.pdf>
@@ -1007,134 +1003,137 @@ File: img/both_real_imag.png Graphic file (type png)
 <use img/both_real_imag.png>
 Package pdftex.def Info: img/both_real_imag.png used on input line 521.
 (pdftex.def)             Requested size: 259.99756pt x 194.65535pt.
- [16 <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magisterska/img/sine
-s.pdf>]
-<img/continues.png, id=144, 422.32782pt x 316.18124pt>
+ [16 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/sines.pdf>] <img/co
+ntinues.png, id=144, 422.32782pt x 316.18124pt>
 File: img/continues.png Graphic file (type png)
- <use img/continues.png>
+
+<use img/continues.png>
 Package pdftex.def Info: img/continues.png used on input line 533.
 (pdftex.def)             Requested size: 240.00244pt x 179.68483pt.
-
-[17 <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magisterska/img/both_
-real_imag.png>] <img/descrete.png, id=149, 422.32782pt x 316.18124pt>
+ [17 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/both_real_imag.png>
+] <img/descrete.png, id=149, 422.32782pt x 316.18124pt>
 File: img/descrete.png Graphic file (type png)
 
 <use img/descrete.png>
 Package pdftex.def Info: img/descrete.png used on input line 540.
 (pdftex.def)             Requested size: 240.00244pt x 179.68483pt.
- [18 <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magisterska/img/cont
-inues.png> <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magisterska/im
-g/descrete.png>]
-<img/rectangular_window.png, id=156, 243.15843pt x 247.67531pt>
+ [18 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/continues.png> <E:/
+GitHubFinal/MACProtocolSound/praca magisterska/img/descrete.png>] <img/fft_erro
+rs.png, id=156, 235.6002pt x 112.0185pt>
+File: img/fft_errors.png Graphic file (type png)
+
+<use img/fft_errors.png>
+Package pdftex.def Info: img/fft_errors.png used on input line 559.
+(pdftex.def)             Requested size: 200.0pt x 95.09308pt.
+
+<img/rectangular_window.png, id=157, 243.15843pt x 247.67531pt>
 File: img/rectangular_window.png Graphic file (type png)
 
 <use img/rectangular_window.png>
-Package pdftex.def Info: img/rectangular_window.png used on input line 558.
+Package pdftex.def Info: img/rectangular_window.png used on input line 567.
 (pdftex.def)             Requested size: 200.0pt x 203.71484pt.
- [19 <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magisterska/img/rect
-angular_window.png>]
-<img/hanning_window.png, id=161, 232.61906pt x 259.7203pt>
+ [19 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/fft_errors.png>]
+<img/hanning_window.png, id=162, 232.61906pt x 259.7203pt>
 File: img/hanning_window.png Graphic file (type png)
 
 <use img/hanning_window.png>
-Package pdftex.def Info: img/hanning_window.png used on input line 576.
+Package pdftex.def Info: img/hanning_window.png used on input line 585.
 (pdftex.def)             Requested size: 240.00244pt x 267.97064pt.
- [20 <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magisterska/img/hann
-ing_window.png>] [21] [22] [23] [24]
-Overfull \hbox (3.84259pt too wide) in paragraph at lines 726--727
+ [20 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/rectangular_window.
+png>] [21 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/hanning_window
+.png>] [22] [23] [24]
+<img/adversary.png, id=181, 359.84438pt x 131.74219pt>
+File: img/adversary.png Graphic file (type png)
+ <use img/adversary.png>
+Package pdftex.def Info: img/adversary.png used on input line 721.
+(pdftex.def)             Requested size: 240.00244pt x 87.86877pt.
+
+[25 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/adversary.png>]
+Overfull \hbox (3.84259pt too wide) in paragraph at lines 750--751
 \T1/ptm/m/n/10.95 Application con-sists of three parts: cryp-to-graphic mod-ule
 , sound chan-nel mod-ule and graphic
  []
 
-<img/Architecture_pdf.pdf, id=179, 770.88pt x 545.03625pt>
+[26] <img/Architecture_pdf.pdf, id=188, 846.16125pt x 598.48593pt>
 File: img/Architecture_pdf.pdf Graphic file (type pdf)
 
 <use img/Architecture_pdf.pdf>
-Package pdftex.def Info: img/Architecture_pdf.pdf used on input line 732.
-(pdftex.def)             Requested size: 400.0pt x 282.81337pt.
- [25]
-<img/MVC.pdf, id=183, 598.48593pt x 846.16125pt>
+Package pdftex.def Info: img/Architecture_pdf.pdf used on input line 756.
+(pdftex.def)             Requested size: 400.0pt x 282.91394pt.
+ [27 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/Architecture_pdf.pd
+f>]
+<img/MVC.pdf, id=224, 598.48593pt x 846.16125pt>
 File: img/MVC.pdf Graphic file (type pdf)
  <use img/MVC.pdf>
-Package pdftex.def Info: img/MVC.pdf used on input line 746.
+Package pdftex.def Info: img/MVC.pdf used on input line 770.
 (pdftex.def)             Requested size: 279.99878pt x 395.87535pt.
- [26 <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magisterska/img/Arch
-itecture_pdf.pdf>] [27 <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca ma
-gisterska/img/MVC.pdf>] ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\
-lstlang1.sty"
-File: lstlang1.sty 2014/03/04 1.5c listings language file
-) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
-File: lstlang1.sty 2014/03/04 1.5c listings language file
+ [28 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/MVC.pdf>]
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2014/09/06 1.5e listings language file
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2014/09/06 1.5e listings language file
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
-File: lstmisc.sty 2014/03/04 1.5c (Carsten Heinz)
+File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
 )
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <8> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 773.
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 797.
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 780.
- [28]
-[29]
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 804.
+ [29]
+[30]
 
-LaTeX Warning: Characters dropped after `\end{comment}' on input line 847.
+LaTeX Warning: Characters dropped after `\end{comment}' on input line 871.
 
+[31]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 880.
+(amsmath)                 on input line 904.
 
-<img/Sending_data_active_diag.pdf, id=247, 712.91344pt x 252.19218pt>
+<img/Sending_data_active_diag.pdf, id=258, 712.91344pt x 252.19218pt>
 File: img/Sending_data_active_diag.pdf Graphic file (type pdf)
 
 <use img/Sending_data_active_diag.pdf>
-Package pdftex.def Info: img/Sending_data_active_diag.pdf used on input line 88
-7.
+Package pdftex.def Info: img/Sending_data_active_diag.pdf used on input line 91
+1.
 (pdftex.def)             Requested size: 400.0pt x 141.49986pt.
- [30]
+
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
-File: lstlang1.sty 2014/03/04 1.5c listings language file
+File: lstlang1.sty 2014/09/06 1.5e listings language file
 )
-Overfull \hbox (17.0pt too wide) in paragraph at lines 893--958
+Overfull \hbox (17.0pt too wide) in paragraph at lines 917--982
 []$[]$ 
  []
 
-[31 <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magisterska/img/Sendi
-ng_data_active_diag.pdf>]
+[32 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/Sending_data_active_
+diag.pdf>]
 Overfull \vbox (48.64398pt too high) has occurred while \output is active []
 
 
-[32] <img/peaks_1.png, id=287, 291.33844pt x 231.11343pt>
-File: img/peaks_1.png Graphic file (type png)
-
-<use img/peaks_1.png>
-Package pdftex.def Info: img/peaks_1.png used on input line 974.
-(pdftex.def)             Requested size: 179.99878pt x 142.79161pt.
-
-<img/Activity_diag_receiving.pdf, id=288, 846.16125pt x 598.48593pt>
+[33] <img/Activity_diag_receiving.pdf, id=294, 846.16125pt x 598.48593pt>
 File: img/Activity_diag_receiving.pdf Graphic file (type pdf)
 
 <use img/Activity_diag_receiving.pdf>
-Package pdftex.def Info: img/Activity_diag_receiving.pdf used on input line 981
+Package pdftex.def Info: img/Activity_diag_receiving.pdf used on input line 997
 .
 (pdftex.def)             Requested size: 359.99756pt x 254.62254pt.
- [33 <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magisterska/img/peak
-s_1.png>]
-<img/receiving.png, id=293, 534.49687pt x 453.19313pt>
+ [34 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/Activity_diag_recei
+ving.pdf>]
+<img/receiving.png, id=341, 534.49687pt x 453.19313pt>
 File: img/receiving.png Graphic file (type png)
  <use img/receiving.png>
-Package pdftex.def Info: img/receiving.png used on input line 992.
+Package pdftex.def Info: img/receiving.png used on input line 1008.
 (pdftex.def)             Requested size: 279.99878pt x 237.41823pt.
 
-[34 <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magisterska/img/Activ
-ity_diag_receiving.pdf>]
-Overfull \hbox (17.0pt too wide) in paragraph at lines 999--1038
+Overfull \hbox (17.0pt too wide) in paragraph at lines 1015--1054
 []$[]$ 
  []
 
-[35 <C:/Users/pke/Documents/GitHub/MACProtocolSound/praca magisterska/img/recei
-ving.png>] [36] [37] [38] [39]
-("C:\Users\pke\Documents\GitHub\MACProtocolSound\praca magisterska\AKESound.bbl
-"
+[35 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/receiving.png>]
+[36] [37] [38] [39]
+("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.bbl"
 Underfull \hbox (badness 6032) in paragraph at lines 4--7
 []\T1/ptm/m/n/10.95 The de-screte trans-form fourier (dft): Def-i-ni-tion and n
 u-mer-i-cal ex-am-ples.
@@ -1165,55 +1164,54 @@ ww . fizykon . org / akustyka / akustyka _$
  []
 
 [41]
-Underfull \hbox (badness 7685) in paragraph at lines 136--139
+Underfull \hbox (badness 7685) in paragraph at lines 144--147
 []\T1/ptm/m/n/10.95 Kazuhisa Miyashita Ake-haru Oku-mura Yoshi-aki Yoshida Shin
 -taro Takeda,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--149
+Underfull \hbox (badness 10000) in paragraph at lines 153--157
 []\T1/ptm/m/n/10.95 Mike Szczys.  Laser mic makes eaves-drop-ping re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--149
+Underfull \hbox (badness 10000) in paragraph at lines 153--157
 \T1/ptm/m/n/10.95 mark-ably sim-ple.  $\T1/pcr/m/n/10.95 http : / / hackaday . 
 com / 2010 / 09 / 25 /$
  []
 
-[42]) [43]
-("C:\Users\pke\Documents\GitHub\MACProtocolSound\praca magisterska\AKESound.aux
-") ) 
+[42]) [43] ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.aux") )
+ 
 Here is how much of TeX's memory you used:
- 8137 strings out of 493921
- 106490 string characters out of 3144882
- 448060 words of memory out of 3000000
- 11212 multiletter control sequences out of 15000+200000
+ 8158 strings out of 493921
+ 106630 string characters out of 3144875
+ 457853 words of memory out of 3000000
+ 11232 multiletter control sequences out of 15000+200000
  93198 words of font info for 111 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 33i,14n,58p,1276b,1655s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Prog
-ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Prog
-ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program File
-s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (
-x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKT
-eX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
-nts/type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
-/urw/courier/ucrro8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/sym
-bol/usyr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pf
-b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Prog
-ram Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (
-x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX
- 2.9/fonts/type1/urw/times/utmri8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
-/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on AKESound.pdf (44 pages, 829008 bytes).
+ 33i,14n,58p,1276b,1644s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fi
+les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Fi
+les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2
+.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
+type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw
+/courier/ucrro8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/symbol/
+usyr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C
+:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)
+/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/urw/times/utmri8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
+e1/urw/zapfchan/uzcmi8a.pfb>
+Output written on AKESound.pdf (44 pages, 913991 bytes).
 PDF statistics:
- 421 PDF objects out of 1000 (max. 8388607)
+ 423 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 101 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 106 words of extra memory for PDF output out of 10000 (max. 10000000)
 

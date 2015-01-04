@@ -35,6 +35,10 @@ The speed of sound.
 \bibitem{vibrat}
 Vibrations usage in out-of-band channel.
 
+\bibitem{sound}
+What is sound?
+\newblock \url{http://www.podcomplex.com/guide/physics.html}.
+
 \bibitem{chart_eng}
 AChartEngine.
 \newblock \url{http://www.achartengine.org/}.
@@ -60,6 +64,10 @@ Anton~Mityagin Brian~LaMacchia, Kristin~Lauter.
 \bibitem{chirp}
 Chirp.
 \newblock \url{http://chirp.io/}.
+
+\bibitem{hanning2}
+Dr~inż. Piotr~Zając Dr~inż. Cezary~Maj.
+\newblock Zaawansowane metody analizy sygnałów.
 
 \bibitem{AMA}
 Lucjan Hanzlik, Kamil Kluczniak, Łukasz Krzywiecki, and Mirosław Kutyłowski.
@@ -151,6 +159,9 @@ Mike Szczys.
 Berkant Ustaoglu.
 \newblock \textit{Obtaining a secure and efficient key agreement protocol from
   (H)MQV and NAXOS}.
+
+\bibitem{hanning}
+Hanning window.
 
 \bibitem{security_canetti_krawczyk}
 SaanJae~Moon Xinghua~Li, Jianfeng~Ma.

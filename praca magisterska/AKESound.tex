@@ -475,7 +475,7 @@ There are four divisions of sound as to frequency:
 	\item \textit{Hipersound} - frequency is greater than 10~GHz. They can spread only in crystals, because of such a high frequency. The wave is smaller than distance between molecules in the environment. They disappear in the gases.
 \end{itemize}
 
-Frequency specify also pitch of sound. A high frequency sound wave corresponds to a high pitch of sound and low frequency sound wave corresponds to a low pitch of sound.
+Frequency specify also pitch of sound. A high frequency sound wave corresponds to a high pitch of sound and low frequency sound wave corresponds to a low pitch of sound \cite{sound}.
 
 \subsubsection{Sound intensity}
 Loudness of the sound depends to its intensity. It is expressed by $W/m^2$ unit. This is ratio the power of the acoustic wave to surface area to which wave energy falls perpendicular during 1 second \cite{sound_intensity}. Human's ear works in such way that doubling intensity of sound, does not cause that human hear it two times louder. Human hears its logarithmized value. Logarithmized measure of sound intensity is called sound intensity level. It is measured in decibels and is given by \cite{decibels}:
@@ -552,7 +552,16 @@ Computational complexity of this notation is $O(N^2)$, because for $N$ elements 
 Computational complexity of \textit{discrete Fourier transform} is not enough for fast processing of more data. Therefore a lot of algorithms were developed, which improve its calculation. There are algorithms, which do \textit{discrete Fourier transform} having computational complexity $O(NlogN)$, where for large number of data it is a significant improvement. They use design paradigm divide and conquer. Precursors of these solutions are James William Cooley and John Tukey, who elaborated first faster algorithm to compute \textit{DFT}, known as \textit{fast Fourier transform} (\textit{FFT}). It is worth to mention that \textit{FFT} is not approximate value of \textit{DFT}. \textit{FFT} returns the same values but performs it much faster.
 
 \subsubsection{Hanning window}
-Window functions are functions which are used with \textit{DFT}. Often during process of \textit{DFT} occur blur of spectrum, which means that on the spectrum values for frequencies different than the real frequency of signal are seen. To minimize this effect window functions are used. In time domain it multiplies every sample of signal by corresponding value of window sample. The simplest window is a rectangular window. Spectrum of this windowing is shown in \ref{fig:F9}
+Window functions are functions which are used with \textit{DFT}. Often during process of \textit{DFT} occur blur of spectrum, which means that on the spectrum values for frequencies different than the real frequency of signal are seen. If we analyse the segment of the continuous signal then at the ends of the interval may occur discontinuities. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{img/fft_errors}
+	\caption{Reference situation during analyse of the signal \cite{hanning}.}
+	\label{fig:40}
+\end{figure}
+
+In fig. \ref{fig:40} we can see that if we take to analyse piece "b" then results of FFT will be correct. If we take the piece "c" then results of FFT will be difference, incorrect. To minimize this effect window functions are used. In time domain it multiplies every sample of signal by corresponding value of window sample. The simplest window is a rectangular window. Spectrum of this windowing is shown in fig \ref{fig:F9}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{img/rectangular_window}
@@ -570,7 +579,7 @@ In our protocol is used Hanning window which is defined by:
 
 \vspace{5mm}
 
-As one can see at fig. \ref{fig:F10} the pitch is wider, hence is easier to determine the correct frequency.
+As one can see at fig. \ref{fig:F10} the pitch is wider, hence is easier to determine the correct frequency \cite{hanning2}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{img/hanning_window}
@@ -659,7 +668,11 @@ Partial access to protocol transcript in sound channel depends on many factors. 
 
 \vspace{5mm}
 
-Factors described in 2.9.7 contribute to some probability $\bar{p}$ that adversary and participants will have this type of devices satisfying the conditions. Otherwise, adversary is not able to receive all frequencies. He will gain transcript but with meaningless data. So it would be similar situation when adversary has no access to the transcript.  
+Factors described in 2.7.7 contribute to some probability $\bar{p}$ that adversary and participants will have this type of devices satisfying the conditions. Otherwise, adversary is not able to receive all frequencies. He will gain transcript but with meaningless data. So it would be similar situation when adversary has no access to the transcript.  
+
+\vspace{5mm}
+
+It may occur that eavesdropper does not gain one of the four part of the transcript. If he would miss one of the ephemeral key then he would have to guess this key in order to compute session key, assuming that adversary is powerful and can resolve discrete logarithm problem. In the situation when he obtains even both encryptions from protocol he would not distinguish these messages from random values. 
 
 \vspace{5mm}
 
@@ -691,13 +704,24 @@ Eavesdropping in sound channel depends on many factors.
  L_s = 10 log_{10}\left(\frac{p_A}{p_0}\right)[dB],
  \end{equation}
  
- where $p_A$ is sound pressure generated by speaker powered $1V \cdot A$, $p_0$ is a reference pressure which has the value of $2*10^{-5}$ Pa. Frequency has also an influence on the sensitivity level of the speaker. The next thing which should be considered is the distance between the microphone and the speaker. Too great distance and too low sensitivity of microphone could cause that microphone is not able to gain sounds waves or at least some frequencies. Sound pressure decreases proportionally with increase of distance. So when sound level $L_{1}$ is measured at a distance $r_1$, the sound level $L_2$ at the distance $r_2$ is given by:
+ where $p_A$ is sound pressure generated by speaker powered by $1V \cdot A$, $p_0$ is a reference pressure which has the value of $2*10^{-5}$ Pa. Frequency has also an influence on the sensitivity level of the speaker. The next thing which should be considered is the distance between the microphone and the speaker. Too great distance and too low sensitivity of microphone could cause that microphone is not able to gain sounds waves or at least some frequencies. Sound pressure decreases proportionally with increase of distance. So when sound level $L_{1}$ is measured at a distance $r_1$, the sound level $L_2$ at the distance $r_2$ is given by:
  
  \begin{equation}
  L_2 = L_1 + 20 log_{10} \left(\frac{r_1}{r_2}\right)[dB].
  \end{equation}
 
 There are many devices used for eavesdropping. One of the example might be the microphone with high sensitivity which allows to eavesdrop the sounds even from a large distance e.g. parabolic or shotgun  microphone. To gain ultrasounds for eavesdropper, an instrument for detecting ultrasonics from bats would be useful. The next one is using laser \cite{laser_mic}. The special laser is a transmitter and the infrared measure of surface vibration. This method also allows to gain data from a large distance. 
+
+\vspace{5mm}
+
+In fig. \ref{fig:F30} we show simple example difference between parties microphones and potential adversary's microphone.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{img/adversary}
+	\caption{P - point of the stick microphone and speaker of mobile devices. x - range of gaining the highest frequency generated from parties speakers from point S by parties microphones. r - range of gaining the highest frequency generated from parties speakers from point S by adversary's microphone.}
+	\label{fig:F30}
+\end{figure}
 
 \subsubsection{Malicious implementation}
 An adversary could try to swap a genuine application for the key exchange on the authenticating device with a malicious one and thus gain the session key. To ensure both parties that they use genuine software, it should be signed with a certificate of a trusted authority and it should be downloaded from a secure server. This case is mentioned in security assumptions in section 3.3.
@@ -966,15 +990,7 @@ At this moment, the samples are as short integer values which represent sound in
 
 \vspace{5mm}
 
-Before the change of domain, we need to pass samples through windowing Hanning function. Thereby, chart in frequency domain is more readable and it is easier to find the place with the highest pitch. Windowed samples are put into \textit{DFT} method and on the output we have result in frequency domain. The effect on the graph looks like at \ref{fig:F2}.
-
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.45\textwidth]{img/peaks_1}
-	\caption{Sound wave in frequency domain.}
-	\label{fig:F2}
-\end{figure}
+Before the change of domain, we need to pass samples through windowing Hanning function. Thereby, chart in frequency domain is more readable and it is easier to find the place with the highest pitch. Windowed samples are put into \textit{DFT} method and on the output we have result in frequency domain.
 
 \begin{figure}[H]
 	\centering

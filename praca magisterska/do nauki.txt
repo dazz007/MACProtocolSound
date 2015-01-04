@@ -13,4 +13,6 @@ liczby pierwsze - testy pierwszoœci
 -oszcowanie czasu wykonywania dzia³añ arytmetycznych
 -zamiana podstaw, operacje bitowe
 -dzia³ania modula
-Funckja eulera
+-Funckja eulera
+-sha1
+-idea podpisu pierœcieniowego

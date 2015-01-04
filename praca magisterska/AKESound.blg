@@ -6,6 +6,16 @@ I was expecting a `,' or a `}'---line 76 of file AKESound.bib
  : PAGES = {},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+Unbalanced braces---line 214 of file AKESound.bib
+ : 
+ : }
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 219 of file AKESound.bib
+ : 
+ : howpublished = "\url{fiona.dmcs.pl/~cmaj/ZMAS/Wyklad4_CM.ppt}"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Too many commas in name 1 of "Ming Li, Shucheng Yu, Joshua D. Guttman, Wenjing Lou, Kui Ren" for entry ad_hoc
 while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Ming Li, Shucheng Yu, Joshua D. Guttman, Wenjing Lou, Kui Ren" for entry ad_hoc
@@ -13,6 +23,7 @@ while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Shlomi Dolev, Łukasz Krzywiecki, Nisha Panwar, Michael Segal" for entry veh
 while executing---line 1049 of file plain.bst
 Warning--to sort, need author or key in vibrat
+Warning--to sort, need author or key in sound
 Warning--to sort, need author or key in sound_intensity
 Warning--to sort, need author or key in decibels
 Warning--to sort, need author or key in sound_speed
@@ -54,4 +65,4 @@ Warning--empty journal in security_canetti_krawczyk
 Warning--empty year in security_canetti_krawczyk
 Warning--empty journal in efficient_eck
 Warning--empty year in efficient_eck
-(There were 11 error messages)
+(There were 13 error messages)
