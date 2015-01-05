@@ -44,6 +44,6 @@
 \contentsline {subsection}{\numberline {3.11}Sound channel}{31}
 \contentsline {subsubsection}{\numberline {3.11.1}Generating sound wave}{31}
 \contentsline {subsubsection}{\numberline {3.11.2}Receiving sound}{34}
-\contentsline {section}{\numberline {4}Tests}{37}
-\contentsline {section}{\numberline {5}Possible development of the project}{39}
-\contentsline {section}{\numberline {6}Summary}{40}
+\contentsline {section}{\numberline {4}Tests}{38}
+\contentsline {section}{\numberline {5}Possible development of the project}{40}
+\contentsline {section}{\numberline {6}Summary}{41}

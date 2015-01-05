@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.21)  4 JAN 2015 22:39
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.21)  5 JAN 2015 14:08
 entering extended mode
 **AKESound.tex
 ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.tex"
@@ -1121,18 +1121,27 @@ Package pdftex.def Info: img/Activity_diag_receiving.pdf used on input line 997
 (pdftex.def)             Requested size: 359.99756pt x 254.62254pt.
  [34 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/Activity_diag_recei
 ving.pdf>]
-<img/receiving.png, id=341, 534.49687pt x 453.19313pt>
+<img/analyse_of_sound.pdf, id=341, 636.12656pt x 615.80063pt>
+File: img/analyse_of_sound.pdf Graphic file (type pdf)
+
+<use img/analyse_of_sound.pdf>
+Package pdftex.def Info: img/analyse_of_sound.pdf used on input line 1007.
+(pdftex.def)             Requested size: 400.0pt x 387.21413pt.
+
+<img/receiving.png, id=342, 534.49687pt x 453.19313pt>
 File: img/receiving.png Graphic file (type png)
  <use img/receiving.png>
-Package pdftex.def Info: img/receiving.png used on input line 1008.
+Package pdftex.def Info: img/receiving.png used on input line 1014.
 (pdftex.def)             Requested size: 279.99878pt x 237.41823pt.
 
-Overfull \hbox (17.0pt too wide) in paragraph at lines 1015--1054
+[35 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/analyse_of_sound.pdf
+>]
+Overfull \hbox (17.0pt too wide) in paragraph at lines 1021--1060
 []$[]$ 
  []
 
-[35 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/receiving.png>]
-[36] [37] [38] [39]
+[36 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/receiving.png>]
+[37] [38] [39] [40]
 ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.bbl"
 Underfull \hbox (badness 6032) in paragraph at lines 4--7
 []\T1/ptm/m/n/10.95 The de-screte trans-form fourier (dft): Def-i-ni-tion and n
@@ -1145,7 +1154,7 @@ $\T1/pcr/m/n/10.95 http : / / www . nbtwiki . net / doku . php ? id = tutorial
 : the _ discrete _ fourier _$
  []
 
-[40]
+[41]
 Underfull \hbox (badness 2318) in paragraph at lines 19--21
 []\T1/ptm/m/n/10.95 Nate»enie fali d¹wi¦kowej.  $\T1/pcr/m/n/10.95 http : / / w
 ww . fizykon . org / akustyka / akustyka _$
@@ -1163,7 +1172,7 @@ Underfull \hbox (badness 2012) in paragraph at lines 28--30
 ww . fizykon . org / akustyka / akustyka _$
  []
 
-[41]
+[42]
 Underfull \hbox (badness 7685) in paragraph at lines 144--147
 []\T1/ptm/m/n/10.95 Kazuhisa Miyashita Ake-haru Oku-mura Yoshi-aki Yoshida Shin
 -taro Takeda,
@@ -1180,13 +1189,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 153--157
 com / 2010 / 09 / 25 /$
  []
 
-[42]) [43] ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.aux") )
+[43]) [44] ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.aux") )
  
 Here is how much of TeX's memory you used:
- 8158 strings out of 493921
- 106630 string characters out of 3144875
- 457853 words of memory out of 3000000
- 11232 multiletter control sequences out of 15000+200000
+ 8164 strings out of 493921
+ 106774 string characters out of 3144875
+ 457863 words of memory out of 3000000
+ 11237 multiletter control sequences out of 15000+200000
  93198 words of font info for 111 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  33i,14n,58p,1276b,1644s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1209,9 +1218,9 @@ Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)
 /MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9
 /fonts/type1/urw/times/utmri8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
 e1/urw/zapfchan/uzcmi8a.pfb>
-Output written on AKESound.pdf (44 pages, 913991 bytes).
+Output written on AKESound.pdf (45 pages, 1011441 bytes).
 PDF statistics:
- 423 PDF objects out of 1000 (max. 8388607)
+ 468 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
 

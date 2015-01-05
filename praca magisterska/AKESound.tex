@@ -672,7 +672,7 @@ Factors described in 2.7.7 contribute to some probability $\bar{p}$ that adversa
 
 \vspace{5mm}
 
-It may occur that eavesdropper does not gain one of the four part of the transcript. If he would miss one of the ephemeral key then he would have to guess this key in order to compute session key, assuming that adversary is powerful and can resolve discrete logarithm problem. In the situation when he obtains even both encryptions from protocol he would not distinguish these messages from random values. 
+It may occur that eavesdropper does not gain one of the four part of the transcript. If he would miss one of the ephemeral key then he would have to guess this key in order to compute session key, assuming that adversary is powerful and can resolve discrete logarithm problem in polynomial time. In the situation when he obtains even both encryptions from protocol he would not distinguish these messages from random values. 
 
 \vspace{5mm}
 
@@ -1002,6 +1002,12 @@ Before the change of domain, we need to pass samples through windowing Hanning f
 
 Now, algorithm tries to find the highest place in the output. The reason of getting data within twice shorter time than sending one character is that, in one buffer there can be two frequencies. In the worst case, algorithm can find one frequency in three buffers in a row, even if in the first and the third buffer there was also another frequency, but because of lower sound intensity or less samples representing this frequency, it would not be found as the highest pitch. Dividing time of receiving by two ensures that always, at least once, expected frequency will be registered. If it finds pitch with amplitude higher than 50, for frequency lower than 14 kHz (this value was chosen after testing of prototype, these frequencies always exceed this limit), or 10 for higher than 14 kHz (this difference follows from the smaller volume for the higher frequency by hardware limitation) is checked whether caught frequency is in our dictionary (with margin of error + - 50 Hz). 
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{img/analyse_of_sound.pdf}
+	\caption{Activity diagram of analyse received frequency.}
+	\label{fig:F23}
+\end{figure}
 
 \begin{figure}[H]
 	\centering
@@ -1126,7 +1132,7 @@ Firstly, we tested  the distance between chosen frequencies. Every character fro
 		100 & 14,3 & 20,8 \\
 		\hline
 	\end{tabular}
-	\caption{Mapping characters to frequencies.}
+	\caption{Tested distances between characters and frequencies.}
 \end{table}
 
 We did not want to go below 10 kHz and higher frequency than 20,5 it is hard to detect for mobile phone (especially for LG). Distance 100 Hz is the smallest to test because of implemented algorithm (margin of error is + - 50 Hz). During the tests, it was proved to be for almost every test cases, protocol was successful in 80\%. Except the last one which always ends by failure. Character which represents end of sending data has always the highest frequency. In the last case it was 20,8 kHz. Only LG Swift cannot registry that frequency - Samsung dealt with it flawlessly. Duration of protocol was about 34,5 seconds.
@@ -1147,15 +1153,17 @@ There are several reasons why the result was not 100\%. Sometimes, if we send, f
 		\hline
 		2 & success \\
 		\hline
-		3 & failure \\
+		3 & success \\
 		\hline
-		4 & failure \\
+		4 & success \\
+		\hline
+		5 & failure \\
 		\hline
 	\end{tabular}
-	\caption{Mapping characters to frequencies.}
+	\caption{Tested distances between mobile phones and results of the protocol execution.}
 \end{table}
 
-To measure the allowed distance between devices we started with stick microphone from LG with speaker from Samsung. That gave us the best results. Received amplitude was the biggest, therefore it was easier for algorithm to find the needed frequency. Then we increased the distance to 2 cm. In this case results were also good. Session keys were established almost every time. Problem started when we increased the distance to 6 cm. Higher frequencies were not registered by microphone. Placing the devices parallel the protocol always ended by failure. The LG was not able to gain all frequencies in such way. Samsung was still receiving data without problems. 
+To measure the allowed distance between devices we started with stick microphone from LG with speaker from Samsung. That gave us the best results. Received amplitude was the biggest, therefore it was easier for algorithm to find the needed frequency. Then we increased the distance to 2 cm. In this case results were also good. Session keys were established almost every time. Problem started when we increased the distance to 5 cm. Higher frequencies were not registered by microphone. Placing the devices parallel the protocol always ended by failure. The LG was not able to gain all frequencies in such way. Samsung was still receiving data without problems. 
 
 \vspace{5mm}
 
@@ -1173,10 +1181,10 @@ To measure the allowed distance between devices we started with stick microphone
 			\hline
 			10,5-20 kHz, distance 5 cm & success \\
 			\hline
-			10,5-20 kHz, distance 2 cm & false \\
+			10,5-20 kHz, distance 2 cm & failure \\
 			\hline
 		\end{tabular}
-		\caption{Mapping characters to frequencies.}
+		\caption{Noises in the background and results of the protocol execution.}
 	\end{table}
 
 The next test relies on checking the influence of background sound. As we know, from the previous test, the best results were when devices were close to each other (maximal 2 cm from each other), so we have tested it in such position. At beginning we checked it at the University during the break between lectures. A lot of students were talking and laughing but even that, did not interfere with protocol. Almost every attempt ended with a success. Then we used third device which was generating constantly chosen frequency. We put this device very close to the participants. First disturbing frequency was 8 kHz. Because of that bandwidth is from 10,5 to 20,25 we suspected that 8 kHz does not cause the problem and we were right. Algorithm analysing data was correct. The problem was just after increasing the disturbing frequency above 10,5 kHz, but it was needed to stick speaker of that device to the microphone of participant protocol. Otherwise, the protocol always ends with a success. 
@@ -1207,7 +1215,7 @@ In the prototype we used the bandwidth of frequencies which are audible for huma
 
 \vspace{5mm}
 
-We showed that using this type of channel could surprise the attacker who might not be prepared to eavesdrop/manipulate exchanging data in mechanical waves. Mixing the sound channel with other kinds of channels, for sure, could make it even more difficult. Duration of the protocol execution is not so fast as in radiation channels, however it is good enough to be applied in practical solutions. Establishing the authentication could be much faster if used client-server model. Computer as a server would analyse data faster and results would be better.
+We showed that using this type of channel could surprise the attacker who might not be prepared to eavesdrop or manipulate exchanging data in mechanical waves. Mixing the sound channel with other kinds of channels, for sure, could make it even more difficult. Duration of the protocol execution is not so fast as in radiation channels, however it is good enough to be applied in practical solutions. Establishing the authentication could be much faster if used client-server model. Computer as a server would analyse data faster and results would be better.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
