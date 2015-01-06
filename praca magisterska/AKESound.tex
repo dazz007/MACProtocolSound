@@ -314,7 +314,7 @@ The protocol is characterized by properties:
  \begin{itemize}
  	
  	\item \textit{Undetectability} - having protocol transcript one cannot confirm that the process really took place;
- 	\item \textit{Simultability} - this property results from the above property. It is possible to create extended protocol transcript (protocol transcript appended with ephemeral $a$ and $b$) between parties without interacting with them, but with the same probability distribution as in case of real interactions. The proof consists of that it shows that third party Eve is able to prepare a fake protocol. She chooses $a$ and $b$ at random and she computes $c_A$, $c_B$, $K$, $K_A$, $K'_A$, $K_B$, $K'_B$. Challenge values are computed in such a way that: $r_A := H(y_A^{h_B},K'_A)$, $r_B := H(y_B^{h_A},K'_B)$, so the values are the same as in the real transcript. Then she prepares the encryptions according to the protocol. Eve using these values to creates fake protocol transcript;
+ 	\item \textit{Simultability} - this property results from the above property. It is possible to create extended protocol transcript (protocol transcript appended with ephemeral $a$ and $b$) between parties without interacting with them, but with the same probability distribution as in case of real interactions. The proof rely on that it shows that third party Eve is able to prepare a fake protocol. She chooses $a$ and $b$ at random and she computes $c_A$, $c_B$, $K$, $K_A$, $K'_A$, $K_B$, $K'_B$. Challenge values are computed in such a way that: $r_A := H(y_A^{h_B},K'_A)$, $r_B := H(y_B^{h_A},K'_B)$, so the values are the same as in the real transcript. Then she prepares the encryptions according to the protocol. Eve using these values to creates fake protocol transcript;
  	\item \textit{Deniability} - in ROM model, no one of the participants can convince third party that he participate in protocol. It would be possible only if convincing party would resolve CDH which is hard (see more detail in \cite{AMA});
  	\item \textit{Privacy} - eavesdropping adversary cannot tell about identity of parties performing the protocol. It is proven by series of games in \cite{AMA} for two cases. In the first case adversary is observing a single transmission. The adversary is not able to learn something about the parties if the following advantage is negligible: Let $T$ = $(m_1,...,m_2)$ be a tuple of all messages exchanged between A and B in an protocol execution which ended successfully. $R$ denotes a tuple $(r_1,...,r_2)$ of independent random values. The advantage of an adversary $\mathcal{A}^{bind}$, $\textbf{Adv}(\mathcal{A}^{bind})$, is at least $\epsilon$, if there is strategy for adversary such that difference between the probability that $\mathcal{A}^{bind}$ returns "0" for given ($PK_A$, $PK_B$, $T$) and  the probability that $\mathcal{A}^{bind}$ returns "0" for given ($PK_A$, $PK_B$, $R$) is at least $\epsilon$.
  	
@@ -719,7 +719,7 @@ One of the vector attack is manipulating of the speaker. Assume that adversary w
 The manipulation of microphone would be possible only if attacker would have the access to the application. He could e.g. reduce or increase bandwidth of frequencies. Adversary could totally change the bandwidth, outside of the known range for authenticated parties and at the same time generate his sound waves in chosen bandwidth.
 
 \subsubsection{Eavesdropping}
-There are many devices used for eavesdropping. One of the example might be the microphone with high sensitivity which allows to eavesdrop the sounds even from a large distance e.g. parabolic or shotgun  microphone. To gain ultrasounds for eavesdropper, an instrument for detecting ultrasonics from bats would be useful. The next one is using laser \cite{laser_mic}. The special laser is a transmitter and the infrared measure of surface vibration. This method also allows to gain data from a large distance. 
+There are many devices used for eavesdropping. One of the example might be the microphone with high sensitivity which allows to eavesdrop the sounds even from a large distance e.g. parabolic or shotgun  microphone. To gain ultrasounds for eavesdropper, an instrument for detecting ultrasonics from bats would be useful. The next one is using laser \cite{laser_mic}. The special laser is a transmitter and the infrared measure of surface vibration. This method also allows to gain data from a large distance. Good solution to prevent against eavesdropping (beyond soundproofing box) would be application of \textit{Frequency-hopping spread spectrum}. Two parties use pseudorandom sequence, which is know for them, to change transmitting frequency in determined cycles \cite{fhss}.
 
 \subsubsection{Malicious implementation}
 An adversary could try to swap a genuine application for the key exchange on the authenticating device with a malicious one and thus gain the session key. To ensure both parties that they use genuine software, it should be signed with a certificate of a trusted authority and it should be downloaded from a secure server. This case is mentioned in security assumptions in section 3.3.
@@ -1145,7 +1145,7 @@ There are several reasons why the result was not 100\%. Sometimes, if we send, f
 	\centering
 	\begin{tabular}{| c | c |}
 		\hline
-		Distance [cm] & Session ended with success \\
+		Distance [cm] & Result of protocol \\
 		\hline
 		0 & success \\
 		\hline
@@ -1169,7 +1169,7 @@ To measure the allowed distance between devices we started with stick microphone
 		\centering
 		\begin{tabular}{| c | c |}
 			\hline
-			Type of noises & Session ended with success \\
+			Type of noises & Result of protocol \\
 			\hline
 			School at break & success \\
 			\hline
@@ -1202,6 +1202,9 @@ Disadvantage in our protocol is the speed of transferring data. In every 15 mill
 
 For now the sound channel uses bandwidth from 10,5 kHz to 20,25 kHz. For the reason please check section with \textit{Base64} conversion. These frequencies (especially below 19 kHz) could be audible for the most people (it sounds like squeaking). If we want to exchange data using sound which is inaudible, we could use just simple binary representation. Sending data using 0 and 1 there would be only two frequencies needed, so taking the highest as possible (for example 19,9 kHz and 20,10) would ensure that exchanging of data would be inaudible for the most people. Of course at the expense of length of sending data. It would be achievable also with hexadecimal representation. It would be needed to use bigger bandwidth than from binary representation but the length of data would be smaller.
 
+\vspace{5mm}
+
+It is worth to consider to use \textit{Frequency-hopping spread spectrum} (\textit{FHSS}) in transmitting data. \textit{FFHS} rely on that the receiver and the sender change in specific cycles the transmitting frequency using a pseudorandom sequence known to both parties. It could be additional impediment for adversary to eavesdrop protocol transcript \cite{fhss}.  
 \section{Summary}
 
 Dissertation shows that is possible to use sound channel to establish session key. There is no need of Internet connection or another electromagnetic channels, so proposed protocol Anonymous Mutual Authenticated could be called even in the place without reach, using mobile devices with embedded speaker and microphone. 
@@ -1217,7 +1220,7 @@ We showed that using this type of channel could surprise the attacker who might 
 
 \vspace{5mm}
 
-Summing up sound channel can be applied in practical solutions. This is good alternative to electromagnetic channels. Nowadays almost everyone have devices with embedded microphone and speaker by which they can establish secure channel in untrusted environment using AMA protocol.
+In conclusion, sound channel can be applied in practical solutions. This is good alternative to electromagnetic channels. Nowadays almost everyone have devices with embedded microphone and speaker by which they can establish secure channel in untrusted environment using AMA protocol.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BIBLIOGRAFIA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

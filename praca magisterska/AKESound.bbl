@@ -32,6 +32,10 @@ Poziom nateżenia dźwieku.
 The speed of sound.
 \newblock \url{http://www.sengpielaudio.com/calculator-speedsound.htm}.
 
+\bibitem{fhss}
+Strategies for adaptive frequency hopping in the unlicensed bands.
+\newblock \url{http://kom.aau.dk/~petarp/papers/DAFH-AFR.pdf}.
+
 \bibitem{vibrat}
 Vibrations usage in out-of-band channel.
 
@@ -68,6 +72,7 @@ Chirp.
 \bibitem{hanning2}
 Dr~inż. Piotr~Zając Dr~inż. Cezary~Maj.
 \newblock Zaawansowane metody analizy sygnałów.
+\newblock \url{fiona.dmcs.pl/~cmaj/ZMAS/Wyklad4_CM.ppt}.
 
 \bibitem{AMA}
 Lucjan Hanzlik, Kamil Kluczniak, Łukasz Krzywiecki, and Mirosław Kutyłowski.
@@ -162,6 +167,8 @@ Berkant Ustaoglu.
 
 \bibitem{hanning}
 Hanning window.
+\newblock
+  \url{http://www.marekczeszek.com/sitemap/adrem/adrem-15/adrem-nnnn-wykl-text.htm}.
 
 \bibitem{security_canetti_krawczyk}
 SaanJae~Moon Xinghua~Li, Jianfeng~Ma.
