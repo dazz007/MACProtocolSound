@@ -22,19 +22,19 @@
 \contentsline {subsubsection}{\numberline {2.5.9}Pulse-Code Modulation}{21}
 \contentsline {subsection}{\numberline {2.6}Microphones and speakers in mobile devices}{21}
 \contentsline {subsection}{\numberline {2.7}Security analysis over the sound channel}{22}
-\contentsline {subsubsection}{\numberline {2.7.1}No access to protocol transcript}{22}
-\contentsline {subsubsection}{\numberline {2.7.2}Partial access to protocol transcript}{23}
-\contentsline {subsubsection}{\numberline {2.7.3}Full access to protocol transcript}{23}
-\contentsline {subsubsection}{\numberline {2.7.4}Possible vectors of attack on a sound channel}{24}
-\contentsline {subsubsection}{\numberline {2.7.5}Speaker manipulating}{24}
-\contentsline {subsubsection}{\numberline {2.7.6}Microphone manipulating}{24}
-\contentsline {subsubsection}{\numberline {2.7.7}Eavesdropping}{24}
+\contentsline {subsubsection}{\numberline {2.7.1}No access to protocol transcript}{23}
+\contentsline {subsubsection}{\numberline {2.7.2}Partial access to protocol transcript}{24}
+\contentsline {subsubsection}{\numberline {2.7.3}Full access to protocol transcript}{24}
+\contentsline {subsubsection}{\numberline {2.7.4}Possible vectors of attack on a sound channel}{25}
+\contentsline {subsubsection}{\numberline {2.7.5}Speaker manipulating}{25}
+\contentsline {subsubsection}{\numberline {2.7.6}Microphone manipulating}{25}
+\contentsline {subsubsection}{\numberline {2.7.7}Eavesdropping}{25}
 \contentsline {subsubsection}{\numberline {2.7.8}Malicious implementation}{26}
 \contentsline {section}{\numberline {3}Prototype Design}{26}
 \contentsline {subsection}{\numberline {3.1}Mobile Devices}{26}
 \contentsline {subsection}{\numberline {3.2}Operating System}{26}
 \contentsline {subsection}{\numberline {3.3}Security of Android}{26}
-\contentsline {subsection}{\numberline {3.4}Application architecture}{26}
+\contentsline {subsection}{\numberline {3.4}Application architecture}{27}
 \contentsline {subsection}{\numberline {3.5}Cryptography library}{27}
 \contentsline {subsection}{\numberline {3.6}Design pattern}{28}
 \contentsline {subsection}{\numberline {3.7}NIST recommendation for security parameters}{29}

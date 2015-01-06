@@ -17,13 +17,17 @@ import android.media.AudioTrack;
 
 public class AudioPlayer implements AudioPlayerSubject{
 	private final static String TAG = "AudioPlayer";
-	private AudioTrack audiotrack;
-	private int state;
-	List<Integer> indexesOfSigns;
-	private ArrayList<Buffer> queueWithDataAL;
-	AudioPlayerObserver observer;
-	byte[] audioData;
+	private AudioTrack audiotrack; //standard library to play sound
+	private int state; //process state
+	List<Integer> indexesOfSigns; //indexes of signs
+	private ArrayList<Buffer> queueWithDataAL; //Queue with data to play
+	AudioPlayerObserver observer; //observer
+	byte[] audioData; //audio data
 	
+	/**
+	 * Constructor AudioPlayer data
+	 * @param buffer_size - size of buffer
+	 */
 	public AudioPlayer(int sampleRate) {
 
 		int minSize = AudioTrack.getMinBufferSize(sampleRate,
@@ -38,12 +42,18 @@ public class AudioPlayer implements AudioPlayerSubject{
 		state = Constants.STOP_STATE;
 	}
 	
-	
+	/**
+	 * Method to play.
+	 * @param audioData - data with sinus waves
+	 * @param sizeOfBuffer - size of buffer
+	 */
 	public void play(byte[] audioData, int sizeOfBuffer) {
 		audiotrack.write(audioData, 0, sizeOfBuffer);
 	}
 
-
+	/**
+	 * Method to start sending data.
+	 */
 	public void start() {
 		if (state == Constants.STOP_STATE) {
 			state = Constants.START_STATE;

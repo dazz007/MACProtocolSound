@@ -43,16 +43,16 @@ public class LineGraph implements VoiceRecObserver {
 	private VoiceRecSubject voice_recognition_subject;
 	private DecoderSubject decoder_subject;
 
+	/**
+	 * Constructor of LineGraph class
+	 * @param freq 
+	 */
 	public LineGraph(boolean freq) {
 		// Add single dataset to multiple dataset
 		mDataset.addSeries(dataset);
 
 		// Customization time for line 1!
 		renderer.setColor(Color.WHITE);
-		// renderer.setPointStyle(PointStyle.);
-		// renderer.setFillPoints(true);
-
-		// Enable Zoom
 		mRenderer.setZoomButtonsVisible(false);
 		mRenderer.setXTitle("Time");
 		mRenderer.setXLabels(10);
@@ -71,20 +71,37 @@ public class LineGraph implements VoiceRecObserver {
 		state = Constants.STOP_STATE;
 	}
 
+	/**
+	 * Get view
+	 * @param context
+	 * @return view
+	 */
 	public GraphicalView getView(Context context) {
 		view = ChartFactory.getLineChartView(context, mDataset, mRenderer);
 		return view;
 	}
-
+	
+	/**
+	 * Add new points
+	 * @param p - new point
+	 */
 	public void addNewPoints(Point p) {
 		dataset.add(p.getX(), p.getY());
 	}
 
-	@Override
+	/**
+	 * Set subject
+	 * @param vrs - VoiceRecSubject
+	 */
 	public void setSubject(VoiceRecSubject vrs) {
 		voice_recognition_subject = vrs;
 	}
-
+	
+	
+	/**
+	 * Update line graph 
+	 * @param data - data in short
+	 */
 	private void updateLineGraphByte(short[] data) {
 		// MessagesLog.d(TAG, "Wesz³o w update LineGraph");
 		int index = 0;
@@ -97,20 +114,21 @@ public class LineGraph implements VoiceRecObserver {
 
 	}
 
+	/**
+	 * Update line graph for FFT
+	 * @param data - data in float
+	 */
 	private void updateLineGraphFFT(float[] data) {
-		// MessagesLog.d(TAG, "Wesz³o w update LineGraph");
 		int index = 0;
 		dataset.clear();
 
-		// for (int i = 0; i < 2000; i++) {
-		// // int b_to_int = data[i];
-		// dataset.add(index++, data[i]);
-		// }
-
-		// view.repaint();
-
 	}
-
+	
+	
+	/**
+	 * Update line graph for FFT
+	 * @param data - data in FFT
+	 */
 	private void updateLineGraphFFT2(FFT fft) {
 		dataset.clear();
 		int index = 0;
@@ -131,11 +149,16 @@ public class LineGraph implements VoiceRecObserver {
 		view.repaint();
 	}
 	
+	
 	public void stop(){
 		
 		
 	}
 	
+	/**
+	 * Start print
+	 * @param fft - whether for fft or not
+	 */
 	public void start(boolean fft) {
 		if (state == Constants.STOP_STATE) {
 			state = Constants.START_STATE;
@@ -169,11 +192,6 @@ public class LineGraph implements VoiceRecObserver {
 									updateLineGraphFFT2(fft);
 								}
 
-								// Buffer buffer = decoder_subject
-								// .getBufferFFTForGraphQueue();
-								// if (buffer != null) {
-								// updateLineGraphFFT(buffer.getBufferFFT());
-								// }
 							}
 						}
 					};
@@ -185,7 +203,11 @@ public class LineGraph implements VoiceRecObserver {
 
 		}
 	}
-
+	
+	/**
+	 * Set decoder subject
+	 * @param decoder - decoder subject
+	 */
 	public void setDecSubject(DecoderSubject decoder) {
 		this.decoder_subject = decoder;
 	}

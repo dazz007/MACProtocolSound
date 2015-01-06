@@ -1,0 +1,83 @@
+package com.example.important;
+
+public class Buffer {
+	public byte[] buffer;
+	private int buffer_size;
+	public int [] buffer_values;
+//	private int buffer_values_size;
+	public short[] buffer_short;
+	private int buffer_size_short;
+	public float[] buffer_fft;
+//	private int buffer_size_fft;
+	private long time;
+//	private boolean ready;
+	
+	/**
+	 * Constructor Buffer class
+	 */
+	public Buffer(){
+		
+	}
+	
+	/**
+	 * Constructor Buffer class
+	 * @param buf_size - defines size of buffer
+	 */
+	public Buffer(int buf_size){
+		this.buffer_short = new short[buf_size];
+	}
+	
+
+	/**
+	 * Get buffer short
+	 * @return buffer - buffer in short
+	 */
+	public short[] getBufferShort() {
+		return buffer_short;
+	}
+
+	/**
+	 * Set buffer short
+	 * @param buffer_short - buffer with sound data in short
+	 */
+	public void setBufferShort(short[] buffer_short) {
+		this.buffer_short = buffer_short;
+	}
+
+	/**
+	 * Get size of buffer
+	 * @return size of buffer
+	 */
+	public int getSize() {
+		return buffer_size_short;
+	}
+	
+	/**
+	 * Set size of buffer in short
+	 * @param buffer_size_short
+	 */
+	public void setSize(int buffer_size_short) {
+		this.buffer_size_short = buffer_size_short;
+	}
+	
+	/**
+	 * Initialization of buffer
+	 * @param buffer_size - size of buffer
+	 */
+	public void initializeBufferShort(int buffer_size){
+		this.buffer_short = new short[buffer_size];
+	}
+
+//	/**
+//	 * Get time
+//	 * @return time
+//	 */
+//	public long getTime() {
+//		return time;
+//	}
+
+//	public void setTime(long time) {
+//		this.time = time;
+//	}
+
+}

@@ -8,11 +8,14 @@ public class FrequencyTime {
 	private long start;
 	private long end = 0;
 	private int frequency;
-	private int counter;
+	private int counter; // counter which measures appearance of frequency in frames
 	private int nr_sign = 0;
 	private String sign;
 	private StringBuilder sb;
 	
+	/**
+	 * Constructor FrequencyTime. Class responsible for hold recorded frequency and calculate apperance of this frequency,
+	 */
 	public FrequencyTime(){
 		counter = 0;
 		sign =  "";
@@ -39,6 +42,10 @@ public class FrequencyTime {
 		return frequency;
 	}
 
+	/**
+	 * Set frequency
+	 * @param frequency - founded frequency
+	 */
 	public void setFrequency(int frequency) {
 		this.frequency = frequency;
 		counter++;
@@ -53,12 +60,18 @@ public class FrequencyTime {
 		}
 	}
 	
+	/**
+	 * Increase counter
+	 */
 	public void increaseCount(){
 		counter++;
 		
 	}
 	
-	
+	/**
+	 * Check counters and return char
+	 * @return sign - sign adequate to found frequency
+	 */
 	public String foundAndReturnChar(){
 		if(counter == 3){
 			counter = 1;
@@ -68,6 +81,10 @@ public class FrequencyTime {
 		return Constants.NOEND_STR;
 	}
 	
+	/**
+	 * Found and return char
+	 * @return sign - sign adequate to found frequency
+	 */
 	public String returnChar(){
 		if(counter == 1 && nr_sign > 1){
 			return Constants.NOEND_STR;
@@ -77,48 +94,5 @@ public class FrequencyTime {
 		return Constants.NOEND_STR;
 	}
 	
-	
-//	public char computeAndReturnChar() {
-//		long diff = end - start;
-//		long ten_percent = Constants.DEFAULT_GEN_DURATION / 10;
-//		if (end == 0) {
-//			return Constants.NOEND;
-//		} else {
-//			if (diff < Constants.DEFAULT_GEN_DURATION + ten_percent
-//					&& diff > Constants.DEFAULT_GEN_DURATION + ten_percent) {
-//				for (int i = 0; i < Constants.FREQUENCIES.length; i++) {
-//					if (Constants.FREQUENCIES[i] + 50 > frequency
-//							&& Constants.FREQUENCIES[i] - 50 < frequency) {
-//						return Constants.STANDARD_ALPHABET[i];
-//					}
-//				}
-//			}
-//		}
-//		return Constants.NOEND;
-//	}
-//	
-//	public String computeAndReturnString(){
-//		StringBuilder sb = new StringBuilder();
-//		long diff = end - start;
-//		float number_of_sign = 0;
-//		int number_of_sign_rounded = 0;
-//		for (int i = 0; i < Constants.FREQUENCIES.length; i++) {
-//			if (Constants.FREQUENCIES[i] + 20 > frequency
-//					&& Constants.FREQUENCIES[i] - 35 < frequency) {
-//				if(diff > Constants.DEFAULT_GEN_DURATION){
-//					number_of_sign = (float) diff / Constants.DEFAULT_GEN_DURATION;
-//					number_of_sign_rounded = Math.round(number_of_sign);
-//					for (int j = 0; j < number_of_sign_rounded; j++) {
-//						sb.append(Constants.STANDARD_ALPHABET[i]);
-//					}
-//				}else{
-//				
-//					sb.append(Constants.STANDARD_ALPHABET[i]);
-//				}
-//				return sb.toString();
-//			}
-//		}
-//		return Constants.NOEND_STR;
-//	}
 
 }

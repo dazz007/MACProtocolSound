@@ -12,118 +12,76 @@ public class Buffer {
 	private long time;
 //	private boolean ready;
 	
-	
+	/**
+	 * Constructor Buffer class
+	 */
 	public Buffer(){
 		
 	}
 	
+	/**
+	 * Constructor Buffer class
+	 * @param buf_size - defines size of buffer
+	 */
 	public Buffer(int buf_size){
 		this.buffer_short = new short[buf_size];
 	}
 	
-//	public Buffer(int maxSize) {
-//		buffer = new byte[maxSize];
-//	}
 
-//	
-//	public Buffer(byte[] buf, int buf_size, int[] buff_values, int buff_values_size) {
-//		buffer = buf;
-//		buffer_size = buf_size;
-//		setBufferValues(buff_values);
-//		setBufferValuesSize(buff_values_size);
-//	}
-
-//	public void setBuffer(byte[] buf) {
-//		buffer = buf;
-//	}
-
-//	public void setBufferSize(int buf_size) {
-//		buffer_size = buf_size;
-//	}
-
-//	public byte[] getBuffer() {
-//		return buffer;
-//	}
-
-//	public int getBufferSize() {
-//
-//		return buffer_size;
-//	}
-
-//	public int [] getBufferValues() {
-//		return buffer_values;
-//	}
-
-//	public void setBufferValues(int [] buffer_values) {
-//		this.buffer_values = buffer_values;
-//	}
-
-//	public int getBufferValuesSize() {
-//		return buffer_values_size;
-//	}
-
-//	public void setBufferValuesSize(int buffer_values_size) {
-////		this.buffer_values = new int[buffer_values_size];
-//		this.buffer_values_size = buffer_values_size;
-//	}
-	
+	/**
+	 * Get buffer short
+	 * @return buffer - buffer in short
+	 */
 	public short[] getBufferShort() {
 		return buffer_short;
 	}
 
+	/**
+	 * Set buffer short
+	 * @param buffer_short - buffer with sound data in short
+	 */
 	public void setBufferShort(short[] buffer_short) {
 		this.buffer_short = buffer_short;
 	}
 
+	/**
+	 * Get size of buffer
+	 * @return size of buffer
+	 */
 	public int getSize() {
 		return buffer_size_short;
 	}
-
+	
+	/**
+	 * Set size of buffer in short
+	 * @param buffer_size_short
+	 */
 	public void setSize(int buffer_size_short) {
 		this.buffer_size_short = buffer_size_short;
 	}
 	
-//	public void initializeBufferByte(int biffer_size){
-//		this.buffer = new byte[biffer_size];
-//	}
-	
+	/**
+	 * Initialization of buffer
+	 * @param buffer_size - size of buffer
+	 */
 	public void initializeBufferShort(int buffer_size){
 		this.buffer_short = new short[buffer_size];
 	}
-	
-//	public void initializeBufferInt(int buffer_size){
-//		this.buffer_values = new int[buffer_size];
-//	}
-	
-//	public float[] getBufferFFT() {
-//		return buffer_fft;
-//	}
 
-//	public void setBufferFFT(float[] buffer_fft) {
-//		this.buffer_fft = buffer_fft;
-//	}
-
-//	public int getBuffer_size_fft() {
-//		return buffer_size_fft;
-//	}
-
-//	public void setBuffer_size_fft(int buffer_size_fft) {
-//		this.buffer_size_fft = buffer_size_fft;
-//	}
-
+	/**
+	 * Get time
+	 * @return time
+	 */
 	public long getTime() {
 		return time;
 	}
-//
+
+	/**
+	 * Set time
+	 * @param time
+	 */
 	public void setTime(long time) {
 		this.time = time;
 	}
-//
-//	public boolean isReady() {
-//		return ready;
-//	}
-//
-//	public void setReady(boolean ready) {
-//		this.ready = ready;
-//	}
+
 }

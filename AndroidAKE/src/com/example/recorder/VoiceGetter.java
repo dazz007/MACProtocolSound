@@ -7,25 +7,39 @@ import com.example.interfaces.VoiceRecSubject;
 
 public class VoiceGetter {
 	private final static String TAG = "VoiceGetter";
-	private RecorderAudio recorder_audio;
-	private int state;
-	private Callback callback;
-	private long start;
-	private long stop;
-	private long diff;
+	private RecorderAudio recorder_audio; //object responsible for record data
+	private int state; //state of process
+	private Callback callback; // callback
+	
+	/**
+	 * Constructor VoiceGetter class
+	 * @param ra - RecorderAudio object responsible for record data
+	 * @param callback - callback
+	 */
 	public VoiceGetter(RecorderAudio ra, Callback callback){
 		recorder_audio = ra;
 		this.callback = callback;
 	}
 	
+	/**
+	 * Interface for callback class.
+	 */
 	public static interface Callback{
 		public void putBufferToQueue(Buffer buffer);
 	}
 	
+	/**
+	 * Set callback
+	 * @param callback - callback
+	 */
 	public void setCallback(Callback callback){
 		this.callback = callback;
 	}
 	
+	
+	/**
+	 * Start of getting frame of data
+	 */
 	public void start() {
 		int temp_count = 0;
 		int period = Constants.DEFAULT_NUM_SAMPLES /2;
@@ -54,7 +68,9 @@ public class VoiceGetter {
 			}
 		}
 	}
-	
+	/**
+	 * Stop getting frame of data
+	 */
 	public void stop(){
 		if(state == Constants.START_STATE){
 			state = Constants.STOP_STATE;

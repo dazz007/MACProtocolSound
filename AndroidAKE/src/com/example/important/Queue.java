@@ -11,6 +11,9 @@ public class Queue {
 	private BlockingQueue<Buffer> consumer;
 	private BlockingQueue<FFT> fft;
 	
+	/**
+	 * Constructor for class Queue
+	 */
 	public Queue(){
 		producer = new LinkedBlockingQueue<Buffer>();
 		consumer = new LinkedBlockingQueue<Buffer>();
@@ -18,6 +21,10 @@ public class Queue {
 		
 	}
 	
+	/**
+	 * Add to producer
+	 * @param data - Buffer data with sound
+	 */
 	public void addToProducer(Buffer data){
 		try {
 			producer.put(data);
@@ -27,7 +34,10 @@ public class Queue {
 		}
 	}
 	
-	
+	/**
+	 * Get from producer
+	 * @return Buffer - Buffer data with sound
+	 */
 	public Buffer getFromProducer(){
 		if(producer != null){
 			try {
@@ -40,6 +50,10 @@ public class Queue {
 		return null;
 	}
 	
+	/**
+	 * Add to consumer
+	 * @param data - Buffer data with sound
+	 */
 	public void addToConsumer(Buffer data){
 		try {
 			consumer.put(data);
@@ -49,6 +63,10 @@ public class Queue {
 		}
 	}
 	
+	/**
+	 * Get from consumer
+	 * @return Buffer - Buffer data with sound
+	 */
 	public Buffer getFromConsumer(){
 		if(consumer != null){
 			try {
@@ -61,6 +79,10 @@ public class Queue {
 		return null;
 	}
 	
+	/**
+	 * Add to consumer
+	 * @param data - FFT data with sound
+	 */
 	public void addFFTToConsumer(FFT data){
 		try {
 			fft.put(data);
@@ -70,6 +92,10 @@ public class Queue {
 		}
 	}
 	
+	/**
+	 * Get from consumer
+	 * @return FFT - Buffer data with sound
+	 */
 	public FFT getFromFFTConsumer(){
 		if(fft != null){
 			try {
@@ -82,7 +108,9 @@ public class Queue {
 		return null;
 	}
 	
-	
+	/**
+	 * Clear buffers
+	 */
 	public void clearBuffers(){
 		producer.clear();
 		consumer.clear();

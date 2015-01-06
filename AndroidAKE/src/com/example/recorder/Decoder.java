@@ -65,7 +65,10 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 			MessagesLog.d(TAG, "No bez przesadyzmu");
 		}
 	}
-
+	/**
+	 * Method to analyse get buffer. Change time domain to frequency domain
+	 * @param buffer - buffer with sound data
+	 */
 	private void analyse(Buffer buffer) {
 		// MessagesLog.d(TAG, ""+ buffer.getSize());
 		int buffer_size = buffer.getSize();
@@ -109,7 +112,11 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 			}
 		}
 	}
-
+	/**
+	 * Method to find the frequency.
+	 * @param fft - sound data in frequency domain
+	 * @return frequency
+	 */
 	private int findPitch(FFT fft) {
 		float max_band = 0;
 		int max_peak = 0;
@@ -140,6 +147,10 @@ public class Decoder implements VoiceRecObserver, DecoderSubject {
 
 	}
 
+	/**
+	 * Method to check gained frequency and return appropriate character.
+	 * @param frequency
+	 */
 	private void checkPitch(int freq) {
 		String sign = "";
 		if (freq > Constants.FREQUENCIES[0] - 100) {

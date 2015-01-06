@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.21)  5 JAN 2015 14:08
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.21)  6 JAN 2015 16:48
 entering extended mode
 **AKESound.tex
 ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.tex"
@@ -1041,15 +1041,16 @@ Package pdftex.def Info: img/hanning_window.png used on input line 585.
 (pdftex.def)             Requested size: 240.00244pt x 267.97064pt.
  [20 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/rectangular_window.
 png>] [21 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/hanning_window
-.png>] [22] [23] [24]
-<img/adversary.png, id=181, 359.84438pt x 131.74219pt>
+.png>] [22]
+<img/adversary.png, id=174, 359.84438pt x 131.74219pt>
 File: img/adversary.png Graphic file (type png)
  <use img/adversary.png>
-Package pdftex.def Info: img/adversary.png used on input line 721.
+Package pdftex.def Info: img/adversary.png used on input line 667.
 (pdftex.def)             Requested size: 240.00244pt x 87.86877pt.
 
-[25 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/adversary.png>]
-Overfull \hbox (3.84259pt too wide) in paragraph at lines 750--751
+[23 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/adversary.png>]
+[24] [25]
+Overfull \hbox (3.84259pt too wide) in paragraph at lines 748--749
 \T1/ptm/m/n/10.95 Application con-sists of three parts: cryp-to-graphic mod-ule
 , sound chan-nel mod-ule and graphic
  []
@@ -1058,14 +1059,14 @@ Overfull \hbox (3.84259pt too wide) in paragraph at lines 750--751
 File: img/Architecture_pdf.pdf Graphic file (type pdf)
 
 <use img/Architecture_pdf.pdf>
-Package pdftex.def Info: img/Architecture_pdf.pdf used on input line 756.
+Package pdftex.def Info: img/Architecture_pdf.pdf used on input line 754.
 (pdftex.def)             Requested size: 400.0pt x 282.91394pt.
  [27 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/Architecture_pdf.pd
 f>]
 <img/MVC.pdf, id=224, 598.48593pt x 846.16125pt>
 File: img/MVC.pdf Graphic file (type pdf)
  <use img/MVC.pdf>
-Package pdftex.def Info: img/MVC.pdf used on input line 770.
+Package pdftex.def Info: img/MVC.pdf used on input line 768.
 (pdftex.def)             Requested size: 279.99878pt x 395.87535pt.
  [28 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/MVC.pdf>]
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
@@ -1078,32 +1079,32 @@ File: lstlang1.sty 2014/09/06 1.5e listings language file
 File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
 )
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <8> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 797.
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 795.
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 804.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 802.
  [29]
 [30]
 
-LaTeX Warning: Characters dropped after `\end{comment}' on input line 871.
+LaTeX Warning: Characters dropped after `\end{comment}' on input line 869.
 
 [31]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 904.
+(amsmath)                 on input line 902.
 
 <img/Sending_data_active_diag.pdf, id=258, 712.91344pt x 252.19218pt>
 File: img/Sending_data_active_diag.pdf Graphic file (type pdf)
 
 <use img/Sending_data_active_diag.pdf>
-Package pdftex.def Info: img/Sending_data_active_diag.pdf used on input line 91
-1.
+Package pdftex.def Info: img/Sending_data_active_diag.pdf used on input line 90
+9.
 (pdftex.def)             Requested size: 400.0pt x 141.49986pt.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
 File: lstlang1.sty 2014/09/06 1.5e listings language file
 )
-Overfull \hbox (17.0pt too wide) in paragraph at lines 917--982
+Overfull \hbox (17.0pt too wide) in paragraph at lines 915--980
 []$[]$ 
  []
 
@@ -1116,7 +1117,7 @@ Overfull \vbox (48.64398pt too high) has occurred while \output is active []
 File: img/Activity_diag_receiving.pdf Graphic file (type pdf)
 
 <use img/Activity_diag_receiving.pdf>
-Package pdftex.def Info: img/Activity_diag_receiving.pdf used on input line 997
+Package pdftex.def Info: img/Activity_diag_receiving.pdf used on input line 995
 .
 (pdftex.def)             Requested size: 359.99756pt x 254.62254pt.
  [34 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/Activity_diag_recei
@@ -1125,23 +1126,23 @@ ving.pdf>]
 File: img/analyse_of_sound.pdf Graphic file (type pdf)
 
 <use img/analyse_of_sound.pdf>
-Package pdftex.def Info: img/analyse_of_sound.pdf used on input line 1007.
+Package pdftex.def Info: img/analyse_of_sound.pdf used on input line 1005.
 (pdftex.def)             Requested size: 400.0pt x 387.21413pt.
 
 <img/receiving.png, id=342, 534.49687pt x 453.19313pt>
 File: img/receiving.png Graphic file (type png)
  <use img/receiving.png>
-Package pdftex.def Info: img/receiving.png used on input line 1014.
+Package pdftex.def Info: img/receiving.png used on input line 1012.
 (pdftex.def)             Requested size: 279.99878pt x 237.41823pt.
 
 [35 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/analyse_of_sound.pdf
 >]
-Overfull \hbox (17.0pt too wide) in paragraph at lines 1021--1060
+Overfull \hbox (17.0pt too wide) in paragraph at lines 1019--1058
 []$[]$ 
  []
 
 [36 <E:/GitHubFinal/MACProtocolSound/praca magisterska/img/receiving.png>]
-[37] [38] [39] [40]
+[37] [38] [39] [40] [41]
 ("E:\GitHubFinal\MACProtocolSound\praca magisterska\AKESound.bbl"
 Underfull \hbox (badness 6032) in paragraph at lines 4--7
 []\T1/ptm/m/n/10.95 The de-screte trans-form fourier (dft): Def-i-ni-tion and n
@@ -1154,7 +1155,7 @@ $\T1/pcr/m/n/10.95 http : / / www . nbtwiki . net / doku . php ? id = tutorial
 : the _ discrete _ fourier _$
  []
 
-[41]
+
 Underfull \hbox (badness 2318) in paragraph at lines 19--21
 []\T1/ptm/m/n/10.95 Nate»enie fali d¹wi¦kowej.  $\T1/pcr/m/n/10.95 http : / / w
 ww . fizykon . org / akustyka / akustyka _$
@@ -1218,7 +1219,7 @@ Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)
 /MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9
 /fonts/type1/urw/times/utmri8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
 e1/urw/zapfchan/uzcmi8a.pfb>
-Output written on AKESound.pdf (45 pages, 1011441 bytes).
+Output written on AKESound.pdf (45 pages, 1011638 bytes).
 PDF statistics:
  468 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -12,23 +12,23 @@ import android.media.MediaRecorder;
 
 public class VoiceRecognition implements VoiceRecSubject, VoiceGetter.Callback{
 	
-	public RecorderAudio record_audio;
-	private int state;
-	private Thread thread_recorder;
-	private Thread thread_decoder;
-	private Thread thread_voice_getter;
-	private Queue queue_for_analyzer;
-	private Queue queue_for_graph;
-	private Decoder decoder;
-	private VoiceGetter voice_getter;
-	private Listener mListener;
-	
-
+	public RecorderAudio record_audio; //object responsible for prepare process to record data
+	private int state; // state of the process
+	private Thread thread_recorder; // thread for recorder
+	private Thread thread_decoder; // thread for decoder
+	private Thread thread_voice_getter; // thread for voice getter
+	private Queue queue_for_analyzer; // queue for analyse
+	private Queue queue_for_graph; // queue for graph
+	private Decoder decoder; // object responsible for decode of recorded data
+	private VoiceGetter voice_getter; // object responsible for get recorder data
+	private Listener mListener; // listener
 	
 	
 	private final static String TAG = "VoiceRecognition";
 
-	
+	/**
+	 * Constructor of VoiceRecognition class.
+	 */
 	public VoiceRecognition(){
 		record_audio = new RecorderAudio(MediaRecorder.AudioSource.MIC,
 										 Constants.SAMPLING,
@@ -57,7 +57,9 @@ public class VoiceRecognition implements VoiceRecSubject, VoiceGetter.Callback{
 		mListener = listener;
 	}
 	
-	
+	/**
+	 * Method to start record_audio thread, voice_getter thread and voice_decoder thread
+	 */
 	public void start(){
 		if(state == Constants.STOP_STATE){
 			state = Constants.START_STATE;
@@ -91,7 +93,9 @@ public class VoiceRecognition implements VoiceRecSubject, VoiceGetter.Callback{
 		}
 	}
 	
-	
+	/**
+	 * Method to stop record_audio thread, voice_getter thread and voice_decoder thread
+	 */
 	public void stop() throws InterruptedException{
 		if (state == Constants.START_STATE) {
 			state = Constants.STOP_STATE;
@@ -99,42 +103,20 @@ public class VoiceRecognition implements VoiceRecSubject, VoiceGetter.Callback{
 			
 			MessagesLog.d(TAG, "No bez przesady23232zmu");
 			if (thread_decoder != null) {
-//				try {
 					decoder.stop();
-					//thread_decoder.join();
 					MessagesLog.d(TAG, "Thread dobrze sie przerwa³");
-//				} catch (InterruptedException e) {
-//					MessagesLog.d(TAG, "Zesra³o siê");
-//					e.printStackTrace();
-//					
-//				} finally {
-//					MessagesLog.d(TAG, "hmmm");
-//					thread_decoder = null;
-//				}
+
 			}
 			MessagesLog.d(TAG, "sending data is over 222");
 			
 			voice_getter.stop();
 			if (thread_recorder != null) {
-//				try {
-//					thread_voice_getter.join();
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				} finally {
-//					thread_voice_getter = null;
-//				}
+
 			}
 			MessagesLog.d(TAG, "sending data is over 333");
 			
 			record_audio.stop();
 			if (thread_recorder != null) {
-//				try {
-//					thread_recorder.join();
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				} finally {
-//					thread_recorder = null;
-//				}
 			}
 			
 			MessagesLog.d(TAG, "sending data is over 444");
@@ -144,31 +126,7 @@ public class VoiceRecognition implements VoiceRecSubject, VoiceGetter.Callback{
 		queue_for_analyzer.clearBuffers();
 		
 	}
-//	@Override
-//	public void sendDataToGraph(int[] data) {
-//		voice_rec_observer.updateLineGraph(data);
-//		MessagesLog.d(TAG, "Wesz³o w send DataToGraph");
-//		
-//	}
 
-//	@Override
-//	public void setStopStatus() {
-//		if (state == Constants.START_STATE) {
-//			state = Constants.STOP_STATE;
-//			MessagesLog.d(TAG, "sending data is over");
-//			record_audio.stop();
-//			if (thread_recorder != null) {
-//				try {
-//					thread_recorder.join();
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				} finally {
-//					thread_recorder = null;
-//				}
-//			}
-//		}
-//		
-//	}
 
 
 	@Override
@@ -183,45 +141,68 @@ public class VoiceRecognition implements VoiceRecSubject, VoiceGetter.Callback{
 		
 	}
 
-	@Override
+	/**
+	 * Method to put buffer with data to queue for analyse
+	 */
 	public void putBufferToQueue(Buffer buffer) {
 		queue_for_analyzer.addToConsumer(buffer);
 		if(Constants.DRAW_IN_TIME)
 			queue_for_graph.addToConsumer(buffer);
 	}
 
-	@Override
+	/**
+	 * Method to get buffer with data for graph queue
+	 */
 	public Buffer getBufferForGraphQueue() {
 		return queue_for_graph.getFromConsumer();
 	}
 	
-	@Override
+	/**
+	 * Method to get buffer with data for decoder queue
+	 */
 	public Buffer getBufferForDecoderQueue(){
 		return queue_for_analyzer.getFromConsumer();
 	}
+	
+	/**
+	 * Method to return decoder
+	 * @return decoder - object when recorded data are analyse
+	 */
 	
 	public Decoder getDecoder() {
 		return decoder;
 	}
 
+	/**
+	 * Method to set decoder
+	 * @param decoder - object when recorded data are analyse
+	 */
 	public void setDecoder(Decoder decoder) {
 		this.decoder = decoder;
 	}
 
 
-	@Override
+	/**
+	 * Method which start when recognition is over
+	 */
 	public void onEndRecogntion() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	/**
+	 * Method which start when recognition is start
+	 * @return decoder - object when recorded data are analyse
+	 */
 	public void onStartRecognition() {
 		mListener.onStartRecogntion();
 		
 	}
 
-	@Override
+	/**
+	 * Method which process during recognition.
+	 * @param str - string with data
+	 */
 	public void onRecognition(String str) {
 		mListener.onRecognition(str);
 		

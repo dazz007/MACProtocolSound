@@ -1,0 +1,56 @@
+package com.example.important;
+
+public class Buffer {
+	public byte[] buffer;
+	private int buffer_size;
+	public int [] buffer_values;
+//	private int buffer_values_size;
+	public short[] buffer_short;
+	private int buffer_size_short;
+	public float[] buffer_fft;
+//	private int buffer_size_fft;
+	private long time;
+//	private boolean ready;
+	
+	
+	public Buffer(){
+		
+	}
+	
+	public Buffer(int buf_size){
+		this.buffer_short = new short[buf_size];
+	}
+	
+
+	
+	public short[] getBufferShort() {
+		return buffer_short;
+	}
+
+	public void setBufferShort(short[] buffer_short) {
+		this.buffer_short = buffer_short;
+	}
+
+	public int getSize() {
+		return buffer_size_short;
+	}
+
+	public void setSize(int buffer_size_short) {
+		this.buffer_size_short = buffer_size_short;
+	}
+	
+	
+	public void initializeBufferShort(int buffer_size){
+		this.buffer_short = new short[buffer_size];
+	}
+
+
+	public long getTime() {
+		return time;
+	}
+
+	public void setTime(long time) {
+		this.time = time;
+	}
+
+}
